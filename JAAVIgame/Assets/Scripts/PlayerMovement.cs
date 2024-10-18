@@ -1,0 +1,133 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour 
+{
+//under the class you must create and name your variables
+    [SerializeField] private float runSpeed = 5.0f;
+    [SerializeField] private float jumpSpeed = 5.0f;
+
+    float gravityScaleAtStart;
+
+    bool isAlive = true; //Starts true because the player is alive
+
+    Rigidbody2D playerCharacter;
+    CapsuleCollider2D playerBodyCollider;
+   // Animator playerAnimator;
+    BoxCollider2D playerFeetCollider;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //we grab from the component 
+        playerCharacter = GetComponent<Rigidbody2D>();
+      //  playerAnimator = GetComponent<Animator>();
+        playerBodyCollider = GetComponent<CapsuleCollider2D>();
+        playerFeetCollider = GetComponent<BoxCollider2D>();
+
+        gravityScaleAtStart = playerCharacter.gravityScale;
+    }
+
+    // Update is called once per frame
+    void Update()
+        {
+        if(!isAlive)
+        {
+            return;
+        }
+
+        Run();
+        FlipSprite();
+        Jump();
+       // Climb();
+       // Die();
+    }
+
+    private void Run()
+    {
+        // Value between -1 to +1
+        float hMovement = Input.GetAxis("Horizontal");
+        Vector3 runVelocity = new Vector2(hMovement*runSpeed, playerCharacter.velocity.y);
+
+        bool hSpeed = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
+        //playerAnimator.SetBool("run", hSpeed);
+        
+        playerCharacter.velocity = runVelocity;
+
+    }
+
+    private void FlipSprite()
+    {
+        // If the player is moving horizontally
+        bool hMovement = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
+
+        if (hMovement)
+        {
+            // Reverse the current direction (scale) of the X-Axis
+            transform.localScale = new Vector2(Mathf.Sign(playerCharacter.velocity.x), 1f);
+        }
+    }
+
+    private void Jump()
+    {
+        if (!playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            // Will stop this function unless true
+            return;
+        }
+        if(Input.GetButtonDown("Jump"))
+        {
+            // Get new Y velocity based on a controllable variable
+            Vector2 jumpVelocity = new Vector2(0.0f, jumpSpeed);
+            playerCharacter.velocity += jumpVelocity;
+            //playerAnimator.SetTrigger("jump");
+            //AudioSource.PlayClipAtPoint(jumpSFX, Camera.main.transform.position);
+        }
+    }
+
+
+    //this is to climb up ladders for example which i dont think we need
+    // private void Climb()
+    // {
+    //     if(!playerBodyCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+    //     {
+    //         // Will stop this function unless true
+    //         playerAnimator.SetBool("climb", false);
+    //         playerCharacter.gravityScale = gravityScaleAtStart;
+    //         return;
+    //     }
+
+    //     //"Vertical from Input Axis"
+    //     float vMovement = Input.GetAxis("Vertical");
+
+    //     // x needs to remain the same and we need to change y
+    //     Vector2 climbVelocity = new Vector2(playerCharacter.velocity.x, vMovement * climbSpeed);
+    //     playerCharacter.velocity = climbVelocity;
+
+    //     playerCharacter.gravityScale = 0.0f;
+
+    //     bool vSpeed = Mathf.Abs(playerCharacter.velocity.y) > Mathf.Epsilon;
+    //     playerAnimator.SetBool("climb", vSpeed);
+
+    // }
+
+    // check for collision layer for jump / wall climb
+    //this was from my old code but we dont need this yet.
+
+    // private void Die()
+    // {
+    //     if(playerBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
+    //     {
+    //         isAlive = false;
+    //         playerAnimator.SetTrigger("die");
+    //         GetComponent<Rigidbody2D>().velocity = deathSeq;
+
+    //         FindAnyObjectByType<GameSession>().ProcessPlayerDeath();
+
+    //        AudioSource.PlayClipAtPoint(dieSFX, Camera.main.transform.position);
+
+    //     }
+    // }
+
+}
