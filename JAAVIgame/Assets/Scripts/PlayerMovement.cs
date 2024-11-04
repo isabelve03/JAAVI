@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 //under the class you must create and name your variables
     [SerializeField] private float runSpeed = 15.0f;
     [SerializeField] private float jumpSpeed = 15.0f;
-    [SerializeField] private float airJump = 1;
+    [SerializeField] private float airJump = 1; //Can be increased to more than 1 if character has multiple air jumps
 
     float gravityScaleAtStart;
 
