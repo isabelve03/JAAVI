@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour 
 {
 //under the class you must create and name your variables
-    [SerializeField] private float runSpeed = 5.0f;
-    [SerializeField] private float jumpSpeed = 5.0f;
+    [SerializeField] private float runSpeed = 15.0f;
+    [SerializeField] private float jumpSpeed = 15.0f;
+    [SerializeField] private float airJump = 1; //Can be increased to more than 1 if character has multiple air jumps
 
     float gravityScaleAtStart;
 
@@ -71,19 +72,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (!playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
-        {
-            // Will stop this function unless true
-            return;
-        }
         if(Input.GetButtonDown("Jump"))
         {
+            if (!playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            {
+                if(airJump == 0)
+                {
+                    // Will stop this function unless true
+                    return;
+                }
+                else
+                {
+                    airJump--;
+                }
+            }
+            else
+            {
+                airJump = 1;
+            }        
             // Get new Y velocity based on a controllable variable
             Vector2 jumpVelocity = new Vector2(0.0f, jumpSpeed);
             playerCharacter.velocity += jumpVelocity;
             //playerAnimator.SetTrigger("jump");
             //AudioSource.PlayClipAtPoint(jumpSFX, Camera.main.transform.position);
         }
+        return;
     }
 
 
