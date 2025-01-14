@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour 
 {
-//under the class you must create and name your variables
+//All three variables below are placeholders.  They will be replaced by values from each character's personal attributes.
     [SerializeField] private float runSpeed = 15.0f;
     [SerializeField] private float jumpSpeed = 15.0f;
-    [SerializeField] private float airJump = 1; //Can be increased to more than 1 if character has multiple air jumps
+    [SerializeField] private int airJumpVal = 1;
+    [SerializeField] private int airJump;
+    [SerializeField] private int hitPoints; //hitpoints start at 0 and increment up until character dies, then they are reset
 
     float gravityScaleAtStart;
 
@@ -23,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //we grab from the component 
         playerCharacter = GetComponent<Rigidbody2D>();
-      //  playerAnimator = GetComponent<Animator>();
+        //playerAnimator = GetComponent<Animator>();
         playerBodyCollider = GetComponent<CapsuleCollider2D>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
 
@@ -37,12 +39,17 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-
+        Health();
         Run();
         FlipSprite();
         Jump();
        // Climb();
        // Die();
+    }
+
+    private void Health()
+    {
+
     }
 
     private void Run()
@@ -60,6 +67,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FlipSprite()
     {
+        // Lets characters use back aerial attacks
+        // Want to add a certain amount of frames after a jump where character can reverse direction even in the air
+        if (!playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            return;
+        }
         // If the player is moving horizontally
         bool hMovement = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
 
@@ -72,9 +85,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        bool isGrounded = playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
+        if(isGrounded){
+            airJump = airJumpVal;
+        }
         if(Input.GetButtonDown("Jump"))
         {
-            if (!playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            if (!isGrounded)
             {
                 if(airJump == 0)
                 {
@@ -85,14 +102,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                     airJump--;
                 }
-            }
-            else
-            {
-                airJump = 1;
-            }        
+            }    
             // Get new Y velocity based on a controllable variable
             Vector2 jumpVelocity = new Vector2(0.0f, jumpSpeed);
-            playerCharacter.velocity += jumpVelocity;
+            playerCharacter.velocity = jumpVelocity;
             //playerAnimator.SetTrigger("jump");
             //AudioSource.PlayClipAtPoint(jumpSFX, Camera.main.transform.position);
         }
