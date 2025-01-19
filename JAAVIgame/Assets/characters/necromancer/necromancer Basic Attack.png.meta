@@ -1,0 +1,1548 @@
+fileFormatVersion: 2
+guid: f512acf37fce7ac4c819fd9f4cc14163
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: necromancer Basic Attack_0
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 1891
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690fa602d9e58a04ebcfef67bdd58012
+      internalID: 190832926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_1
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 1891
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eb7141f36e46db43ad11a369ab7a46c
+      internalID: -392172949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_2
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 1891
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df47c183d8d3b134a859908037dc03cb
+      internalID: 694412677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_3
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 1891
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf227d92a4851b048a82ca0089348578
+      internalID: 847495862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_4
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 1891
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cefb3ef27dc05448ac948dcaa46e1ad
+      internalID: -409250573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_5
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 1891
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0012e115898b8694fb180c710e64ace8
+      internalID: -696277701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_6
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 1891
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e711077932e2f54bac2b70bd2fe0acb
+      internalID: -415698812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_7
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 1891
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 724b62d01f7d78f48b31b42bd082fb05
+      internalID: 533791359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_8
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 1638
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4291af9fde3c8c642b67a4f62fbabc2d
+      internalID: 672173465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_9
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 1638
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07b64d6b1b36c0f46b437104c660aa16
+      internalID: 143891731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_10
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 1638
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06f6c1a2aacfbca4582f7e31d884710b
+      internalID: 238865814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_11
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 1638
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 203137be28e93734786ae304e9ec73c0
+      internalID: -1614796755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_12
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 1638
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c4e91ae39b6b0b40995043a98d3d8a1
+      internalID: 711219183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_13
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 1638
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 064f62eb9dcb3084e9340aaed4bfb820
+      internalID: -1174621326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_14
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 1638
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 451230fdefa5de746b7f2cb51ca5d79f
+      internalID: -1868921035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_15
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 1638
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 627befae7426e8149a03e175d53f5374
+      internalID: 293934033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_16
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 1385
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad977ccb29aa75d4e8bae855c4fe31fc
+      internalID: -1424247046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_17
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 1385
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f18fa9ba619782b4584bb83ca9b04f0d
+      internalID: 1589236462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_18
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 1385
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c10f6657203d7ab4a8494f93c81738fc
+      internalID: -714471200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_19
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 1385
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1659d63c82636064ab1827b2c3b564d4
+      internalID: 524783043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_20
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 1385
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67eb97aa23b849b44a7768168c74bb64
+      internalID: 1698649936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_21
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 1385
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72da12e5c91a0bb48b0f38d130d27716
+      internalID: 1114906660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_22
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 1385
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eec2dbc22b5653242a9b5bd7d33c2397
+      internalID: -1562520765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_23
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 1385
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27ef13056eb208c40954d13e7d76b60d
+      internalID: -9165461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_24
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 1132
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 083b2f65086d86649b634c15e4c25dff
+      internalID: -578146389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_25
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 1132
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be814826d2f8c544e9c12673fe03dfae
+      internalID: 26940443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_26
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 1132
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45e9726e0b809f84c8f7782888039765
+      internalID: -21522368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_27
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 1132
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba29a31eec5abd54da0b1e20c2ce653f
+      internalID: -2063169172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_28
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 1132
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3887d2475bddb547a26d43652dd8a59
+      internalID: -786855112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_29
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 1132
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd14c0fec9b68544cbb1a761b025827f
+      internalID: 2006156244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_30
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 1132
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff9cae1a68e62444d9e31cda6553f343
+      internalID: 1152417578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_31
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 1132
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c98d809fd7715d746afec6774f9d3d6d
+      internalID: -1747219893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_32
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 879
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f160de32949044191a986ad51b6115
+      internalID: 1349290727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_33
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 879
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9f46255a37a0a4f87ee70d19a2035d
+      internalID: -663411617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_34
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 879
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deaf11d9e27e9a845a18e0d6e1351fa7
+      internalID: 1299922392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_35
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 879
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c544d01c9720ca342a55888188f2eacb
+      internalID: -1198283681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_36
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 879
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d0e4b6a13bdd544962c9152ea8f81f
+      internalID: 1272869484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_37
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 879
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f02550274a654b7468f172777ae5ce01
+      internalID: -922712642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_38
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 879
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1b090c98bf571f4b90ca7d6f983395b
+      internalID: -1926961727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_39
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 879
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 438bfb1e9fa6ab74e97fda3d884f0013
+      internalID: 1060015987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_40
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 626
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03664f80ea5305243889b79b35a3f08b
+      internalID: -635499310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_41
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 626
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b908232accda7d64e888042e87a0b185
+      internalID: 635155933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_42
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 626
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c9de05b4038c341a61c0bef8d66703
+      internalID: 1297409696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_43
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 626
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 242475dfb6c17704b951c407aa723632
+      internalID: 1891155844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_44
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 626
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 860e895ffb6c9c94b8826a295ad93bf3
+      internalID: 2117127461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_45
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 626
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67866148860348249bf8c82d3c1ede51
+      internalID: -810108744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_46
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 626
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e023d653fc3a4ea4b940fb9181e6de05
+      internalID: 2043390270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_47
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 626
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3132ef993cea8f49ab9bfa0aca6f012
+      internalID: 192291249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_48
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 373
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dccdb8360db7ee42aa95b60a0d2cd8c
+      internalID: -1872424322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_49
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 373
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24aa60b1eea170041bbe833fbfbf132b
+      internalID: -1976290582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_50
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 373
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b7b605676a0165428e914b4ba4f1187
+      internalID: -1852904307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_51
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 373
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e037e26eb8f31147a67c5bac84f9977
+      internalID: -430385823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_52
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 373
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f47f6dfd0bb4ce2449e08b947bd6f721
+      internalID: 1762719632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_53
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 373
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc0398e893426441afa3eb3e3443c19
+      internalID: 2010055634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_54
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 373
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 765611a2e3800d245a802806ed77808b
+      internalID: 211595338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_55
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 373
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 194869f0c640d5c4caff09e5abd1ff04
+      internalID: 945135783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_56
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 120
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0989388c96680f847bb0617d58685efb
+      internalID: 1788308783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_57
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 120
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e49e1459a7a3cfa478452a2419507070
+      internalID: 1889527246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_58
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 120
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afea81b3fcac8b04a8909f5119629707
+      internalID: 378657574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_59
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 120
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93d96e5749ae01b4fa70a9be6716c923
+      internalID: 2076414876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_60
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 120
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c72ca115c2cde44f857cac374d32218
+      internalID: 349420152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_61
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 120
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 865b888e78e3e7d41ada10258d449089
+      internalID: 1189253090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_62
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 120
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaee57c3a1f7bdc479a6d5f2a6a36b09
+      internalID: 67825317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer Basic Attack_63
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 120
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2503675027a2eb84fb4bfe5f17c39e59
+      internalID: -426741270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      necromancer Basic Attack_0: 190832926
+      necromancer Basic Attack_1: -392172949
+      necromancer Basic Attack_10: 238865814
+      necromancer Basic Attack_11: -1614796755
+      necromancer Basic Attack_12: 711219183
+      necromancer Basic Attack_13: -1174621326
+      necromancer Basic Attack_14: -1868921035
+      necromancer Basic Attack_15: 293934033
+      necromancer Basic Attack_16: -1424247046
+      necromancer Basic Attack_17: 1589236462
+      necromancer Basic Attack_18: -714471200
+      necromancer Basic Attack_19: 524783043
+      necromancer Basic Attack_2: 694412677
+      necromancer Basic Attack_20: 1698649936
+      necromancer Basic Attack_21: 1114906660
+      necromancer Basic Attack_22: -1562520765
+      necromancer Basic Attack_23: -9165461
+      necromancer Basic Attack_24: -578146389
+      necromancer Basic Attack_25: 26940443
+      necromancer Basic Attack_26: -21522368
+      necromancer Basic Attack_27: -2063169172
+      necromancer Basic Attack_28: -786855112
+      necromancer Basic Attack_29: 2006156244
+      necromancer Basic Attack_3: 847495862
+      necromancer Basic Attack_30: 1152417578
+      necromancer Basic Attack_31: -1747219893
+      necromancer Basic Attack_32: 1349290727
+      necromancer Basic Attack_33: -663411617
+      necromancer Basic Attack_34: 1299922392
+      necromancer Basic Attack_35: -1198283681
+      necromancer Basic Attack_36: 1272869484
+      necromancer Basic Attack_37: -922712642
+      necromancer Basic Attack_38: -1926961727
+      necromancer Basic Attack_39: 1060015987
+      necromancer Basic Attack_4: -409250573
+      necromancer Basic Attack_40: -635499310
+      necromancer Basic Attack_41: 635155933
+      necromancer Basic Attack_42: 1297409696
+      necromancer Basic Attack_43: 1891155844
+      necromancer Basic Attack_44: 2117127461
+      necromancer Basic Attack_45: -810108744
+      necromancer Basic Attack_46: 2043390270
+      necromancer Basic Attack_47: 192291249
+      necromancer Basic Attack_48: -1872424322
+      necromancer Basic Attack_49: -1976290582
+      necromancer Basic Attack_5: -696277701
+      necromancer Basic Attack_50: -1852904307
+      necromancer Basic Attack_51: -430385823
+      necromancer Basic Attack_52: 1762719632
+      necromancer Basic Attack_53: 2010055634
+      necromancer Basic Attack_54: 211595338
+      necromancer Basic Attack_55: 945135783
+      necromancer Basic Attack_56: 1788308783
+      necromancer Basic Attack_57: 1889527246
+      necromancer Basic Attack_58: 378657574
+      necromancer Basic Attack_59: 2076414876
+      necromancer Basic Attack_6: -415698812
+      necromancer Basic Attack_60: 349420152
+      necromancer Basic Attack_61: 1189253090
+      necromancer Basic Attack_62: 67825317
+      necromancer Basic Attack_63: -426741270
+      necromancer Basic Attack_7: 533791359
+      necromancer Basic Attack_8: 672173465
+      necromancer Basic Attack_9: 143891731
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
