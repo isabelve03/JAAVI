@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: af9fc715e0bb7d74aa30b4d6fdba1882
+guid: a10d6cc6137f4eb4c9e1983518a6b5f3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -65,7 +65,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background-brown_tint_0
+      name: necromancer jump_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 116
-        width: 32
-        height: 32
+        x: 99
+        y: 1919
+        width: 59
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb41799e8c0dc1b408f8ec32d3350de7
-      internalID: -677233394
+      spriteID: 02bd0cdd57155e346bb51853c6f8a681
+      internalID: 390630743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background-brown_tint_1
+      name: necromancer jump_1
       rect:
         serializedVersion: 2
-        x: 38
-        y: 116
-        width: 32
-        height: 32
+        x: 353
+        y: 1920
+        width: 62
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9ba3617fefa7934694f4b010c0b5aa3
-      internalID: 1788523246
+      spriteID: 6463c45a42ba3ec41819f2529ca27328
+      internalID: -511287922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background-brown_tint_2
+      name: necromancer jump_2
       rect:
         serializedVersion: 2
-        x: 76
-        y: 116
-        width: 32
-        height: 32
+        x: 606
+        y: 1920
+        width: 66
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b47d8ca81fc385d47b4154ea4b08718c
-      internalID: 627900393
+      spriteID: 7bf7ca033fd001847be577692980cee2
+      internalID: 1680767921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background-brown_tint_3
+      name: necromancer jump_3
       rect:
         serializedVersion: 2
-        x: 114
-        y: 116
-        width: 32
-        height: 32
+        x: 860
+        y: 1920
+        width: 69
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ac0369dc80a3be4fad7e73d8a46ca52
-      internalID: -269764922
+      spriteID: d2a0ba148c2be024b8a6f727673d64d3
+      internalID: -1712221640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background-brown_tint_4
+      name: necromancer jump_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 78
-        width: 32
-        height: 32
+        x: 1115
+        y: 1920
+        width: 71
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae979ccb9c8d406459ed774b8e941de4
-      internalID: 1164966170
+      spriteID: e538ea4410aaba6489a53256075020c0
+      internalID: 1576500695
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background-brown_tint_5
+      name: necromancer jump_5
       rect:
         serializedVersion: 2
-        x: 38
-        y: 78
-        width: 32
-        height: 32
+        x: 1369
+        y: 1920
+        width: 74
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7ad63b53ee551d45b7a1a7494bc55fe
-      internalID: 1858896978
+      spriteID: 7b21eeab1d7da8b4fa2a0c444a80c545
+      internalID: 869085437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background-brown_tint_6
+      name: necromancer jump_6
       rect:
         serializedVersion: 2
-        x: 76
-        y: 78
-        width: 32
-        height: 32
+        x: 1623
+        y: 1920
+        width: 77
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3de6c0da0b458443b81422d892f5da1
-      internalID: -417220415
+      spriteID: 34c3e18df54051941b92f00aa6b468b6
+      internalID: -1893253825
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background-brown_tint_7
+      name: necromancer jump_7
       rect:
         serializedVersion: 2
-        x: 114
-        y: 78
-        width: 32
-        height: 32
+        x: 1877
+        y: 1920
+        width: 80
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d0f1b70ad59fd648aa6e13f535444ab
-      internalID: -765811443
+      spriteID: 40653fead6a83834e902618e4354c077
+      internalID: -436390549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background-brown_tint_8
+      name: necromancer jump_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 40
-        width: 32
-        height: 32
+        x: 84
+        y: 1664
+        width: 81
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,155 +305,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac8f960fb4da76f4f9e2b17d7f9fb9a7
-      internalID: 884790933
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: background-brown_tint_9
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 40
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c79f978eaf4f8044a8be4dbb1fec9791
-      internalID: -2123575851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: background-brown_tint_10
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 40
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63a710a97f079ea41b2937b001034f90
-      internalID: -2028942172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: background-brown_tint_11
-      rect:
-        serializedVersion: 2
-        x: 114
-        y: 40
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b1ca444509573ec4abe9638c6fa5c791
-      internalID: 6604435
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: background-brown_tint_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbe7ba59de7404f4aa17f8c3013eb387
-      internalID: 1261394668
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: background-brown_tint_13
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 2
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72db6332cc70f59458c566eee42a65d7
-      internalID: 970956728
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: background-brown_tint_14
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 2
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56ae183a43649df4c8af7ae73620a7ba
-      internalID: 1061746202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: background-brown_tint_15
-      rect:
-        serializedVersion: 2
-        x: 114
-        y: 2
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7621676923b94d4d9243d043b260545
-      internalID: -507213036
+      spriteID: d6762d7c03523e34588c9a5f05c1ab88
+      internalID: 1897789488
       vertices: []
       indices: 
       edges: []
@@ -469,22 +322,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      background-brown_tint_0: -677233394
-      background-brown_tint_1: 1788523246
-      background-brown_tint_10: -2028942172
-      background-brown_tint_11: 6604435
-      background-brown_tint_12: 1261394668
-      background-brown_tint_13: 970956728
-      background-brown_tint_14: 1061746202
-      background-brown_tint_15: -507213036
-      background-brown_tint_2: 627900393
-      background-brown_tint_3: -269764922
-      background-brown_tint_4: 1164966170
-      background-brown_tint_5: 1858896978
-      background-brown_tint_6: -417220415
-      background-brown_tint_7: -765811443
-      background-brown_tint_8: 884790933
-      background-brown_tint_9: -2123575851
+      necromancer jump_0: 390630743
+      necromancer jump_1: -511287922
+      necromancer jump_2: 1680767921
+      necromancer jump_3: -1712221640
+      necromancer jump_4: 1576500695
+      necromancer jump_5: 869085437
+      necromancer jump_6: -1893253825
+      necromancer jump_7: -436390549
+      necromancer jump_8: 1897789488
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
