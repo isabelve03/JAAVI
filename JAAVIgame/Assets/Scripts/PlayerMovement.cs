@@ -78,8 +78,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (hMovement)
         {
+            // xScale multiplies against the sign of x to ensure that the scale within transform of the sprite is upheld
+            float xScale = Mathf.Abs(playerCharacter.transform.localScale.x);
+            
             // Reverse the current direction (scale) of the X-Axis
-            transform.localScale = new Vector2(Mathf.Sign(playerCharacter.velocity.x), 1f);
+            transform.localScale = new Vector2(Mathf.Sign(playerCharacter.velocity.x)*xScale, playerCharacter.transform.localScale.y);
         }
     }
 
