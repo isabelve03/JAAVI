@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
 //All three variables below are placeholders.  They will be replaced by values from each character's personal attributes.
     [SerializeField] private float runSpeed = 15.0f;
     [SerializeField] private float jumpSpeed = 15.0f;
-    [SerializeField] private int airJumpVal = 1;    
-    [SerializeField] private float airDashSpeed = 1.5f;
+    [SerializeField] private int airJumpVal = 1;
+    [SerializeField] private float airDashSpeed2 = 15.0f;
     [SerializeField] private float airDashTimer = 0;
     [SerializeField] private float airDashDuration = .15f;   
     [SerializeField] private string airDashDirection = "none";
@@ -86,10 +86,11 @@ public class PlayerMovement : MonoBehaviour
         if (hMovement)
         {
             // xScale multiplies against the sign of x to ensure that the scale within transform of the sprite is upheld
-            float xScale = Mathf.Abs(playerCharacter.transform.localScale.x);
+            //float xScale = Mathf.Abs(playerCharacter.transform.localScale.x);
             
             // Reverse the current direction (scale) of the X-Axis
-            transform.localScale = new Vector2(Mathf.Sign(playerCharacter.velocity.x)*xScale, playerCharacter.transform.localScale.y);
+            //transform.localScale = new Vector2(Mathf.Sign(playerCharacter.velocity.x)*xScale, playerCharacter.transform.localScale.y);
+            transform.localScale = new Vector2(Mathf.Sign(playerCharacter.velocity.x), 1f);
         }
     }
 
@@ -142,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         if(airDashDirection != "none"){
             //ends air dash
             if (airDashTimer >= airDashDuration){
-                playerCharacter.velocity = Vector2.zero; 
+                playerCharacter.velocity = Vector2.zero;
                 airDashDirection = "none";
                 airDashTimer = 0;
             }
@@ -150,10 +151,10 @@ public class PlayerMovement : MonoBehaviour
             else{
                 airDashTimer += Time.deltaTime;
                 if (airDashDirection == "right"){
-                    playerCharacter.velocity = Vector2.right * airDashSpeed;
+                    playerCharacter.velocity = Vector2.right * airDashSpeed2;
                 }
                 else if(airDashDirection == "left"){
-                    playerCharacter.velocity = Vector2.left * airDashSpeed;
+                    playerCharacter.velocity = Vector2.left * airDashSpeed2;
                 }
             }
         }
