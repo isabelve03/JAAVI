@@ -70,9 +70,9 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,6 +106,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -113,10 +126,10 @@ TextureImporter:
       name: KnightWalk_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 6
-        width: 1914
-        height: 1034
+        x: 2018
+        y: 0
+        width: 865
+        height: 721
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +147,10 @@ TextureImporter:
       name: KnightWalk_1
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 6
-        width: 1914
-        height: 1034
+        x: 3941
+        y: 0
+        width: 858
+        height: 732
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +168,10 @@ TextureImporter:
       name: KnightWalk_2
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 6
-        width: 1914
-        height: 1034
+        x: 5860
+        y: 0
+        width: 864
+        height: 726
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,13 +186,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightWalk_3
+      name: KnightWalk_4
       rect:
         serializedVersion: 2
-        x: 5760
-        y: 6
-        width: 1914
-        height: 1034
+        x: 100
+        y: 0
+        width: 863
+        height: 730
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f52bca9c026f1942a7743da704c84c6
-      internalID: 1858116923
+      spriteID: 94926726815807e44b507cd50ede1409
+      internalID: 380664633
       vertices: []
       indices: 
       edges: []
@@ -208,6 +221,7 @@ TextureImporter:
       KnightWalk_1: -366218722
       KnightWalk_2: 279548025
       KnightWalk_3: 1858116923
+      KnightWalk_4: 1937901109
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
