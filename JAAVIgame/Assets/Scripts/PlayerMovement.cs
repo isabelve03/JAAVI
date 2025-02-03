@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string airDashDirection = "none";
     [SerializeField] private int airDashVal = 1;
     [SerializeField] private int airJump;
-    [SerializeField] private int hitPoints; //hitpoints start at 0 and increment up until character dies, then they are reset
 
     float gravityScaleAtStart;
 
