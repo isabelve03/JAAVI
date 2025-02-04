@@ -70,9 +70,9 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,6 +106,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -113,12 +126,12 @@ TextureImporter:
       name: KnightWalk_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 101
         y: 6
-        width: 1914
-        height: 1034
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 861
+        height: 729
+      alignment: 9
+      pivot: {x: 0.65, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +147,12 @@ TextureImporter:
       name: KnightWalk_1
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 6
-        width: 1914
-        height: 1034
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2021
+        y: 0
+        width: 862
+        height: 722
+      alignment: 9
+      pivot: {x: 0.65, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +168,12 @@ TextureImporter:
       name: KnightWalk_2
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 6
-        width: 1914
-        height: 1034
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3940
+        y: 0
+        width: 861
+        height: 729
+      alignment: 9
+      pivot: {x: 0.65, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +189,12 @@ TextureImporter:
       name: KnightWalk_3
       rect:
         serializedVersion: 2
-        x: 5760
-        y: 6
-        width: 1914
-        height: 1034
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5862
+        y: 0
+        width: 858
+        height: 721
+      alignment: 9
+      pivot: {x: 0.65, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
