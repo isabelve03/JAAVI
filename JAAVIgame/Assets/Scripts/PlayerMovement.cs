@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour 
 {
 //All three variables below are placeholders.  They will be replaced by values from each character's personal attributes.
-    [SerializeField] private float runSpeed = 15.0f;
-    [SerializeField] private float jumpSpeed = 15.0f;
+    [SerializeField] private float runSpeed = 5.0f;
+    [SerializeField] private float jumpSpeed = 5.0f;
     [SerializeField] private int airJumpVal = 1;
     [SerializeField] private float airDashSpeed2 = 15.0f;
     [SerializeField] private float airDashTimer = 0;
@@ -15,14 +15,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string airDashDirection = "none";
     [SerializeField] private int airDashVal = 1;
     [SerializeField] private int airJump;
-
+   
     float gravityScaleAtStart;
 
     bool isAlive = true; //Starts true because the player is alive
 
     Rigidbody2D playerCharacter;
     CapsuleCollider2D playerBodyCollider;
-   // Animator playerAnimator;
+    Animator playerAnimator;
     BoxCollider2D playerFeetCollider;
 
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //we grab from the component 
         playerCharacter = GetComponent<Rigidbody2D>();
-        //playerAnimator = GetComponent<Animator>();
+        playerAnimator = GetComponent<Animator>();
         playerBodyCollider = GetComponent<CapsuleCollider2D>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
 
@@ -64,8 +64,8 @@ public class PlayerMovement : MonoBehaviour
         float hMovement = Input.GetAxis("Horizontal");
         Vector3 runVelocity = new Vector2(hMovement*runSpeed, playerCharacter.velocity.y);
 
-        //bool hSpeed = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
-        //playerAnimator.SetBool("run", hSpeed);
+        bool hSpeed = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
+        playerAnimator.SetBool("run", hSpeed);
         
         playerCharacter.velocity = runVelocity;
 
