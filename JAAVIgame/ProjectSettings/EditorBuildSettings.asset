@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
+    path: Assets/Scenes/OnlineMode.unity
     guid: cf9fc09641196344997508045424eccb
   - enabled: 1
-    path: Assets/Scenes/KnightFallMap1.unity
+    path: Assets/Scenes/Battle.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
     path: Assets/Scenes/MultiplayerMainMenu.unity
     guid: b6176a24e69835946a966624802d8d2a
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: cf8c7af2c615c334ea9e9d93cc8f8b61
+  - enabled: 1
+    path: Assets/Scenes/CharacterSelect.unity
+    guid: 608a2084c5e113149a11c403b6fcb998
   m_configObjects: {}
