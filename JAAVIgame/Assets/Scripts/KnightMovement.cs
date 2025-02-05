@@ -5,11 +5,15 @@ using UnityEngine;
 public class KnightMovement : MonoBehaviour 
 {
 //All three variables below are placeholders.  They will be replaced by values from each character's personal attributes.
-    [SerializeField] private float runSpeed = 15.0f;
-    [SerializeField] private float jumpSpeed = 15.0f;
+    [SerializeField] private float runSpeed = 5.0f;
+    [SerializeField] private float jumpSpeed = 5.0f;
     [SerializeField] private int airJumpVal = 1;
+    [SerializeField] private float airDashSpeed2 = 15.0f;
+    [SerializeField] private float airDashTimer = 0;
+    [SerializeField] private float airDashDuration = .15f;   
+    [SerializeField] private string airDashDirection = "none";
+    [SerializeField] private int airDashVal = 1;
     [SerializeField] private int airJump;
-    [SerializeField] private int hitPoints; //hitpoints start at 0 and increment up until character dies, then they are reset
 
     float gravityScaleAtStart;
 
@@ -43,6 +47,7 @@ public class KnightMovement : MonoBehaviour
         Run();
         FlipSprite();
         Jump();
+        AirDash();
        // Climb();
        // Die();
     }
@@ -59,7 +64,7 @@ public class KnightMovement : MonoBehaviour
         Vector3 runVelocity = new Vector2(hMovement*runSpeed, playerCharacter.velocity.y);
 
         bool hSpeed = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
-        playerAnimator.SetBool("Run", hSpeed);
+        playerAnimator.SetBool("run", hSpeed);
         
         playerCharacter.velocity = runVelocity;
 
@@ -114,6 +119,48 @@ public class KnightMovement : MonoBehaviour
         }
         return;
     }
+
+    private void AirDash() {
+        bool isGrounded = playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
+        if(airDashDirection == "none" && isGrounded == false && airDashVal > 0) {
+            //picks direction to air dash in
+            if(Input.GetButtonDown("Fire1") && Input.GetAxis("Horizontal") > 0) {
+                airDashDirection = "right";
+                airDashVal--;
+            }
+            else if(Input.GetButtonDown("Fire1") && Input.GetAxis("Horizontal") < 0) {
+                airDashDirection = "left";
+                airDashVal--;
+            }
+            else {
+                airDashDirection = "none";
+            }            
+        }
+
+        if(airDashDirection != "none") {
+            //ends air dash
+            if (airDashTimer >= airDashDuration){
+                playerCharacter.velocity = Vector2.zero;
+                airDashDirection = "none";
+                airDashTimer = 0;
+            }
+            //increases horizontal dash movement
+            else{
+                airDashTimer += Time.deltaTime;
+                if (airDashDirection == "right") {
+                    playerCharacter.velocity = Vector2.right * airDashSpeed2;
+                }
+                else if(airDashDirection == "left") {
+                    playerCharacter.velocity = Vector2.left * airDashSpeed2;
+                }
+            }
+        }
+        if(playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
+            airDashVal = 1;
+        }
+        return;
+    }
+
 
 
     //this is to climb up ladders for example which i dont think we need

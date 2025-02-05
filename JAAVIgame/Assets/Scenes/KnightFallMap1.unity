@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 65055984}
   m_Layer: 5
   m_Name: Damage_Num3
-  m_TagString: Ones
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b9f1285c231ab8b44a7cf6e709683585, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 50e124c66887a6a4f83d083d56b823d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -383,6 +383,7 @@ GameObject:
   - component: {fileID: 625285010}
   - component: {fileID: 625285009}
   - component: {fileID: 625285008}
+  - component: {fileID: 625285012}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -476,6 +477,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &625285012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625285007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3db2041a3ee7a469aff64a91a71ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockback: {fileID: 0}
+  damage: 100
+  d: 0
+  damageTex:
+  - {fileID: 21300000, guid: 50e124c66887a6a4f83d083d56b823d8, type: 3}
+  - {fileID: 21300000, guid: b9f1285c231ab8b44a7cf6e709683585, type: 3}
+  - {fileID: 21300000, guid: b74dfc36acbe1aa46b043443f0b05e83, type: 3}
+  - {fileID: 21300000, guid: e0316093d76a05447b6478d978c27eab, type: 3}
+  - {fileID: 21300000, guid: 270d6e227ab438e449c30860dcd81e3a, type: 3}
+  - {fileID: 21300000, guid: 9d2eea048367e214da257834f4488571, type: 3}
+  - {fileID: 21300000, guid: 4f99407a74dcd904baa1346ddd5de86d, type: 3}
+  - {fileID: 21300000, guid: 1db0cc126b6608348b990ccb3c9a0b5a, type: 3}
+  - {fileID: 21300000, guid: 1f1c81edefcf9d247b6eeb8dede4c6bc, type: 3}
+  - {fileID: 21300000, guid: 355eb9df1a66dbb45bd02e02aaa1f1ac, type: 3}
 --- !u!1 &986826030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,7 +2452,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1144479843}
-  - component: {fileID: 1144479842}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -2433,28 +2459,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1144479842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144479841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f3db2041a3ee7a469aff64a91a71ca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage0tex: {fileID: 21300000, guid: 50e124c66887a6a4f83d083d56b823d8, type: 3}
-  damage1tex: {fileID: 21300000, guid: b9f1285c231ab8b44a7cf6e709683585, type: 3}
-  damage2tex: {fileID: 21300000, guid: b74dfc36acbe1aa46b043443f0b05e83, type: 3}
-  damage3tex: {fileID: 21300000, guid: e0316093d76a05447b6478d978c27eab, type: 3}
-  damage4tex: {fileID: 21300000, guid: 270d6e227ab438e449c30860dcd81e3a, type: 3}
-  damage5tex: {fileID: 21300000, guid: 9d2eea048367e214da257834f4488571, type: 3}
-  damage6tex: {fileID: 21300000, guid: 4f99407a74dcd904baa1346ddd5de86d, type: 3}
-  damage7tex: {fileID: 21300000, guid: 1db0cc126b6608348b990ccb3c9a0b5a, type: 3}
-  damage8tex: {fileID: 21300000, guid: 1f1c81edefcf9d247b6eeb8dede4c6bc, type: 3}
-  damage9tex: {fileID: 21300000, guid: 355eb9df1a66dbb45bd02e02aaa1f1ac, type: 3}
 --- !u!4 &1144479843
 Transform:
   m_ObjectHideFlags: 0
@@ -2574,7 +2578,7 @@ GameObject:
   - component: {fileID: 1423881347}
   m_Layer: 5
   m_Name: Damage_Num2
-  m_TagString: Tens
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2649,7 +2653,7 @@ GameObject:
   - component: {fileID: 1499063594}
   m_Layer: 5
   m_Name: Damage_Num
-  m_TagString: Hundreds
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
