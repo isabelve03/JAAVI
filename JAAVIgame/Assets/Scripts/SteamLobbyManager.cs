@@ -8,9 +8,12 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
 
+// TODO - Make a LeaveLobby Function
 
 public class SteamLobbyManager : MonoBehaviour
 {
+    #region Definitions
+
     [SerializeField] private uint appId;
     private const string lobbyTypeKey = "LobbyType";
     private NetworkManager _networkManager;
@@ -21,6 +24,8 @@ public class SteamLobbyManager : MonoBehaviour
     // TODO - delete this and all things asociated with (labeled as ON_APP_ID) when we receive our unique app id
     private const string OurAppKey = "JAAVI";
     private const string OurAppValue = "JAAVI";
+
+    #endregion Definitions
 
     private void Awake()
     {
@@ -113,8 +118,6 @@ public class SteamLobbyManager : MonoBehaviour
         
             
     }
-
-    // TODO - Make a LeaveLobby Function
 
 
     // Finds list of joinable lobbies of type lobbyType

@@ -529,7 +529,7 @@ PrefabInstance:
     - target: {fileID: 7443408887813606060, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: _playerPrefab
       value: 
-      objectReference: {fileID: 8838458674742204606, guid: 901a92d141e59f34382cd8f5b0c0d4a1, type: 3}
+      objectReference: {fileID: -2569270116358860591, guid: 7dca25de2e6cba44cbd78b3b7ca8933c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4393252310584637057, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
