@@ -1,15 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-//this script holds the damage, base knockback, and knockback scaling for each attack
-//Idk how we will attach specific hitboxes yet
-//because of how many fields there are, I'm not sure if we should keep this as an independent script or modify it into a new one for each character
-//(example knightAttackData.cs, necromancerAttackData.cs)
-
-//I am also not sure how we will deal with special attacks or supers or any other attacks
-//with special properties besides damage and knockback differences
 public class AttackData : MonoBehaviour
 {
     //jab
@@ -21,6 +13,7 @@ public class AttackData : MonoBehaviour
     public int jabFrameDuration; //how long the hitbox remains active for in frames
     public int jabFrameLag; //how long it takes untiil you can input an action after the attack ends in frames
 
+
     //forward light
     public int fLightDam;
     public float fLightBaseK;
@@ -29,25 +22,25 @@ public class AttackData : MonoBehaviour
     public int fLightFrameStartup;
     public int fLightFrameDuration;
     public int fLightFrameLag;
-    
+   
     //down light
     public int dLightDam;
     public float dLightBaseK;
     public float dLightScaleK;
-    public float dLightAngle; 
+    public float dLightAngle;
     public int dLightFrameStartup;
     public int dLightFrameDuration;
     public int dLightFrameLag;
-    
+   
     //up light
     public int uLightDam;
     public float uLightBaseK;
     public float uLightScaleK;
-    public float uLightAngle; 
+    public float uLightAngle;
     public int uLightFrameStartup;
     public int uLightFrameDuration;
     public int uLightFrameLag;
-    
+   
     //forward strong
     public int fStrongDam;
     public float fStrongBaseK;
@@ -56,7 +49,7 @@ public class AttackData : MonoBehaviour
     public int fStrongFrameStartup;
     public int fStrongFrameDuration;
     public int fStrongFrameLag;
-    
+   
     //down strong
     public int dStrongDam;
     public float dStrongBaseK;
@@ -65,7 +58,7 @@ public class AttackData : MonoBehaviour
     public int dStrongFrameStartup;
     public int dStrongFrameDuration;
     public int dStrongFrameLag;
-    
+   
     //up strong
     public int uStrongDam;
     public float uStrongBaseK;
@@ -74,7 +67,7 @@ public class AttackData : MonoBehaviour
     public int uStrongFrameStartup;
     public int uStrongFrameDuration;
     public int uStrongFrameLag;
-    
+   
     //dash attack
     //not sure if we need this one
     public int dashAttackDam;
@@ -84,7 +77,7 @@ public class AttackData : MonoBehaviour
     public int dashAttackFrameStartup;
     public int dashAttackFrameDuration;
     public int dashAttackFrameLag;
-    
+   
     //neutral air
     public int nAirDam;
     public float nAirBaseK;
@@ -93,7 +86,7 @@ public class AttackData : MonoBehaviour
     public int nAirFrameStartup;
     public int nAirFrameDuration;
     public int nAirFrameLag;
-    
+   
     //forward air
     public int fAirDam;
     public float fAirBaseK;
@@ -102,7 +95,7 @@ public class AttackData : MonoBehaviour
     public int fAirFrameStartup;
     public int fAirFrameDuration;
     public int fAirFrameLag;
-    
+   
     //back air
     public int bAirDam;
     public float bAirBaseK;
@@ -111,7 +104,7 @@ public class AttackData : MonoBehaviour
     public int bAirFrameStartup;
     public int bAirFrameDuration;
     public int bAirFrameLag;
-    
+   
     //up air
     public int uAirDam;
     public float uAirBaseK;
@@ -120,6 +113,7 @@ public class AttackData : MonoBehaviour
     public int uAirFrameStartup;
     public int uAirFrameDuration;
     public int uAirFrameLag;
+
 
     //down air
     public int dAirDam;
@@ -130,3 +124,6 @@ public class AttackData : MonoBehaviour
     public int dAirFrameDuration;
     public int dAirFrameLag;
 }
+
+
+
