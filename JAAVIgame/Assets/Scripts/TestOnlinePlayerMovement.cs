@@ -43,6 +43,10 @@ public class TestOnlinePlayerMovement : NetworkBehaviour
     {
         if (!base.IsOwner) return; // not owner of the character so we shouldn't move
 
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            RpcSendDebugLog("Space bar is pressed!");
+
         if (!isAlive)
         {
             return;
@@ -56,6 +60,12 @@ public class TestOnlinePlayerMovement : NetworkBehaviour
         // Die();
     }
 
+    [ServerRpc]
+    private void RpcSendDebugLog(string msg)
+    {
+        Debug.Log($"Message received on server..." +
+            $"{msg}");
+    }
     private void Health()
     {
 
