@@ -41,6 +41,8 @@ public class TestOnlinePlayerMovement : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!base.IsOwner) return; // not owner of the character so we shouldn't move
+
         if (!isAlive)
         {
             return;
