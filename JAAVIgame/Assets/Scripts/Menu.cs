@@ -12,16 +12,16 @@ public class Menu : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 
     public void OnlineMode()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(3);
     }
 
     public void CharacterSelect()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
 }
