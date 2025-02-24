@@ -10,6 +10,7 @@ public class Knockback : MonoBehaviour
     Rigidbody2D playerCharacter;
     CapsuleCollider2D playerBodyCollider;
     BoxCollider2D playerFeetCollider;
+    [SerializeField] public CapsuleCollider2D[] hitbox;
     public int hitPoints = 0; //hitpoints start at 0 and increment up until character dies, then they are reset
     public bool inLag = false;
 
@@ -41,6 +42,7 @@ public class Knockback : MonoBehaviour
         if(isGrounded){ //grounded attacks
             if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0){ //stand still
                 if(Input.GetButtonDown("Fire2")){ //jab
+                    Detection(hitbox[0]);
                     TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().jabDam);
                 }
                 else if(Input.GetButtonDown("Fire3")){ //neutral special
@@ -84,6 +86,7 @@ public class Knockback : MonoBehaviour
                    
                 }
                 else if(Input.GetButtonDown("Fire2") && Input.GetButtonDown("Fire3")){ //forward strong
+                    Detection(hitbox[1]);
                     TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().fStrongDam);
                 }
             }
@@ -134,6 +137,11 @@ public class Knockback : MonoBehaviour
                 }*/
             }            
         }
+    }
+    //Checks hitbox/hurtbox overlap
+    private void Detection(Collider2D col){
+        Collider2D cols = Physics2D.OverlapCapsule(col.bounds.min, col.bounds.max, CapsuleDirection2D.Horizontal, LayerMask.GetMask("hitbox"));
+        Debug.Log(cols.name);
     }
     public void TakeKnockback(float baseKnockback, float scaleKnockback, float attackAngle){ //need to add condition to check direction player is facing when using attack
 
