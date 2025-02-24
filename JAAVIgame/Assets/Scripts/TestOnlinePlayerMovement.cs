@@ -6,7 +6,7 @@ using FishNet.Object;
 public class TestOnlinePlayerMovement : NetworkBehaviour
 {
     //variable below for network animation
-    NetworkAnimator _networkAnimator;
+    private NetworkAnimate _networkAnimate;
 
     //All three variables below are placeholders.  They will be replaced by values from each character's personal attributes.
     [SerializeField] private float runSpeed = 5.0f;
@@ -32,7 +32,7 @@ public class TestOnlinePlayerMovement : NetworkBehaviour
     void Start()
     {
         //grab the NetworkAnimator
-        _networkAnimator = GetComponent<NetworkAnimator>();
+        _networkAnimate = GetComponent<NetworkAnimate>();
 
         //we grab from the component 
         playerCharacter = GetComponent<Rigidbody2D>();
@@ -75,7 +75,7 @@ public class TestOnlinePlayerMovement : NetworkBehaviour
         Vector3 runVelocity = new Vector2(hMovement * runSpeed, playerCharacter.velocity.y);
 
         bool hSpeed = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
-        _networkAnimator.Run(hSpeed);
+        _networkAnimate.Run(hSpeed);
 
         playerCharacter.velocity = runVelocity;
 

@@ -17,7 +17,8 @@ GameObject:
   - component: {fileID: -6079058651204057009}
   - component: {fileID: -2569270116358860591}
   - component: {fileID: 5402843391025334}
-  - component: {fileID: 6001188338249931467}
+  - component: {fileID: 8742718024395162136}
+  - component: {fileID: 2581276641246651784}
   m_Layer: 0
   m_Name: TEST_ONLINE_PLAYER
   m_TagString: Untagged
@@ -262,6 +263,8 @@ MonoBehaviour:
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
   - {fileID: -6079058651204057009}
+  - {fileID: 5402843391025334}
+  - {fileID: 0}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -308,9 +311,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: -2569270116358860591}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: -2569270116358860591}
   _componentConfiguration: 3
   _synchronizeParent: 0
   _packing:
@@ -339,7 +342,7 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
---- !u!114 &6001188338249931467
+--- !u!114 &8742718024395162136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -348,6 +351,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 6475511854894535488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841656f01fc11bc4dbb5a1bc9b0b4301, type: 3}
+  m_Script: {fileID: 11500000, guid: 510868c6be423854b8c6c8243f12422b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: -2569270116358860591}
+  _networkObjectCache: {fileID: 0}
+--- !u!114 &2581276641246651784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475511854894535488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: -2569270116358860591}
+  _networkObjectCache: {fileID: 0}
+  IgnoredParameters: []
+  _animator: {fileID: 7487503310954721529}
+  _synchronizeWhenDisabled: 0
+  _smoothFloats: 1
+  _interpolation: 2
+  _clientAuthoritative: 1
+  _sendToOwner: 0
