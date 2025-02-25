@@ -8,7 +8,7 @@ using TMPro;
 public class GameTimer : MonoBehaviour
 {
     public TextMeshProUGUI timeText;  // Add this to reference UI text
-    private float timeRemaining = 10f;
+    [SerializeField] private float timeRemaining = 10f;
     private bool isGameActive = false;
 
     void Start()
