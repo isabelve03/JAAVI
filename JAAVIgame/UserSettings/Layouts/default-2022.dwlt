@@ -483,7 +483,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -166, y: -26}
+      snapOffset: {x: -171, y: -26}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
       id: Tool Settings
@@ -742,7 +742,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: 48, y: 48}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -984,18 +984,18 @@ MonoBehaviour:
     m_ExpandedIDs: 000000009c6b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Scenes
+      m_OriginalName: Scenes
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 27542
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -1037,7 +1037,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 042e0000
     m_LastClickedInstanceID: 11780
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000e2680000686200001e630000ba6100009e660000f47b00000ed1000064a1000046aa000030ba00001826000000000000142800000a6700005467000050670000bc63000054300000086d0000
+    m_ExpandedInstanceIDs: c6230000e2680000686200001e630000ba6100009e660000f47b00000ed1000064a1000046aa000030ba00001826000000000000142800000a6700005467000050670000bc63000054300000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
