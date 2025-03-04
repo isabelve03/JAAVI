@@ -1,6 +1,7 @@
 using FishNet.Managing;
 using Steamworks;
 using Steamworks.Data;
+using System;
 using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
@@ -66,6 +67,21 @@ public class SteamLobbyManager : MonoBehaviour
             Debug.LogError("ClientServerInit not found...");
             return;
         }
+
+        // subscribe to events
+        SteamMatchmaking.OnLobbyMemberLeave += SteamMatchmaking_OnLobbyMemberLeave;
+    }
+
+    // Callbacks 
+    private void SteamMatchmaking_OnLobbyMemberLeave(Lobby lobby, Friend friend)
+    {
+        Debug.Log("Friend has left the lobby"); 
+    }
+
+    private void OnDestroy()
+    {
+        //unsub from callbacks
+        SteamMatchmaking.OnLobbyMemberLeave -= SteamMatchmaking_OnLobbyMemberLeave;
     }
 
 
@@ -150,6 +166,8 @@ public class SteamLobbyManager : MonoBehaviour
         return await SteamMatchmaking.JoinLobbyAsync(lobbyList[0].Id);
     }
 
+    // callbacks
+    
     private void OnApplicationQuit()
     {
         Steamworks.SteamClient.Shutdown();
