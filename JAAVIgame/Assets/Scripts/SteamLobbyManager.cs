@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 // TODO - Make a LeaveLobby Function
 
@@ -68,8 +69,10 @@ public class SteamLobbyManager : MonoBehaviour
             return;
         }
 
+        // TODO - If needed, remove the callback sub, implementation, and unsub
         // subscribe to events
         SteamMatchmaking.OnLobbyMemberLeave += SteamMatchmaking_OnLobbyMemberLeave;
+        SteamMatchmaking.OnLobbyMemberJoined += SteamMatchmaking_OnLobbyMemberJoined;
     }
 
     // Callbacks 
@@ -78,10 +81,22 @@ public class SteamLobbyManager : MonoBehaviour
         Debug.Log("Friend has left the lobby"); 
     }
 
+    private void SteamMatchmaking_OnLobbyMemberJoined(Lobby lobby, Friend friend)
+    {
+        // Check if the lobby is at max capacity, if it is we close it
+        if (lobby.MaxMembers == lobby.MemberCount)
+        {
+            Debug.Log("Max Members reached...\n" +
+                "Destroying lobby as we should be in a game");
+            lobby.Leave();
+        }   
+    }
+
     private void OnDestroy()
     {
         //unsub from callbacks
         SteamMatchmaking.OnLobbyMemberLeave -= SteamMatchmaking_OnLobbyMemberLeave;
+        SteamMatchmaking.OnLobbyMemberJoined -= SteamMatchmaking_OnLobbyMemberJoined;
     }
 
 
@@ -169,7 +184,6 @@ public class SteamLobbyManager : MonoBehaviour
     
     private void OnApplicationQuit()
     {
-        Debug.Log("App Quit");
         Steamworks.SteamClient.Shutdown();
     }
 }
