@@ -135,7 +135,6 @@ public class SteamLobbyManager : MonoBehaviour
             
     }
 
-
     // Finds list of joinable lobbies of type lobbyType
     // Returns null if none exist
     private async Task<Lobby[]> FetchLobbies(string lobbyType)
@@ -170,6 +169,7 @@ public class SteamLobbyManager : MonoBehaviour
     
     private void OnApplicationQuit()
     {
+        Debug.Log("App Quit");
         Steamworks.SteamClient.Shutdown();
     }
 }
