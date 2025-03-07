@@ -5,6 +5,9 @@ using FishNet.Connection;
 using FishNet.Object;
 public class TestOnlinePlayerMovement : NetworkBehaviour
 {
+    //variable below for network animation
+    private NetworkAnimate _networkAnimate;
+
     //All three variables below are placeholders.  They will be replaced by values from each character's personal attributes.
     [SerializeField] private float runSpeed = 5.0f;
     [SerializeField] private float jumpSpeed = 5.0f;
@@ -28,6 +31,9 @@ public class TestOnlinePlayerMovement : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //grab the NetworkAnimator
+        _networkAnimate = GetComponent<NetworkAnimate>();
+
         //we grab from the component 
         playerCharacter = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
@@ -69,7 +75,7 @@ public class TestOnlinePlayerMovement : NetworkBehaviour
         Vector3 runVelocity = new Vector2(hMovement * runSpeed, playerCharacter.velocity.y);
 
         bool hSpeed = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
-        playerAnimator.SetBool("run", hSpeed);
+        _networkAnimate.Run(hSpeed);
 
         playerCharacter.velocity = runVelocity;
 
@@ -120,7 +126,7 @@ public class TestOnlinePlayerMovement : NetworkBehaviour
             // Get new Y velocity based on a controllable variable
             Vector2 jumpVelocity = new Vector2(0.0f, jumpSpeed);
             playerCharacter.velocity = jumpVelocity;
-            //playerAnimator.SetTrigger("jump");
+           //playerAnimator.SetTrigger("jump");
             //AudioSource.PlayClipAtPoint(jumpSFX, Camera.main.transform.position);
         }
         return;
