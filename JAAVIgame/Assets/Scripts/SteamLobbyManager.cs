@@ -9,9 +9,10 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Networking;
 
 // TODO - Make a LeaveLobby Function
-
+// TODO - look up how to properly use async method (I think we should never use void and instead return a task so that we can wait for this to finish)
 public class SteamLobbyManager : MonoBehaviour
 {
     #region Definitions
@@ -37,8 +38,10 @@ public class SteamLobbyManager : MonoBehaviour
         {
             if (Steamworks.SteamClient.RestartAppIfNecessary(appId)) return;
             if (!SteamClient.IsValid) Steamworks.SteamClient.Init(appId, true);
+            
             Debug.Log($"Successfully logged in through steam... \n" +
                 $"Users Steam name: {SteamClient.Name}");
+            Debug.Log("Steam ID: " + SteamClient.SteamId);
         }
         catch (System.Exception e)
         {
@@ -71,33 +74,8 @@ public class SteamLobbyManager : MonoBehaviour
 
         // TODO - If needed, remove the callback sub, implementation, and unsub
         // subscribe to events
-        SteamMatchmaking.OnLobbyMemberLeave += SteamMatchmaking_OnLobbyMemberLeave;
-        SteamMatchmaking.OnLobbyMemberJoined += SteamMatchmaking_OnLobbyMemberJoined;
     }
 
-    // Callbacks 
-    private void SteamMatchmaking_OnLobbyMemberLeave(Lobby lobby, Friend friend)
-    {
-        Debug.Log("Friend has left the lobby"); 
-    }
-
-    private void SteamMatchmaking_OnLobbyMemberJoined(Lobby lobby, Friend friend)
-    {
-        // Check if the lobby is at max capacity, if it is we close it
-        if (lobby.MaxMembers == lobby.MemberCount)
-        {
-            Debug.Log("Max Members reached...\n" +
-                "Destroying lobby as we should be in a game");
-            lobby.Leave();
-        }   
-    }
-
-    private void OnDestroy()
-    {
-        //unsub from callbacks
-        SteamMatchmaking.OnLobbyMemberLeave -= SteamMatchmaking_OnLobbyMemberLeave;
-        SteamMatchmaking.OnLobbyMemberJoined -= SteamMatchmaking_OnLobbyMemberJoined;
-    }
 
 
     // Calls general JoinLobby function for type casual
@@ -118,8 +96,26 @@ public class SteamLobbyManager : MonoBehaviour
     
     // General JoinLobby function. Joins or creates a lobby for casual or competitive
     // based on the lobbyTypeValue supplied
+
+    private IEnumerator FetchMMR()
+    {
+        string url = "http://localhost:18080/mmr/1";
+        UnityWebRequest request = UnityWebRequest.Get(url);
+        yield return request.SendWebRequest();
+
+        if(request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log($"Error sending web request: {request.error}");
+        }
+        else
+        {
+            Debug.Log(request.downloadHandler.text);
+        }
+    }
+
     private async void JoinLobby(string lobbyTypeValue)
     {
+        StartCoroutine(FetchMMR());
         Lobby[] lobbyList = await FetchLobbies(lobbyTypeValue);
         Lobby? nLobby = await SelectAndJoinLobby(lobbyList);
 
