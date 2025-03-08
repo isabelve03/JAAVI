@@ -51,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         Jump();
         AirDash();
+        Block();
+        Attack1();
     }
 
     private void Run()
@@ -121,6 +123,50 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+        private void Block()
+    {
+        bool blockPressed = false;
+        bool blockLetgo = false;
+
+        if (controllerID == 0) // Keyboard Block
+        {
+            blockPressed = Input.GetButtonDown("KeyBlock");
+            blockLetgo = Input.GetButtonUp("KeyBlock");
+        }
+        else // Controller Block
+        {
+            blockPressed = Input.GetKeyDown("joystick " + controllerID + " button 1"); // A / X button
+        }
+
+        if (blockPressed)
+        {
+            playerAnimator.SetTrigger("block");
+        }
+        if (blockLetgo)
+        {
+            playerAnimator.SetTrigger("blockDone");
+        }
+    }
+
+    private void Attack1() 
+    {
+        bool attackPressed = false;
+
+        if (controllerID == 0) // Keyboard attack
+        {
+            attackPressed = Input.GetButtonDown("KeyAttack1");
+        }
+        else
+        {
+            attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2");
+        }
+
+        if (attackPressed)
+        {
+            playerAnimator.SetTrigger("attack1");
+        }
+    }
+
     private void AirDash()
     {
         bool isGrounded = playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
@@ -132,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
         {
             airDashPressed = Input.GetButtonDown("Fire1");
         }
-        else // Controller Air Dash (Right Trigger)
+        else // Controller Air Dash (Right Bumper)
         {
             airDashPressed = Input.GetKeyDown("joystick " + controllerID + " button 5"); // Right Trigger
         }

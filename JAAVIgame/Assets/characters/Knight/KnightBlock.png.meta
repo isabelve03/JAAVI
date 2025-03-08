@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,9 +71,9 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,9 +107,190 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: KnightBlock_0
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 861
+        height: 721
+      alignment: 9
+      pivot: {x: 0.6698009, y: 0.4893691}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4cf7c2965e54b04a8388f15aaf9500f
+      internalID: -2093073380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightBlock_1
+      rect:
+        serializedVersion: 2
+        x: 2062
+        y: 0
+        width: 857
+        height: 703
+      alignment: 9
+      pivot: {x: 0.67327887, y: 0.5018992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cd401990cafd8045bb7b672cb30a9a7
+      internalID: 1259747400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightBlock_2
+      rect:
+        serializedVersion: 2
+        x: 3908
+        y: 0
+        width: 1186
+        height: 959
+      alignment: 9
+      pivot: {x: 0.5556492, y: 0.36791983}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e3f1ac3c9402c4982637b4b951efe3
+      internalID: 1675694406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightBlock_3
+      rect:
+        serializedVersion: 2
+        x: 5828
+        y: 0
+        width: 1185
+        height: 957
+      alignment: 9
+      pivot: {x: 0.5549792, y: 0.36868873}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d27123503a189b409e7dde8aaa411ab
+      internalID: 1028416997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightBlock_4
+      rect:
+        serializedVersion: 2
+        x: 7747
+        y: 0
+        width: 1184
+        height: 958
+      alignment: 9
+      pivot: {x: 0.5550257, y: 0.36830387}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6166869b89f3e384aaf4ea8494fe2f9f
+      internalID: 1079335773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightBlock_5
+      rect:
+        serializedVersion: 2
+        x: 9667
+        y: 0
+        width: 1185
+        height: 959
+      alignment: 9
+      pivot: {x: 0.55605716, y: 0.36791983}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3e07b1155fe95e45b3237772c28b09a
+      internalID: -1494246167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightBlock_6
+      rect:
+        serializedVersion: 2
+        x: 11588
+        y: 0
+        width: 1186
+        height: 958
+      alignment: 9
+      pivot: {x: 0.55169934, y: 0.36830387}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a8d9dea9b37f4409343c04ed310334
+      internalID: 861262490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightBlock_7
+      rect:
+        serializedVersion: 2
+        x: 13584
+        y: 0
+        width: 855
+        height: 704
+      alignment: 9
+      pivot: {x: 0.6725146, y: 0.50118625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23494fe4770eab4692cc8abb87b351c
+      internalID: 1717006243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +301,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      KnightBlock_0: 1471766701
+      KnightBlock_1: 1939587358
+      KnightBlock_2: -2093073380
+      KnightBlock_3: 1259747400
+      KnightBlock_4: 1675694406
+      KnightBlock_5: 1028416997
+      KnightBlock_6: 1079335773
+      KnightBlock_7: -1494246167
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
