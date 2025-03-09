@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string airDashDirection = "none";
     [SerializeField] private int airJump;
     [SerializeField] private int airDashVal = 1;
+    private bool isBlocking = false;
+    private bool isAttacking = false;
 
     float gravityScaleAtStart;
 
@@ -58,41 +60,47 @@ public class PlayerMovement : MonoBehaviour
     private void Run()
     {
         float hMovement = 0;
-
-        if (controllerID == 0) // Keyboard Controls
+        if(!isBlocking)
         {
-            hMovement = Input.GetAxisRaw("Horizontal"); // Default Unity Input
-        }
-        else // Controller Movement
-        {
-            hMovement = Input.GetAxisRaw("Joystick " + controllerID + " Horizontal");
+            if (controllerID == 0) // Keyboard Controls
+            {
+                hMovement = Input.GetAxisRaw("Horizontal"); // Default Unity Input
+            }
+            else // Controller Movement
+            {
+                hMovement = Input.GetAxisRaw("Joystick " + controllerID + " Horizontal");
+            }
+
+            Vector2 runVelocity = new Vector2(hMovement * runSpeed, playerCharacter.velocity.y);
+            playerCharacter.velocity = runVelocity;
+
+            bool isMoving = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
+            playerAnimator.SetBool("run", isMoving);  
         }
 
-        Vector2 runVelocity = new Vector2(hMovement * runSpeed, playerCharacter.velocity.y);
-        playerCharacter.velocity = runVelocity;
-
-        bool isMoving = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
-        playerAnimator.SetBool("run", isMoving);
     }
 
      private void FlipSprite()
     {
+        if (!isAttacking)
+        {
         // Lets characters use back aerial attacks
         // Want to add a certain amount of frames after a jump where character can reverse direction even in the air
-        if (!playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
-        {
-            return;
-        }
-        // If the player is moving horizontally
-        bool hMovement = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
+            if (!playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            {
+                return;
+            }
+            // If the player is moving horizontally
+            bool hMovement = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
 
-        if (hMovement)
-        {
-            // xScale multiplies against the sign of x to ensure that the scale within transform of the sprite is upheld
-            float xScale = Mathf.Abs(playerCharacter.transform.localScale.x);
-            
-            // Reverse the current direction (scale) of the X-Axis
-            transform.localScale = new Vector2(Mathf.Sign(playerCharacter.velocity.x)*xScale, playerCharacter.transform.localScale.y);
+            if (hMovement)
+            {
+                // xScale multiplies against the sign of x to ensure that the scale within transform of the sprite is upheld
+                float xScale = Mathf.Abs(playerCharacter.transform.localScale.x);
+                
+                // Reverse the current direction (scale) of the X-Axis
+                transform.localScale = new Vector2(Mathf.Sign(playerCharacter.velocity.x)*xScale, playerCharacter.transform.localScale.y);
+            }
         }
     }
 
@@ -136,35 +144,47 @@ public class PlayerMovement : MonoBehaviour
         else // Controller Block
         {
             blockPressed = Input.GetKeyDown("joystick " + controllerID + " button 1"); // A / X button
+            blockLetgo = Input.GetKeyUp("joystick " + controllerID + " button 1");
         }
 
         if (blockPressed)
         {
             playerAnimator.SetTrigger("block");
+            isBlocking = true;
         }
         if (blockLetgo)
         {
             playerAnimator.SetTrigger("blockDone");
+            isBlocking = false;
         }
     }
 
     private void Attack1() 
     {
         bool attackPressed = false;
+        bool attackLetgo = false;
 
         if (controllerID == 0) // Keyboard attack
         {
             attackPressed = Input.GetButtonDown("KeyAttack1");
+            attackLetgo = Input.GetButtonUp("KeyAttack1");
         }
         else
         {
             attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2");
+            attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
         }
 
         if (attackPressed)
         {
             playerAnimator.SetTrigger("attack1");
+            isAttacking = true;
         }
+        if (attackLetgo)
+        {
+            isAttacking = false;
+        }
+        
     }
 
     private void AirDash()
