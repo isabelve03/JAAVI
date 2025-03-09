@@ -5,20 +5,21 @@ using Unity.Mathematics;
 using UnityEngine;
 
 
-public class Knockback : MonoBehaviour
+public class Combat : MonoBehaviour
 {
     Rigidbody2D playerCharacter;
     CapsuleCollider2D playerBodyCollider;
     BoxCollider2D playerFeetCollider;
     [SerializeField] public CapsuleCollider2D[] hitbox;
+    public Animator animator;
+    public Transform attackZone;
+    public float attackRange = 0.5f;
     public int hitPoints = 0; //hitpoints start at 0 and increment up until character dies, then they are reset
     public bool inLag = false;
 
 
     //public bool isDead =  false;
     private static bool isGrounded;
-
-
     void Start()
     {
         //we grab from the component
@@ -27,10 +28,14 @@ public class Knockback : MonoBehaviour
         playerFeetCollider = GetComponent<BoxCollider2D>();
     }
 
-
     void Update(){
         GetAttack(); //reads attack
-
+        void OGizmosSelected()
+        {
+            if(attackZone != null){
+                Gizmos.DrawWireSphere(attackZone.position, attackRange);
+            }
+        }
 
     }
 
@@ -42,8 +47,9 @@ public class Knockback : MonoBehaviour
         if(isGrounded){ //grounded attacks
             if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0){ //stand still
                 if(Input.GetButtonDown("Fire2")){ //jab
-                    Detection(hitbox[0]);
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().jabDam);
+                    Attack();
+                    //Detection(hitbox[0]);
+                    //TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().jabDam);
                 }
                 else if(Input.GetButtonDown("Fire3")){ //neutral special
 
@@ -151,6 +157,20 @@ public class Knockback : MonoBehaviour
     public void TakeDamage(int attackVal){
         hitPoints += attackVal;
     }
+
+    public void Attack(){
+        //play attack animation
+        //animator.SetTrigger("name_of_attack);
+        Collider2D[] hitOpponent = Physics2D.OverlapCircleAll(attackZone.position, attackRange);
+        
+        foreach(Collider2D opponent in hitOpponent){
+            Debug.Log("hit");
+        }
+        //detect enemy hurtbox
+        //damage and apply knockback
+        //put enemy in hit stun
+    }
+
 
 
     public void calculateLag(){
