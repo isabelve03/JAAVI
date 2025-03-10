@@ -34,7 +34,7 @@ public class Damage_Number : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hp = gameObject.transform.root.Find("Player1").Find("KnightPlayer").GetComponent<Combat>().hitPoints; //obtains current hitPoints for character
+        hp = gameObject.transform.root.Find("KnightPlayer").GetComponent<Damage_Calculations>().currentHealth; //obtains current hitPoints for character
         if(damage != hp){ //do not want to reprint the damage counters each frame if the damage does not change
             damage = hp;
             if(damage < 10){

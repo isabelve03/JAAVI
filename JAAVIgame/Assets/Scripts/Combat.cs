@@ -10,12 +10,11 @@ public class Combat : MonoBehaviour
     Rigidbody2D playerCharacter;
     CapsuleCollider2D playerBodyCollider;
     BoxCollider2D playerFeetCollider;
-    [SerializeField] public CapsuleCollider2D[] hitbox;
-    public Animator animator;
-    public Transform attackZone;
-    public float attackRange = 0.5f;
-    public int hitPoints = 0; //hitpoints start at 0 and increment up until character dies, then they are reset
-    public bool inLag = false;
+    //public Animator animator;
+    public Transform attackZone; //circular hitbox for now
+    public float attackRange = 0.5f; //will be set in AttackData once I implement more than one attack
+    public LayerMask opponentLayers;
+    //public bool inLag = false;
 
 
     //public bool isDead =  false;
@@ -30,12 +29,7 @@ public class Combat : MonoBehaviour
 
     void Update(){
         GetAttack(); //reads attack
-        void OGizmosSelected()
-        {
-            if(attackZone != null){
-                Gizmos.DrawWireSphere(attackZone.position, attackRange);
-            }
-        }
+
 
     }
 
@@ -47,9 +41,8 @@ public class Combat : MonoBehaviour
         if(isGrounded){ //grounded attacks
             if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0){ //stand still
                 if(Input.GetButtonDown("Fire2")){ //jab
-                    Attack();
-                    //Detection(hitbox[0]);
-                    //TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().jabDam);
+                    //only attack I am working on rn
+                    Attack(gameObject.transform.GetComponent<AttackData>().jabDam);
                 }
                 else if(Input.GetButtonDown("Fire3")){ //neutral special
 
@@ -60,40 +53,39 @@ public class Combat : MonoBehaviour
 
             else if(Math.Abs(Input.GetAxis("Horizontal")) <= Math.Abs(Input.GetAxis("Vertical")) && Input.GetAxis("Vertical") > 0){ //up attacks
                 if(Input.GetButtonDown("Fire2")){ //up light
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().uLightDam);
+                    //Attack(gameObject.transform.parent.GetComponent<AttackData>().uLightDam);
                 }
                 else if(Input.GetButtonDown("Fire3")){ //up special
                    
                 }
                 else if(Input.GetButtonDown("Fire2") && Input.GetButtonDown("Fire3")){ //up strong
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().uStrongDam);
+                    //Attack(gameObject.transform.parent.GetComponent<AttackData>().uStrongDam);
                 }
             }
 
 
             else if(Math.Abs(Input.GetAxis("Horizontal")) <= Math.Abs(Input.GetAxis("Vertical")) && Input.GetAxis("Vertical") < 0){ //down attacks
                 if(Input.GetButtonDown("Fire2")){ //down light
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().dLightDam);
+                    //Attack(gameObject.transform.parent.GetComponent<AttackData>().dLightDam);
                 }
                 else if(Input.GetButtonDown("Fire3")){ //down special
                    
                 }
                 else if(Input.GetButtonDown("Fire2") && Input.GetButtonDown("Fire3")){ //down strong
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().dStrongDam);
+                    //Attack(gameObject.transform.parent.GetComponent<AttackData>().dStrongDam);
                 }
             }
 
 
             else if(Math.Abs(Input.GetAxis("Horizontal")) > Math.Abs(Input.GetAxis("Vertical"))){ //forward attacks
                 if(Input.GetButtonDown("Fire2")){ //forward light
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().fLightDam);
+                    //Attack(gameObject.transform.parent.GetComponent<AttackData>().fLightDam);
                 }
                 else if(Input.GetButtonDown("Fire3")){ //forward special
                    
                 }
                 else if(Input.GetButtonDown("Fire2") && Input.GetButtonDown("Fire3")){ //forward strong
-                    Detection(hitbox[1]);
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().fStrongDam);
+                    //Attack(gameObject.transform.parent.GetComponent<AttackData>().fStrongDam);
                 }
             }
         }
@@ -102,7 +94,7 @@ public class Combat : MonoBehaviour
         else{ //air attacks
             if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0){ //neutral movement
                 if(Input.GetButtonDown("Fire2")){ //neutral air
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().nAirDam);
+                    //Attack(gameObject.transform.parent.GetComponent<AttackData>().nAirDam);
                 }
                 else if(Input.GetButtonDown("Fire3")){ //neutral special
 
@@ -113,7 +105,7 @@ public class Combat : MonoBehaviour
 
             else if(Math.Abs(Input.GetAxis("Horizontal")) <= Math.Abs(Input.GetAxis("Vertical")) && Input.GetAxis("Vertical") > 0){ //up attacks
                 if(Input.GetButtonDown("Fire2")){ //up air
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().uAirDam);
+                    //Attack(gameObject.transform.parent.GetComponent<AttackData>().uAirDam);
                 }
                 else if(Input.GetButtonDown("Fire3")){ //up special
                    
@@ -123,7 +115,7 @@ public class Combat : MonoBehaviour
 
             else if(Math.Abs(Input.GetAxis("Horizontal")) <= Math.Abs(Input.GetAxis("Vertical")) && Input.GetAxis("Vertical") < 0){ //down attacks
                 if(Input.GetButtonDown("Fire2")){ //down air
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().dAirDam);
+                    //Attack(gameObject.transform.parent.GetComponent<AttackData>().dAirDam);
                 }
                 else if(Input.GetButtonDown("Fire3")){ //down special
                    
@@ -136,42 +128,42 @@ public class Combat : MonoBehaviour
                    
                 }
 /*                else if(Input.GetButtonDown("Fire2") && (faced direction = Input horizontal direction)){ //forward air
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().fAirDam);
+                    Attack(gameObject.transform.parent.GetComponent<AttackData>().fAirDam);
                 }
                 else if(Input.GetButtonDown("Fire2") && (faced direction != Input horizontal direction)){ //back special
-                    TakeDamage(gameObject.transform.parent.GetComponent<AttackData>().bAirDam);
+                    Attack(gameObject.transform.parent.GetComponent<AttackData>().bAirDam);
                 }*/
             }            
         }
     }
-    //Checks hitbox/hurtbox overlap
-    private void Detection(Collider2D col){
-        Collider2D cols = Physics2D.OverlapCapsule(col.bounds.min, col.bounds.max, CapsuleDirection2D.Horizontal, LayerMask.GetMask("hitbox"));
-        Debug.Log(cols.name);
-    }
-    public void TakeKnockback(float baseKnockback, float scaleKnockback, float attackAngle){ //need to add condition to check direction player is facing when using attack
 
+    //calls to apply knockback and damage to opponent characters
+    void Attack(int damage){
+        //animator.SetTrigger("Attack_Name");
 
-    }
-    //damage is added to the hitpoint total AFTER knockback is calculated
-    public void TakeDamage(int attackVal){
-        hitPoints += attackVal;
-    }
+        //need to transition from layers to tags I think
+        //need to figure out a way to keep hitbox from damaging myself
+        //need to figure out how to not deal damage to each collider individually (double damage)
+        //need to figure out how to reverse hitbox when character turns around (position and launch angle)
+        //need to figure out how to resize the hitbox for each different attack (probably not hard tbh)
+        //would be nice to write a script that allows ne to drag and drop the hitbox for convenience
+        //will have different types of hitboxes for different attacks
+        //can get cute with it if I have enough time and have sweetspot and sourspot hitboxes for different attacks
 
-    public void Attack(){
-        //play attack animation
-        //animator.SetTrigger("name_of_attack);
-        Collider2D[] hitOpponent = Physics2D.OverlapCircleAll(attackZone.position, attackRange);
-        
+        Collider2D[] hitOpponent = Physics2D.OverlapCircleAll(attackZone.position, attackRange, opponentLayers);
         foreach(Collider2D opponent in hitOpponent){
-            Debug.Log("hit");
+            opponent.GetComponent<Damage_Calculations>().TakeKnockback(); //still need to work on
+            opponent.GetComponent<Damage_Calculations>().TakeDamage(damage);
         }
-        //detect enemy hurtbox
-        //damage and apply knockback
-        //put enemy in hit stun
     }
 
-
+    //draws a hitbox visualizer in scene mode
+    void OnDrawGizmosSelected()
+    {
+        if(attackZone != null){
+            Gizmos.DrawWireSphere(attackZone.position, attackRange);
+        }
+    }
 
     public void calculateLag(){
 
@@ -180,7 +172,6 @@ public class Combat : MonoBehaviour
         //sample damage calculator
         //knockbackUnits = hitpoints * baseDamage * scaleDamage
         //Vector 2 to launch fighter depending on what angle the hitbox sends at, what direction the opponent was facing, how much damage the player has currently
-        //hitpoints = hitpoints + baseDamage +
         //hitpoints will be reduced to 0 when the player dies
 }
 
