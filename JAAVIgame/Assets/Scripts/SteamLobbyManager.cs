@@ -99,7 +99,7 @@ public class SteamLobbyManager : MonoBehaviour
 
     private IEnumerator FetchMMR()
     {
-        string url = "http://localhost:18080/mmr/1";
+        string url = "http://localhost:18080/mmr/" + SteamClient.SteamId;
         UnityWebRequest request = UnityWebRequest.Get(url);
         yield return request.SendWebRequest();
 
