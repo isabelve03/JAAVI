@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Networking;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 // TODO - Make a LeaveLobby Function
 // TODO - look up how to properly use async method (I think we should never use void and instead return a task so that we can wait for this to finish)
@@ -105,17 +107,41 @@ public class SteamLobbyManager : MonoBehaviour
 
         if(request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log($"Error sending web request: {request.error}");
+            Debug.Log($"Error sending web request to fetch mmr: {request.error}");
+            yield break;
         }
-        else
-        {
-            Debug.Log(request.downloadHandler.text);
-        }
+        JObject json = JObject.Parse(request.downloadHandler.text);
+        int mmr = (int)json["mmr"];
+        Debug.Log($"MMR: {mmr}");
     }
+
+    private IEnumerator UpdateMMR(int updatedMMR)
+    {
+        string url = "http://localhost:18080/updateMMR";
+        // create json
+        string json = "{" +
+            "\"steamID\":" + SteamClient.SteamId + "," + 
+            "\"mmr\":" + updatedMMR +
+            "}";
+        UnityWebRequest request = UnityWebRequest.Put(url, json);
+        request.SetRequestHeader("Content-Type", "application/json");
+        yield return request.SendWebRequest();
+
+        if(request.result != UnityWebRequest.Result.Success )
+        {
+            Debug.Log($"Error sending web request to updata mmr: {request.error}");
+            yield break;
+        }
+        Debug.Log("Successfully updated MMR");
+    }
+
 
     private async void JoinLobby(string lobbyTypeValue)
     {
-        StartCoroutine(FetchMMR());
+        //StartCoroutine(FetchMMR());
+        System.Random rnd = new System.Random();
+        int randMMR = rnd.Next(0, 1500);
+        StartCoroutine(UpdateMMR(randMMR));
         Lobby[] lobbyList = await FetchLobbies(lobbyTypeValue);
         Lobby? nLobby = await SelectAndJoinLobby(lobbyList);
 
