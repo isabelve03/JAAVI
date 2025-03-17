@@ -210,6 +210,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1538061533108010506, guid: 7e353db44888c00469092f58b85ad384, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 7210151685968932854, guid: 7e353db44888c00469092f58b85ad384, type: 3}
       propertyPath: m_Name
       value: NecromancerPlayer

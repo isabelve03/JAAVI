@@ -142,20 +142,22 @@ public class Combat : MonoBehaviour
     void Attack(int damage){
         //animator.SetTrigger("Attack_Name");
 
-        //need to transition from layers to tags I think
-        //need to figure out how to not deal damage to each collider individually (double damage)
+        //am using both layers and tags.  can I do it with just one???
         //need to figure out how to reverse hitbox when character turns around (position and launch angle)
         //need to figure out how to resize the hitbox for each different attack (probably not hard tbh)
-        //would be nice to write a script that allows ne to drag and drop the hitbox for convenience
+        //would be nice to write a script that allows me to drag and drop the hitbox for convenience
         //will have different types of hitboxes for different attacks
         //can get cute with it if I have enough time and have sweetspot and sourspot hitboxes for different attacks
 
+        HashSet<GameObject> alreadyDamaged = new HashSet<GameObject>();
         Collider2D[] hitOpponent = Physics2D.OverlapCircleAll(attackZone.position, attackRange, opponentLayers);
         playerTag = gameObject.tag;
         foreach(Collider2D opponent in hitOpponent){
+            if (alreadyDamaged.Contains(opponent.gameObject)) continue; //makes sure attack only damages opponent once
             if(opponent.tag != playerTag){ //keeps attacking player from taking damage/knockback
                 opponent.GetComponent<Damage_Calculations>().TakeKnockback(); //still need to work on
                 opponent.GetComponent<Damage_Calculations>().TakeDamage(damage);
+                alreadyDamaged.Add(opponent.gameObject);
             }
         }
     }
