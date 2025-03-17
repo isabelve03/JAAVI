@@ -14,6 +14,7 @@ public class Combat : MonoBehaviour
     public Transform attackZone; //circular hitbox for now
     public float attackRange = 0.5f; //will be set in AttackData once I implement more than one attack
     public LayerMask opponentLayers;
+    private string playerTag;
     //public bool inLag = false;
 
 
@@ -142,7 +143,6 @@ public class Combat : MonoBehaviour
         //animator.SetTrigger("Attack_Name");
 
         //need to transition from layers to tags I think
-        //need to figure out a way to keep hitbox from damaging myself
         //need to figure out how to not deal damage to each collider individually (double damage)
         //need to figure out how to reverse hitbox when character turns around (position and launch angle)
         //need to figure out how to resize the hitbox for each different attack (probably not hard tbh)
@@ -151,9 +151,12 @@ public class Combat : MonoBehaviour
         //can get cute with it if I have enough time and have sweetspot and sourspot hitboxes for different attacks
 
         Collider2D[] hitOpponent = Physics2D.OverlapCircleAll(attackZone.position, attackRange, opponentLayers);
+        playerTag = gameObject.tag;
         foreach(Collider2D opponent in hitOpponent){
-            opponent.GetComponent<Damage_Calculations>().TakeKnockback(); //still need to work on
-            opponent.GetComponent<Damage_Calculations>().TakeDamage(damage);
+            if(opponent.tag != playerTag){ //keeps attacking player from taking damage/knockback
+                opponent.GetComponent<Damage_Calculations>().TakeKnockback(); //still need to work on
+                opponent.GetComponent<Damage_Calculations>().TakeDamage(damage);
+            }
         }
     }
 
