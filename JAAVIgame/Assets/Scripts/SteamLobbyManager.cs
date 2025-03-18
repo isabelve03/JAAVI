@@ -101,7 +101,7 @@ public class SteamLobbyManager : MonoBehaviour
 
     private IEnumerator FetchMMR()
     {
-        string url = "http://localhost:18080/mmr/" + SteamClient.SteamId;
+        string url = "http://129.146.86.26:18080/mmr/" + SteamClient.SteamId;
         UnityWebRequest request = UnityWebRequest.Get(url);
         yield return request.SendWebRequest();
 
@@ -117,7 +117,7 @@ public class SteamLobbyManager : MonoBehaviour
 
     private IEnumerator UpdateMMR(int updatedMMR)
     {
-        string url = "http://localhost:18080/updateMMR";
+        string url = "http://129.146.86.26:18080/updateMMR";
         // create json
         string json = "{" +
             "\"steamID\":" + SteamClient.SteamId + "," + 
@@ -125,7 +125,9 @@ public class SteamLobbyManager : MonoBehaviour
             "}";
         UnityWebRequest request = UnityWebRequest.Put(url, json);
         request.SetRequestHeader("Content-Type", "application/json");
+        Debug.Log("Sending request...");
         yield return request.SendWebRequest();
+        Debug.Log("Request sent, checkign result ...");
 
         if(request.result != UnityWebRequest.Result.Success )
         {
@@ -134,7 +136,6 @@ public class SteamLobbyManager : MonoBehaviour
         }
         Debug.Log("Successfully updated MMR");
     }
-
 
     private async void JoinLobby(string lobbyTypeValue)
     {
