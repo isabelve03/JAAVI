@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;   
 
 public class PlayerMovement : MonoBehaviour 
 {
@@ -21,6 +22,12 @@ public class PlayerMovement : MonoBehaviour
     float gravityScaleAtStart;
 
     bool isAlive = true; // Starts true because the player is alive
+
+    // Sends input direction
+    public static event Action<Vector2> OnDirectionChanged;
+    public static event Action<string> OnAttackPressed;
+
+    // Sends attack type
 
     Rigidbody2D playerCharacter;
     CapsuleCollider2D playerBodyCollider;
@@ -55,6 +62,9 @@ public class PlayerMovement : MonoBehaviour
         AirDash();
         Block();
         Attack1();
+        Attack2();
+        // Attack3();
+        // Ultimate();
     }
 
     private void Run()
@@ -65,10 +75,18 @@ public class PlayerMovement : MonoBehaviour
             if (controllerID == 0) // Keyboard Controls
             {
                 hMovement = Input.GetAxisRaw("Horizontal"); // Default Unity Input
+
+                // Captures movement Input for Combat
+                Vector2 inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                OnDirectionChanged?.Invoke(inputDirection);
             }
             else // Controller Movement
             {
                 hMovement = Input.GetAxisRaw("Joystick " + controllerID + " Horizontal");
+
+                // Captures movement Input for Combat
+                Vector2 inputDirection = new Vector2(Input.GetAxis("Joystick " + controllerID + " Horizontal"), Input.GetAxis("Joystick " + controllerID + " Vertical"));
+                OnDirectionChanged?.Invoke(inputDirection);
             }
 
             Vector2 runVelocity = new Vector2(hMovement * runSpeed, playerCharacter.velocity.y);
@@ -168,11 +186,51 @@ public class PlayerMovement : MonoBehaviour
         {
             attackPressed = Input.GetButtonDown("KeyAttack1");
             attackLetgo = Input.GetButtonUp("KeyAttack1");
+
+            // Sends attack over to Combat script
+            OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be 
         }
         else
         {
             attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2");
             attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
+
+            // Sends attack over to Combat script
+            OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be 
+        }
+
+        if (attackPressed)
+        {
+            playerAnimator.SetTrigger("attack1");
+            isAttacking = true;
+        }
+        if (attackLetgo)
+        {
+            isAttacking = false;
+        }
+        
+    }
+
+        private void Attack2() 
+    {
+        bool attackPressed = false;
+        bool attackLetgo = false;
+
+        if (controllerID == 0) // Keyboard attack
+        {
+            attackPressed = Input.GetButtonDown("KeyAttack2"); // Will have to be added and changed in the project settings
+            attackLetgo = Input.GetButtonUp("KeyAttack2");
+
+            // Sends attack over to Combat script
+            OnAttackPressed?.Invoke("StrongAttack"); // This is for an example when we add three attacks and an ultimate to each character
+        }
+        else
+        {
+            attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2");
+            attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
+
+            // Sends attack over to Combat script
+            OnAttackPressed?.Invoke("StrongAttack"); 
         }
 
         if (attackPressed)
