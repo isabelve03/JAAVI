@@ -12,6 +12,8 @@ using UnityEngine.Assertions;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Linq;
+using Unity.VisualScripting;
 
 // TODO - Make a LeaveLobby Function
 // TODO - look up how to properly use async method (I think we should never use void and instead return a task so that we can wait for this to finish)
@@ -96,23 +98,161 @@ public class SteamLobbyManager : MonoBehaviour
     }
 
     
+
+
+
     // General JoinLobby function. Joins or creates a lobby for casual or competitive
     // based on the lobbyTypeValue supplied
+    // TODO - maybe change this return type to bool or something so if we fail to join lobby we can do something (i.e. retry or tell user that there was an error)
+    private async void JoinLobby(string lobbyTypeValue)
+    {
+        Lobby[] lobbyList = await FetchLobbies(lobbyTypeValue);
+        Lobby? nLobby = null;
+        if (lobbyList == null) 
+        {
+            // no lobbies exist, create lobby
+            nLobby = await CreateLobby(lobbyTypeValue);
+        }else 
+        {
+            // At least one lobby exist, select best lobby
+            nLobby = await SelectAndJoinLobby(lobbyList);
+        }
 
-    private IEnumerator FetchMMR()
+
+
+        if(nLobby == null)
+        {
+            Debug.Log("Failed to find, join, or create lobby...");
+            return;
+        }
+
+        Lobby lobby = (Lobby)nLobby;
+        Debug.Log($"Lobby of type {lobby.GetData(lobbyTypeKey)}");
+        _fishyFacepunch.SetClientAddress(lobby.Owner.Id.ToString());
+
+
+        // start FishNet server/client
+
+        // if user is host we need to initialize the server for them
+        if (lobby.IsOwnedBy(SteamClient.SteamId)) 
+            _clientServerInit.ChangeServerState();
+
+
+        // NOTE: We want to add even the host as a client to the server
+        _clientServerInit.ChangeClientState();
+        
+            
+    }
+
+    // Finds list of joinable lobbies of type lobbyType
+    // Returns a null list if none exist
+    private async Task<Lobby[]> FetchLobbies(string lobbyType)
+    {
+        // the paramater lobbyType is either "Competitive" or "Casual"
+
+
+        // TODO ON_APP_ID - delete '.WithKeyValue(OurAppKey, OurAppValue)' as this will be unnecessary with our own appID
+        // filters lobbies based on lobby type
+        Lobby[] lobbyList = await SteamMatchmaking.LobbyList.WithKeyValue(OurAppKey, OurAppValue).WithKeyValue(lobbyTypeKey, lobbyType).RequestAsync();
+        
+        // Comp MMR filtering. If no lobbies then it does not enter
+        if(lobbyType == "Competitive" && lobbyList != null)
+        {
+            /*
+             * mmrRange is the acceptable range for lobbies to join
+             * Example: mmrRange is 50 and the player's mmr is 500
+             * any lobby +- 50 (450-550 mmr) is considered acceptable and added to the list of lobbies
+             * the lobbylist should also be sorted by range so that the closest in mmr val is first
+             * the select and join function can also take into accound this and networking things (like ping) when deciding a lobby to join
+             */
+            const int mmrRange = 50;
+            // fetch player mmr
+            int? nPlayerMMR = await FetchMMR();
+            if (!nPlayerMMR.HasValue)
+            {
+                Debug.Log("Could not fetch mmr for matchmaking...");
+                return null;
+            }
+            int playerMMR = (int)nPlayerMMR;
+            int lowerMMRbound = playerMMR - mmrRange;
+            int upperMMRbound = playerMMR + mmrRange;
+
+            // filters list of lobbies
+            Lobby[] filteredLobbyArray = lobbyList.Where(
+                lobby => (Int32.Parse(lobby.GetData("mmr")) < lowerMMRbound) || // less than lower bound 
+                (Int32.Parse(lobby.GetData("mmr")) > upperMMRbound)).ToArray(); // less than upper bound
+            return filteredLobbyArray;
+        }
+        return lobbyList;
+    }
+
+    
+    // returns null if something goes wrong
+    private async Task<Lobby?> SelectAndJoinLobby(Lobby[] lobbyList)
+    {
+
+        // TODO - Implement better selection criteria
+        // TODO - Something to think about: if none fit criteria from above then we will need to create a new lobby anyways...
+        // How to refactor so we are not repeating the above code ^
+
+        // lobbies exist
+        return await SteamMatchmaking.JoinLobbyAsync(lobbyList[0].Id);
+    }
+
+    // creates a lobby of type lobbyType (casual or competitive)
+    // returns created lobby, or null if an issue happened
+    private async Task<Lobby?> CreateLobby(string lobbyType)
+    {
+        const int MAX_PLAYERS = 2;
+        Lobby? nLobby = await Steamworks.SteamMatchmaking.CreateLobbyAsync(MAX_PLAYERS);
+        if (!nLobby.HasValue)
+        {
+            Debug.Log("Could not create lobby...");
+            return null;
+        }
+        
+        Lobby lobby = (Lobby)nLobby;
+        // data for both comp and casual games
+        lobby.SetData(OurAppKey, OurAppValue); // TODO ON_APP_ID - remove this line... unnecessary set when we have our own appId
+        lobby.SetData(lobbyTypeKey, lobbyType);
+
+        // matchmaking data for comp games
+        if( lobbyType == "Competitve")
+        {
+            int? mmr = await FetchMMR();
+            if (!mmr.HasValue)
+            {
+                Debug.Log("Error fetching mmr value.. \n");
+                return null;
+            }
+            string mmrString = mmr.ToString();
+            lobby.SetData("mmr", mmrString);
+        }
+        return lobby;
+    }
+
+    // fetch's player's mmr from the database
+    // retruns either an int or null which reflects their mmr
+    private async Task<int?> FetchMMR()
     {
         string url = "http://129.146.86.26:18080/mmr/" + SteamClient.SteamId;
         UnityWebRequest request = UnityWebRequest.Get(url);
-        yield return request.SendWebRequest();
+
+        var operation = request.SendWebRequest();
+        while(!operation.isDone) // wait for web request to finish
+        {
+            await Task.Yield();
+        }
 
         if(request.result != UnityWebRequest.Result.Success)
         {
             Debug.Log($"Error sending web request to fetch mmr: {request.error}");
-            yield break;
+            return null;
         }
+
         JObject json = JObject.Parse(request.downloadHandler.text);
         int mmr = (int)json["mmr"];
-        Debug.Log($"MMR: {mmr}");
+        return mmr;
     }
 
     private IEnumerator UpdateMMR(int updatedMMR)
@@ -137,83 +277,6 @@ public class SteamLobbyManager : MonoBehaviour
         Debug.Log("Successfully updated MMR");
     }
 
-    private async void JoinLobby(string lobbyTypeValue)
-    {
-        /*
-        //StartCoroutine(FetchMMR());
-        System.Random rnd = new System.Random();
-        int randMMR = rnd.Next(0, 1500);
-        StartCoroutine(UpdateMMR(randMMR));
-        */
-        Lobby[] lobbyList = await FetchLobbies(lobbyTypeValue);
-        Lobby? nLobby = await SelectAndJoinLobby(lobbyList);
-
-        if(nLobby == null)
-        {
-            Debug.Log("Failed to find, join, or create lobby...");
-            return;
-        }
-
-        Lobby lobby = (Lobby)nLobby;
-        //TODO - Set Data For Lobby (should it be its own function so as to not repeat code?)
-        lobby.SetData(OurAppKey, OurAppValue); // TODO ON_APP_ID - remove this line... unnecessary set when we have our own appId
-        lobby.SetData(lobbyTypeKey, lobbyTypeValue);
-        Debug.Log($"Lobby of type {lobby.GetData(lobbyTypeKey)}");
-        _fishyFacepunch.SetClientAddress(lobby.Owner.Id.ToString());
-
-
-        // start FishNet server/client
-
-        // if user is host we need to initialize the server for them
-        if (lobby.IsOwnedBy(SteamClient.SteamId)) 
-            _clientServerInit.ChangeServerState();
-
-
-        // NOTE: We want to add even the host as a client to the server
-        _clientServerInit.ChangeClientState();
-        
-            
-    }
-
-    // Finds list of joinable lobbies of type lobbyType
-    // Returns null if none exist
-    private async Task<Lobby[]> FetchLobbies(string lobbyType)
-    {
-        // the paramater lobbyType is either "Competitive" or "Casual"
-
-        // TODO ON_APP_ID - delete '.WithKeyValue(OurAppKey, OurAppValue)' as this will be unnecessary with our own appID
-        Lobby[] FilteredLobbyList = await SteamMatchmaking.LobbyList.WithKeyValue(OurAppKey, OurAppValue).WithKeyValue(lobbyTypeKey, lobbyType).RequestAsync();
-        
-        // Comp MMR filtering
-        if(lobbyType == "Competitive")
-        {
-            // fetch player mmr
-            // compare mmr to the mmr of the lobby and some given range
-            // filter out any that are not within the range
-        }
-        return FilteredLobbyList;
-    }
-
-    
-    // returns null if something goes wrong
-    private async Task<Lobby?> SelectAndJoinLobby(Lobby[] lobbyList)
-    {
-        if(lobbyList == null) // no existing lobbies, create new one
-        {
-            const int MAX_PLAYERS = 2;
-            Debug.Log("No lobbies exist... \n Creating new lobby...");
-            return await Steamworks.SteamMatchmaking.CreateLobbyAsync(MAX_PLAYERS);
-        }
-
-        // TODO - Implement better selection criteria
-        // TODO - Something to think about: if none fit criteria from above then we will need to create a new lobby anyways...
-        // How to refactor so we are not repeating the above code ^
-
-        // lobbies exist
-        return await SteamMatchmaking.JoinLobbyAsync(lobbyList[0].Id);
-    }
-
-    // callbacks
     
     private void OnApplicationQuit()
     {
