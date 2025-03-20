@@ -108,7 +108,7 @@ public class SteamLobbyManager : MonoBehaviour
     {
         Lobby[] lobbyList = await FetchLobbies(lobbyTypeValue);
         Lobby? nLobby = null;
-        if (lobbyList.Length == 0) 
+        if (lobbyList.Length == 0 || lobbyList == null) 
         {
             // no lobbies exist, create lobby
             nLobby = await CreateLobby(lobbyTypeValue);
