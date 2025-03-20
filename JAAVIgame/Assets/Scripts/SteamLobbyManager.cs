@@ -217,7 +217,7 @@ public class SteamLobbyManager : MonoBehaviour
         lobby.SetData(lobbyTypeKey, lobbyType);
 
         // matchmaking data for comp games
-        if( lobbyType == "Competitve")
+        if( lobbyType == "Competitive")
         {
             int? mmr = await FetchMMR();
             if (!mmr.HasValue)
