@@ -139,10 +139,12 @@ public class SteamLobbyManager : MonoBehaviour
 
     private async void JoinLobby(string lobbyTypeValue)
     {
+        /*
         //StartCoroutine(FetchMMR());
         System.Random rnd = new System.Random();
         int randMMR = rnd.Next(0, 1500);
         StartCoroutine(UpdateMMR(randMMR));
+        */
         Lobby[] lobbyList = await FetchLobbies(lobbyTypeValue);
         Lobby? nLobby = await SelectAndJoinLobby(lobbyList);
 
@@ -181,6 +183,14 @@ public class SteamLobbyManager : MonoBehaviour
 
         // TODO ON_APP_ID - delete '.WithKeyValue(OurAppKey, OurAppValue)' as this will be unnecessary with our own appID
         Lobby[] FilteredLobbyList = await SteamMatchmaking.LobbyList.WithKeyValue(OurAppKey, OurAppValue).WithKeyValue(lobbyTypeKey, lobbyType).RequestAsync();
+        
+        // Comp MMR filtering
+        if(lobbyType == "Competitive")
+        {
+            // fetch player mmr
+            // compare mmr to the mmr of the lobby and some given range
+            // filter out any that are not within the range
+        }
         return FilteredLobbyList;
     }
 
