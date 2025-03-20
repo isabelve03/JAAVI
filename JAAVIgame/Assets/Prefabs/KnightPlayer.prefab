@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8464646507261874888}
   - component: {fileID: 8313959185719585010}
   - component: {fileID: 3683661022637651095}
-  - component: {fileID: 2067392018376597386}
+  - component: {fileID: 7762172962562113203}
   m_Layer: 0
   m_Name: KnightPlayer
   m_TagString: Untagged
@@ -217,7 +217,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2067392018376597386
+--- !u!114 &7762172962562113203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,11 +226,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6475511854894535488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01ce0cc375a3c014baac79b766bc980a, type: 3}
+  m_Script: {fileID: 11500000, guid: ae487f1abd4829149bd7853a823629be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 5
-  jumpSpeed: 6
+  jumpSpeed: 5
   airJumpVal: 1
-  airJump: 1
-  hitPoints: 0
+  airDashSpeed2: 15
+  airDashTimer: 0
+  airDashDuration: 0.15
+  airDashDirection: none
+  airDashVal: 1
+  airJump: 0

@@ -128,17 +128,17 @@ TextureImporter:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 865
-        height: 719
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 861
+        height: 721
+      alignment: 9
+      pivot: {x: 0.6698009, y: 0.4893691}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c1e70fef0693bc49ba863d4194a63af
-      internalID: -816516088
+      spriteID: a4cf7c2965e54b04a8388f15aaf9500f
+      internalID: -2093073380
       vertices: []
       indices: 
       edges: []
@@ -147,19 +147,19 @@ TextureImporter:
       name: KnightBlock_1
       rect:
         serializedVersion: 2
-        x: 2063
+        x: 2062
         y: 0
-        width: 856
+        width: 857
         height: 703
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.67327887, y: 0.5018992}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67aa2d2be06e10d40a280952a128a20e
-      internalID: -1947921078
+      spriteID: 9cd401990cafd8045bb7b672cb30a9a7
+      internalID: 1259747400
       vertices: []
       indices: 
       edges: []
@@ -168,19 +168,19 @@ TextureImporter:
       name: KnightBlock_2
       rect:
         serializedVersion: 2
-        x: 3902
+        x: 3908
         y: 0
-        width: 1195
-        height: 962
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1186
+        height: 959
+      alignment: 9
+      pivot: {x: 0.5556492, y: 0.36791983}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b662138b6bdeca46a79b8b79e414eb3
-      internalID: -456544885
+      spriteID: 76e3f1ac3c9402c4982637b4b951efe3
+      internalID: 1675694406
       vertices: []
       indices: 
       edges: []
@@ -189,19 +189,19 @@ TextureImporter:
       name: KnightBlock_3
       rect:
         serializedVersion: 2
-        x: 5818
+        x: 5828
         y: 0
-        width: 1198
-        height: 964
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1185
+        height: 957
+      alignment: 9
+      pivot: {x: 0.5549792, y: 0.36868873}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63316a9d1413aa046ab8523f4aa1d014
-      internalID: 654904821
+      spriteID: 3d27123503a189b409e7dde8aaa411ab
+      internalID: 1028416997
       vertices: []
       indices: 
       edges: []
@@ -210,19 +210,19 @@ TextureImporter:
       name: KnightBlock_4
       rect:
         serializedVersion: 2
-        x: 7743
+        x: 7747
         y: 0
-        width: 1190
-        height: 959
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1184
+        height: 958
+      alignment: 9
+      pivot: {x: 0.5550257, y: 0.36830387}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c261658853b65a24283e968b88fc9242
-      internalID: 2055367171
+      spriteID: 6166869b89f3e384aaf4ea8494fe2f9f
+      internalID: 1079335773
       vertices: []
       indices: 
       edges: []
@@ -231,19 +231,19 @@ TextureImporter:
       name: KnightBlock_5
       rect:
         serializedVersion: 2
-        x: 9663
+        x: 9667
         y: 0
-        width: 1193
+        width: 1185
         height: 959
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.55605716, y: 0.36791983}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 059d02cea80c86d48b55af4ef90b58dd
-      internalID: 1757383421
+      spriteID: b3e07b1155fe95e45b3237772c28b09a
+      internalID: -1494246167
       vertices: []
       indices: 
       edges: []
@@ -252,19 +252,19 @@ TextureImporter:
       name: KnightBlock_6
       rect:
         serializedVersion: 2
-        x: 11584
+        x: 11588
         y: 0
-        width: 1188
-        height: 959
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1186
+        height: 958
+      alignment: 9
+      pivot: {x: 0.55169934, y: 0.36830387}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 491326f98b3b32048a2f328f74752a52
-      internalID: 1728327955
+      spriteID: 60a8d9dea9b37f4409343c04ed310334
+      internalID: 861262490
       vertices: []
       indices: 
       edges: []
@@ -273,19 +273,19 @@ TextureImporter:
       name: KnightBlock_7
       rect:
         serializedVersion: 2
-        x: 13579
+        x: 13584
         y: 0
-        width: 859
-        height: 702
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 855
+        height: 704
+      alignment: 9
+      pivot: {x: 0.6725146, y: 0.50118625}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f5735d5dfa1db34d83476a233989be9
-      internalID: 295504529
+      spriteID: a23494fe4770eab4692cc8abb87b351c
+      internalID: 1717006243
       vertices: []
       indices: 
       edges: []
@@ -301,14 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      KnightBlock_0: -816516088
-      KnightBlock_1: -1947921078
-      KnightBlock_2: -456544885
-      KnightBlock_3: 654904821
-      KnightBlock_4: 2055367171
-      KnightBlock_5: 1757383421
-      KnightBlock_6: 1728327955
-      KnightBlock_7: 295504529
+      KnightBlock_0: 1471766701
+      KnightBlock_1: 1939587358
+      KnightBlock_2: -2093073380
+      KnightBlock_3: 1259747400
+      KnightBlock_4: 1675694406
+      KnightBlock_5: 1028416997
+      KnightBlock_6: 1079335773
+      KnightBlock_7: -1494246167
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

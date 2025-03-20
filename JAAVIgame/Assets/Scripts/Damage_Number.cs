@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Damage_Number : MonoBehaviour
 {
     //public Knockback knockback;
@@ -10,12 +11,13 @@ public class Damage_Number : MonoBehaviour
     //damage logic
     [SerializeField] private int damage = 0;
 
+
     // This is our HUD image UI Object
     [SerializeField] public static Image damNum;
     [SerializeField] public static Image damNum2;
     [SerializeField] public static Image damNum3;
     [SerializeField] public Sprite[] damageTex;
-    
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class Damage_Number : MonoBehaviour
         damNum2 = gameObject.transform.Find("Damage_Num2").GetComponent<Image>();
         damNum3 = gameObject.transform.Find("Damage_Num3").GetComponent<Image>();
 
+
         //default health
         damNum3.enabled = false;
         damNum2.enabled = false;
@@ -31,10 +34,12 @@ public class Damage_Number : MonoBehaviour
         damNum.enabled = true;
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        hp = gameObject.transform.root.Find("KnightPlayer").GetComponent<Damage_Calculations>().currentHealth; //obtains current hitPoints for character
+        //hp = gameObject.transform.root.Find("KnightPlayer").GetComponent<Damage_Calculations>().currentHealth; //obtains current hitPoints for character
+        hp=0; //temporary
         if(damage != hp){ //do not want to reprint the damage counters each frame if the damage does not change
             damage = hp;
             if(damage < 10){
