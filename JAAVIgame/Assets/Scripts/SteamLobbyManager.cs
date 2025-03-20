@@ -179,8 +179,8 @@ public class SteamLobbyManager : MonoBehaviour
 
             // filters list of lobbies
             Lobby[] filteredLobbyArray = lobbyList.Where(
-                lobby => (Int32.Parse(lobby.GetData("mmr")) < lowerMMRbound) || // less than lower bound 
-                (Int32.Parse(lobby.GetData("mmr")) > upperMMRbound)).ToArray(); // less than upper bound
+                lobby => !((Int32.Parse(lobby.GetData("mmr")) < lowerMMRbound) || // less than lower bound 
+                (Int32.Parse(lobby.GetData("mmr")) > upperMMRbound))).ToArray(); // less than upper bound
             return filteredLobbyArray;
         }
         return lobbyList;
