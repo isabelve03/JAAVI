@@ -108,7 +108,7 @@ public class SteamLobbyManager : MonoBehaviour
     {
         Lobby[] lobbyList = await FetchLobbies(lobbyTypeValue);
         Lobby? nLobby = null;
-        if (lobbyList.Length == 0 || lobbyList == null) 
+        if (lobbyList == null) 
         {
             // no lobbies exist, create lobby
             nLobby = await CreateLobby(lobbyTypeValue);
@@ -181,6 +181,7 @@ public class SteamLobbyManager : MonoBehaviour
             Lobby[] filteredLobbyArray = lobbyList.Where(
                 lobby => !((Int32.Parse(lobby.GetData("mmr")) < lowerMMRbound) || // less than lower bound 
                 (Int32.Parse(lobby.GetData("mmr")) > upperMMRbound))).ToArray(); // less than upper bound
+            if (filteredLobbyArray.Length == 0) return null;
             return filteredLobbyArray;
         }
         return lobbyList;
@@ -237,6 +238,7 @@ public class SteamLobbyManager : MonoBehaviour
     {
         string url = "http://129.146.86.26:18080/mmr/" + SteamClient.SteamId;
         UnityWebRequest request = UnityWebRequest.Get(url);
+        request.timeout = 10;
 
         var operation = request.SendWebRequest();
         while(!operation.isDone) // wait for web request to finish
