@@ -26,6 +26,7 @@ public class SteamLobbyManager : MonoBehaviour
     private NetworkManager _networkManager;
     private FishyFacepunch.FishyFacepunch _fishyFacepunch;
     private ClientServerInit _clientServerInit;
+    private Lobby currLobby; // the curr lobby the user is in
 
     // while using test id for appId (480) the below strings ensure we find only our lobbies
     // TODO - delete this and all things asociated with (labeled as ON_APP_ID) when we receive our unique app id
@@ -97,9 +98,6 @@ public class SteamLobbyManager : MonoBehaviour
         JoinLobby(lobbyTypeValue);
     }
 
-    
-
-
 
     // General JoinLobby function. Joins or creates a lobby for casual or competitive
     // based on the lobbyTypeValue supplied
@@ -126,22 +124,22 @@ public class SteamLobbyManager : MonoBehaviour
             return;
         }
 
-        Lobby lobby = (Lobby)nLobby;
-        Debug.Log($"Lobby of type {lobby.GetData(lobbyTypeKey)}");
-        _fishyFacepunch.SetClientAddress(lobby.Owner.Id.ToString());
+        currLobby = (Lobby)nLobby;
+        Debug.Log($"Lobby of type {currLobby.GetData(lobbyTypeKey)}");
+        _fishyFacepunch.SetClientAddress(currLobby.Owner.Id.ToString());
 
 
         // start FishNet server/client
 
         // if user is host we need to initialize the server for them
-        if (lobby.IsOwnedBy(SteamClient.SteamId)) 
+        if (currLobby.IsOwnedBy(SteamClient.SteamId)) 
             _clientServerInit.ChangeServerState();
 
 
         // NOTE: We want to add even the host as a client to the server
         _clientServerInit.ChangeClientState();
-        
-            
+        Debug.Log(currLobby.Members);
+        Debug.Log($"To string: {currLobby.Members}");
     }
 
     // Finds list of joinable lobbies of type lobbyType
@@ -167,7 +165,7 @@ public class SteamLobbyManager : MonoBehaviour
              */
             const int mmrRange = 50;
             // fetch player mmr
-            int? nPlayerMMR = await FetchMMR();
+            int? nPlayerMMR = await FetchMMR(SteamClient.SteamId);
             if (!nPlayerMMR.HasValue)
             {
                 Debug.Log("Could not fetch mmr for matchmaking...");
@@ -220,7 +218,7 @@ public class SteamLobbyManager : MonoBehaviour
         // matchmaking data for comp games
         if( lobbyType == "Competitive")
         {
-            int? mmr = await FetchMMR();
+            int? mmr = await FetchMMR(SteamClient.SteamId);
             if (!mmr.HasValue)
             {
                 Debug.Log("Error fetching mmr value.. \n");
@@ -232,11 +230,33 @@ public class SteamLobbyManager : MonoBehaviour
         return lobby;
     }
 
+    // result param must be -1, 0, or 1 corresponding to loss, tie, or win respectively
+    // opponentSteamId is the steamId of the opponent you are playing
+    // returns new mmr for the player. returns null if something went wrong
+    private async Task<int?> CalcMMR(int result, SteamId opponentSteamId)
+    {
+        Debug.Assert((result >= -1) && (result <= 1)); // ensure result is input correct
+
+        // TODO - Update this to better reflect the flow of the game with the game loop
+        // i.e. not just the interface to show off that it works
+        int? nCurrMMR = await FetchMMR(SteamClient.SteamId);
+        if (!nCurrMMR.HasValue)
+        {
+            Debug.Log("Error fetching mmr while calculating new mmr...");
+            return null;
+        }
+        int? mmr = (int)nCurrMMR;
+        return mmr;
+
+        // Use ELO to calculate the value of the new mmr
+
+        // return new mmr 
+    }
     // fetch's player's mmr from the database
     // retruns either an int or null which reflects their mmr
-    private async Task<int?> FetchMMR()
+    private async Task<int?> FetchMMR(SteamId steamID)
     {
-        string url = "http://129.146.86.26:18080/mmr/" + SteamClient.SteamId;
+        string url = "http://129.146.86.26:18080/mmr/" + steamID;
         UnityWebRequest request = UnityWebRequest.Get(url);
         request.timeout = 10;
 
@@ -257,7 +277,7 @@ public class SteamLobbyManager : MonoBehaviour
         return mmr;
     }
 
-    private IEnumerator UpdateMMR(int updatedMMR)
+    private IEnumerator SendMMR(int updatedMMR)
     {
         string url = "http://129.146.86.26:18080/updateMMR";
         // create json
