@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AttackData : MonoBehaviour
 {
     //jab
@@ -12,7 +13,6 @@ public class AttackData : MonoBehaviour
     public int jabFrameStartup; //how long it takes for the attack to start after you input it in frames
     public int jabFrameDuration; //how long the hitbox remains active for in frames
     public int jabFrameLag; //how long it takes untiil you can input an action after the attack ends in frames
-
 
     //forward light
     public int fLightDam;
@@ -114,7 +114,6 @@ public class AttackData : MonoBehaviour
     public int uAirFrameDuration;
     public int uAirFrameLag;
 
-
     //down air
     public int dAirDam;
     public float dAirBaseK;
@@ -124,6 +123,3 @@ public class AttackData : MonoBehaviour
     public int dAirFrameDuration;
     public int dAirFrameLag;
 }
-
-
-
