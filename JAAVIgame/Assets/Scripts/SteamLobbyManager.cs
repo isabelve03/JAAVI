@@ -86,7 +86,6 @@ public class SteamLobbyManager : MonoBehaviour
     // functions in this region are meant for demoing the functionality of the matchmaking system while it is not in the game loop yet
     public async void UpdateMMRWin()
     {
-        Debug.Log("In Win Func");
         int? newMMR = await CalcMMR(1);
         if (!newMMR.HasValue)
         {
@@ -97,7 +96,6 @@ public class SteamLobbyManager : MonoBehaviour
     }
     public async void UpdateMMRDraw()
     {
-        Debug.Log("In Draw Func");
         int? newMMR = await CalcMMR(0.5);
         if (!newMMR.HasValue)
         {
@@ -109,7 +107,6 @@ public class SteamLobbyManager : MonoBehaviour
     }
     public async void UpdateMMRLoss()
     {
-        Debug.Log("In Loss Func");
         int? newMMR = await CalcMMR(0);
         if (!newMMR.HasValue)
         {
