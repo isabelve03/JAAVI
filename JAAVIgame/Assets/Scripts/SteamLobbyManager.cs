@@ -138,8 +138,13 @@ public class SteamLobbyManager : MonoBehaviour
 
         // NOTE: We want to add even the host as a client to the server
         _clientServerInit.ChangeClientState();
-        Debug.Log(currLobby.Members);
-        Debug.Log($"To string: {currLobby.Members}");
+
+        if(currLobby.MemberCount == 2)
+        {
+            Debug.Log($"New MMR after win: {CalcMMR(1)}");
+            Debug.Log($"New MMR after draw: {CalcMMR(0.5)}");
+            Debug.Log($"New MMR after loss: {CalcMMR(0)}");
+        }
     }
 
     // Finds list of joinable lobbies of type lobbyType
@@ -200,9 +205,7 @@ public class SteamLobbyManager : MonoBehaviour
 
     // creates a lobby of type lobbyType (casual or competitive)
     // returns created lobby, or null if an issue happened
-    private async Task<Lobby?> CreateLobby(string lobbyType)
-    {
-        const int MAX_PLAYERS = 2;
+    private async Task<Lobby?> CreateLobby(string lobbyType) { const int MAX_PLAYERS = 2;
         Lobby? nLobby = await Steamworks.SteamMatchmaking.CreateLobbyAsync(MAX_PLAYERS);
         if (!nLobby.HasValue)
         {
@@ -230,28 +233,44 @@ public class SteamLobbyManager : MonoBehaviour
         return lobby;
     }
 
-    // result param must be -1, 0, or 1 corresponding to loss, tie, or win respectively
+    // result param must be 0, 0.5, or 1 corresponding to loss, tie, or win respectively
     // opponentSteamId is the steamId of the opponent you are playing
     // returns new mmr for the player. returns null if something went wrong
-    private async Task<int?> CalcMMR(int result, SteamId opponentSteamId)
+    private async Task<int?> CalcMMR(double gameResult)
     {
-        Debug.Assert((result >= -1) && (result <= 1)); // ensure result is input correct
+        Debug.Assert(gameResult == 0 || gameResult == 0.5 || gameResult == 1); // ensure game outcome is expected
+        Debug.Assert(currLobby.MemberCount == 2); // The following code assumes there is exactly 2 members in lobby
 
         // TODO - Update this to better reflect the flow of the game with the game loop
         // i.e. not just the interface to show off that it works
         int? nCurrMMR = await FetchMMR(SteamClient.SteamId);
-        if (!nCurrMMR.HasValue)
+        int? nOppMMR = null;
+        foreach (Friend friend in currLobby.Members)
+        {
+            if(friend.Id != SteamClient.SteamId)
+            {
+                nOppMMR = await FetchMMR(friend.Id);
+                break;
+            }
+        }
+        if(!nCurrMMR.HasValue || !nOppMMR.HasValue)
         {
             Debug.Log("Error fetching mmr while calculating new mmr...");
             return null;
         }
-        int? mmr = (int)nCurrMMR;
-        return mmr;
+        int currMMR = (int)nCurrMMR;
+        int oppMMR = (int)nOppMMR;
 
-        // Use ELO to calculate the value of the new mmr
+        // Use ELO to calculate the value of the new mmr (what chess uses)
+        const int k = 32; // Max mmr gain or loss per game played (can be changed)
+        double exponent = (oppMMR - currMMR) / 400;
+        double expScore = 1 / (1 + Math.Pow(10, exponent));
 
-        // return new mmr 
+        int newMMR = (int)(currMMR + Math.Pow((double)k, exponent) * (gameResult - expScore));
+        return newMMR;
     }
+
+
     // fetch's player's mmr from the database
     // retruns either an int or null which reflects their mmr
     private async Task<int?> FetchMMR(SteamId steamID)
