@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Linq;
 using Unity.VisualScripting;
+using JetBrains.Annotations;
 
 // TODO - Make a LeaveLobby Function
 // TODO - look up how to properly use async method (I think we should never use void and instead return a task so that we can wait for this to finish)
@@ -53,7 +54,6 @@ public class SteamLobbyManager : MonoBehaviour
             Debug.Log(e);
         }
     }
-
     private void Start()
     {
         _networkManager = FindObjectOfType<NetworkManager>();
@@ -82,7 +82,45 @@ public class SteamLobbyManager : MonoBehaviour
     }
 
 
+    #region TempFunctionsForFunctionality
+    // functions in this region are meant for demoing the functionality of the matchmaking system while it is not in the game loop yet
+    public async void UpdateMMRWin()
+    {
+        Debug.Log("In Win Func");
+        int? newMMR = await CalcMMR(1);
+        if (!newMMR.HasValue)
+        {
+            Debug.Log("Could not get new mmr...");
+            return;
+        }
+        SendMMR((int)newMMR);
+    }
+    public async void UpdateMMRDraw()
+    {
+        Debug.Log("In Draw Func");
+        int? newMMR = await CalcMMR(0.5);
+        if (!newMMR.HasValue)
+        {
+            Debug.Log("Could not get new mmr...");
+            return;
+        }
+        SendMMR((int)newMMR);
 
+    }
+    public async void UpdateMMRLoss()
+    {
+        Debug.Log("In Loss Func");
+        int? newMMR = await CalcMMR(0);
+        if (!newMMR.HasValue)
+        {
+            Debug.Log("Could not get new mmr...");
+            return;
+        }
+        SendMMR((int)newMMR);
+
+    }
+
+    #endregion TempFunctionsForFunctionality
     // Calls general JoinLobby function for type casual
     public void JoinCasualLobby()
     {
@@ -139,12 +177,6 @@ public class SteamLobbyManager : MonoBehaviour
         // NOTE: We want to add even the host as a client to the server
         _clientServerInit.ChangeClientState();
 
-        if(currLobby.MemberCount == 2)
-        {
-            Debug.Log($"New MMR after win: {CalcMMR(1)}");
-            Debug.Log($"New MMR after draw: {CalcMMR(0.5)}");
-            Debug.Log($"New MMR after loss: {CalcMMR(0)}");
-        }
     }
 
     // Finds list of joinable lobbies of type lobbyType
@@ -167,8 +199,10 @@ public class SteamLobbyManager : MonoBehaviour
              * any lobby +- 50 (450-550 mmr) is considered acceptable and added to the list of lobbies
              * the lobbylist should also be sorted by range so that the closest in mmr val is first
              * the select and join function can also take into accound this and networking things (like ping) when deciding a lobby to join
+             * For the mmrRange of 200, at the outer limits of this range (+/- 200) the user has a 75% chance of winning or losing depending on which end
+             * Can be changed if we want 
              */
-            const int mmrRange = 50;
+            const int mmrRange = 200;
             // fetch player mmr
             int? nPlayerMMR = await FetchMMR(SteamClient.SteamId);
             if (!nPlayerMMR.HasValue)
@@ -262,11 +296,13 @@ public class SteamLobbyManager : MonoBehaviour
         int oppMMR = (int)nOppMMR;
 
         // Use ELO to calculate the value of the new mmr (what chess uses)
-        const int k = 32; // Max mmr gain or loss per game played (can be changed)
-        double exponent = (oppMMR - currMMR) / 400;
+        const double k = 50; // Max mmr gain or loss per game played (can be changed - ELO original used 32)
+        double exponent = (double)(oppMMR - currMMR) / 400;
         double expScore = 1 / (1 + Math.Pow(10, exponent));
 
-        int newMMR = (int)(currMMR + Math.Pow((double)k, exponent) * (gameResult - expScore));
+        double deltaMMR = k * (gameResult - expScore);
+        int newMMR = currMMR + (int)deltaMMR;
+
         return newMMR;
     }
 
@@ -296,28 +332,30 @@ public class SteamLobbyManager : MonoBehaviour
         return mmr;
     }
 
-    private IEnumerator SendMMR(int updatedMMR)
+    // sends a player's updated mmr to the database
+    private async void SendMMR(int updatedMMR)
     {
         string url = "http://129.146.86.26:18080/updateMMR";
-        // create json
         string json = "{" +
             "\"steamID\":" + SteamClient.SteamId + "," + 
             "\"mmr\":" + updatedMMR +
             "}";
         UnityWebRequest request = UnityWebRequest.Put(url, json);
-        request.SetRequestHeader("Content-Type", "application/json");
-        Debug.Log("Sending request...");
-        yield return request.SendWebRequest();
-        Debug.Log("Request sent, checkign result ...");
+        request.timeout = 10;
 
-        if(request.result != UnityWebRequest.Result.Success )
+        var operation = request.SendWebRequest();
+        while (!operation.isDone)
         {
-            Debug.Log($"Error sending web request to updata mmr: {request.error}");
-            yield break;
+            await Task.Yield();
         }
-        Debug.Log("Successfully updated MMR");
-    }
 
+        if(request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Could not send mmr... ");
+            return;
+        }
+        Debug.Log($"Successfully updated the mmr to: {updatedMMR}");
+    }
     
     private void OnApplicationQuit()
     {
