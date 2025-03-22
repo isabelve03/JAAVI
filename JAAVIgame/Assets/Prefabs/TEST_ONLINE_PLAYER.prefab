@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 8464646507261874888}
   - component: {fileID: 8313959185719585010}
   - component: {fileID: 3683661022637651095}
-  - component: {fileID: -6079058651204057009}
   - component: {fileID: -2569270116358860591}
   - component: {fileID: 5402843391025334}
   - component: {fileID: 8742718024395162136}
   - component: {fileID: 2581276641246651784}
+  - component: {fileID: 2584271508193362551}
   m_Layer: 0
   m_Name: TEST_ONLINE_PLAYER
   m_TagString: Untagged
@@ -184,7 +184,7 @@ BoxCollider2D:
   m_Offset: {x: 0.14312124, y: -10.81638}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.66, y: 0.5}
+    pivot: {x: 0.6709753, y: 0.5}
     oldSize: {x: 26.59375, y: 22.57606}
     newSize: {x: 59.88448, y: 32.3125}
     adaptiveTilingThreshold: 0.5
@@ -221,30 +221,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-6079058651204057009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6475511854894535488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f9657965380fa4cb4840dafb78c0eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: -2569270116358860591}
-  _networkObjectCache: {fileID: -2569270116358860591}
-  runSpeed: 5
-  jumpSpeed: 5
-  airJumpVal: 1
-  airDashSpeed2: 15
-  airDashTimer: 0
-  airDashDuration: 0.15
-  airDashDirection: none
-  airDashVal: 1
-  airJump: 0
 --- !u!114 &-2569270116358860591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +238,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: -6079058651204057009}
+  - {fileID: 0}
   - {fileID: 5402843391025334}
   - {fileID: 0}
   InitializedParentNetworkBehaviour: {fileID: 0}
@@ -379,3 +355,27 @@ MonoBehaviour:
   _interpolation: 2
   _clientAuthoritative: 1
   _sendToOwner: 0
+--- !u!114 &2584271508193362551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475511854894535488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab79469bf56dbc241b82fba8225c4ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: -2569270116358860591}
+  _networkObjectCache: {fileID: 0}
+  runSpeed: 5
+  jumpSpeed: 5
+  airJumpVal: 1
+  airDashSpeed2: 15
+  airDashTimer: 0
+  airDashDuration: 0.15
+  airDashDirection: none
+  airJump: 0
+  airDashVal: 1
