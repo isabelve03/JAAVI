@@ -127,6 +127,7 @@ public class SteamLobbyManager : MonoBehaviour
     
 
     // Calls general JoinLobby function for type competitve
+    // TODO - fix typo in name
     public void JoinCompetitveLobby()
     {
         const string lobbyTypeValue = "Competitive";
@@ -227,6 +228,7 @@ public class SteamLobbyManager : MonoBehaviour
     {
 
         // TODO - Implement better selection criteria
+        // TODO - Sort lobbylist by mmr (i.e. lowest skill gap lobby to highest) first and then implement network criteria
         // TODO - Something to think about: if none fit criteria from above then we will need to create a new lobby anyways...
         // How to refactor so we are not repeating the above code ^
 
