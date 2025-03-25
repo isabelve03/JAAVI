@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TEST_ONLINE_BATTLE.unity
     guid: 1db5744f75af89b45a5a55249852dc3b
+  - enabled: 1
+    path: Assets/Scenes/LocalMode.unity
+    guid: a8d9aa6b0003b1943902c88eb8c51c02
   m_configObjects: {}

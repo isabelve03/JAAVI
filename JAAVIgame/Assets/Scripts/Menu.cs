@@ -7,21 +7,23 @@ public class Menu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Battle");
     }
 
-    public void RestartGame()
+    public void QuitGame()
     {
-        SceneManager.LoadScene(0);
+        Application.Quit();
+        Debug.Log("The Game is Quitting...");
     }
 
     public void OnlineMode()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("CharacterSelect");
     }
 
-    public void CharacterSelect()
+    public void LocalMode()
     {
-        SceneManager.LoadScene(2);
+        GameModeManager.isLocalMode = true; // Remember the mode
+        SceneManager.LoadScene("CharacterSelect");
     }
 }
