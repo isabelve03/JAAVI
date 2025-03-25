@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Sends input direction
     public static event Action<Vector2> OnDirectionChanged;
-    public static event Action<string> OnAttackPressed;
+    public static event Action<string> OnAttackPressed = null;
 
     // Sends attack type
 
@@ -177,17 +177,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Attack1() 
+    private void Attack1()
     {
         bool attackPressed = false;
         bool attackLetgo = false;
 
         if (controllerID == 0) // Keyboard attack
         {
-            attackPressed = Input.GetButtonDown("KeyAttack1");
+            if(attackPressed = Input.GetButtonDown("KeyAttack1")){
+                //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be
+                GetComponent<Combat>().GetAttack("LightAttack");
+            }
             attackLetgo = Input.GetButtonUp("KeyAttack1");
             // Sends attack over to Combat script
-            OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be 
+            //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be 
         }
         else
         {

@@ -37,32 +37,30 @@ public class Combat : MonoBehaviour
 
     public void GetAttack(string attackType) //this is getting called every frame for some reason
     {
-        int l = GetComponent<AttackData>().jabDam;
-        Debug.Log("l");
-        //Debug.Log(attackType);
-        if(attackType == "StrongAttack") 
+        Debug.Log("Cringe");
+        if(attackType == "StrongAttack")
         {
             //put in the attackdata or you can check if it was a strong aerial and stuff like that inside
             //Debug.Log("Did strong attack");
         }
 
-        if(attackType == "LightAttack") 
-        {  
+        if(attackType == "LightAttack")
+        {
             //put in the attackdata or you can check if it was a light aerial and stuff like that inside
             //you can use movementInput.y to check if its not zero to add in aerial elements
             // then you can use the attack function to use the data from attack data
-           // Debug.Log("Did light attack");
+            //Debug.Log("Did light attack");
             //example
 
             if(isGrounded) //grounded attacks
-            { 
-                if(movementInput.y == 0) //stand still
+            {
+                if(movementInput.y == 0 && movementInput.x == 0) //stand still
                 {
-                    //Attack(GetComponent<AttackData>().jabDam);
+                    Attack(GetComponent<AttackData>().jabDam);
                 }
                 else if((movementInput.x <= Math.Abs(movementInput.y)) && movementInput.y > 0)
                 { 
-                    //Attack(gameObject.transform.GetComponent<AttackData>().uLightDam);
+                    //Attack(GetComponent<AttackData>().uLightDam);
                     //actually this is a bad example cause this one is if its in the air and not grounded
                 }
             }
@@ -187,7 +185,7 @@ public class Combat : MonoBehaviour
 //                 else if(Input.GetButtonDown("Fire2") && (faced direction != Input horizontal direction)){ //back special
 //                     Attack(gameObject.transform.parent.GetComponent<AttackData>().bAirDam);
 //                 }*/
-//             }            
+//             }      
 //         }
     }
 
@@ -224,14 +222,6 @@ public class Combat : MonoBehaviour
         if(attackZone != null){
             Gizmos.DrawWireSphere(attackZone.position, attackRange);
         }
-    }
-
-
-    public void calculateLag(){
-
-
-
-
     }
         //sample damage calculator
         //knockbackUnits = hitpoints * baseDamage * scaleDamage
