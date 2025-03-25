@@ -6,8 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class ScreenManagerNavigator : MonoBehaviour
 {
-    public void LoadScene(string sceneName)
+    public void StartGame()
     {
-        SceneManager.LoadScene(sceneName);
+        if (GameModeManager.isLocalMode)
+        {
+            SceneManager.LoadScene("LocalMode"); // Load local mode
+        }
+        else
+        {
+            SceneManager.LoadScene("OnlineMode"); // Load online mode
+        }
     }
+
 }
