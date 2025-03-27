@@ -18,6 +18,7 @@ public class Menu : MonoBehaviour
 
     public void OnlineMode()
     {
+        GameModeManager.isLocalMode = false; // Ensure that we know we are not going to local mode
         SceneManager.LoadScene("CharacterSelect");
     }
 
