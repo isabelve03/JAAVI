@@ -7,16 +7,23 @@ using UnityEngine;
 public class Combat : MonoBehaviour
 {
     private Vector2 movementInput;
-    public Transform attackZone; //circular hitbox for now
+    //public Transform attackZone; //circular hitbox for now
     public float attackRange = 0.5f; //will be set in AttackData once I implement more than one attack
     public LayerMask opponentLayers;
     private string playerTag;
+    private GameObject attackZone;
     //public bool inLag = false;
 
     //public bool isDead =  false;
     private bool isGrounded;
     public AttackData attackData;
     
+    void Start(){
+        attackZone = new GameObject("attackZone");
+        attackZone.transform.parent = transform;
+        attackZone.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f); // Sets the position relative to the parent
+    }
+
     private void OnEnable()
     {
         PlayerMovement.OnDirectionChanged += UpdateDirection;
@@ -35,16 +42,17 @@ public class Combat : MonoBehaviour
         isGrounded = GetComponent<BoxCollider2D>().IsTouchingLayers(LayerMask.GetMask("Ground"));
     }
 
-    public void GetAttack(string attackType) //this is getting called every frame for some reason
+    public void GetAttack(string attackType)
     {
-        Debug.Log("Cringe");
-        if(attackType == "StrongAttack")
-        {
+        attackZone.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f); // Sets the position relative to the parent
+        //if(attackType == "StrongAttack")
+        //{
             //put in the attackdata or you can check if it was a strong aerial and stuff like that inside
             //Debug.Log("Did strong attack");
-        }
+        //}
 
-        if(attackType == "LightAttack")
+        if(attackType == "LightAttack") //we are only going to develop for one kind of attack for the MVP
+        //we will add more attacks WHEN we continue working on this after the class is over :)
         {
             //put in the attackdata or you can check if it was a light aerial and stuff like that inside
             //you can use movementInput.y to check if its not zero to add in aerial elements
@@ -52,22 +60,24 @@ public class Combat : MonoBehaviour
             //Debug.Log("Did light attack");
             //example
 
-            if(isGrounded) //grounded attacks
-            {
-                if(movementInput.y == 0 && movementInput.x == 0) //stand still
-                {
+           // if(isGrounded) //grounded attacks
+           // {
+                //if(movementInput.y == 0 && movementInput.x == 0) //stand still
+                //{
+                    attackZone.transform.localPosition = attackZone.transform.localPosition + new Vector3(20.0f, 0.0f, 0.0f); //sets attack position
+                    attackRange = 0.9f; //sets attack range
                     Attack(GetComponent<AttackData>().jabDam);
-                }
-                else if((movementInput.x <= Math.Abs(movementInput.y)) && movementInput.y > 0)
-                { 
+                //}
+                //else if((movementInput.x <= Math.Abs(movementInput.y)) && movementInput.y > 0)
+                //{ 
                     //Attack(GetComponent<AttackData>().uLightDam);
                     //actually this is a bad example cause this one is if its in the air and not grounded
-                }
-            }
-            else
-            {
+                //}
+            //}
+            //else
+            //{
                 //all the nongrounded attacks here
-            }
+            //}
 
 
         }
@@ -201,9 +211,8 @@ public class Combat : MonoBehaviour
         //would be nice to write a script that allows me to drag and drop the hitbox for convenience
         //will have different types of hitboxes for different attacks
         //can get cute with it if I have enough time and have sweetspot and sourspot hitboxes for different attacks
-
         HashSet<GameObject> alreadyDamaged = new HashSet<GameObject>();
-        Collider2D[] hitOpponent = Physics2D.OverlapCircleAll(attackZone.position, attackRange, opponentLayers);
+        Collider2D[] hitOpponent = Physics2D.OverlapCircleAll(attackZone.transform.position, attackRange, opponentLayers);
         playerTag = gameObject.tag;
         foreach(Collider2D opponent in hitOpponent){
             if (alreadyDamaged.Contains(opponent.gameObject)) continue; //makes sure attack only damages opponent once
@@ -215,12 +224,11 @@ public class Combat : MonoBehaviour
         }
     }
 
-
     //draws a hitbox visualizer in scene mode
     void OnDrawGizmosSelected()
     {
         if(attackZone != null){
-            Gizmos.DrawWireSphere(attackZone.position, attackRange);
+            Gizmos.DrawWireSphere(attackZone.transform.position, attackRange);
         }
     }
         //sample damage calculator

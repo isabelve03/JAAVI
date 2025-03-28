@@ -197,7 +197,8 @@ public class PlayerMovement : MonoBehaviour
             attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2");
             attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
             // Sends attack over to Combat script
-            OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be 
+            GetComponent<Combat>().GetAttack("LightAttack");
+            //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be 
         }
 
         if (attackPressed)
