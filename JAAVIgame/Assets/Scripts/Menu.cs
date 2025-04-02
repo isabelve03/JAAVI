@@ -19,7 +19,7 @@ public class Menu : MonoBehaviour
     public void OnlineMode()
     {
         GameModeManager.isLocalMode = false; // Ensure that we know we are not going to local mode
-        SceneManager.LoadScene("CharacterSelect");
+        SceneManager.LoadScene("OnlineOptions");
     }
 
     public void LocalMode()
@@ -27,4 +27,11 @@ public class Menu : MonoBehaviour
         GameModeManager.isLocalMode = true; // Remember the mode
         SceneManager.LoadScene("CharacterSelect");
     }
+
+    // loads the start menu scene (i.e. for back button from different modes)
+    public void StartMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
+
 }

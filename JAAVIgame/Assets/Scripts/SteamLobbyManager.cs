@@ -28,6 +28,7 @@ public class SteamLobbyManager : MonoBehaviour
     private FishyFacepunch.FishyFacepunch _fishyFacepunch;
     private ClientServerInit _clientServerInit;
     private Lobby currLobby; // the curr lobby the user is in
+    private bool isConnected = false; // if user is connected to steam
 
     // while using test id for appId (480) the below strings ensure we find only our lobbies
     // TODO - delete this and all things asociated with (labeled as ON_APP_ID) when we receive our unique app id
@@ -355,7 +356,11 @@ public class SteamLobbyManager : MonoBehaviour
         }
         Debug.Log($"Successfully updated the mmr to: {updatedMMR}");
     }
-    
+   
+    public bool getConnectionStatus()
+    {
+        return isConnected;
+    }
     private void OnApplicationQuit()
     {
         Steamworks.SteamClient.Shutdown();
