@@ -185,8 +185,8 @@ public class PlayerMovement : MonoBehaviour
         if (controllerID == 0) // Keyboard attack
         {
             if(attackPressed = Input.GetButtonDown("KeyAttack1")){
-                //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be
-                GetComponent<Combat>().GetAttack("LightAttack");
+                OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be
+                //GetComponent<Combat>().GetAttack("LightAttack");
             }
             attackLetgo = Input.GetButtonUp("KeyAttack1");
             // Sends attack over to Combat script

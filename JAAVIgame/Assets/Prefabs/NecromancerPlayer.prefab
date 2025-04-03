@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7370708593264762718}
   - component: {fileID: 1538061533108010506}
   - component: {fileID: 992846204117598037}
+  - component: {fileID: 4575631130390409594}
   m_Layer: 7
   m_Name: NecromancerPlayer
   m_TagString: Untagged
@@ -30,9 +31,9 @@ Transform:
   m_GameObject: {fileID: 7210151685968932854}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.61, y: -0.89, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.05, y: 2.05, z: 2.05}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -210,5 +211,30 @@ MonoBehaviour:
   runSpeed: 5
   jumpSpeed: 6
   airJumpVal: 1
+  airDashSpeed2: 15
+  airDashTimer: 0
+  airDashDuration: 0.15
+  airDashDirection: none
   airJump: 1
-  hitPoints: 0
+  airDashVal: 1
+--- !u!95 &4575631130390409594
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7210151685968932854}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ac2cbe3d41be8414999d2f511409f029, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
