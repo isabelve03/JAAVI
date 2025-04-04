@@ -7,6 +7,7 @@ using UnityEngine;
 public class Combat : MonoBehaviour
 {
     private Vector2 movementInput;
+    private Vector2 direction;
     //public Transform attackZone; //circular hitbox for now
     public float attackRange = 0.5f; //will be set in AttackData once I implement more than one attack
     public LayerMask opponentLayers;
@@ -17,23 +18,18 @@ public class Combat : MonoBehaviour
     //public bool isDead =  false;
     private bool isGrounded;
     public AttackData attackData;
+
+    //attack data definitions
+    private int attackDamage;
+    private Vector2 baseKnockback;
+    private float scaledKnockback;
+
+
     
     void Start(){
         attackZone = new GameObject("attackZone");
         attackZone.transform.parent = transform;
         attackZone.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f); // Sets the position relative to the parent
-    }
-
-    private void OnEnable()
-    {
-        PlayerMovement.OnDirectionChanged += UpdateDirection;
-        PlayerMovement.OnAttackPressed += GetAttack;
-    }
-
-    private void OnDisable()
-    {
-        PlayerMovement.OnDirectionChanged -= UpdateDirection;
-        PlayerMovement.OnAttackPressed -= GetAttack;
     }
 
     private void UpdateDirection(Vector2 dir)
@@ -64,9 +60,12 @@ public class Combat : MonoBehaviour
            // {
                 //if(movementInput.y == 0 && movementInput.x == 0) //stand still
                 //{
-                    attackZone.transform.localPosition = attackZone.transform.localPosition + new Vector3(20.0f, 0.0f, 0.0f); //sets attack position
-                    attackRange = 0.9f; //sets attack range
-                    Attack(GetComponent<AttackData>().jabDam);
+                    attackZone.transform.localPosition = attackZone.transform.localPosition + GetComponent<AttackData>().jabHitbox; //sets attack position
+                    attackRange = GetComponent<AttackData>().jabRange; //sets attack range
+                    attackDamage = GetComponent<AttackData>().jabDam; //
+                    baseKnockback = GetComponent<AttackData>().jabBaseK;
+                    scaledKnockback = GetComponent<AttackData>().jabScaleK;
+                    Attack();
                 //}
                 //else if((movementInput.x <= Math.Abs(movementInput.y)) && movementInput.y > 0)
                 //{ 
@@ -201,7 +200,10 @@ public class Combat : MonoBehaviour
 
 
     //calls to apply knockback and damage to opponent characters
-    void Attack(int damage){
+    void Attack(){
+        //direction = transform.position;
+        //direction.Normalize();
+        //Debug.Log(direction);
         //animator.SetTrigger("Attack_Name");
 
         //am using both layers and tags.  can I do it with just one???
@@ -217,8 +219,9 @@ public class Combat : MonoBehaviour
         foreach(Collider2D opponent in hitOpponent){
             if (alreadyDamaged.Contains(opponent.gameObject)) continue; //makes sure attack only damages opponent once
             if(opponent.tag != playerTag){ //keeps attacking player from taking damage/knockback
-                opponent.GetComponent<Damage_Calculations>().TakeKnockback(); //still need to work on
-                opponent.GetComponent<Damage_Calculations>().TakeDamage(damage);
+                bool isFacingRight = GetComponent<PlayerMovement>().isFacingRight;
+                opponent.GetComponent<Damage_Calculations>().TakeKnockback(isFacingRight, baseKnockback, scaledKnockback);
+                opponent.GetComponent<Damage_Calculations>().TakeDamage(attackDamage);
                 alreadyDamaged.Add(opponent.gameObject);
             }
         }
