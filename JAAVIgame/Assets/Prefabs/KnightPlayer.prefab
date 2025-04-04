@@ -15,6 +15,10 @@ GameObject:
   - component: {fileID: 8313959185719585010}
   - component: {fileID: 3683661022637651095}
   - component: {fileID: 7762172962562113203}
+  - component: {fileID: 3543142731290346295}
+  - component: {fileID: 567178454895554864}
+  - component: {fileID: 7189677120685588435}
+  - component: {fileID: 7094378566386435505}
   m_Layer: 0
   m_Name: KnightPlayer
   m_TagString: Untagged
@@ -180,7 +184,7 @@ BoxCollider2D:
   m_Offset: {x: 0.14312124, y: -10.81638}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.66, y: 0.5}
+    pivot: {x: 0.6709753, y: 0.5}
     oldSize: {x: 26.59375, y: 22.57606}
     newSize: {x: 59.88448, y: 32.3125}
     adaptiveTilingThreshold: 0.5
@@ -236,5 +240,166 @@ MonoBehaviour:
   airDashTimer: 0
   airDashDuration: 0.15
   airDashDirection: none
-  airDashVal: 1
   airJump: 0
+  airDashVal: 1
+  isFacingRight: 1
+--- !u!114 &3543142731290346295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475511854894535488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc34309d1b11c44781584d67887c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jabHitbox: {x: 20, y: 0, z: 0}
+  jabRange: 0.9
+  jabDam: 11
+  jabBaseK: {x: 6, y: 4}
+  jabScaleK: 0.6
+  jabFrameStartup: 0
+  jabFrameDuration: 0
+  jabFrameLag: 0
+  fLightHitbox: {x: 0, y: 0, z: 0}
+  fLightRange: 0
+  fLightDam: 0
+  fLightBaseK: {x: 0, y: 0}
+  fLightScaleK: 0
+  fLightFrameStartup: 0
+  fLightFrameDuration: 0
+  fLightFrameLag: 0
+  dLightHitbox: {x: 0, y: 0, z: 0}
+  dLightRange: 0
+  dLightDam: 0
+  dLightBaseK: {x: 0, y: 0}
+  dLightScaleK: 0
+  dLightFrameStartup: 0
+  dLightFrameDuration: 0
+  dLightFrameLag: 0
+  uLightHitbox: {x: 0, y: 0, z: 0}
+  uLightRange: 0
+  uLightDam: 0
+  uLightBaseK: {x: 0, y: 0}
+  uLightScaleK: 0
+  uLightFrameStartup: 0
+  uLightFrameDuration: 0
+  uLightFrameLag: 0
+  fStrongHitbox: {x: 0, y: 0, z: 0}
+  fStrongRange: 0
+  fStrongDam: 0
+  fStrongBaseK: {x: 0, y: 0}
+  fStrongScaleK: 0
+  fStrongFrameStartup: 0
+  fStrongFrameDuration: 0
+  fStrongFrameLag: 0
+  dStrongHitbox: {x: 0, y: 0, z: 0}
+  dStrongRange: 0
+  dStrongDam: 0
+  dStrongBaseK: {x: 0, y: 0}
+  dStrongScaleK: 0
+  dStrongFrameStartup: 0
+  dStrongFrameDuration: 0
+  dStrongFrameLag: 0
+  uStrongHitbox: {x: 0, y: 0, z: 0}
+  uStrongRange: 0
+  uStrongDam: 0
+  uStrongBaseK: {x: 0, y: 0}
+  uStrongScaleK: 0
+  uStrongFrameStartup: 0
+  uStrongFrameDuration: 0
+  uStrongFrameLag: 0
+  dashAttackHitbox: {x: 0, y: 0, z: 0}
+  dashAttackRange: 0
+  dashAttackDam: 0
+  dashAttackBaseK: {x: 0, y: 0}
+  dashAttackScaleK: 0
+  dashAttackFrameStartup: 0
+  dashAttackFrameDuration: 0
+  dashAttackFrameLag: 0
+  nAirHitbox: {x: 0, y: 0, z: 0}
+  nAirRange: 0
+  nAirDam: 0
+  nAirBaseK: {x: 0, y: 0}
+  nAirScaleK: 0
+  nAirFrameStartup: 0
+  nAirFrameDuration: 0
+  nAirFrameLag: 0
+  fAirHitbox: {x: 0, y: 0, z: 0}
+  fAirRange: 0
+  fAirDam: 0
+  fAirBaseK: {x: 0, y: 0}
+  fAirScaleK: 0
+  fAirFrameStartup: 0
+  fAirFrameDuration: 0
+  fAirFrameLag: 0
+  bAirHitbox: {x: 0, y: 0, z: 0}
+  bAirRange: 0
+  bAirDam: 0
+  bAirBaseK: {x: 0, y: 0}
+  bAirScaleK: 0
+  bAirFrameStartup: 0
+  bAirFrameDuration: 0
+  bAirFrameLag: 0
+  uAirHitbox: {x: 0, y: 0, z: 0}
+  uAirRange: 0
+  uAirDam: 0
+  uAirBaseK: {x: 0, y: 0}
+  uAirScaleK: 0
+  uAirFrameStartup: 0
+  uAirFrameDuration: 0
+  uAirFrameLag: 0
+  dAirHitbox: {x: 0, y: 0, z: 0}
+  dAirRange: 0
+  dAirDam: 0
+  dAirBaseK: {x: 0, y: 0}
+  dAirScaleK: 0
+  dAirFrameStartup: 0
+  dAirFrameDuration: 0
+  dAirFrameLag: 0
+--- !u!114 &567178454895554864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475511854894535488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12abe0bdb3ce27645990a8b552d189ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 0.5
+  opponentLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  attackData: {fileID: 0}
+--- !u!114 &7189677120685588435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475511854894535488}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3db2041a3ee7a469aff64a91a71ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  damageTex: []
+--- !u!114 &7094378566386435505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475511854894535488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f188c5dc1bd12c409e06881951b33d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
