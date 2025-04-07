@@ -242,6 +242,7 @@ MonoBehaviour:
   airDashDirection: none
   airJump: 0
   airDashVal: 1
+  soundJump: {fileID: 8300000, guid: ebe76f6fad9ad40d7870d33ec462b1f1, type: 3}
   isFacingRight: 1
 --- !u!114 &3543142731290346295
 MonoBehaviour:

@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string airDashDirection = "none";
     [SerializeField] private int airJump;
     [SerializeField] private int airDashVal = 1;
+    [SerializeField] AudioClip soundJump;
+    AudioSource audioSource;
     private bool isBlocking = false;
     private bool isAttacking = false;
     //can be changed to be based on the player number (eg. player1, player2, player3) if we do not want all
@@ -50,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         playerBodyCollider = GetComponent<CapsuleCollider2D>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
 
         gravityScaleAtStart = playerCharacter.gravityScale;
     }
@@ -142,10 +145,13 @@ public class PlayerMovement : MonoBehaviour
         if (controllerID == 0) // Keyboard Jump
         {
             jumpPressed = Input.GetButtonDown("KeyboardJump");
+            Debug.Log("Jumped");
+            audioSource.PlayOneShot(soundJump);
         }
         else // Controller Jump
         {
             jumpPressed = Input.GetKeyDown("joystick " + controllerID + " button 0"); // A / X button
+            audioSource.PlayOneShot(soundJump);
         }
 
         if (jumpPressed)
