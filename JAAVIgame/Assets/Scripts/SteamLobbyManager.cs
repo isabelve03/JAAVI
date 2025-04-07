@@ -177,9 +177,14 @@ public class SteamLobbyManager : MonoBehaviour
             _clientServerInit.ChangeServerState();
 
 
+
+    }
+
+    // called to add the user as client (this spawns the character)
+    public void addUserAsClient()
+    {
         // NOTE: We want to add even the host as a client to the server
         _clientServerInit.ChangeClientState();
-
     }
 
     // Finds list of joinable lobbies of type lobbyType

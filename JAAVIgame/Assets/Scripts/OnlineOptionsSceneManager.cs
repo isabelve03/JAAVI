@@ -89,7 +89,9 @@ public class OnlineOptionsSceneManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1.0f);
         }
-            SceneManager.LoadScene("TEST_ONLINE_BATTLE"); // Load online mode
+        SceneManager.LoadScene("TEST_ONLINE_BATTLE"); // Load online mode
+
+        _steamLobbyManager.addUserAsClient();
     }
 
 
