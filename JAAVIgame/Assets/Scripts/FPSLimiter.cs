@@ -34,7 +34,6 @@ public class FPSLimiter : MonoBehaviour
         if (FPSLimit == 0.0) return;
 
         lastTime += TimeSpan.FromTicks((long) (TimeSpan.TicksPerSecond * (1.0 / FPSLimit))).Ticks; //should be 16.6667
-        Debug.Log(TimeSpan.FromTicks((long) (TimeSpan.TicksPerSecond * (1.0 / FPSLimit))).Ticks);
 
         var now = HighResolutionDateTime.UtcNow.Ticks;
 
