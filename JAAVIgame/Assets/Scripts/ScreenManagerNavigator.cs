@@ -14,7 +14,7 @@ public class ScreenManagerNavigator : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("OnlineMode"); // Load online mode
+            SceneManager.LoadScene("TEST_ONLINE_BATTLE"); // Load online mode
         }
     }
 

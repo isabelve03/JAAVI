@@ -28,6 +28,9 @@ public class SteamLobbyManager : MonoBehaviour
     private FishyFacepunch.FishyFacepunch _fishyFacepunch;
     private ClientServerInit _clientServerInit;
     private Lobby currLobby; // the curr lobby the user is in
+    private bool isConnected = false; // if user is connected to steam
+    private bool inLobby = false;
+    private bool inGame = false;
 
     // while using test id for appId (480) the below strings ensure we find only our lobbies
     // TODO - delete this and all things asociated with (labeled as ON_APP_ID) when we receive our unique app id
@@ -44,6 +47,7 @@ public class SteamLobbyManager : MonoBehaviour
         {
             if (Steamworks.SteamClient.RestartAppIfNecessary(appId)) return;
             if (!SteamClient.IsValid) Steamworks.SteamClient.Init(appId, true);
+            isConnected = true;
             
             Debug.Log($"Successfully logged in through steam... \n" +
                 $"Users Steam name: {SteamClient.Name}");
@@ -127,6 +131,7 @@ public class SteamLobbyManager : MonoBehaviour
     
 
     // Calls general JoinLobby function for type competitve
+    // TODO - fix typo in name
     public void JoinCompetitveLobby()
     {
         const string lobbyTypeValue = "Competitive";
@@ -160,6 +165,7 @@ public class SteamLobbyManager : MonoBehaviour
         }
 
         currLobby = (Lobby)nLobby;
+        inLobby = true;
         Debug.Log($"Lobby of type {currLobby.GetData(lobbyTypeKey)}");
         _fishyFacepunch.SetClientAddress(currLobby.Owner.Id.ToString());
 
@@ -171,9 +177,14 @@ public class SteamLobbyManager : MonoBehaviour
             _clientServerInit.ChangeServerState();
 
 
+
+    }
+
+    // called to add the user as client (this spawns the character)
+    public void addUserAsClient()
+    {
         // NOTE: We want to add even the host as a client to the server
         _clientServerInit.ChangeClientState();
-
     }
 
     // Finds list of joinable lobbies of type lobbyType
@@ -227,6 +238,7 @@ public class SteamLobbyManager : MonoBehaviour
     {
 
         // TODO - Implement better selection criteria
+        // TODO - Sort lobbylist by mmr (i.e. lowest skill gap lobby to highest) first and then implement network criteria
         // TODO - Something to think about: if none fit criteria from above then we will need to create a new lobby anyways...
         // How to refactor so we are not repeating the above code ^
 
@@ -353,7 +365,17 @@ public class SteamLobbyManager : MonoBehaviour
         }
         Debug.Log($"Successfully updated the mmr to: {updatedMMR}");
     }
-    
+   
+    public bool GetConnectionStatus()
+    {
+        return isConnected;
+    }
+
+    // returns true if connected to lobby and false otherwise
+    public bool GetLobbyStatus()
+    {
+        return inLobby;
+    }
     private void OnApplicationQuit()
     {
         Steamworks.SteamClient.Shutdown();
