@@ -14,12 +14,11 @@ public class NetworkAnimate : NetworkBehaviour
 
     public void Run(bool run)
     {
-        _animator.SetBool("run", run);
+        //_animator.SetBool("run", run);
     }
 
     public void Block(bool block)
     {
-        Debug.Log("In Block method");
         if (block)
         {
             Debug.Log("starting block");
@@ -27,6 +26,7 @@ public class NetworkAnimate : NetworkBehaviour
         }
         else
         {
+            Debug.Log("done block");
             _animator.SetTrigger("blockDone");
         }
     }
