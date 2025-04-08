@@ -106,7 +106,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             playerAnimator.SetBool("run", isMoving);  
 
             // network animate
-            _networkAnimate.Run(isMoving);
+            //_networkAnimate.Run(isMoving);
         }
 
     }
