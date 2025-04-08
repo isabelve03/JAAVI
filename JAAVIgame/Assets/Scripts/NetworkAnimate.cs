@@ -19,8 +19,10 @@ public class NetworkAnimate : NetworkBehaviour
 
     public void Block(bool block)
     {
+        Debug.Log("In Block method");
         if (block)
         {
+            Debug.Log("starting block");
             _animator.SetTrigger("block");
         }
         else
