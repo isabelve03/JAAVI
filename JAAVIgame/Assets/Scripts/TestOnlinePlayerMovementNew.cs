@@ -182,11 +182,17 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         {
             playerAnimator.SetTrigger("block");
             isBlocking = true;
+
+            // network animate
+            _networkAnimate.Block(isBlocking);
         }
         if (blockLetgo)
         {
             playerAnimator.SetTrigger("blockDone");
             isBlocking = false;
+
+            // network animate
+            _networkAnimate.Block(isBlocking);
         }
     }
 

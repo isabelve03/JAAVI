@@ -16,4 +16,16 @@ public class NetworkAnimate : NetworkBehaviour
     {
         _animator.SetBool("run", run);
     }
+
+    public void Block(bool block)
+    {
+        if (block)
+        {
+            _animator.SetTrigger("block");
+        }
+        else
+        {
+            _animator.SetTrigger("blockDone");
+        }
+    }
 }

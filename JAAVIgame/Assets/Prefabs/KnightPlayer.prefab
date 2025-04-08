@@ -15,6 +15,10 @@ GameObject:
   - component: {fileID: 8313959185719585010}
   - component: {fileID: 3683661022637651095}
   - component: {fileID: 7762172962562113203}
+  - component: {fileID: 3543142731290346295}
+  - component: {fileID: 567178454895554864}
+  - component: {fileID: 7189677120685588435}
+  - component: {fileID: 7094378566386435505}
   m_Layer: 0
   m_Name: KnightPlayer
   m_TagString: Untagged
