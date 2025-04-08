@@ -106,7 +106,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             playerAnimator.SetBool("run", isMoving);  
 
             // network animate
-            //_networkAnimate.Run(isMoving);
+            _networkAnimate.Run(isMoving);
         }
 
     }
@@ -221,6 +221,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         if (attackPressed)
         {
             playerAnimator.SetTrigger("attack1");
+            _networkAnimate.Attack1();
             isAttacking = true;
         }
         if (attackLetgo)

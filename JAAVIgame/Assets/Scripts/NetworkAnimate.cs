@@ -24,13 +24,16 @@ public class NetworkAnimate : NetworkBehaviour
     {
         if (block)
         {
-            Debug.Log("starting block");
             _networkAnimator.SetTrigger("block");
         }
         else
         {
-            Debug.Log("done block");
             _networkAnimator.SetTrigger("blockDone");
         }
+    }
+
+    public void Attack1()
+    {
+        _networkAnimator.SetTrigger("attack1");
     }
 }
