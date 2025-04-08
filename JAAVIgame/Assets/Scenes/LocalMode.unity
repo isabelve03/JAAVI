@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e27634984b72b4fa9bde4a804a2cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 7210151685968932854, guid: 7e353db44888c00469092f58b85ad384, type: 3}
+  playerPrefab: {fileID: 6475511854894535488, guid: 63ae886f4c44da443be076403a23f615, type: 3}
   playerListContainer: {fileID: 1150191353}
   playerNamePrefab: {fileID: 1460427928850107159, guid: af27f731496581545a5a25669519240b, type: 3}
   joinPromptText: {fileID: 368707370}
@@ -2440,7 +2440,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986826030}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
