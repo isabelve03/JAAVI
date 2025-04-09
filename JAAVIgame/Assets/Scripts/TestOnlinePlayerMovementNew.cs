@@ -48,7 +48,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         // We grab from the component 
         playerCharacter = GetComponent<Rigidbody2D>();
@@ -63,7 +63,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!base.IsOwner) return;
 
@@ -135,11 +135,14 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
                 // Reverse the current direction (scale) of the X-Axis
                 transform.localScale = new Vector2(Mathf.Sign(playerCharacter.velocity.x)*xScale, playerCharacter.transform.localScale.y);
                 //we use this value to determine knockback direction
-                if (playerCharacter.velocity.x > 0){
+                if (playerCharacter.velocity.x > 0)
+                {
                     isFacingRight = true;
                 }
-                else if(playerCharacter.velocity.x < 0){
+                else if (playerCharacter.velocity.x < 0)
+                {
                     isFacingRight = false;
+                }
             }
         }
     }
