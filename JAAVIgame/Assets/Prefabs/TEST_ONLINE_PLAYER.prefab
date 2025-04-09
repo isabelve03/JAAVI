@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 2584271508193362551}
   - component: {fileID: -4944727421190010581}
   - component: {fileID: -6769122457404684776}
+  - component: {fileID: -1138575802927069116}
   m_Layer: 0
   m_Name: TEST_ONLINE_PLAYER
   m_TagString: Untagged
@@ -516,3 +517,15 @@ MonoBehaviour:
   dAirFrameStartup: 0
   dAirFrameDuration: 0
   dAirFrameLag: 0
+--- !u!114 &-1138575802927069116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475511854894535488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15721925eb623e43b29bd02a37478fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

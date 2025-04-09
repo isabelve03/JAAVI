@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using FishNet.Connection;
 using FishNet.Object;
+using FishNet;
 
 public class TestOnlinePlayerMovementNew : NetworkBehaviour 
 {
@@ -218,6 +219,17 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             if(attackPressed = Input.GetButtonDown("KeyAttack1")){
                 //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be
                 GetComponent<Combat>().GetAttack("LightAttack");
+
+                int x;
+                if (InstanceFinder.IsServerStarted)
+                {
+                    x = 0;
+                }
+                else
+                {
+                    x = 1;
+                }
+                GetComponent<PlayerAttackLogicNetwork>().ServerBlock(x);
             }
             attackLetgo = Input.GetButtonUp("KeyAttack1");
             // Sends attack over to Combat script
