@@ -20,6 +20,9 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
     [SerializeField] private int airDashVal = 1;
     private bool isBlocking = false;
     private bool isAttacking = false;
+    //can be changed to be based on the player number (eg. player1, player2, player3) if we do not want all
+    //characters to be facing right at the start of the match
+    public bool isFacingRight = true; 
 
     float gravityScaleAtStart;
 
@@ -72,7 +75,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         AirDash();
         Block();
         Attack1();
-        Attack2();
+        //Attack2();
         // Attack3();
         // Ultimate();
     }
@@ -131,6 +134,12 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
                 
                 // Reverse the current direction (scale) of the X-Axis
                 transform.localScale = new Vector2(Mathf.Sign(playerCharacter.velocity.x)*xScale, playerCharacter.transform.localScale.y);
+                //we use this value to determine knockback direction
+                if (playerCharacter.velocity.x > 0){
+                    isFacingRight = true;
+                }
+                else if(playerCharacter.velocity.x < 0){
+                    isFacingRight = false;
             }
         }
     }
@@ -203,19 +212,19 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
         if (controllerID == 0) // Keyboard attack
         {
-            attackPressed = Input.GetButtonDown("KeyAttack1");
+            if(attackPressed = Input.GetButtonDown("KeyAttack1")){
+                //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be
+                GetComponent<Combat>().GetAttack("LightAttack");
+            }
             attackLetgo = Input.GetButtonUp("KeyAttack1");
-
             // Sends attack over to Combat script
-            OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be 
         }
         else
         {
             attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2");
             attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
-
             // Sends attack over to Combat script
-            OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be 
+            GetComponent<Combat>().GetAttack("LightAttack");
         }
 
         if (attackPressed)
@@ -242,7 +251,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             attackLetgo = Input.GetButtonUp("KeyAttack2");
 
             // Sends attack over to Combat script
-            OnAttackPressed?.Invoke("StrongAttack"); // This is for an example when we add three attacks and an ultimate to each character
+            GetComponent<Combat>().GetAttack("StrongAttack");
         }
         else
         {
@@ -250,7 +259,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
 
             // Sends attack over to Combat script
-            OnAttackPressed?.Invoke("StrongAttack"); 
+            GetComponent<Combat>().GetAttack("StrongAttack");
         }
 
         if (attackPressed)
@@ -262,7 +271,6 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         {
             isAttacking = false;
         }
-        
     }
 
     private void AirDash()
