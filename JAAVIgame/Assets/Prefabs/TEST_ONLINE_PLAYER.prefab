@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 8742718024395162136}
   - component: {fileID: 2581276641246651784}
   - component: {fileID: 2584271508193362551}
+  - component: {fileID: -4944727421190010581}
+  - component: {fileID: -6769122457404684776}
   m_Layer: 0
   m_Name: TEST_ONLINE_PLAYER
   m_TagString: Untagged
@@ -380,3 +382,137 @@ MonoBehaviour:
   airDashDirection: none
   airJump: 0
   airDashVal: 1
+  isFacingRight: 1
+--- !u!114 &-4944727421190010581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475511854894535488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12abe0bdb3ce27645990a8b552d189ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 0.5
+  opponentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  attackData: {fileID: 0}
+--- !u!114 &-6769122457404684776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475511854894535488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc34309d1b11c44781584d67887c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jabHitbox: {x: 0, y: 0, z: 0}
+  jabRange: 0
+  jabDam: 0
+  jabBaseK: {x: 0, y: 0}
+  jabScaleK: 0
+  jabFrameStartup: 0
+  jabFrameDuration: 0
+  jabFrameLag: 0
+  fLightHitbox: {x: 0, y: 0, z: 0}
+  fLightRange: 0
+  fLightDam: 0
+  fLightBaseK: {x: 0, y: 0}
+  fLightScaleK: 0
+  fLightFrameStartup: 0
+  fLightFrameDuration: 0
+  fLightFrameLag: 0
+  dLightHitbox: {x: 0, y: 0, z: 0}
+  dLightRange: 0
+  dLightDam: 0
+  dLightBaseK: {x: 0, y: 0}
+  dLightScaleK: 0
+  dLightFrameStartup: 0
+  dLightFrameDuration: 0
+  dLightFrameLag: 0
+  uLightHitbox: {x: 0, y: 0, z: 0}
+  uLightRange: 0
+  uLightDam: 0
+  uLightBaseK: {x: 0, y: 0}
+  uLightScaleK: 0
+  uLightFrameStartup: 0
+  uLightFrameDuration: 0
+  uLightFrameLag: 0
+  fStrongHitbox: {x: 0, y: 0, z: 0}
+  fStrongRange: 0
+  fStrongDam: 0
+  fStrongBaseK: {x: 0, y: 0}
+  fStrongScaleK: 0
+  fStrongFrameStartup: 0
+  fStrongFrameDuration: 0
+  fStrongFrameLag: 0
+  dStrongHitbox: {x: 0, y: 0, z: 0}
+  dStrongRange: 0
+  dStrongDam: 0
+  dStrongBaseK: {x: 0, y: 0}
+  dStrongScaleK: 0
+  dStrongFrameStartup: 0
+  dStrongFrameDuration: 0
+  dStrongFrameLag: 0
+  uStrongHitbox: {x: 0, y: 0, z: 0}
+  uStrongRange: 0
+  uStrongDam: 0
+  uStrongBaseK: {x: 0, y: 0}
+  uStrongScaleK: 0
+  uStrongFrameStartup: 0
+  uStrongFrameDuration: 0
+  uStrongFrameLag: 0
+  dashAttackHitbox: {x: 0, y: 0, z: 0}
+  dashAttackRange: 0
+  dashAttackDam: 0
+  dashAttackBaseK: {x: 0, y: 0}
+  dashAttackScaleK: 0
+  dashAttackFrameStartup: 0
+  dashAttackFrameDuration: 0
+  dashAttackFrameLag: 0
+  nAirHitbox: {x: 0, y: 0, z: 0}
+  nAirRange: 0
+  nAirDam: 0
+  nAirBaseK: {x: 0, y: 0}
+  nAirScaleK: 0
+  nAirFrameStartup: 0
+  nAirFrameDuration: 0
+  nAirFrameLag: 0
+  fAirHitbox: {x: 0, y: 0, z: 0}
+  fAirRange: 0
+  fAirDam: 0
+  fAirBaseK: {x: 0, y: 0}
+  fAirScaleK: 0
+  fAirFrameStartup: 0
+  fAirFrameDuration: 0
+  fAirFrameLag: 0
+  bAirHitbox: {x: 0, y: 0, z: 0}
+  bAirRange: 0
+  bAirDam: 0
+  bAirBaseK: {x: 0, y: 0}
+  bAirScaleK: 0
+  bAirFrameStartup: 0
+  bAirFrameDuration: 0
+  bAirFrameLag: 0
+  uAirHitbox: {x: 0, y: 0, z: 0}
+  uAirRange: 0
+  uAirDam: 0
+  uAirBaseK: {x: 0, y: 0}
+  uAirScaleK: 0
+  uAirFrameStartup: 0
+  uAirFrameDuration: 0
+  uAirFrameLag: 0
+  dAirHitbox: {x: 0, y: 0, z: 0}
+  dAirRange: 0
+  dAirDam: 0
+  dAirBaseK: {x: 0, y: 0}
+  dAirScaleK: 0
+  dAirFrameStartup: 0
+  dAirFrameDuration: 0
+  dAirFrameLag: 0
