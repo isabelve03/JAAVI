@@ -206,6 +206,18 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
+            #region RPCTest
+            int x;
+                if (InstanceFinder.IsServerStarted)
+                {
+                    x = 0;
+                }
+                else
+                {
+                    x = 1;
+                }
+                GetComponent<PlayerAttackLogicNetwork>().ServerBlock(x);
+            #endregion RPCTest
         }
     }
 
@@ -220,16 +232,6 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
                 //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be
                 GetComponent<Combat>().GetAttack("LightAttack");
 
-                int x;
-                if (InstanceFinder.IsServerStarted)
-                {
-                    x = 0;
-                }
-                else
-                {
-                    x = 1;
-                }
-                GetComponent<PlayerAttackLogicNetwork>().ServerBlock(x);
             }
             attackLetgo = Input.GetButtonUp("KeyAttack1");
             // Sends attack over to Combat script
