@@ -79,7 +79,7 @@ public class PlayerManager : MonoBehaviour
         // Create the player name UI
         GameObject newName = Instantiate(playerNamePrefab, playerListContainer);
         string playerType = (controllerID == 0) ? "Keyboard" : "Controller " + controllerID;
-        newName.GetComponent<Text>().text = "Player " + players.Count + " (" + playerType + ")";
+        newName.GetComponent<Text>().text = "Player " + players.Count;
     }
 }
 
