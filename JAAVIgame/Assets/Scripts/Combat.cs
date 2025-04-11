@@ -18,12 +18,12 @@ public class Combat : MonoBehaviour
     //public bool isDead =  false;
     private bool isGrounded;
     public AttackData attackData;
+    private bool blocked = false;
 
     //attack data definitions
     private int attackDamage;
     private Vector2 baseKnockback;
     private float scaledKnockback;
-
 
     
     void Start(){
@@ -218,13 +218,20 @@ public class Combat : MonoBehaviour
         playerTag = gameObject.tag;
         foreach(Collider2D opponent in hitOpponent){
             if (alreadyDamaged.Contains(opponent.gameObject)) continue; //makes sure attack only damages opponent once
-            if(opponent.tag != playerTag){ //keeps attacking player from taking damage/knockback
+            //if(opponent.tag != playerTag){ //keeps attacking player from taking damage/knockback
                 bool isFacingRight = GetComponent<PlayerMovement>().isFacingRight;
-                opponent.GetComponent<Damage_Calculations>().TakeKnockback(isFacingRight, baseKnockback, scaledKnockback);
+                if(opponent.GetComponent<PlayerMovement>().isBlocking == true){ //does not do knockback to opponent if they are blocking
+                    blocked = true; //this will knock back attacker after all damage calculations are run
+                    opponent.GetComponent<Damage_Calculations>().TakeKnockback(isFacingRight, baseKnockback, scaledKnockback);
+                }
                 opponent.GetComponent<Damage_Calculations>().TakeDamage(attackDamage);
                 alreadyDamaged.Add(opponent.gameObject);
-            }
+            //}
         }
+        if(blocked){ //knocks back user slightly after attacking blocked opponent
+            
+        }
+        blocked = false;
     }
 
     //draws a hitbox visualizer in scene mode

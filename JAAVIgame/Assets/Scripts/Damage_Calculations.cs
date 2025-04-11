@@ -26,6 +26,9 @@ public class Damage_Calculations : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if(GetComponent<PlayerMovement>().isBlocking == true){
+            damage = damage / 2; //reduces damage by half from a successful block
+        }
         currentHealth += damage;
     }
 }
