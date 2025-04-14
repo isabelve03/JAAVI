@@ -7,6 +7,7 @@ public class CharacterIconSelector : MonoBehaviour
 {
     public GameObject characterPrefab; // Assign the character prefab in the Inspector
     public Image selectionIndicator;   // Assign a UI Image (e.g., a border or highlight) to show selection
+    public int controllerID;    
 
     private void Start()
     {
@@ -18,7 +19,7 @@ public class CharacterIconSelector : MonoBehaviour
     private void OnIconClicked()
     {
         // Notify the CharacterSelectionManager that this character is selected
-        CharacterSelectionManager.Instance.SelectCharacter(characterPrefab);
+        CharacterSelectManagerLocal.Instance.SelectCharacter(controllerID, characterPrefab);
 
         // Highlight the selected icon
         HighlightIcon();

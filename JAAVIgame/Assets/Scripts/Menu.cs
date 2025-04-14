@@ -25,7 +25,7 @@ public class Menu : MonoBehaviour
     public void LocalMode()
     {
         GameModeManager.isLocalMode = true; // Remember the mode
-        SceneManager.LoadScene("CharacterSelect");
+        SceneManager.LoadScene("CharacterSelectLocal");
     }
 
     // loads the start menu scene (i.e. for back button from different modes)
