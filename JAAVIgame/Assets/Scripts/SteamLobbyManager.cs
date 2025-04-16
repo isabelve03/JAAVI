@@ -22,6 +22,7 @@ public class SteamLobbyManager : MonoBehaviour
 {
     #region Definitions
 
+    public static SteamLobbyManager Instance { get; private set; }
     [SerializeField] private uint appId;
     private const string lobbyTypeKey = "LobbyType";
     private NetworkManager _networkManager;

@@ -211,7 +211,7 @@ public class Combat : MonoBehaviour
         //need to figure out how to reverse hitbox when character turns around (position and launch angle)
         //need to figure out how to resize the hitbox for each different attack (probably not hard tbh)
         //would be nice to write a script that allows me to drag and drop the hitbox for convenience
-        //will have different types of hitboxes for different attacks
+        //will have different types of hitboxes for different attacktargets = new HashSet<GameObject>();s
         //can get cute with it if I have enough time and have sweetspot and sourspot hitboxes for different attacks
         HashSet<GameObject> alreadyDamaged = new HashSet<GameObject>();
         Collider2D[] hitOpponent = Physics2D.OverlapCircleAll(attackZone.transform.position, attackRange, opponentLayers);
