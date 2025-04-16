@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string airDashDirection = "none";
     [SerializeField] private int airJump;
     [SerializeField] private int airDashVal = 1;
+    public int hitStun = 0;
     public bool isBlocking = false;
     private bool isAttacking = false;
     //can be changed to be based on the player number (eg. player1, player2, player3) if we do not want all
@@ -56,9 +57,15 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (!isAlive) return;
-
+    { 
+        if (!isAlive){
+            hitStun = 0;
+            return;
+        }
+        if(hitStun > 0){ //takes away control of character while in hitstun frames
+            hitStun--;
+            return;
+        }
         Run();
         FlipSprite();
         Jump();
@@ -195,7 +202,6 @@ public class PlayerMovement : MonoBehaviour
         if (controllerID == 0) // Keyboard attack
         {
             if(attackPressed = Input.GetButtonDown("KeyAttack1")){
-                //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be
                 GetComponent<Combat>().GetAttack("LightAttack");
             }
             attackLetgo = Input.GetButtonUp("KeyAttack1");
@@ -203,10 +209,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2");
+            if(attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2")){
+                GetComponent<Combat>().GetAttack("LightAttack");
+            }
             attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
             // Sends attack over to Combat script
-            GetComponent<Combat>().GetAttack("LightAttack");
+            
         }
 
         if (attackPressed)
@@ -221,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-        private void Attack2() 
+    /*    private void Attack2() 
     {
         bool attackPressed = false;
         bool attackLetgo = false;
@@ -253,7 +261,7 @@ public class PlayerMovement : MonoBehaviour
             isAttacking = false;
         }
         
-    }
+    }*/
 
     private void AirDash()
     {
