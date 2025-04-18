@@ -164,6 +164,573 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_2
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 638
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41b5fa4b6a8a7874ca118d7ba6c62d55
+      internalID: 2019409140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_3
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 638
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c6a27e3ffd1134cb2907ad66cc16c5
+      internalID: 1406425441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_4
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 638
+        width: 34
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e59c6c6ae213c642a69e46d90a5c0c4
+      internalID: -1214438086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_5
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 638
+        width: 34
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ffff7f44bb77594cba8d9a219fb957d
+      internalID: -1496741103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_6
+      rect:
+        serializedVersion: 2
+        x: 1644
+        y: 638
+        width: 48
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcceadc19bc9acc458aa30269c639b2d
+      internalID: 184893046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_7
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 638
+        width: 63
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6643618c39471bf4d958722394aa6032
+      internalID: -139374339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_8
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 382
+        width: 76
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af498c71287d2644ca106799e6ca605c
+      internalID: -1444194238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_9
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 382
+        width: 85
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf314fefb4f1f2f4ca142031f4baefe9
+      internalID: -1890974233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_10
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 382
+        width: 47
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 807317d480a86cb41a9362915e625b99
+      internalID: -176656856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_11
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 412
+        width: 37
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0fc14a3eaea4704085475e9bcf10e0b
+      internalID: -1023732589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_12
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 382
+        width: 44
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 683969ce44078ca48977ac2ace92be2a
+      internalID: -1431413698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_13
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 407
+        width: 31
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14583c880ada42f44814e9deb6d87d29
+      internalID: -13146174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_14
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 382
+        width: 41
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e4d7d0ff61e6a5479752aecbd8b7a43
+      internalID: -138796651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_15
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 402
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 703fc0a011a9ba241aa204c4a7a20536
+      internalID: 1442914429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_16
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 382
+        width: 39
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc656d110b6fc0642b19f2883b116363
+      internalID: -2075057538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_17
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 398
+        width: 19
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b78d7b446b4514ba4607fc0e63c12a
+      internalID: -709820180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_18
+      rect:
+        serializedVersion: 2
+        x: 1645
+        y: 382
+        width: 36
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2d7fa2afcfc54a48a7c2ce6148ef2ec
+      internalID: -1295731003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_19
+      rect:
+        serializedVersion: 2
+        x: 1677
+        y: 393
+        width: 11
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a2cb6ebf8b6940468e6ccb3fc0cf7cf
+      internalID: 486808074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_20
+      rect:
+        serializedVersion: 2
+        x: 1903
+        y: 382
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e00c0f86727542499b93d27526e9203
+      internalID: -1349630136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_21
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74669209a0ecb6b4e98aa8ab4c4c59d6
+      internalID: 1373499043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_22
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1359d2587a005df48b058ab997110534
+      internalID: -251138725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_23
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f92489bb3e65714fba5c2ffcf433757
+      internalID: 2131246501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_24
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eea56622fe3bd14c988d4d9c9988e10
+      internalID: 1417671463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_25
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79f0ca184861bcd43af64ac80bca17c9
+      internalID: -1369654672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_26
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa70b50c269b1f46a40f14ee5116109
+      internalID: -777197845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_27
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1260bedf6b594d40935f4e2adbff053
+      internalID: 1208346159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic attack warlock_28
+      rect:
+        serializedVersion: 2
+        x: 1903
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc6ce04f6fecebc48a66dfa4980bc3d9
+      internalID: 486243446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -177,6 +744,33 @@ TextureImporter:
     nameFileIdTable:
       basic attack warlock_0: -10275158
       basic attack warlock_1: -621647148
+      basic attack warlock_10: -176656856
+      basic attack warlock_11: -1023732589
+      basic attack warlock_12: -1431413698
+      basic attack warlock_13: -13146174
+      basic attack warlock_14: -138796651
+      basic attack warlock_15: 1442914429
+      basic attack warlock_16: -2075057538
+      basic attack warlock_17: -709820180
+      basic attack warlock_18: -1295731003
+      basic attack warlock_19: 486808074
+      basic attack warlock_2: 2019409140
+      basic attack warlock_20: -1349630136
+      basic attack warlock_21: 1373499043
+      basic attack warlock_22: -251138725
+      basic attack warlock_23: 2131246501
+      basic attack warlock_24: 1417671463
+      basic attack warlock_25: -1369654672
+      basic attack warlock_26: -777197845
+      basic attack warlock_27: 1208346159
+      basic attack warlock_28: 486243446
+      basic attack warlock_3: 1406425441
+      basic attack warlock_4: -1214438086
+      basic attack warlock_5: -1496741103
+      basic attack warlock_6: 184893046
+      basic attack warlock_7: -139374339
+      basic attack warlock_8: -1444194238
+      basic attack warlock_9: -1890974233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

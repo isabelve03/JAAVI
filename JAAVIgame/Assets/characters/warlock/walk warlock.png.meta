@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,7 +121,448 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: walk warlock_0
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 638
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2386f9bdfe597a408ec7010b3220f38
+      internalID: -250537575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_1
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 639
+        width: 35
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e9c5271142fdb14db0efc8a5e95ef07
+      internalID: -681279962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_2
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 639
+        width: 37
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 982cdb22d6753134cbf2c26d983c536a
+      internalID: 832941629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_3
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 639
+        width: 39
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ec6833ffb3644540adef5c2eba195b8
+      internalID: -66135622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_4
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 639
+        width: 40
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca556b18743a3894691419a6c7c97549
+      internalID: -1857245591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_5
+      rect:
+        serializedVersion: 2
+        x: 1384
+        y: 639
+        width: 42
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc5ffa3bd2d48114583b670001510d8b
+      internalID: -190028499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_6
+      rect:
+        serializedVersion: 2
+        x: 1637
+        y: 639
+        width: 45
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 392cb9f7df1803a4faf43733594dd393
+      internalID: 141122908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_7
+      rect:
+        serializedVersion: 2
+        x: 1891
+        y: 639
+        width: 47
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc951bd33a179624ab2fb851ade0f3f9
+      internalID: -1539999806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_8
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 383
+        width: 49
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bc6e848332a2dc4090ca11a6729c48d
+      internalID: 639416564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_9
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 383
+        width: 51
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdc8adeafa5734340a4496b5f52f2781
+      internalID: -95411708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_10
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 383
+        width: 47
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d35e20f6fd5b2342bde03669df2c2cf
+      internalID: -1751397907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_11
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 383
+        width: 44
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d3f2423b371804e9e50e71e70f75f0
+      internalID: 515403602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_12
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 383
+        width: 40
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5673ea2b078dbce478f72279682f0ba2
+      internalID: -1736235948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_13
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 383
+        width: 37
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a17c44fd3c1eb4b9f36a88702f0905
+      internalID: 234638745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_14
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 382
+        width: 33
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23615eb7b9579b5459e115f4c397d911
+      internalID: 1094296852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_15
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 382
+        width: 33
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 003da97032cd2904388902478493a080
+      internalID: -1024134724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 126
+        width: 33
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a79f2ef19db784a40bb4269213a696b5
+      internalID: 1868325346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_17
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0be6acf47d86ee4bb46a5a04e6544f0
+      internalID: 664157107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_18
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 688aa3466f92bae4ead2d217eb0d889d
+      internalID: -189578432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_19
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 806322a63f55f7b4487a02c3c567bc03
+      internalID: 2062373315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk warlock_20
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 388bfeb5982ec114f844fe0d6b1932f1
+      internalID: -896368205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +573,28 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      walk warlock_0: -250537575
+      walk warlock_1: -681279962
+      walk warlock_10: -1751397907
+      walk warlock_11: 515403602
+      walk warlock_12: -1736235948
+      walk warlock_13: 234638745
+      walk warlock_14: 1094296852
+      walk warlock_15: -1024134724
+      walk warlock_16: 1868325346
+      walk warlock_17: 664157107
+      walk warlock_18: -189578432
+      walk warlock_19: 2062373315
+      walk warlock_2: 832941629
+      walk warlock_20: -896368205
+      walk warlock_3: -66135622
+      walk warlock_4: -1857245591
+      walk warlock_5: -190028499
+      walk warlock_6: 141122908
+      walk warlock_7: -1539999806
+      walk warlock_8: 639416564
+      walk warlock_9: -95411708
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

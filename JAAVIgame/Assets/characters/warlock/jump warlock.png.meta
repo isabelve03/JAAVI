@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,7 +121,679 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: jump warlock_0
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 894
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5302caffc7ce5ba40a2cca477771a728
+      internalID: -2002846270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_1
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 894
+        width: 30
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa9ca7c02ec62dd4c8e66c816e8ba7d6
+      internalID: -1042674246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_2
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 900
+        width: 10
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7256366f505c46b4cb482dc4e942d3b2
+      internalID: -1827839604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_3
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 895
+        width: 36
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c51a0f14b6fab040b1d0e768930e487
+      internalID: 1918910613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_4
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 895
+        width: 38
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62e9cde7611624b40a36aebd8159c58b
+      internalID: -914335296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_5
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 895
+        width: 39
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0455f55fd5a8044ea3fd28ec9fdf761
+      internalID: -1036786234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_6
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 895
+        width: 41
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 336e0f357ca17884bb63bb0aa2eee761
+      internalID: 292257669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_7
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 895
+        width: 42
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a2a96be07bb8c14e8d233f7d51717e1
+      internalID: -1242208816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_8
+      rect:
+        serializedVersion: 2
+        x: 1893
+        y: 895
+        width: 44
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac2c57806fbee0747b2403c122543a11
+      internalID: -89839147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_9
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 639
+        width: 47
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9442fdb15082aa4198ec07750d38ebe
+      internalID: -970852544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_10
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 640
+        width: 49
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4c7fbacdd8555c4785746757bb5439f
+      internalID: -1515304642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_11
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 640
+        width: 52
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b6a7e21fd0099478b210ca558b544a
+      internalID: 642282513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_12
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 640
+        width: 57
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c487a4bbb1b98984496730b3310ca476
+      internalID: 940649296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_13
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 640
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20a63298ea3ac5942b0c6939f8ee81a9
+      internalID: -14555375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_14
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 640
+        width: 65
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48e4e71013abbae4e8cfe44c49e40763
+      internalID: 516545943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_15
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 640
+        width: 69
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77cf66ed8fabe684abba2afbd7e4757d
+      internalID: 12290292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_16
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 640
+        width: 66
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e0353921e28e4648bbce5ea459b101e
+      internalID: -2083260305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_17
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 384
+        width: 65
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e172da9dfee4d74da9baf8fba110f62
+      internalID: -879866772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_18
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 384
+        width: 62
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb22ab5fe09e534cbbb6991b1a10dac
+      internalID: -1542499708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_19
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 384
+        width: 60
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8d1dff6216995b4798822f6f26a21b4
+      internalID: 882206210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_20
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 383
+        width: 58
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 998a8386f70041040959f7785df6acca
+      internalID: -1846639313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_21
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 383
+        width: 55
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc9fe7768b5a53448b4d87df53dfc056
+      internalID: 1541072686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_22
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 383
+        width: 52
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b92671587b0185458838ecc2eba3688
+      internalID: 2099846668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_23
+      rect:
+        serializedVersion: 2
+        x: 1635
+        y: 383
+        width: 51
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b69e6a9849b944f4d8aba9d822b32f49
+      internalID: -2011754072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_24
+      rect:
+        serializedVersion: 2
+        x: 1893
+        y: 383
+        width: 48
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f1e15266096e9042a148e1543a3d8e7
+      internalID: -1532626362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_25
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 127
+        width: 45
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a952eff6ef93ced4f9434e8726e3cda2
+      internalID: -1977695067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_26
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 127
+        width: 42
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb3f17187aafa9b47a906189b14af605
+      internalID: 1112948060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_27
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 127
+        width: 41
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71abc63b622114b4a90e1422dce559eb
+      internalID: 1092222682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_28
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 126
+        width: 38
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f2a31996e2879c47b1a401593fdea57
+      internalID: 2106911913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_29
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 126
+        width: 35
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4905bab3b2ba374cb494a7d3555f974
+      internalID: -949472753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_30
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20022bd46ef393b498b26b340daf1805
+      internalID: 2131266257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump warlock_31
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 126
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7995f8d1cf9b4249b3d09bc6922bf1f
+      internalID: 1577479884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +804,39 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jump warlock_0: -2002846270
+      jump warlock_1: -1042674246
+      jump warlock_10: -1515304642
+      jump warlock_11: 642282513
+      jump warlock_12: 940649296
+      jump warlock_13: -14555375
+      jump warlock_14: 516545943
+      jump warlock_15: 12290292
+      jump warlock_16: -2083260305
+      jump warlock_17: -879866772
+      jump warlock_18: -1542499708
+      jump warlock_19: 882206210
+      jump warlock_2: -1827839604
+      jump warlock_20: -1846639313
+      jump warlock_21: 1541072686
+      jump warlock_22: 2099846668
+      jump warlock_23: -2011754072
+      jump warlock_24: -1532626362
+      jump warlock_25: -1977695067
+      jump warlock_26: 1112948060
+      jump warlock_27: 1092222682
+      jump warlock_28: 2106911913
+      jump warlock_29: -949472753
+      jump warlock_3: 1918910613
+      jump warlock_30: 2131266257
+      jump warlock_31: 1577479884
+      jump warlock_4: -914335296
+      jump warlock_5: -1036786234
+      jump warlock_6: 292257669
+      jump warlock_7: -1242208816
+      jump warlock_8: -89839147
+      jump warlock_9: -970852544
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
