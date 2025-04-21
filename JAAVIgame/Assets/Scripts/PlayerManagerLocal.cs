@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManagerLocal : MonoBehaviour
 {
     public GameObject playerPrefab; // Assign your player prefab in Unity
     public Transform playerListContainer; // UI container for player names
@@ -45,42 +45,48 @@ public class PlayerManager : MonoBehaviour
     }
 
     void AddPlayer(int controllerID)
-{
-    // Only add the player if the controller is not already used
-    if (assignedControllers.Contains(controllerID))
     {
-        Debug.Log("Controller " + controllerID + " already assigned!");
-        return;
+        // Only add the player if the controller is not already used
+        if (assignedControllers.Contains(controllerID))
+        {
+            Debug.Log("Controller " + controllerID + " already assigned!");
+            return;
+        }
+
+        // Get the selected character for this controller
+        GameObject selectedCharacter = CharacterSelectManagerLocal.Instance.GetSelectedCharacter(controllerID);
+        if (selectedCharacter == null)
+        {
+            Debug.LogError("No character selected for controller " + controllerID);
+            return;
+        }
+
+        Vector3 spawnPosition = new Vector3(players.Count * 2, 0, 0);
+        GameObject newPlayer = Instantiate(selectedCharacter, spawnPosition, Quaternion.identity);
+
+        // Set the controllerID for the new player
+        PlayerMovement playerMovement = newPlayer.GetComponent<PlayerMovement>();
+        if (playerMovement != null)
+        {
+            playerMovement.SetControllerID(controllerID); // Correctly set the controller ID
+        }
+        else
+        {
+            Debug.LogError("PlayerMovement script not found on player prefab!");
+        }
+
+        assignedControllers.Add(controllerID); // Add controller to the list
+        players.Add(newPlayer); // Add player to the list
+
+        // Update UI
+        AddPlayerToUI(controllerID);
     }
-
-    Vector3 spawnPosition = new Vector3(players.Count * 2, 0, 0);
-    GameObject newPlayer = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
-
-    // Set the controllerID for the new player
-    PlayerMovement playerMovement = newPlayer.GetComponent<PlayerMovement>();
-    if (playerMovement != null)
-    {
-        playerMovement.SetControllerID(controllerID); // Correctly set the controller ID
-    }
-    else
-    {
-        Debug.LogError("PlayerMovement script not found on player prefab!");
-    }
-
-    assignedControllers.Add(controllerID); // Add controller to the list
-    players.Add(newPlayer); // Add player to the list
-
-    // Update UI
-    AddPlayerToUI(controllerID);
-}
 
     void AddPlayerToUI(int controllerID)
     {
         // Create the player name UI
         GameObject newName = Instantiate(playerNamePrefab, playerListContainer);
         string playerType = (controllerID == 0) ? "Keyboard" : "Controller " + controllerID;
-        newName.GetComponent<Text>().text = "Player " + players.Count + " (" + playerType + ")";
+        newName.GetComponent<Text>().text = "Player " + players.Count;
     }
 }
-
-
