@@ -61,7 +61,6 @@ public class OnlineOptionsSceneManager : MonoBehaviour
     {
         showSteamConnectingPanel();
         StartCoroutine(CheckSteamConnection());
-        Debug.Log("In initializeOnlineOptionsScene()");
     }
 
     private void GetUIElements()
@@ -69,7 +68,7 @@ public class OnlineOptionsSceneManager : MonoBehaviour
         GameObject uiRoot = GameObject.Find("UI");
         if(uiRoot == null)
         {
-            Debug.Log("UI GameObject could not be found...");
+            Debug.Log("UI GameObject could not be found...", this);
             return;
         }
 
@@ -89,7 +88,6 @@ public class OnlineOptionsSceneManager : MonoBehaviour
         steamConnectingPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
         lobbyConnectingPanel.SetActive(false);
-        Debug.Log("In showSteamConnectingPanel()");
     }
 
     private void showMainMenu()
@@ -98,7 +96,6 @@ public class OnlineOptionsSceneManager : MonoBehaviour
         steamConnectingPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
         lobbyConnectingPanel.SetActive(false);
-        Debug.Log("In showMainMenu()");
     }
 
     private void showLobbyConnecting()
@@ -107,26 +104,22 @@ public class OnlineOptionsSceneManager : MonoBehaviour
         steamConnectingPanel.SetActive(false);
         mainMenuPanel.SetActive(false);
         lobbyConnectingPanel.SetActive(true);
-        Debug.Log("In showLobbyConnecting()");
     }
 
     public void JoinGameButtonPressed()
     {
         showLobbyConnecting();
         StartCoroutine(CheckLobbyConnection());
-        Debug.Log("In JoinGameButtonPressed()");
     }
 
     private IEnumerator CheckSteamConnection()
     {
         while (!_steamLobbyManager.GetConnectionStatus())
         {
-            Debug.Log("In while loop");
             yield return new WaitForSeconds(0.5f);
         }
 
         showMainMenu();
-        Debug.Log("In CheckSteamConnection()");
     }
     private IEnumerator CheckLobbyConnection()
     {
@@ -137,7 +130,6 @@ public class OnlineOptionsSceneManager : MonoBehaviour
         SceneManager.LoadScene("TEST_ONLINE_BATTLE"); // Load online mode
 
         _steamLobbyManager.addUserAsClient();
-        Debug.Log("In CheckLobbyConnection()");
     }
 
 
