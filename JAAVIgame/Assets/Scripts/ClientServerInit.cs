@@ -3,6 +3,7 @@ using FishNet.Managing.Server;
 using FishNet.Transporting;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class ClientServerInit : MonoBehaviour
@@ -18,7 +19,7 @@ public class ClientServerInit : MonoBehaviour
         _networkManager = FindObjectOfType<NetworkManager>();  
         if( _networkManager == null)
         {
-            Debug.LogError("Could not find NetworkManager...");
+            UnityEngine.Debug.LogError("Could not find NetworkManager...");
             return;
         }
 
@@ -73,5 +74,6 @@ public class ClientServerInit : MonoBehaviour
             _networkManager.ClientManager.StopConnection();
         else
             _networkManager.ClientManager.StartConnection();
+        UnityEngine.Debug.Log("Changed client state");
     }
 }
