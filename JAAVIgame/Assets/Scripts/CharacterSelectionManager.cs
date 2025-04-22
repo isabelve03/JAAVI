@@ -46,7 +46,10 @@ public class CharacterSelectionManager : MonoBehaviour
         {
             Debug.LogError("Could not find Network Manager...");
         }
-
+        if(FindObjectOfType<OnlineManager>() == null)
+        {
+            Debug.LogWarning("Could not find Online Manager");
+        }
         _onlineGameManager = FindObjectOfType<OnlineManager>().GetComponent<OnlineGameManager>();
         if(_onlineGameManager == null)
         {
