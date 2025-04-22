@@ -128,7 +128,6 @@ public class OnlineOptionsSceneManager : MonoBehaviour
         }
         SceneManager.LoadScene("CharacterSelect"); // Load online mode
 
-        _steamLobbyManager.addUserAsClient();
     }
 
 

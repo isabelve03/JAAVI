@@ -9,6 +9,7 @@ public class OnlineGameManager : NetworkBehaviour
     public static OnlineGameManager Instance { get; private set; }
     public NetworkObject Player1 { get; private set; }
     public NetworkObject Player2 { get; private set; }
+    private int numPlayers = 0;
 
     private void Awake()
     {
@@ -22,8 +23,11 @@ public class OnlineGameManager : NetworkBehaviour
         }
     }
 
+    // client calls this to notify server it is in battle scene and ready to be spawned
+    [ServerRpc]
     public void RegisterPlayer(NetworkObject player, int playerIndex)
     {
+        Debug.Log($"In Register Player: {playerIndex}");
         if (!InstanceFinder.IsServerStarted) return; // Only allow the server to register players
 
         if (playerIndex == 1)
@@ -37,5 +41,6 @@ public class OnlineGameManager : NetworkBehaviour
             Debug.Log("Registered player 2");
         }
     }
+
 
 }
