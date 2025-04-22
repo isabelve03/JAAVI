@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     float gravityScaleAtStart;
 
     bool isAlive = true; // Starts true because the player is alive
+    bool cVert = false;
 
     // Sends input direction
     public static event Action<Vector2> OnDirectionChanged;
@@ -55,6 +56,15 @@ public class PlayerMovement : MonoBehaviour
         gravityScaleAtStart = playerCharacter.gravityScale;
     }
 
+    void FixedUpdate()
+    {
+        if(hitStun > 0){ //takes away control of character while in hitstun frames
+            hitStun--;
+            if(hitStun == 0){
+                cVert = true;
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     { 
@@ -62,24 +72,29 @@ public class PlayerMovement : MonoBehaviour
             hitStun = 0;
             return;
         }
-        if(hitStun > 0){ //takes away control of character while in hitstun frames
-            hitStun--;
-            return;
+        if(cVert == true){ //janky fix to make vertical and horizontal knockback consistent
+            playerCharacter.velocity = Vector2.zero;
+            cVert = false;
         }
-        Run();
-        FlipSprite();
-        Jump();
-        AirDash();
-        Block();
-        Attack1();
-        //Attack2();
-        // Attack3();
-        // Ultimate();
+        if(hitStun == 0){ //only control when character is not in hitstun
+            Run();
+            FlipSprite();
+            Jump();
+            AirDash();
+            Block();
+            Attack1();
+            //Attack2();
+            // Attack3();
+            // Ultimate();            
+        }
+
     }
 
     private void Run()
     {
-        float hMovement = 0;
+        float hMovement = 0f;
+        float maxSpeed = 10f;
+        
         if(!isBlocking)
         {
             if (controllerID == 0) // Keyboard Controls
@@ -103,9 +118,11 @@ public class PlayerMovement : MonoBehaviour
             playerCharacter.velocity = runVelocity;
 
             bool isMoving = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
-            playerAnimator.SetBool("run", isMoving);  
+            playerAnimator.SetBool("run", isMoving);
+            if (Mathf.Abs(playerCharacter.velocity.x) > maxSpeed){
+                playerCharacter.velocity = new Vector2(Mathf.Sign(playerCharacter.velocity.x) * maxSpeed, playerCharacter.velocity.y);
+            }
         }
-
     }
 
      private void FlipSprite()

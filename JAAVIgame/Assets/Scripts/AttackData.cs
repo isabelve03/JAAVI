@@ -12,7 +12,7 @@ public class AttackData : MonoBehaviour
     public float jabScaleK; //extra knockback attack will do based off of current damage
     public int jabFrameStartup; //how long it takes for the attack to start after you input it in frames
     public int jabFrameDuration; //how long the hitbox remains active for in frames
-    public int jabFrameLag; //how long it takes untiil you can input an action after the attack ends in frames
+    public int jabFrameLag; //how long it takes until you can input an action after the attack ends in frames
 
     //forward light
     public Vector3 fLightHitbox;

@@ -231,22 +231,18 @@ public class Combat : MonoBehaviour
             //}
         }
         if(blocked){ //knocks back user slightly after attacking blocked opponent
-            //damage×0.07+0.02
-            
-            pushDam = (attackDamage * 0.07f) + 0.02f; //does not work yet
+
+            //pushDam = (attackDamage * 0.07f) + 0.02f;
+            //would like to use a formula in the future to calculate block pushback but we need to get out a functioning product lol
             if(GetComponent<PlayerMovement>().isFacingRight){
-                Debug.Log("right");
-                //pushBack = Vector2.left * 10.0f;
-                pushBack = new Vector2(10.0f, 10.0f);
-                Debug.Log(pushBack);
+                pushBack = Vector2.left * 10.0f;
                 playerCharacter.AddForce(pushBack, ForceMode2D.Impulse);
+                GetComponent<PlayerMovement>().hitStun = 5; //adds hitstun to knockback victim
             }
             else{
-                Debug.Log("left");
-                //pushBack = Vector2.right * 10.0f;
-                pushBack = new Vector2(10.0f, 10.0f);
-                Debug.Log(pushBack);
+                pushBack = Vector2.right * 10.0f;
                 playerCharacter.AddForce(pushBack, ForceMode2D.Impulse);
+                GetComponent<PlayerMovement>().hitStun = 5; //adds hitstun to knockback victim
             }
         }
         blocked = false;

@@ -20,7 +20,8 @@ public class Damage_Calculations : MonoBehaviour
         scaledKB *= currentHealth * 0.12f; //Adds a knockback multiplier based on damage before attack hit
         attackAngle.x += scaledKB; //adds knockback multiplier to base knockback
         attackAngle.y += scaledKB; //adds knockback multiplier to base knockback
-        GetComponent<PlayerMovement>().hitStun = (int)Math.Round(Math.Max(attackAngle.x, attackAngle.y), 0, MidpointRounding.AwayFromZero) - 1; //adds hitstun to knockback victim
+        //GetComponent<PlayerMovement>().hitStun = (int)Math.Round(Math.Max(attackAngle.x, attackAngle.y), 0, MidpointRounding.AwayFromZero) - 1; //adds hitstun to knockback victim
+        GetComponent<PlayerMovement>().hitStun = 30; //janky fix because low on time
         if(!isFacingRight){ //switches direction of x knockback if player is facing left
             attackAngle.x = -attackAngle.x;
         }
