@@ -11,11 +11,12 @@ public class OnlineGameManager : NetworkBehaviour
 {
     public NetworkObject Player1 { get; private set; }
     public NetworkObject Player2 { get; private set; }
-    private NetworkConnection _playerConnection1;
-    private NetworkConnection _playerConnection2;
+    private NetworkConnection _playerConnection1; // host client
+    private NetworkConnection _playerConnection2; // regular client
     private int numPlayers = 0;
     private int numConns = 0;
     private NetworkManager _networkManager;
+    private CharacterSelectionManager _characterSelectionManager;
 
     private void Awake()
     {
@@ -28,16 +29,48 @@ public class OnlineGameManager : NetworkBehaviour
             Debug.Log("client");
         }
         _networkManager = FindObjectOfType<NetworkManager>();
-        _networkManager.SceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedStartScenes;
+        if(_networkManager == null )
+        {
+            Debug.LogError("Could not find network manager...");
+        }
+
+        _characterSelectionManager = FindObjectOfType<CharacterSelectionManager>();
+        if(_characterSelectionManager == null)
+        {
+            Debug.LogError("Could not find character selection manager...");
+        }
     }
 
-    private void SceneManager_OnClientLoadedStartScenes(NetworkConnection conn, bool asServer)
+    private void Start()
     {
-
+        NetworkObject player = _characterSelectionManager.SelectedNetworkCharacter;
+        bool isHost = false;
+        if (InstanceFinder.IsServerStarted)
+        {
+            isHost = true;
+        }
+        ServerPlayerRegister(player, isHost);
     }
 
-    private void OnDestroy()
+    [ServerRpc]
+    public void ServerPlayerRegister(NetworkObject player, bool isHost)
     {
-        _networkManager.SceneManager.OnClientLoadedStartScenes -= SceneManager_OnClientLoadedStartScenes;
+        if (isHost)
+        {
+            Player1 = player;
+            numPlayers++;
+            _playerConnection1 = _networkManager.GetComponent<OnlinePlayerConnections>()._connectionHost;
+            Debug.Log($"Registered player 1 (host) as {Player1.name}");
+            Debug.Log($"Registered player 1's connection (host) as {_playerConnection1}");
+        }
+        else
+        {
+            Player2 = player;
+            numPlayers++;
+            _playerConnection2 = _networkManager.GetComponent<OnlinePlayerConnections>()._connectionClient;
+            Debug.Log($"Registered player 2 (client) as {Player2.name}");
+            Debug.Log($"Registered player 2's connection (client) as {_playerConnection2}");
+
+        }
     }
 }
