@@ -46,8 +46,6 @@ public class OnlineGameManager : NetworkBehaviour
         base.OnStartClient();
         if (!IsClientInitialized)
             return;
-        if (!base.IsOwner)
-            return;
 
         ServerPlayerRegister(_characterSelectionManager.SelectedNetworkCharacter, InstanceFinder.IsServerStarted);
     }
