@@ -1,48 +1,18 @@
-using FishNet;
-using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// just here to be able to allow NetworkBehavour script to persist
 public class OnlineManager : MonoBehaviour
 {
-    public static OnlineManager Instance;
-    private void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            gameObject.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("Instance is not null");
-            Destroy(gameObject);
-        }
+        
     }
 
-    public void SpawnOnServer()
+    // Update is called once per frame
+    void Update()
     {
-            if (InstanceFinder.IsServerStarted)
-            {
-                NetworkObject netObj = GetComponent<NetworkObject>();
-                if(netObj == null)
-                {
-                    Debug.Log("Net obj is null");
-                }else if (!@netObj.IsSpawned)
-                {
-                    Debug.Log("Net obj is not null, but it is not spanwed");
-                }
-                else
-                {
-                    Debug.Log("Net obj is not null and is spawned");
-                }
-            }
-            else
-            {
-                Debug.Log("Server is not started");
-            }
+        
     }
 }

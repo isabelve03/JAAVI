@@ -182,20 +182,9 @@ public class SteamLobbyManager : MonoBehaviour
 
         // NOTE: We want to add even the host as a client to the server
         _clientServerInit.ChangeClientState();
-        SpawnOnlineManager();
     }
 
     // must be spawned after server is initialized
-    private void SpawnOnlineManager()
-    {
-        OnlineManager _onlineManager = FindObjectOfType<OnlineManager>();
-        if(_onlineManager == null)
-        {
-            Debug.Log("Could not find Online Manager");
-        }
-
-        _onlineManager.SpawnOnServer();
-    }
 
 
     // Finds list of joinable lobbies of type lobbyType
