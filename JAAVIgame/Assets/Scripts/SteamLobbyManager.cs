@@ -177,15 +177,10 @@ public class SteamLobbyManager : MonoBehaviour
         if (currLobby.IsOwnedBy(SteamClient.SteamId)) 
             _clientServerInit.ChangeServerState();
 
-        addUserAsClient();
-    }
-
-    // called to add the user as client (this spawns the character)
-    public void addUserAsClient()
-    {
         // NOTE: We want to add even the host as a client to the server
         _clientServerInit.ChangeClientState();
     }
+
 
     // Finds list of joinable lobbies of type lobbyType
     // Returns a null list if none exist
