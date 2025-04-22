@@ -145,6 +145,7 @@ public class SteamLobbyManager : MonoBehaviour
     // based on the lobbyTypeValue supplied
     // TODO - maybe change this return type to bool or something so if we fail to join lobby we can do something (i.e. retry or tell user that there was an error)
     private async void JoinLobby(string lobbyTypeValue)
+
     {
         Lobby[] lobbyList = await FetchLobbies(lobbyTypeValue);
         Lobby? nLobby = null;

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class OnlineManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static OnlineManager Instance;
+    private void Awake()
     {
-        
+        if(Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
