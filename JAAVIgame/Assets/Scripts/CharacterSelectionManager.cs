@@ -47,6 +47,19 @@ public class CharacterSelectionManager : MonoBehaviour
         }
     }
 
+    public void StartGame()
+    {
+        if(SelectedNetworkCharacter == null)
+        {
+            // TODO - Add something on the screen to let the user know to select a character
+            Debug.Log("Please select a character");
+            return;
+        }
+
+        SetCharacterToSpawn();
+        GameObject.Find("UI").transform.Find("Clickables").GetComponent<ScreenManagerNavigator>().StartGame();
+    }
+
     // button is the button which calls this function
     public void SelectCharacter(GameObject button)
     {
@@ -59,7 +72,7 @@ public class CharacterSelectionManager : MonoBehaviour
         Debug.Log("Character selected: " + SelectedNetworkCharacter.name);
     }
 
-    public void SetCharacterToSpawn()
+    private void SetCharacterToSpawn()
     {
         PlayerSpawner _playerSpawner = _networkManager.transform.GetComponent<PlayerSpawner>();
         if(_playerSpawner == null)
@@ -68,7 +81,7 @@ public class CharacterSelectionManager : MonoBehaviour
             return;
         }
 
-        if(SelectedCharacter == null)
+        if(SelectedNetworkCharacter == null)
         {
             // keep spawned character the defualt
             return;
