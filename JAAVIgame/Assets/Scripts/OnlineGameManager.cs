@@ -33,8 +33,8 @@ public class OnlineGameManager : NetworkBehaviour
 
     private void SceneManager_OnClientLoadedStartScenes(NetworkConnection conn, bool asServer)
     {
-        Debug.Log(conn);
-        Debug.Log(asServer);
+        Debug.Log($"Connection: {conn}");
+        Debug.Log($"As server? {asServer}");
     }
 
     private void OnDestroy()
