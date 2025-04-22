@@ -177,6 +177,7 @@ public class SteamLobbyManager : MonoBehaviour
         if (currLobby.IsOwnedBy(SteamClient.SteamId)) 
             _clientServerInit.ChangeServerState();
 
+        addUserAsClient();
     }
 
     // called to add the user as client (this spawns the character)

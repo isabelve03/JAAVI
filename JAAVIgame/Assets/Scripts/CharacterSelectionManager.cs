@@ -19,6 +19,7 @@ public class CharacterSelectionManager : MonoBehaviour
     public static CharacterSelectionManager Instance;
     public GameObject SelectedCharacter { get; private set; }
     public NetworkObject SelectedNetworkCharacter { get; private set; }
+    private OnlineGameManager _onlineGameManager;
 
     private void Awake()
     {
@@ -41,9 +42,15 @@ public class CharacterSelectionManager : MonoBehaviour
         }
 
         _networkManager = FindObjectOfType<NetworkManager>();
-        if(_networkManager == null)
+        if (_networkManager == null)
         {
             Debug.LogError("Could not find Network Manager...");
+        }
+
+        _onlineGameManager = FindObjectOfType<OnlineGameManager>();
+        if(_onlineGameManager == null)
+        {
+            Debug.LogError("Could not find Online Game Manager...");
         }
     }
 
@@ -74,19 +81,15 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void SetCharacterToSpawn()
     {
-        PlayerSpawner _playerSpawner = _networkManager.transform.GetComponent<PlayerSpawner>();
-        if(_playerSpawner == null)
+        int p_index;
+        if (InstanceFinder.IsServerStarted)
         {
-            Debug.LogError("Could not find Player Spawner...");
-            return;
+            p_index = 1;
         }
-
-        if(SelectedNetworkCharacter == null)
+        else
         {
-            // keep spawned character the defualt
-            return;
+            p_index = 2;
         }
-
-        _playerSpawner.SetPlayerPrefab(SelectedNetworkCharacter);
+        _onlineGameManager.ServerRegisterPlayer(SelectedNetworkCharacter, p_index);
     }
 }
