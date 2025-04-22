@@ -41,15 +41,13 @@ public class OnlineGameManager : NetworkBehaviour
         }
     }
 
-    private void Start()
+    public override void OnStartClient()
     {
-        NetworkObject player = _characterSelectionManager.SelectedNetworkCharacter;
-        bool isHost = false;
-        if (InstanceFinder.IsServerStarted)
-        {
-            isHost = true;
-        }
-        ServerPlayerRegister(player, isHost);
+        base.OnStartClient();
+        if (!IsClientInitialized)
+            return;
+
+        ServerPlayerRegister(_characterSelectionManager.SelectedNetworkCharacter, InstanceFinder.IsServerStarted);
     }
 
     [ServerRpc]
