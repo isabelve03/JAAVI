@@ -50,10 +50,37 @@ public class CharacterSelectionManager : MonoBehaviour
         {
             Debug.LogWarning("Could not find Online Manager");
         }
-        _onlineGameManager = FindObjectOfType<OnlineManager>().GetComponent<OnlineGameManager>();
-        if(_onlineGameManager == null)
+        if(FishNet.InstanceFinder.ClientManager == null)
         {
-            Debug.LogError("Could not find Online Game Manager...");
+            Debug.Log("Client Manager = null");
+        }
+        else
+        {
+            FishNet.InstanceFinder.ClientManager.OnClientConnectionState += ClientManager_OnClientConnectionState;
+        }
+    }
+
+    private void ClientManager_OnClientConnectionState(FishNet.Transporting.ClientConnectionStateArgs args)
+    {
+        if(args.ConnectionState == FishNet.Transporting.LocalConnectionState.Started)
+        {
+            if(OnlineManager.Instance != null)
+            {
+                _onlineGameManager = OnlineManager.FindObjectOfType<OnlineGameManager>();
+                if( _onlineGameManager == null)
+                {
+                    Debug.Log("Error finding online game manager on OnlineManager...");
+                }
+                Debug.Log("Successfully found Online Game Manager");
+            }
+            else
+            {
+                Debug.Log("Could not find Online Manager...");
+            }
+        }
+        else
+        {
+            Debug.Log("Local Connection not started");
         }
     }
 
@@ -66,7 +93,6 @@ public class CharacterSelectionManager : MonoBehaviour
             return;
         }
 
-        SetCharacterToSpawn();
         GameObject.Find("UI").transform.Find("Clickables").GetComponent<ScreenManagerNavigator>().StartGame();
     }
 
@@ -82,8 +108,21 @@ public class CharacterSelectionManager : MonoBehaviour
         Debug.Log("Character selected: " + SelectedNetworkCharacter.name);
     }
 
-    private void SetCharacterToSpawn()
+    public void SetCharacterToSpawn()
     {
+        if(_onlineGameManager == null)
+        {
+            if(FindObjectOfType<OnlineManager>() == null)
+            {
+                Debug.LogError("Could not find Online Manager...");
+            }
+            _onlineGameManager = FindObjectOfType<OnlineManager>().GetComponent<OnlineGameManager>();
+            if (_onlineGameManager == null)
+            {
+                Debug.LogError("Could not find Online Game Manager...");
+            }
+        }
+
         int p_index;
         if (InstanceFinder.IsServerStarted)
         {
@@ -94,5 +133,11 @@ public class CharacterSelectionManager : MonoBehaviour
             p_index = 2;
         }
         _onlineGameManager.ServerRegisterPlayer(SelectedNetworkCharacter, p_index);
+    }
+
+    private void OnDestroy()
+    {
+        FishNet.InstanceFinder.ClientManager.OnClientConnectionState -= ClientManager_OnClientConnectionState;
+
     }
 }

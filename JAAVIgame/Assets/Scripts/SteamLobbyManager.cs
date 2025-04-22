@@ -15,6 +15,7 @@ using Newtonsoft.Json.Linq;
 using System.Linq;
 using Unity.VisualScripting;
 using JetBrains.Annotations;
+using FishNet;
 
 // TODO - Make a LeaveLobby Function
 // TODO - look up how to properly use async method (I think we should never use void and instead return a task so that we can wait for this to finish)
@@ -174,11 +175,26 @@ public class SteamLobbyManager : MonoBehaviour
         // start FishNet server/client
 
         // if user is host we need to initialize the server for them
-        if (currLobby.IsOwnedBy(SteamClient.SteamId)) 
+        if (currLobby.IsOwnedBy(SteamClient.SteamId))
+        {
             _clientServerInit.ChangeServerState();
+        }
 
         // NOTE: We want to add even the host as a client to the server
         _clientServerInit.ChangeClientState();
+        SpawnOnlineManager();
+    }
+
+    // must be spawned after server is initialized
+    private void SpawnOnlineManager()
+    {
+        OnlineManager _onlineManager = FindObjectOfType<OnlineManager>();
+        if(_onlineManager == null)
+        {
+            Debug.Log("Could not find Online Manager");
+        }
+
+        _onlineManager.SpawnOnServer();
     }
 
 
