@@ -50,9 +50,10 @@ public class OnlineGameManager : NetworkBehaviour
         ServerPlayerRegister(_characterSelectionManager.SelectedNetworkCharacter, InstanceFinder.IsServerStarted);
     }
 
-    [ServerRpc]
+    [ServerRpc (RequireOwnership = false)]
     public void ServerPlayerRegister(NetworkObject player, bool isHost)
     {
+        Debug.Log("SERVER: In ServerPlayerRegister rpc");
         if (isHost)
         {
             Player1 = player;
