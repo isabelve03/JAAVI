@@ -17,10 +17,14 @@ public class OnlineGameManager : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
+        ServerSpawnCharacters();
+    }
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
         _networkManager = FindAnyObjectByType<NetworkManager>();
         _playerSpawner = _networkManager.GetComponent<OnlinePlayerSpawner>();
         _lobbyManager = _networkManager.GetComponent<LobbyManager>();
-        ServerSpawnCharacters();
     }
 
     [ServerRpc]
