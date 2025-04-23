@@ -17,8 +17,14 @@ public class OnlineGameManager : NetworkBehaviour
     private SceneManager _sceneManager;
 
 
+    public override void OnStartServer()
+    {
+        Debug.Log("On Start Server");
+        base.OnStartServer();
+    }
     public override void OnStartClient()
     {
+        Debug.Log("In OnStartClient");
         base.OnStartClient();
 
         if (!IsClientInitialized)
@@ -45,6 +51,7 @@ public class OnlineGameManager : NetworkBehaviour
 
     private void SceneManager_OnClientLoadedStartScenes(NetworkConnection conn, bool asServer)
     {
+        Debug.Log("In start scenes");
         if (!asServer)
             return;
 

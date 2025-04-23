@@ -1,3 +1,4 @@
+using FishNet;
 using FishNet.Managing;
 using FishNet.Managing.Server;
 using FishNet.Transporting;
@@ -69,11 +70,9 @@ public class ClientServerInit : MonoBehaviour
     public void ChangeClientState()
     {
         if (_networkManager == null) return;
-
         if (_clientState != LocalConnectionState.Stopped)
             _networkManager.ClientManager.StopConnection();
         else
             _networkManager.ClientManager.StartConnection();
-        UnityEngine.Debug.Log("Changed client state");
     }
 }

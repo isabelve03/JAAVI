@@ -183,6 +183,7 @@ public class SteamLobbyManager : MonoBehaviour
 
         // NOTE: We want to add even the host as a client to the server
         _clientServerInit.ChangeClientState();
+        Debug.Log($"Is client? {InstanceFinder.IsClientStarted}");
     }
 
     // must be spawned after server is initialized
