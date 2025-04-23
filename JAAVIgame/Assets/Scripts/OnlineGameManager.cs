@@ -33,6 +33,14 @@ public class OnlineGameManager : NetworkBehaviour
 
         // subscribe to callbacks
         _sceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedStartScenes;
+
+    }
+
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        NetworkObject nob = GetComponent<NetworkObject>();
+        Debug.Log($"Is spawned {nob.IsSpawned}");
     }
     public override void OnStartClient()
     {
@@ -49,10 +57,10 @@ public class OnlineGameManager : NetworkBehaviour
 
     private void SceneManager_OnClientLoadedStartScenes(NetworkConnection conn, bool asServer)
     {
+        Debug.Log($"Is client: {IsClientInitialized}");
         Debug.Log("In start scenes");
         if (!asServer)
             return;
-
         // in lobby
         if (!_leftLobbyScene)
         {
