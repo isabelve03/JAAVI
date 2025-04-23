@@ -74,7 +74,7 @@ public class LobbyManager : MonoBehaviour
     }
 
 
-    public void PlayerReady(bool isHost, bool ready)
+    public void PlayerReady(bool isHost, bool ready, NetworkObject player)
     {
         // ready will be false on first ready up, but true for all after
         if (!ready)
@@ -82,11 +82,11 @@ public class LobbyManager : MonoBehaviour
 
         if (isHost)
         {
-            _hostCharacter = FindObjectOfType<CharacterSelectionManager>().SelectedNetworkCharacter;
+            _hostCharacter = player;
         }
         else
         {
-            _hostCharacter = FindObjectOfType<CharacterSelectionManager>().SelectedNetworkCharacter;
+            _hostCharacter = player;
         }
 
         if(numReady == 2)

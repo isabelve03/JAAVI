@@ -14,10 +14,10 @@ public class OnlineCharacterSelector : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership =false)]
-    public void ServerPlayerIsReady(bool isHost, bool ready)
+    public void ServerPlayerIsReady(bool isHost, bool ready, NetworkObject player)
     {
         Debug.Log("SERVER");
-        _networkManager.GetComponent<LobbyManager>().PlayerReady(isHost, ready);
+        _networkManager.GetComponent<LobbyManager>().PlayerReady(isHost, ready, player);
     }
 
 }

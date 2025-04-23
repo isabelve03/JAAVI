@@ -51,7 +51,7 @@ public class CharacterSelectionManager : MonoBehaviour
         }
         bool isHost = InstanceFinder.IsServerStarted;
         _onlineCharacterSelector = FindObjectOfType<OnlineCharacterSelector>();
-        _onlineCharacterSelector.ServerPlayerIsReady(isHost, ready);
+        _onlineCharacterSelector.ServerPlayerIsReady(isHost, ready, SelectedNetworkCharacter);
         //_lobbyManager.PlayerReady(isHost, ready);
         ready = true;
     }
