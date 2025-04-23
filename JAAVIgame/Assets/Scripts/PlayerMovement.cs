@@ -16,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string airDashDirection = "none";
     [SerializeField] private int airJump;
     [SerializeField] private int airDashVal = 1;
-    private bool isBlocking = false;
+    public int hitStun = 0;
+    public bool isBlocking = false;
     private bool isAttacking = false;
     //can be changed to be based on the player number (eg. player1, player2, player3) if we do not want all
     //characters to be facing right at the start of the match
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     float gravityScaleAtStart;
 
     bool isAlive = true; // Starts true because the player is alive
+    bool cVert = false;
 
     // Sends input direction
     public static event Action<Vector2> OnDirectionChanged;
@@ -54,25 +56,45 @@ public class PlayerMovement : MonoBehaviour
         gravityScaleAtStart = playerCharacter.gravityScale;
     }
 
+    void FixedUpdate()
+    {
+        if(hitStun > 0){ //takes away control of character while in hitstun frames
+            hitStun--;
+            if(hitStun == 0){
+                cVert = true;
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
-    {
-        if (!isAlive) return;
+    { 
+        if (!isAlive){
+            hitStun = 0;
+            return;
+        }
+        if(cVert == true){ //janky fix to make vertical and horizontal knockback consistent
+            playerCharacter.velocity = Vector2.zero;
+            cVert = false;
+        }
+        if(hitStun == 0){ //only control when character is not in hitstun
+            Run();
+            FlipSprite();
+            Jump();
+            AirDash();
+            Block();
+            Attack1();
+            //Attack2();
+            // Attack3();
+            // Ultimate();            
+        }
 
-        Run();
-        FlipSprite();
-        Jump();
-        AirDash();
-        Block();
-        Attack1();
-        //Attack2();
-        // Attack3();
-        // Ultimate();
     }
 
     private void Run()
     {
-        float hMovement = 0;
+        float hMovement = 0f;
+        float maxSpeed = 10f;
+        
         if(!isBlocking)
         {
             if (controllerID == 0) // Keyboard Controls
@@ -96,9 +118,11 @@ public class PlayerMovement : MonoBehaviour
             playerCharacter.velocity = runVelocity;
 
             bool isMoving = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
-            playerAnimator.SetBool("run", isMoving);  
+            playerAnimator.SetBool("run", isMoving);
+            if (Mathf.Abs(playerCharacter.velocity.x) > maxSpeed){
+                playerCharacter.velocity = new Vector2(Mathf.Sign(playerCharacter.velocity.x) * maxSpeed, playerCharacter.velocity.y);
+            }
         }
-
     }
 
      private void FlipSprite()
@@ -195,7 +219,6 @@ public class PlayerMovement : MonoBehaviour
         if (controllerID == 0) // Keyboard attack
         {
             if(attackPressed = Input.GetButtonDown("KeyAttack1")){
-                //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be
                 GetComponent<Combat>().GetAttack("LightAttack");
             }
             attackLetgo = Input.GetButtonUp("KeyAttack1");
@@ -203,10 +226,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2");
+            if(attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2")){
+                GetComponent<Combat>().GetAttack("LightAttack");
+            }
             attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
             // Sends attack over to Combat script
-            GetComponent<Combat>().GetAttack("LightAttack");
+            
         }
 
         if (attackPressed)
@@ -221,7 +246,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-        private void Attack2() 
+    /*    private void Attack2() 
     {
         bool attackPressed = false;
         bool attackLetgo = false;
@@ -253,7 +278,7 @@ public class PlayerMovement : MonoBehaviour
             isAttacking = false;
         }
         
-    }
+    }*/
 
     private void AirDash()
     {
