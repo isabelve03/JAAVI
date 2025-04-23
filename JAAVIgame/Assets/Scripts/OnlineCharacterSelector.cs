@@ -13,13 +13,13 @@ public class OnlineCharacterSelector : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-        _networkManager = FindObjectOfType<NetworkManager>();
     }
 
     [ServerRpc(RequireOwnership =false)]
     public void ServerPlayerIsReady(bool isHost, bool ready, NetworkObject player)
     {
         Debug.Log("SERVER");
+        _networkManager = FindObjectOfType<NetworkManager>();
         _networkManager.GetComponent<LobbyManager>().PlayerReady(isHost, ready, player);
     }
 
