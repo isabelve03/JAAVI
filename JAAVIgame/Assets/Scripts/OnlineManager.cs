@@ -12,6 +12,7 @@ public class OnlineManager : MonoBehaviour
             Destroy(gameObject);
         }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
 
