@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
             AirDash();
             Block();
             Attack1();
+            Die();
             //Attack2();
             // Attack3();
             // Ultimate();            
@@ -334,6 +335,15 @@ public class PlayerMovement : MonoBehaviour
                 else if (airDashDirection == "left")
                     playerCharacter.velocity = Vector2.left * airDashSpeed2;
             }
+        }
+    }
+
+    private void Die() 
+    {
+        if(playerBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazards"))) 
+        {
+            isAlive = false;
+            FindObjectOfType<DeathBarrier>().ProcessPlayerDeath();
         }
     }
 }
