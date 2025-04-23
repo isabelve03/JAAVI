@@ -1375,6 +1375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _OnlineCharacterSelector: {fileID: 8730810933579247209, guid: a773a5baccbfb8f49b4a819e0d32aa93, type: 3}
   _OnlineLobbyHelper: {fileID: 3010771486447971325, guid: ac2281258f90cf342b61af40ce24e5c8, type: 3}
+  _OnlineGameManager: {fileID: 5154607976096438256, guid: d1799d9aa9f7098448686c08c9987f0b, type: 3}
 --- !u!1 &1685815834
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class LobbyManager : MonoBehaviour
     public NetworkObject _clientCharacter {  get; private set; }
     [SerializeField] NetworkObject _OnlineCharacterSelector;
     [SerializeField] NetworkObject _OnlineLobbyHelper;
+    [SerializeField] NetworkObject _OnlineGameManager;
 
     private void Awake()
     {
@@ -93,7 +94,24 @@ public class LobbyManager : MonoBehaviour
         {
             Debug.Log($"Host Character: {_hostCharacter.name}");
             Debug.Log($"Client Character: {_clientCharacter.name}");
+            LoadBattleScene();
         }
+    }
+    private void LoadBattleScene()
+    {
+        SceneLoadData sld = new SceneLoadData("TEST_ONLINE_BATTLE");
+        sld.ReplaceScenes = ReplaceOption.All;
+        _networkManager.SceneManager.LoadGlobalScenes(sld);
+
+        bool asServer = false;
+        NetworkConnection conn = _clientConnection;
+        if (InstanceFinder.IsServerStarted)
+        {
+            asServer = true;
+            conn = _hostConnection;
+        }
+        NetworkObject nob = _networkManager.GetPooledInstantiated(_OnlineGameManager, asServer);
+        _networkManager.ServerManager.Spawn(nob, conn);
     }
 
     private void OnDestroy()

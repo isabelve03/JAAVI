@@ -11,68 +11,10 @@ using UnityEngine.Timeline;
 
 public class OnlineGameManager : NetworkBehaviour
 {
-    private int numReady = 0; // tracks number of players ready
-    private bool _leftLobbyScene = false; // changes to true when lobby scene is left
-    private NetworkManager _networkManager;
-    private SceneManager _sceneManager;
-
-
-    private void Awake()
-    {
-        _networkManager = FindObjectOfType<NetworkManager>();
-        if(_networkManager == null)
-        {
-            Debug.LogWarning("Could not find Network Manager...");
-        }
-
-        _sceneManager = FindObjectOfType<SceneManager>();
-        if(_sceneManager == null)
-        {
-            Debug.LogWarning("Could not find Scene Manager...");
-        }
-
-        // subscribe to callbacks
-        _sceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedStartScenes;
-
-    }
-
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
-        NetworkObject nob = GetComponent<NetworkObject>();
-        Debug.Log($"Is spawned {nob.IsSpawned}");
-    }
     public override void OnStartClient()
     {
-        Debug.LogWarning("In OnStartClient");
         base.OnStartClient();
-
-        if (!IsClientInitialized)
-        {
-            Debug.LogWarning("Client not initialized, returning...");
-            return;
-        }
-
-    }
-
-    private void SceneManager_OnClientLoadedStartScenes(NetworkConnection conn, bool asServer)
-    {
-        Debug.Log($"Is client: {IsClientInitialized}");
-        Debug.Log("In start scenes");
-        if (!asServer)
-            return;
-        // in lobby
-        if (!_leftLobbyScene)
-        {
-            numReady++;
-            Debug.Log($"Connection: {conn} is player #{numReady}");
-        }
-    }
-
-    private void OnDestroy()
-    {
-        // unsubscribe from callbacks
-        _sceneManager.OnClientLoadedStartScenes -= SceneManager_OnClientLoadedStartScenes;
+        Debug.Log("On start client");
     }
 }
 
