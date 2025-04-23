@@ -17,22 +17,8 @@ public class OnlineGameManager : NetworkBehaviour
     private SceneManager _sceneManager;
 
 
-    public override void OnStartServer()
+    private void Awake()
     {
-        Debug.Log("On Start Server");
-        base.OnStartServer();
-    }
-    public override void OnStartClient()
-    {
-        Debug.Log("In OnStartClient");
-        base.OnStartClient();
-
-        if (!IsClientInitialized)
-        {
-            Debug.LogWarning("Client not initialized, returning...");
-            return;
-        }
-
         _networkManager = FindObjectOfType<NetworkManager>();
         if(_networkManager == null)
         {
@@ -47,6 +33,18 @@ public class OnlineGameManager : NetworkBehaviour
 
         // subscribe to callbacks
         _sceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedStartScenes;
+    }
+    public override void OnStartClient()
+    {
+        Debug.LogWarning("In OnStartClient");
+        base.OnStartClient();
+
+        if (!IsClientInitialized)
+        {
+            Debug.LogWarning("Client not initialized, returning...");
+            return;
+        }
+
     }
 
     private void SceneManager_OnClientLoadedStartScenes(NetworkConnection conn, bool asServer)

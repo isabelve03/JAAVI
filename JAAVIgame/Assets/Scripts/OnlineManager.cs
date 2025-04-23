@@ -1,3 +1,4 @@
+using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,11 @@ public class OnlineManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        if(GetComponent<NetworkObject>() == null)
+        {
+            Debug.LogError("No Network Object on OnlineManager");
+            return;
+        }
     }
 
 
