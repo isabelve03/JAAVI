@@ -22,26 +22,9 @@ public class CharacterSelectionManager : MonoBehaviour
     public NetworkObject SelectedNetworkCharacter { get; private set; }
     private bool ready = false; // tracks if player has clicked start/ready (and is valid)
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
-        }
-        else
-        {
-            Destroy(gameObject); // Ensure only one instance exists
-        }
-    }
 
     private void Start()
     {
-        if(!string.Equals(SceneManager.GetActiveScene().name, "CharacterSelect"))
-        {
-            Destroy(this);
-        }
-
         _networkManager = FindObjectOfType<NetworkManager>();
         if (_networkManager == null)
         {
