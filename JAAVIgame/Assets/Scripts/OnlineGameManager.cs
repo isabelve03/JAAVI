@@ -20,7 +20,7 @@ public class OnlineGameManager : NetworkBehaviour
         ServerSpawnCharacters();
     }
 
-    [ServerRpc(RequireOwnership =false)]
+    [ServerRpc]
     private void ServerSpawnCharacters()
     {
         _networkManager = FindAnyObjectByType<NetworkManager>();
