@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Managing;
 using Steamworks.Data;
+using FishNet.Managing.Scened;
 
 public class OnlineGameManager : NetworkBehaviour
 {
@@ -13,9 +14,10 @@ public class OnlineGameManager : NetworkBehaviour
     public NetworkObject Player2 { get; private set; }
     private NetworkConnection _playerConnection1; // host client
     private NetworkConnection _playerConnection2; // regular client
-    private int numPlayers = 0;
+    private int numReady = 0; // num people clicked start/ready button
     private int numConns = 0;
     private NetworkManager _networkManager;
+    private SceneManager _sceneManager;
     private CharacterSelectionManager _characterSelectionManager;
 
     private void Awake()
@@ -39,6 +41,12 @@ public class OnlineGameManager : NetworkBehaviour
         {
             Debug.LogError("Could not find character selection manager...");
         }
+
+        _sceneManager = _networkManager.SceneManager;
+        if( _sceneManager == null)
+        {
+            Debug.LogError("Could not find scene manager");
+        }
     }
 
     public override void OnStartClient()
@@ -50,6 +58,27 @@ public class OnlineGameManager : NetworkBehaviour
         ServerPlayerRegister(_characterSelectionManager.SelectedNetworkCharacter, InstanceFinder.IsServerStarted);
     }
 
+    [ServerRpc]
+    public void ServerReadyToStartGame(bool clicked)
+    {
+        // clicked will be false if 1st time clicking, else will be true
+        if (!clicked)
+        {
+            // increment if first time clicking ready/start
+            numReady++;
+        }
+
+        if (numReady == 2)
+            LoadBattleScene();
+    }
+
+    [ServerRpc]
+    private void LoadBattleScene()
+    {
+        SceneLoadData sld = new SceneLoadData("TEST_ONLINE_BATTLE");
+        sld.Options.AllowStacking = false; // replaces the existing scene
+        _sceneManager.LoadGlobalScenes(sld);
+    }
     [ServerRpc (RequireOwnership = false)]
     public void ServerPlayerRegister(NetworkObject player, bool isHost)
     {

@@ -19,6 +19,8 @@ public class CharacterSelectionManager : MonoBehaviour
     public static CharacterSelectionManager Instance;
     public GameObject SelectedCharacter { get; private set; }
     public NetworkObject SelectedNetworkCharacter { get; private set; }
+    private OnlineGameManager _onlineGameManager;
+    private bool ready = false; // tracks if player has clicked start/ready (and is valid)
 
     private void Awake()
     {
@@ -45,6 +47,13 @@ public class CharacterSelectionManager : MonoBehaviour
         {
             Debug.LogError("Could not find Network Manager...");
         }
+
+        if(FindObjectOfType<OnlineManager>() == null)
+        {
+            Debug.LogError("Could not find OnlineManager");
+            return;
+        }
+        _onlineGameManager = FindObjectOfType<OnlineManager>().GetComponent<OnlineGameManager>();
     }
 
     public void StartGame()
@@ -56,7 +65,8 @@ public class CharacterSelectionManager : MonoBehaviour
             return;
         }
 
-        GameObject.Find("UI").transform.Find("Clickables").GetComponent<ScreenManagerNavigator>().StartGame();
+        _onlineGameManager.ServerReadyToStartGame(ready);
+        ready = true;
     }
 
     // button is the button which calls this function
