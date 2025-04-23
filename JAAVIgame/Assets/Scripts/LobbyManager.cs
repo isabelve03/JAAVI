@@ -52,6 +52,9 @@ public class LobbyManager : MonoBehaviour
         SceneLoadData sld = new SceneLoadData("CharacterSelect");
         sld.Options.AllowStacking = false;
         _networkManager.SceneManager.LoadGlobalScenes(sld);
+
+        SceneUnloadData sud = new SceneUnloadData("OnlineOptions");
+        _networkManager.SceneManager.UnloadGlobalScenes(sud);
     }
 
     private void OnDestroy()
