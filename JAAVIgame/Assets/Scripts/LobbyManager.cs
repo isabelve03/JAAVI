@@ -5,6 +5,7 @@ using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -53,12 +54,15 @@ public class LobbyManager : MonoBehaviour
     private void LoadCharacterSelect()
     {
         SceneLoadData sld = new SceneLoadData("CharacterSelect");
-        sld.Options.AllowStacking = false;
+        sld.ReplaceScenes = ReplaceOption.All;
         _networkManager.SceneManager.LoadGlobalScenes(sld);
 
+        /*
         SceneUnloadData sud = new SceneUnloadData("OnlineOptions");
         _networkManager.SceneManager.UnloadGlobalScenes(sud);
+        */
     }
+
 
     public void PlayerReady(bool isHost, bool ready)
     {
