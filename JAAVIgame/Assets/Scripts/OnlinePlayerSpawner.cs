@@ -27,7 +27,14 @@ public class OnlinePlayerSpawner : MonoBehaviour
     {
         Vector3 position;
         Quaternion rotation;
-        SetSpawn(_playerPrefab.transform, out position, out rotation);
+        if(playerPrefab == null)
+        {
+            Debug.Log("Player prefab is null");
+            return;
+        }
+        Debug.Log($"Prefabe: {playerPrefab.name}");
+        Debug.Log($"transform: {playerPrefab.transform}");
+        SetSpawn(playerPrefab.transform, out position, out rotation);
 
         NetworkObject nob = _networkManager.GetPooledInstantiated(playerPrefab, position, rotation, InstanceFinder.IsServerStarted);
         _networkManager.ServerManager.Spawn(nob, conn);
