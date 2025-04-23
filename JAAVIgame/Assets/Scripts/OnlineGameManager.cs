@@ -19,17 +19,13 @@ public class OnlineGameManager : NetworkBehaviour
         base.OnStartClient();
         ServerSpawnCharacters();
     }
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
-        _networkManager = FindAnyObjectByType<NetworkManager>();
-        _playerSpawner = _networkManager.GetComponent<OnlinePlayerSpawner>();
-        _lobbyManager = _networkManager.GetComponent<LobbyManager>();
-    }
 
     [ServerRpc]
     private void ServerSpawnCharacters()
     {
+        _networkManager = FindAnyObjectByType<NetworkManager>();
+        _playerSpawner = _networkManager.GetComponent<OnlinePlayerSpawner>();
+        _lobbyManager = _networkManager.GetComponent<LobbyManager>();
         Debug.Log("SERVER: Spawning characters");
         NetworkObject hostCharacter = _lobbyManager._hostCharacter;
         NetworkObject clientCharacter = _lobbyManager._clientCharacter;
