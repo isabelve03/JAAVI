@@ -1,6 +1,7 @@
 using FishNet.Connection;
 using FishNet.Managing;
 using FishNet.Managing.Scened;
+using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,11 @@ using UnityEngine;
 public class LobbyManager : MonoBehaviour
 {
     private NetworkManager _networkManager;
-    private int numConns = 0;
+    private int numReady = 0;
     public NetworkConnection _hostConnection { get; private set; }
     public NetworkConnection _clientConnection {  get; private set; }
+    public NetworkObject _hostCharacter {  get; private set; }
+    public NetworkObject _clientCharacter {  get; private set; }
 
     private void Awake()
     {
@@ -28,16 +31,16 @@ public class LobbyManager : MonoBehaviour
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "OnlineOptions")
             return;
 
-        numConns++;
-        if(numConns == 1)
+        numReady++;
+        if(numReady == 1)
         {
             _hostConnection = conn;
             Debug.Log("Host connection set");
-        }else if(numConns == 2)
+        }else if(numReady == 2)
         {
             _clientConnection = conn;
             Debug.Log("Client connection set");
-            numConns = 0;
+            numReady = 0;
             LoadCharacterSelect();
         }
         else
@@ -55,6 +58,28 @@ public class LobbyManager : MonoBehaviour
 
         SceneUnloadData sud = new SceneUnloadData("OnlineOptions");
         _networkManager.SceneManager.UnloadGlobalScenes(sud);
+    }
+
+    public void PlayerReady(bool isHost, bool ready)
+    {
+        // ready will be false on first ready up, but true for all after
+        if (!ready)
+            numReady++;
+
+        if (isHost)
+        {
+            _hostCharacter = GetComponent<CharacterSelectionManager>().SelectedNetworkCharacter;
+        }
+        else
+        {
+            _clientCharacter = GetComponent<CharacterSelectionManager>().SelectedNetworkCharacter;
+        }
+
+        if(numReady == 2)
+        {
+            Debug.Log($"Host Character: {_hostCharacter.name}");
+            Debug.Log($"Client Character: {_clientCharacter.name}");
+        }
     }
 
     private void OnDestroy()
