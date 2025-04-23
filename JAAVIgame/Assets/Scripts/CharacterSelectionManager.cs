@@ -14,21 +14,17 @@ using Unity.VisualScripting;
 using System.Drawing;
 using FishNet.Managing.Server;
 
-public class CharacterSelectionManager : NetworkBehaviour
+public class CharacterSelectionManager : MonoBehaviour
 {
     private NetworkManager _networkManager;
     private LobbyManager _lobbyManager;
     public static CharacterSelectionManager Instance;
     public GameObject SelectedCharacter { get; private set; }
     public NetworkObject SelectedNetworkCharacter { get; private set; }
+    private OnlineCharacterSelector _onlineCharacterSelector;
     private bool ready = false; // tracks if player has clicked start/ready (and is valid)
 
 
-    public override void OnStartClient()
-    {
-        base.OnStartClient();
-        Debug.Log("On start client");
-    }
     private void Start()
     {
         _networkManager = FindObjectOfType<NetworkManager>();
@@ -42,6 +38,7 @@ public class CharacterSelectionManager : NetworkBehaviour
         {
             Debug.LogError("Could not find Lobby Manager");
         }
+
     }
 
     public void StartGame()
@@ -53,22 +50,10 @@ public class CharacterSelectionManager : NetworkBehaviour
             return;
         }
         bool isHost = InstanceFinder.IsServerStarted;
-        ServerPlayerReady(isHost, ready);
-        _lobbyManager.PlayerReady(isHost, ready);
+        _onlineCharacterSelector = FindObjectOfType<OnlineCharacterSelector>();
+        _onlineCharacterSelector.ServerPlayerIsReady(isHost, ready);
+        //_lobbyManager.PlayerReady(isHost, ready);
         ready = true;
-    }
-
-    [ServerRpc]
-    private void ServerPlayerReady(bool isHost, bool ready)
-    {
-        Debug.Log($"SERVER: isHost: {isHost}, first time? {!ready}");
-    }
-
-    [ObserversRpc]
-    private void ClientPlayerReady(bool isHost, bool ready)
-    {
-
-        Debug.Log($"CLIENT: isHost: {isHost}, first time? {!ready}");
     }
 
     // button is the button which calls this function

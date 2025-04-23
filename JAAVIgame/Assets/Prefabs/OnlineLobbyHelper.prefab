@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1111153143460075494
+--- !u!1 &3528312147741865195
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3310631731254529552}
-  - component: {fileID: -979137664863528375}
-  - component: {fileID: 8730810933579247209}
+  - component: {fileID: 9104242900981233147}
+  - component: {fileID: 6617400745746654829}
+  - component: {fileID: 3010771486447971325}
   m_Layer: 0
-  m_Name: OnlineCharacterSelector
+  m_Name: OnlineLobbyHelper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3310631731254529552
+--- !u!4 &9104242900981233147
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111153143460075494}
+  m_GameObject: {fileID: 3528312147741865195}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,28 +33,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-979137664863528375
+--- !u!114 &6617400745746654829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111153143460075494}
+  m_GameObject: {fileID: 3528312147741865195}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 606ccb144240a8549836b06c633fd541, type: 3}
+  m_Script: {fileID: 11500000, guid: cda3498b61325164c93c58cefab43573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 255
-  _addedNetworkObject: {fileID: 8730810933579247209}
+  _addedNetworkObject: {fileID: 3010771486447971325}
   _networkObjectCache: {fileID: 0}
---- !u!114 &8730810933579247209
+--- !u!114 &3010771486447971325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111153143460075494}
+  m_GameObject: {fileID: 3528312147741865195}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
@@ -92,7 +92,7 @@ MonoBehaviour:
   _teleportThreshold: 1
   <PrefabId>k__BackingField: 65535
   <SpawnableCollectionId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 13037580360381176779
+  <AssetPathHash>k__BackingField: 8597515975178286571
   <SceneId>k__BackingField: 0
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}

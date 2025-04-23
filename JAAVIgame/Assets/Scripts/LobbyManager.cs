@@ -17,6 +17,7 @@ public class LobbyManager : MonoBehaviour
     public NetworkObject _hostCharacter {  get; private set; }
     public NetworkObject _clientCharacter {  get; private set; }
     [SerializeField] NetworkObject _OnlineCharacterSelector;
+    [SerializeField] NetworkObject _OnlineLobbyHelper;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class LobbyManager : MonoBehaviour
         // subscribe to callbacks
         _networkManager.SceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedScenes;
     }
+
     private void SceneManager_OnClientLoadedScenes(NetworkConnection conn, bool asServer)
     {
         if (!asServer)
@@ -33,6 +35,8 @@ public class LobbyManager : MonoBehaviour
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "OnlineOptions")
             return;
         numReady++;
+
+
         if(numReady == 1)
         {
             _hostConnection = conn;
