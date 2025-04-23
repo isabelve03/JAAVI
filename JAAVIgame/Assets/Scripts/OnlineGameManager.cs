@@ -14,7 +14,7 @@ public class OnlineGameManager : NetworkBehaviour
     public NetworkObject Player2 { get; private set; }
     private NetworkConnection _playerConnection1; // host client
     private NetworkConnection _playerConnection2; // regular client
-    private int numReady = 0; // num people clicked start/ready button
+    private int numReady = 0; // num people clicked start/ready button (used for both lobby and character select screens)
     private int numPlayers = 0;
     private NetworkManager _networkManager;
     private SceneManager _sceneManager;
@@ -47,8 +47,14 @@ public class OnlineGameManager : NetworkBehaviour
         {
             Debug.LogError("Could not find scene manager");
         }
+
+        _sceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedStartScenes;
     }
 
+    private void SceneManager_OnClientLoadedStartScenes(NetworkConnection conn, bool asServer)
+    {
+        Debug.Log("Scene Loaded...");
+    }
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -58,6 +64,16 @@ public class OnlineGameManager : NetworkBehaviour
         ServerPlayerRegister(_characterSelectionManager.SelectedNetworkCharacter, InstanceFinder.IsServerStarted);
     }
 
+    [ServerRpc]
+    public void ServerLobbyJoined()
+    {
+        numPlayers++;
+        if(numPlayers == 2)
+        {
+            numPlayers = 0;
+            LoadScene("CharacterSelect");
+        }
+    }
     [ServerRpc]
     public void ServerReadyToStartGame(bool clicked)
     {
@@ -69,13 +85,13 @@ public class OnlineGameManager : NetworkBehaviour
         }
 
         if (numReady == 2)
-            LoadBattleScene();
+            LoadScene("TEST_ONLINE_BATTLE");
     }
 
     [ServerRpc]
-    private void LoadBattleScene()
+    private void LoadScene(string sceneName)
     {
-        SceneLoadData sld = new SceneLoadData("TEST_ONLINE_BATTLE");
+        SceneLoadData sld = new SceneLoadData(sceneName);
         sld.Options.AllowStacking = false; // replaces the existing scene
         _sceneManager.LoadGlobalScenes(sld);
     }
@@ -100,5 +116,10 @@ public class OnlineGameManager : NetworkBehaviour
             Debug.Log($"Registered player 2's connection (client) as {_playerConnection2}");
 
         }
+    }
+
+    private void OnDestroy()
+    {
+        _sceneManager.OnClientLoadedStartScenes -= SceneManager_OnClientLoadedStartScenes;
     }
 }

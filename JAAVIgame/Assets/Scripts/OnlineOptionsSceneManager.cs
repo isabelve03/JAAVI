@@ -12,6 +12,7 @@ public class OnlineOptionsSceneManager : MonoBehaviour
     private GameObject lobbyConnectingPanel;
     private SteamLobbyManager _steamLobbyManager;
     private Scene scene;
+    public Action<bool> LobbyJoined;
 
     private void Awake()
     {
@@ -126,8 +127,7 @@ public class OnlineOptionsSceneManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1.0f);
         }
-        SceneManager.LoadScene("CharacterSelect"); // Load online mode
-
+        LobbyJoined.Invoke(true);
     }
 
 
