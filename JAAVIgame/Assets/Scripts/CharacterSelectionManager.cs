@@ -65,7 +65,7 @@ public class CharacterSelectionManager : MonoBehaviour
             return;
         }
 
-        _onlineGameManager.ServerReadyToStartGame(ready);
+        //_onlineGameManager.ServerReadyToStartGame(ready);
         ready = true;
     }
 
