@@ -72,11 +72,11 @@ public class LobbyManager : MonoBehaviour
 
         if (isHost)
         {
-            _hostCharacter = GetComponent<CharacterSelectionManager>().SelectedNetworkCharacter;
+            _hostCharacter = FindObjectOfType<CharacterSelectionManager>().SelectedNetworkCharacter;
         }
         else
         {
-            _clientCharacter = GetComponent<CharacterSelectionManager>().SelectedNetworkCharacter;
+            _hostCharacter = FindObjectOfType<CharacterSelectionManager>().SelectedNetworkCharacter;
         }
 
         if(numReady == 2)
