@@ -86,7 +86,7 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            _hostCharacter = player;
+            _clientCharacter = player;
         }
 
         if(numReady == 2)
