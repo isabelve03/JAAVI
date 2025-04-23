@@ -1,3 +1,4 @@
+using FishNet;
 using FishNet.Connection;
 using FishNet.Managing;
 using FishNet.Managing.Scened;
@@ -15,6 +16,7 @@ public class LobbyManager : MonoBehaviour
     public NetworkConnection _clientConnection {  get; private set; }
     public NetworkObject _hostCharacter {  get; private set; }
     public NetworkObject _clientCharacter {  get; private set; }
+    [SerializeField] NetworkObject _OnlineCharacterSelector;
 
     private void Awake()
     {
@@ -23,7 +25,6 @@ public class LobbyManager : MonoBehaviour
         // subscribe to callbacks
         _networkManager.SceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedScenes;
     }
-
     private void SceneManager_OnClientLoadedScenes(NetworkConnection conn, bool asServer)
     {
         if (!asServer)
@@ -31,7 +32,6 @@ public class LobbyManager : MonoBehaviour
 
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "OnlineOptions")
             return;
-
         numReady++;
         if(numReady == 1)
         {
@@ -57,10 +57,16 @@ public class LobbyManager : MonoBehaviour
         sld.ReplaceScenes = ReplaceOption.All;
         _networkManager.SceneManager.LoadGlobalScenes(sld);
 
-        /*
-        SceneUnloadData sud = new SceneUnloadData("OnlineOptions");
-        _networkManager.SceneManager.UnloadGlobalScenes(sud);
-        */
+        bool asServer = false;
+        NetworkConnection conn = _clientConnection;
+        if (InstanceFinder.IsServerStarted)
+        {
+            asServer = true;
+            conn = _hostConnection;
+        }
+        NetworkObject nob = _networkManager.GetPooledInstantiated(_OnlineCharacterSelector, asServer);
+        _networkManager.ServerManager.Spawn(nob, conn);
+
     }
 
 

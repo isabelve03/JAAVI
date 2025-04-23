@@ -1373,6 +1373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761189e9ba3b25545bbe84caa3008cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _OnlineCharacterSelector: {fileID: -2988148746958501532, guid: a773a5baccbfb8f49b4a819e0d32aa93, type: 3}
 --- !u!1 &1685815834
 GameObject:
   m_ObjectHideFlags: 0

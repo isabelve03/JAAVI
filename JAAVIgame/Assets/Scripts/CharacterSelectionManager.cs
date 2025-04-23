@@ -12,8 +12,9 @@ using FishNet;
 using System.CodeDom;
 using Unity.VisualScripting;
 using System.Drawing;
+using FishNet.Managing.Server;
 
-public class CharacterSelectionManager : MonoBehaviour
+public class CharacterSelectionManager : NetworkBehaviour
 {
     private NetworkManager _networkManager;
     private LobbyManager _lobbyManager;
@@ -23,6 +24,11 @@ public class CharacterSelectionManager : MonoBehaviour
     private bool ready = false; // tracks if player has clicked start/ready (and is valid)
 
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        Debug.Log("On start client");
+    }
     private void Start()
     {
         _networkManager = FindObjectOfType<NetworkManager>();
@@ -47,8 +53,22 @@ public class CharacterSelectionManager : MonoBehaviour
             return;
         }
         bool isHost = InstanceFinder.IsServerStarted;
+        ServerPlayerReady(isHost, ready);
         _lobbyManager.PlayerReady(isHost, ready);
         ready = true;
+    }
+
+    [ServerRpc]
+    private void ServerPlayerReady(bool isHost, bool ready)
+    {
+        Debug.Log($"SERVER: isHost: {isHost}, first time? {!ready}");
+    }
+
+    [ObserversRpc]
+    private void ClientPlayerReady(bool isHost, bool ready)
+    {
+
+        Debug.Log($"CLIENT: isHost: {isHost}, first time? {!ready}");
     }
 
     // button is the button which calls this function
