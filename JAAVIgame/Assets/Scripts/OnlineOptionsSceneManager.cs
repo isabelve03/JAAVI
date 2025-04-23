@@ -12,6 +12,7 @@ public class OnlineOptionsSceneManager : MonoBehaviour
     private GameObject lobbyConnectingPanel;
     private SteamLobbyManager _steamLobbyManager;
     private Scene scene;
+    public Action<bool> LobbyJoined;
 
     private void Awake()
     {
@@ -44,7 +45,6 @@ public class OnlineOptionsSceneManager : MonoBehaviour
             Debug.Log("Could not get steam lobby manager... ");
             return;
         }
-
         GetUIElements();
         initializeOnlineOptionsScene();
     }
@@ -72,15 +72,15 @@ public class OnlineOptionsSceneManager : MonoBehaviour
             return;
         }
 
-        steamConnectingPanel = uiRoot.transform.Find("SteamConnecting").gameObject;
-        mainMenuPanel = uiRoot.transform.Find("MainMenu").gameObject;
-        lobbyConnectingPanel = uiRoot.transform.Find("LobbyConnecting").gameObject;
 
-        if (steamConnectingPanel == null || mainMenuPanel == null || lobbyConnectingPanel == null)
+        if (uiRoot.transform.Find("SteamConnecting") == null || uiRoot.transform.Find("MainMenu") == null || uiRoot.transform.Find("LobbyConnecting") == null)
         {
             Debug.Log("Could not find one or more UI panels");
             return;
         }
+        steamConnectingPanel = uiRoot.transform.Find("SteamConnecting").gameObject;
+        mainMenuPanel = uiRoot.transform.Find("MainMenu").gameObject;
+        lobbyConnectingPanel = uiRoot.transform.Find("LobbyConnecting").gameObject;
     }
     private void showSteamConnectingPanel()
     {
@@ -109,7 +109,7 @@ public class OnlineOptionsSceneManager : MonoBehaviour
     public void JoinGameButtonPressed()
     {
         showLobbyConnecting();
-        StartCoroutine(CheckLobbyConnection());
+        //StartCoroutine(CheckLobbyConnection());
     }
 
     private IEnumerator CheckSteamConnection()
@@ -127,9 +127,7 @@ public class OnlineOptionsSceneManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1.0f);
         }
-        SceneManager.LoadScene("CharacterSelect"); // Load online mode
-
-        _steamLobbyManager.addUserAsClient();
+        //LobbyJoined.Invoke(true);
     }
 
 

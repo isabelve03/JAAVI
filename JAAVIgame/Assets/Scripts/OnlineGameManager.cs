@@ -1,41 +1,39 @@
+using FishNet;
+using FishNet.Connection;
+using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FishNet.Object;
-using FishNet;
+using FishNet.Managing;
+using Steamworks.Data;
+using FishNet.Managing.Scened;
+using UnityEngine.Timeline;
 
 public class OnlineGameManager : NetworkBehaviour
 {
-    public static OnlineGameManager Instance { get; private set; }
-    public NetworkObject Player1 { get; private set; }
-    public NetworkObject Player2 { get; private set; }
-
-    private void Awake()
+    private NetworkManager _networkManager;
+    private OnlinePlayerSpawner _playerSpawner;
+    private LobbyManager _lobbyManager;
+    public override void OnStartClient()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        base.OnStartClient();
+        ServerSpawnCharacters();
     }
 
-    public void RegisterPlayer(NetworkObject player, int playerIndex)
+    [ServerRpc]
+    private void ServerSpawnCharacters()
     {
-        if (!InstanceFinder.IsServerStarted) return; // Only allow the server to register players
+        _networkManager = FindAnyObjectByType<NetworkManager>();
+        _playerSpawner = _networkManager.GetComponent<OnlinePlayerSpawner>();
+        _lobbyManager = _networkManager.GetComponent<LobbyManager>();
+        Debug.Log("SERVER: Spawning characters");
+        NetworkObject hostCharacter = _lobbyManager._hostCharacter;
+        NetworkObject clientCharacter = _lobbyManager._clientCharacter;
+        NetworkConnection hostConn = _lobbyManager._hostConnection;
+        NetworkConnection clientConn = _lobbyManager._clientConnection;
 
-        if (playerIndex == 1)
-        {
-            Player1 = player;
-            Debug.Log("Registerd Player 1");
-        }
-        else
-        {
-            Player2 = player;
-            Debug.Log("Registered player 2");
-        }
+        _playerSpawner.Spawn(hostCharacter, hostConn);
+        _playerSpawner.Spawn(clientCharacter, clientConn);
     }
-
 }
+

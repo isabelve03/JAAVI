@@ -1,29 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using FishNet.Object;
+using FishNet.Component.Transforming;
+using FishNet.Component.Animating;
+using FishNet.Managing;
+using FishNet.Component.Spawning;
+using FishNet;
+using System.CodeDom;
+using Unity.VisualScripting;
+using System.Drawing;
+using FishNet.Managing.Server;
 
 public class CharacterSelectionManager : MonoBehaviour
 {
+    private NetworkManager _networkManager;
+    private LobbyManager _lobbyManager;
     public static CharacterSelectionManager Instance;
-
     public GameObject SelectedCharacter { get; private set; }
+    public NetworkObject SelectedNetworkCharacter { get; private set; }
+    private OnlineCharacterSelector _onlineCharacterSelector;
+    private bool ready = false; // tracks if player has clicked start/ready (and is valid)
 
-    private void Awake()
+
+    private void Start()
     {
-        if (Instance == null)
+        _networkManager = FindObjectOfType<NetworkManager>();
+        if (_networkManager == null)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
+            Debug.LogError("Could not find Network Manager...");
         }
-        else
+
+        _lobbyManager = _networkManager.GetComponent<LobbyManager>();
+        if (_lobbyManager == null)
         {
-            Destroy(gameObject); // Ensure only one instance exists
+            Debug.LogError("Could not find Lobby Manager");
         }
+
     }
 
-    public void SelectCharacter(GameObject character)
+    public void StartGame()
     {
-        SelectedCharacter = character;
-        Debug.Log("Character selected: " + character.name);
+        if(SelectedNetworkCharacter == null)
+        {
+            // TODO - Add something on the screen to let the user know to select a character
+            Debug.Log("Please select a character");
+            return;
+        }
+        bool isHost = InstanceFinder.IsServerStarted;
+        _onlineCharacterSelector = FindObjectOfType<OnlineCharacterSelector>();
+        _onlineCharacterSelector.ServerPlayerIsReady(isHost, ready, SelectedNetworkCharacter);
+        //_lobbyManager.PlayerReady(isHost, ready);
+        ready = true;
     }
+
+    // button is the button which calls this function
+    public void SelectCharacter(GameObject button)
+    {
+        SelectedNetworkCharacter = button.GetComponent<OnlineCharacterIconSelector>().networkCharacterPrefab;
+        if(SelectedNetworkCharacter == null)
+        {
+            Debug.LogError("Error getting selected network character prefab...");
+            return;
+        }
+        Debug.Log("Character selected: " + SelectedNetworkCharacter.name);
+    }
+
 }
