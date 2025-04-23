@@ -13,7 +13,7 @@ public class OnlineCharacterSelector : NetworkBehaviour
         _networkManager = FindObjectOfType<NetworkManager>();
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership =false)]
     public void ServerPlayerIsReady(bool isHost, bool ready)
     {
         Debug.Log("SERVER");
