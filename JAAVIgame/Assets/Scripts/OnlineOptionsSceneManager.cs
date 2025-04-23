@@ -109,7 +109,7 @@ public class OnlineOptionsSceneManager : MonoBehaviour
     public void JoinGameButtonPressed()
     {
         showLobbyConnecting();
-        StartCoroutine(CheckLobbyConnection());
+        //StartCoroutine(CheckLobbyConnection());
     }
 
     private IEnumerator CheckSteamConnection()
@@ -127,7 +127,7 @@ public class OnlineOptionsSceneManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1.0f);
         }
-        LobbyJoined.Invoke(true);
+        //LobbyJoined.Invoke(true);
     }
 
 

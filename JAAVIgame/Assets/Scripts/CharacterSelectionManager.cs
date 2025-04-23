@@ -12,48 +12,33 @@ using FishNet;
 using System.CodeDom;
 using Unity.VisualScripting;
 using System.Drawing;
+using FishNet.Managing.Server;
 
 public class CharacterSelectionManager : MonoBehaviour
 {
     private NetworkManager _networkManager;
+    private LobbyManager _lobbyManager;
     public static CharacterSelectionManager Instance;
     public GameObject SelectedCharacter { get; private set; }
     public NetworkObject SelectedNetworkCharacter { get; private set; }
-    private OnlineGameManager _onlineGameManager;
+    private OnlineCharacterSelector _onlineCharacterSelector;
     private bool ready = false; // tracks if player has clicked start/ready (and is valid)
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
-        }
-        else
-        {
-            Destroy(gameObject); // Ensure only one instance exists
-        }
-    }
 
     private void Start()
     {
-        if(!string.Equals(SceneManager.GetActiveScene().name, "CharacterSelect"))
-        {
-            Destroy(this);
-        }
-
         _networkManager = FindObjectOfType<NetworkManager>();
         if (_networkManager == null)
         {
             Debug.LogError("Could not find Network Manager...");
         }
 
-        if(FindObjectOfType<OnlineManager>() == null)
+        _lobbyManager = _networkManager.GetComponent<LobbyManager>();
+        if (_lobbyManager == null)
         {
-            Debug.LogError("Could not find OnlineManager");
-            return;
+            Debug.LogError("Could not find Lobby Manager");
         }
-        _onlineGameManager = FindObjectOfType<OnlineManager>().GetComponent<OnlineGameManager>();
+
     }
 
     public void StartGame()
@@ -64,8 +49,10 @@ public class CharacterSelectionManager : MonoBehaviour
             Debug.Log("Please select a character");
             return;
         }
-
-        _onlineGameManager.ServerReadyToStartGame(ready);
+        bool isHost = InstanceFinder.IsServerStarted;
+        _onlineCharacterSelector = FindObjectOfType<OnlineCharacterSelector>();
+        _onlineCharacterSelector.ServerPlayerIsReady(isHost, ready, SelectedNetworkCharacter);
+        //_lobbyManager.PlayerReady(isHost, ready);
         ready = true;
     }
 
