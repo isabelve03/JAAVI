@@ -15,7 +15,7 @@ public class OnlineGameManager : NetworkBehaviour
     private NetworkConnection _playerConnection1; // host client
     private NetworkConnection _playerConnection2; // regular client
     private int numReady = 0; // num people clicked start/ready button
-    private int numConns = 0;
+    private int numPlayers = 0;
     private NetworkManager _networkManager;
     private SceneManager _sceneManager;
     private CharacterSelectionManager _characterSelectionManager;
