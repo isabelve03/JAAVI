@@ -84,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
                 AirDash();
                 Attack1();
-                Die();
                 //Attack2();
                 // Attack3();
                 // Ultimate();                     
@@ -339,12 +338,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Die() 
+    public void Die() 
     {
-        if(playerBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazards"))) 
-        {
-            isAlive = false;
-            FindObjectOfType<DeathBarrier>().ProcessPlayerDeath();
-        }
+        Debug.Log($"{gameObject.name} died!");
+        isAlive = false;
     }
 }
