@@ -242,6 +242,8 @@ MonoBehaviour:
   airDashDirection: none
   airJump: 0
   airDashVal: 1
+  hitStun: 0
+  isBlocking: 0
   isFacingRight: 1
 --- !u!114 &3543142731290346295
 MonoBehaviour:
@@ -375,7 +377,6 @@ MonoBehaviour:
   opponentLayers:
     serializedVersion: 2
     m_Bits: 128
-  attackData: {fileID: 0}
 --- !u!114 &7189677120685588435
 MonoBehaviour:
   m_ObjectHideFlags: 0

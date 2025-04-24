@@ -5,7 +5,7 @@ using System;
 
 public class PlayerMovement : MonoBehaviour 
 {
-    private int controllerID; // 0 = Keyboard, 1+ = Controllers
+    public int controllerID; // 0 = Keyboard, 1+ = Controllers
 
     [SerializeField] private float runSpeed = 5.0f;
     [SerializeField] private float jumpSpeed = 5.0f;
