@@ -236,18 +236,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
-            #region RPCTest
-            int x;
-                if (InstanceFinder.IsServerStarted)
-                {
-                    x = 0;
-                }
-                else
-                {
-                    x = 1;
-                }
-                GetComponent<PlayerAttackLogicNetwork>().ServerBlock(x);
-            #endregion RPCTest
+            FindObjectOfType<OnlineGameManager>().ServerAccessed();
         }
         if (blockLetgo)
         {
@@ -256,7 +245,6 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
-           
         }
     }
 
@@ -281,7 +269,6 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
             // Sends attack over to Combat script
             GetComponent<Combat>().GetAttack("LightAttack");
-            OnlineAttack1();
         }
 
         if (attackPressed)

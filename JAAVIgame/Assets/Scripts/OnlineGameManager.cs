@@ -35,5 +35,16 @@ public class OnlineGameManager : NetworkBehaviour
         _playerSpawner.Spawn(hostCharacter, hostConn);
         _playerSpawner.Spawn(clientCharacter, clientConn);
     }
+
+    [ServerRpc]
+    public void ServerAccessed()
+    {
+        Debug.Log("SERVER: Accessed");
+    }
+    [ObserversRpc]
+    public void ClientAccessed()
+    {
+        Debug.Log("CLIENT: Accessed");
+    }
 }
 
