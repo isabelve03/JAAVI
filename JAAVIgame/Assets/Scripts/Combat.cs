@@ -6,27 +6,30 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
+
     private Vector2 movementInput;
-    private Vector2 direction;
     //public Transform attackZone; //circular hitbox for now
     public float attackRange = 0.5f; //will be set in AttackData once I implement more than one attack
     public LayerMask opponentLayers;
     private string playerTag;
+    Rigidbody2D playerCharacter;
     private GameObject attackZone;
     //public bool inLag = false;
 
     //public bool isDead =  false;
     private bool isGrounded;
-    public AttackData attackData;
+    private bool blocked = false;
+    private Vector2 pushBack;
+    private float pushDam;
 
     //attack data definitions
     private int attackDamage;
     private Vector2 baseKnockback;
     private float scaledKnockback;
 
-
     
     void Start(){
+        playerCharacter = GetComponent<Rigidbody2D>();
         attackZone = new GameObject("attackZone");
         attackZone.transform.parent = transform;
         attackZone.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f); // Sets the position relative to the parent
@@ -201,30 +204,43 @@ public class Combat : MonoBehaviour
 
     //calls to apply knockback and damage to opponent characters
     void Attack(){
-        //direction = transform.position;
-        //direction.Normalize();
-        //Debug.Log(direction);
         //animator.SetTrigger("Attack_Name");
 
-        //am using both layers and tags.  can I do it with just one???
-
-        //need to figure out how to reverse hitbox when character turns around (position and launch angle)
-        //need to figure out how to resize the hitbox for each different attack (probably not hard tbh)
-        //would be nice to write a script that allows me to drag and drop the hitbox for convenience
-        //will have different types of hitboxes for different attacktargets = new HashSet<GameObject>();s
+        //will have different types of hitboxes for different attacks
         //can get cute with it if I have enough time and have sweetspot and sourspot hitboxes for different attacks
         HashSet<GameObject> alreadyDamaged = new HashSet<GameObject>();
         Collider2D[] hitOpponent = Physics2D.OverlapCircleAll(attackZone.transform.position, attackRange, opponentLayers);
         playerTag = gameObject.tag;
         foreach(Collider2D opponent in hitOpponent){
             if (alreadyDamaged.Contains(opponent.gameObject)) continue; //makes sure attack only damages opponent once
-            if(opponent.tag != playerTag){ //keeps attacking player from taking damage/knockback
+            if(opponent.GetComponent<PlayerMovement>().controllerID != GetComponent<PlayerMovement>().controllerID){ //keeps attacking player from taking damage/knockback
                 bool isFacingRight = GetComponent<PlayerMovement>().isFacingRight;
-                opponent.GetComponent<Damage_Calculations>().TakeKnockback(isFacingRight, baseKnockback, scaledKnockback);
+                if(opponent.GetComponent<PlayerMovement>().isBlocking == true){ //does not do knockback to opponent if they are blocking
+                    blocked = true; //this will knock back attacker after all damage calculations are run
+                }
+                else{
+                    opponent.GetComponent<Damage_Calculations>().TakeKnockback(isFacingRight, baseKnockback, scaledKnockback);
+                }
                 opponent.GetComponent<Damage_Calculations>().TakeDamage(attackDamage);
                 alreadyDamaged.Add(opponent.gameObject);
             }
         }
+        if(blocked){ //knocks back user slightly after attacking blocked opponent
+
+            //pushDam = (attackDamage * 0.07f) + 0.02f;
+            //would like to use a formula in the future to calculate block pushback but we need to get out a functioning product lol
+            if(GetComponent<PlayerMovement>().isFacingRight){
+                pushBack = Vector2.left * 10.0f;
+                playerCharacter.AddForce(pushBack, ForceMode2D.Impulse);
+                GetComponent<PlayerMovement>().hitStun = 5; //adds hitstun to knockback victim
+            }
+            else{
+                pushBack = Vector2.right * 10.0f;
+                playerCharacter.AddForce(pushBack, ForceMode2D.Impulse);
+                GetComponent<PlayerMovement>().hitStun = 5; //adds hitstun to knockback victim
+            }
+        }
+        blocked = false;
     }
 
     //draws a hitbox visualizer in scene mode
