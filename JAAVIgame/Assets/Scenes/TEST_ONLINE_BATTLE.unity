@@ -1027,9 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3db2041a3ee7a469aff64a91a71ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockback: {fileID: 0}
   damage: 100
-  d: 0
   damageTex:
   - {fileID: 21300000, guid: 50e124c66887a6a4f83d083d56b823d8, type: 3}
   - {fileID: 21300000, guid: b9f1285c231ab8b44a7cf6e709683585, type: 3}
@@ -3298,7 +3296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1149884918
 RectTransform:
   m_ObjectHideFlags: 0

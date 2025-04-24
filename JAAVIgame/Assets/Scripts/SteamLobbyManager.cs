@@ -15,6 +15,7 @@ using Newtonsoft.Json.Linq;
 using System.Linq;
 using Unity.VisualScripting;
 using JetBrains.Annotations;
+using FishNet;
 
 // TODO - Make a LeaveLobby Function
 // TODO - look up how to properly use async method (I think we should never use void and instead return a task so that we can wait for this to finish)
@@ -22,6 +23,7 @@ public class SteamLobbyManager : MonoBehaviour
 {
     #region Definitions
 
+    public static SteamLobbyManager Instance { get; private set; }
     [SerializeField] private uint appId;
     private const string lobbyTypeKey = "LobbyType";
     private NetworkManager _networkManager;
@@ -143,6 +145,7 @@ public class SteamLobbyManager : MonoBehaviour
     // based on the lobbyTypeValue supplied
     // TODO - maybe change this return type to bool or something so if we fail to join lobby we can do something (i.e. retry or tell user that there was an error)
     private async void JoinLobby(string lobbyTypeValue)
+
     {
         Lobby[] lobbyList = await FetchLobbies(lobbyTypeValue);
         Lobby? nLobby = null;
@@ -173,19 +176,17 @@ public class SteamLobbyManager : MonoBehaviour
         // start FishNet server/client
 
         // if user is host we need to initialize the server for them
-        if (currLobby.IsOwnedBy(SteamClient.SteamId)) 
+        if (currLobby.IsOwnedBy(SteamClient.SteamId))
+        {
             _clientServerInit.ChangeServerState();
+        }
 
-
-
-    }
-
-    // called to add the user as client (this spawns the character)
-    public void addUserAsClient()
-    {
         // NOTE: We want to add even the host as a client to the server
         _clientServerInit.ChangeClientState();
     }
+
+    // must be spawned after server is initialized
+
 
     // Finds list of joinable lobbies of type lobbyType
     // Returns a null list if none exist
