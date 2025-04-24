@@ -14,6 +14,11 @@ public class OnlineGameManager : NetworkBehaviour
     private NetworkManager _networkManager;
     private OnlinePlayerSpawner _playerSpawner;
     private LobbyManager _lobbyManager;
+
+    NetworkObject _hostCharacter;
+    NetworkObject _clientCharacter;
+    NetworkConnection _hostConn;
+    NetworkConnection _clientConn;
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -27,23 +32,40 @@ public class OnlineGameManager : NetworkBehaviour
         _playerSpawner = _networkManager.GetComponent<OnlinePlayerSpawner>();
         _lobbyManager = _networkManager.GetComponent<LobbyManager>();
         Debug.Log("SERVER: Spawning characters");
-        NetworkObject hostCharacter = _lobbyManager._hostCharacter;
-        NetworkObject clientCharacter = _lobbyManager._clientCharacter;
-        NetworkConnection hostConn = _lobbyManager._hostConnection;
-        NetworkConnection clientConn = _lobbyManager._clientConnection;
+        _hostCharacter = _lobbyManager._hostCharacter;
+        _clientCharacter = _lobbyManager._clientCharacter;
+        _hostConn = _lobbyManager._hostConnection;
+        _clientConn = _lobbyManager._clientConnection;
 
-        _playerSpawner.Spawn(hostCharacter, hostConn);
-        _playerSpawner.Spawn(clientCharacter, clientConn);
+        _playerSpawner.Spawn(_hostCharacter, _hostConn);
+        _playerSpawner.Spawn(_clientCharacter, _clientConn);
+        c_AddGameManager();
+    }
+
+    [ObserversRpc]
+    private void c_AddGameManager()
+    {
+        if (FindObjectOfType<OnlineGameManager>() != null)
+            return;
+
+        NetworkConnection conn;
+        if (InstanceFinder.IsServerStarted)
+            conn = _hostConn;
+        else
+            conn = _clientConn;
+
+        NetworkObject nob = _networkManager.GetPooledInstantiated(_lobbyManager.GetOnlineGameManager(), InstanceFinder.IsServerStarted);
+        _networkManager.ServerManager.Spawn(nob, conn);
     }
 
     [ServerRpc]
-    public void ServerAccessed()
+    public void s_Accessed()
     {
         Debug.Log("SERVER: Accessed");
-        ClientAccessed();
+        c_Accessed();
     }
     [ObserversRpc]
-    public void ClientAccessed()
+    public void c_Accessed()
     {
         Debug.Log("CLIENT: Accessed");
     }

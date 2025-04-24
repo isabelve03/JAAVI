@@ -16,9 +16,9 @@ public class LobbyManager : MonoBehaviour
     public NetworkConnection _clientConnection {  get; private set; }
     public NetworkObject _hostCharacter {  get; private set; }
     public NetworkObject _clientCharacter {  get; private set; }
-    [SerializeField] NetworkObject _OnlineCharacterSelector;
-    [SerializeField] NetworkObject _OnlineLobbyHelper;
-    [SerializeField] NetworkObject _OnlineGameManager;
+    [SerializeField] private NetworkObject _OnlineCharacterSelector;
+    [SerializeField] private NetworkObject _OnlineLobbyHelper;
+    [SerializeField] private NetworkObject _OnlineGameManager;
 
     private void Awake()
     {
@@ -117,6 +117,11 @@ public class LobbyManager : MonoBehaviour
         }
         NetworkObject nob = _networkManager.GetPooledInstantiated(_OnlineGameManager, asServer);
         _networkManager.ServerManager.Spawn(nob, conn);
+    }
+
+    public NetworkObject GetOnlineGameManager()
+    {
+        return _OnlineGameManager;
     }
 
     private void OnDestroy()

@@ -236,7 +236,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
-            FindObjectOfType<OnlineGameManager>().ServerAccessed();
+            FindObjectOfType<OnlineGameManager>().s_Accessed();
         }
         if (blockLetgo)
         {
