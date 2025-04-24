@@ -109,6 +109,11 @@ public class LobbyManager : MonoBehaviour
         {
             asServer = true;
             conn = _hostConnection;
+            Debug.Log("AS SERVER");
+        }
+        else
+        {
+            Debug.Log("AS CLIENT");
         }
         NetworkObject nob = _networkManager.GetPooledInstantiated(_OnlineGameManager, asServer);
         _networkManager.ServerManager.Spawn(nob, conn);
