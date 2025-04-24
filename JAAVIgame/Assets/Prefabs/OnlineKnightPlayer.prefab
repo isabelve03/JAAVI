@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8313959185719585010}
   - component: {fileID: 3683661022637651095}
   - component: {fileID: 3543142731290346295}
-  - component: {fileID: 567178454895554864}
   - component: {fileID: 7189677120685588435}
   - component: {fileID: 7094378566386435505}
   - component: {fileID: 1486276495607380688}
@@ -23,7 +22,7 @@ GameObject:
   - component: {fileID: -5318347087542602582}
   - component: {fileID: 5721542395941807653}
   - component: {fileID: -4265525825072265197}
-  - component: {fileID: -5808055473137874541}
+  - component: {fileID: 7366345014927410720}
   m_Layer: 0
   m_Name: OnlineKnightPlayer
   m_TagString: Untagged
@@ -224,7 +223,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &3543142731290346295
 MonoBehaviour:
@@ -342,22 +341,6 @@ MonoBehaviour:
   dAirFrameStartup: 0
   dAirFrameDuration: 0
   dAirFrameLag: 0
---- !u!114 &567178454895554864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6475511854894535488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12abe0bdb3ce27645990a8b552d189ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRange: 0.5
-  opponentLayers:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &7189677120685588435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,7 +515,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1486276495607380688}
   _networkObjectCache: {fileID: 0}
   runSpeed: 5
-  jumpSpeed: 8
+  jumpSpeed: 5
   airJumpVal: 1
   airDashSpeed2: 15
   airDashTimer: 0
@@ -541,7 +524,7 @@ MonoBehaviour:
   airJump: 0
   airDashVal: 1
   isFacingRight: 1
---- !u!114 &-5808055473137874541
+--- !u!114 &7366345014927410720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -550,9 +533,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6475511854894535488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e15721925eb623e43b29bd02a37478fe, type: 3}
+  m_Script: {fileID: 11500000, guid: baecd35cdc6dd8440b8887d055460624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
-  _addedNetworkObject: {fileID: 1486276495607380688}
-  _networkObjectCache: {fileID: 0}
