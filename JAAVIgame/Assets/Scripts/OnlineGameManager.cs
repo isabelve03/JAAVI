@@ -19,15 +19,33 @@ public class OnlineGameManager : NetworkBehaviour
     NetworkObject _clientCharacter;
     NetworkConnection _hostConn;
     NetworkConnection _clientConn;
+    bool isHost;
     public override void OnStartClient()
     {
         base.OnStartClient();
+        if (InstanceFinder.IsServerStarted)
+            isHost = true;
+        else 
+            isHost = false;
         ServerSpawnCharacters();
     }
 
     [ServerRpc]
     private void ServerSpawnCharacters()
     {
+        _networkManager = FindAnyObjectByType<NetworkManager>();
+        _playerSpawner = _networkManager.GetComponent<OnlinePlayerSpawner>();
+        _lobbyManager = _networkManager.GetComponent<LobbyManager>();
+        if (isHost)
+        {
+            Debug.Log("HOST");
+        }
+        else
+        {
+            Debug.Log("CLIENT");
+        }
+
+        /*
         _networkManager = FindAnyObjectByType<NetworkManager>();
         _playerSpawner = _networkManager.GetComponent<OnlinePlayerSpawner>();
         _lobbyManager = _networkManager.GetComponent<LobbyManager>();
@@ -39,28 +57,10 @@ public class OnlineGameManager : NetworkBehaviour
 
         _playerSpawner.Spawn(_hostCharacter, _hostConn);
         _playerSpawner.Spawn(_clientCharacter, _clientConn);
-        c_AddGameManager();
+        */
     }
 
-    [ObserversRpc]
-    private void c_AddGameManager()
-    {
-        Debug.Log("In add game manager");
-        if (FindObjectOfType<OnlineGameManager>() != null)
-            return;
-
-        NetworkConnection conn;
-        if (InstanceFinder.IsServerStarted)
-            conn = _hostConn;
-        else
-            conn = _clientConn;
-
-        Debug.Log("Spawning Game Manager...");
-        NetworkObject nob = _networkManager.GetPooledInstantiated(_lobbyManager.GetOnlineGameManager(), InstanceFinder.IsServerStarted);
-        _networkManager.ServerManager.Spawn(nob, conn);
-    }
-
-    [ServerRpc]
+        [ServerRpc]
     public void s_Accessed()
     {
         Debug.Log("SERVER: Accessed");

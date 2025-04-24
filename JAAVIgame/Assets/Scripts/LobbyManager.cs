@@ -106,22 +106,6 @@ public class LobbyManager : MonoBehaviour
         NetworkObject nob = _networkManager.GetPooledInstantiated(_OnlineGameManager, true);
         _networkManager.ServerManager.Spawn(nob, _hostConnection);
         _networkManager.ServerManager.Spawn(nob, _clientConnection);
-        /*
-        bool asServer = false;
-        NetworkConnection conn = _clientConnection;
-        if (InstanceFinder.IsServerStarted)
-        {
-            asServer = true;
-            conn = _hostConnection;
-            Debug.LogWarning("AS SERVER");
-        }
-        else
-        {
-            Debug.LogWarning("AS CLIENT");
-        }
-        NetworkObject nob = _networkManager.GetPooledInstantiated(_OnlineGameManager, asServer);
-        _networkManager.ServerManager.Spawn(nob, conn);
-        */
     }
 
     public NetworkObject GetOnlineGameManager()
