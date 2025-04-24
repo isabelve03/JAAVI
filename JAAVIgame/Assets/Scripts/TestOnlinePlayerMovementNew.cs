@@ -236,6 +236,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
+            s_Accessed();
         }
         if (blockLetgo)
         {
