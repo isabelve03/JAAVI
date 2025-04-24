@@ -236,7 +236,6 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
-            FindObjectOfType<OnlineGameManager>().s_Accessed();
         }
         if (blockLetgo)
         {
@@ -384,4 +383,20 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             FindObjectOfType<DeathBarrier>().ProcessPlayerDeath();
         }
     }
+
+    #region RPCs
+    [ServerRpc]
+    public void s_Accessed()
+    {
+        Debug.Log("SERVER: Accessed");
+        c_Accessed();
+    }
+
+    [ObserversRpc]
+    private void c_Accessed()
+    {
+        Debug.Log("CLIENT: Accessed");
+    }
+
+    #endregion RPCs
 }

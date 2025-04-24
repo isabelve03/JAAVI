@@ -19,33 +19,15 @@ public class OnlineGameManager : NetworkBehaviour
     NetworkObject _clientCharacter;
     NetworkConnection _hostConn;
     NetworkConnection _clientConn;
-    bool isHost;
     public override void OnStartClient()
     {
         base.OnStartClient();
-        if (InstanceFinder.IsServerStarted)
-            isHost = true;
-        else 
-            isHost = false;
         ServerSpawnCharacters();
     }
 
     [ServerRpc]
     private void ServerSpawnCharacters()
     {
-        _networkManager = FindAnyObjectByType<NetworkManager>();
-        _playerSpawner = _networkManager.GetComponent<OnlinePlayerSpawner>();
-        _lobbyManager = _networkManager.GetComponent<LobbyManager>();
-        if (isHost)
-        {
-            Debug.Log("HOST");
-        }
-        else
-        {
-            Debug.Log("CLIENT");
-        }
-
-        /*
         _networkManager = FindAnyObjectByType<NetworkManager>();
         _playerSpawner = _networkManager.GetComponent<OnlinePlayerSpawner>();
         _lobbyManager = _networkManager.GetComponent<LobbyManager>();
@@ -57,10 +39,9 @@ public class OnlineGameManager : NetworkBehaviour
 
         _playerSpawner.Spawn(_hostCharacter, _hostConn);
         _playerSpawner.Spawn(_clientCharacter, _clientConn);
-        */
     }
 
-        [ServerRpc]
+    [ServerRpc]
     public void s_Accessed()
     {
         Debug.Log("SERVER: Accessed");

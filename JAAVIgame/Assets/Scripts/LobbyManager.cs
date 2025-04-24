@@ -105,7 +105,6 @@ public class LobbyManager : MonoBehaviour
 
         NetworkObject nob = _networkManager.GetPooledInstantiated(_OnlineGameManager, true);
         _networkManager.ServerManager.Spawn(nob, _hostConnection);
-        _networkManager.ServerManager.Spawn(nob, _clientConnection);
     }
 
     public NetworkObject GetOnlineGameManager()
