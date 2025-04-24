@@ -1,22 +1,66 @@
-using System.Collections;
-using System.Collections.Generic;
-using FishNet.Managing.Scened;
 using UnityEngine;
 
 public class DeathBarrier : MonoBehaviour
 {
+    private bool canKill = false;
 
-    public void ProcessPlayerDeath() 
+    private void Start()
     {
-        // code to be able to check how many players connected to the game, remove them from array
-        // until there is one player left, save them as winner and end game
+        Invoke("EnableKill", 0.5f); // Adjust delay if needed
+    }
+
+    void EnableKill()
+    {
+        canKill = true;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!canKill) return;
         
-        ResetGameSession();
+        Debug.Log("Triggered by: " + collision.gameObject.name);
+        
+        foreach (PlayerData player in PlayerJoinManager.Instance.joinedPlayers)
+        {
+            if (player.spawnedPlayer == collision.gameObject)
+            {
+                PlayerMovement pm = collision.gameObject.GetComponent<PlayerMovement>();
+                if (pm != null)
+                {
+                    pm.Die(); // <- add more to this method later
+                }
+
+                Destroy(collision.gameObject);
+                player.spawnedPlayer = null;
+                CheckWinCondition();
+                break;
+            }
+        }
     }
 
-    public void ResetGameSession() {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-        Destroy(gameObject);
-    }
+    private void CheckWinCondition()
+    {
+        int aliveCount = 0;
+        PlayerData lastStanding = null;
 
+        foreach (PlayerData player in PlayerJoinManager.Instance.joinedPlayers)
+        {
+            if (player.spawnedPlayer != null)
+            {
+                aliveCount++;
+                lastStanding = player;
+            }
+        }
+
+        if (aliveCount == 1)
+        {
+            Debug.Log("Player " + lastStanding.controllerID + " wins!");
+            FindObjectOfType<VictoryManager>().ShowVictoryScreen("Player " + lastStanding.controllerID);
+        }
+        else if (aliveCount == 0)
+        {
+            Debug.Log("Everyone died! It’s a draw!");
+            FindObjectOfType<VictoryManager>().ShowVictoryScreen("No one");
+        }
+    }
 }
