@@ -1,8 +1,9 @@
+using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnlineCombat : MonoBehaviour
+public class OnlineCombat : NetworkBehaviour
 {
     private Vector2 movementInput;
     //public Transform attackZone; //circular hitbox for now
@@ -70,5 +71,18 @@ public class OnlineCombat : MonoBehaviour
         // NOTE: This is where a lot of the logic differs between this script and reg Combat
         // Only need to check against one player and the way to do this is slightly different for network (i.e. not with tags)
 
+    }
+
+    [ServerRpc]
+    public void s_Accessed()
+    {
+        Debug.Log("SERVER: Accessed Online Combat");
+        c_Accessed();
+    }
+
+    [ObserversRpc]
+    private void c_Accessed()
+    {
+        Debug.Log("CLIENT: Accessed Online Combat");
     }
 }

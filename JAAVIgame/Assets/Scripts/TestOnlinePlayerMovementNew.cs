@@ -106,7 +106,6 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
                 Jump();
                 AirDash();
                 Attack1();
-                Die();
                 // Attack2();
                 // Attack3();
                 // Ultimate();
@@ -237,6 +236,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             // network animate
             _networkAnimate.Block(isBlocking);
             s_Accessed();
+            GetComponent<OnlineCombat>();
         }
         if (blockLetgo)
         {
@@ -291,7 +291,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
         if (controllerID == 0) // Keyboard attack
         {
-            attackPressed = Input.GetButtonDown("KeyAttack2"); // Will have to be added and changed in the project settings
+         publicattackPressed = Input.GetButtonDown("KeyAttack2"); // Will have to be added and changed in the project settings
             attackLetgo = Input.GetButtonUp("KeyAttack2");
 
             // Sends attack over to Combat script
@@ -376,13 +376,11 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         }
     }
 
-    private void Die()
+
+    public void Die()
     {
-        if (playerBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazards")))
-        {
-            isAlive = false;
-            FindObjectOfType<DeathBarrier>().ProcessPlayerDeath();
-        }
+        Debug.Log($"{gameObject.name} died!");
+        isAlive = false;
     }
 
     #region RPCs
