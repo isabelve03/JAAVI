@@ -40,6 +40,7 @@ public class OnlineGameManager : NetworkBehaviour
     public void ServerAccessed()
     {
         Debug.Log("SERVER: Accessed");
+        ClientAccessed();
     }
     [ObserversRpc]
     public void ClientAccessed()
