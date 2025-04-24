@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,7 +70,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -121,7 +121,658 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: necromancer block_0
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 1919
+        width: 59
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 781c702bc71f1084fb5b680006d13c74
+      internalID: -1158640492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_2
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1919
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b981a3adb0cc0a49ba672f6636d54fb
+      internalID: -1129383258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_4
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 1919
+        width: 61
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55d3aed2690aad548b3b45a73a5606d1
+      internalID: -1926212508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_5
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 1919
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab269fc5ab3d4c4083dc853751e7a57
+      internalID: 1157299232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_6
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1920
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4a580b5bc421084a8c2b94a552a1bc1
+      internalID: 1032888435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_7
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1920
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df45303cd89ae9408dfa7744700b5ea
+      internalID: 211606182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_8
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 1920
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3006d95e1261ab48a367ef9e32c5617
+      internalID: -184318086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_9
+      rect:
+        serializedVersion: 2
+        x: 1886
+        y: 1920
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6d8fc3cf6b4c04399fcea4d4b12d56
+      internalID: 2062046499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_10
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1664
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3d22c1ebf37ac24887a61f6310ee8f0
+      internalID: -293417697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_11
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 1664
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7616ab1f768fe354eb781a51f42829d9
+      internalID: 1569622565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_13
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1664
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88349748455763d49b4130081a8492ec
+      internalID: 1475348880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_15
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 1664
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49d7cd62e810c35499273a3b9db675e3
+      internalID: 349237766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_17
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 1664
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc8cd66e7a654fd43a646a1bc77eb76c
+      internalID: -910638704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_19
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 1664
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8a0d95c8d807c74eb227f8bd113f358
+      internalID: 1707130005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_21
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 1664
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 775907dc284fa2a478ee43ad5a0a558a
+      internalID: 872609903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_23
+      rect:
+        serializedVersion: 2
+        x: 1885
+        y: 1664
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d49684f5e1d64b0439ccf23c7715a2da
+      internalID: -1130435761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_25
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 976da01e5d569264d80b752b2cfb40db
+      internalID: 290303067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_27
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc8b21da2c5995643abb8d5764c8929e
+      internalID: 1599989927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_29
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d55a46eeb92e4964e998acacd99424d3
+      internalID: -958925623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_31
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 357e49cfbc57f5243ad7ead43bcfd104
+      internalID: -2016068336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_33
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72b518db366404c49b84ca185412e26d
+      internalID: -531429560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_35
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 1408
+        width: 60
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbfd87214795095458c0c43925595fc2
+      internalID: 1541856976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_37
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b977ab8d8cc2f44a857ed83a6b03ff6
+      internalID: -1881635721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_39
+      rect:
+        serializedVersion: 2
+        x: 1885
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02380668bdb54d49be637dee6c89528
+      internalID: -1729435740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_41
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1152
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28faa90cd0206dd44b4c7464fad9464f
+      internalID: -778553540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_43
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 1152
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fc2c8589538673449f0d63b6eefdfbc
+      internalID: -1960978294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_45
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1152
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02b5a057d7166814284918238e4cf5d9
+      internalID: 1245983383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_47
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 1152
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4034c4650865db34b8f497c3f1591e30
+      internalID: -1277525636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_49
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 1152
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec3765752fb9c054da680c75f83599ad
+      internalID: -704500150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_51
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 1152
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c883e19c4fad51a43aec28adae2fd411
+      internalID: 1142468357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer block_53
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 1152
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a98f9c060971b034498868a2307303f8
+      internalID: -1472710283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +783,63 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      necromancer block_0: -1158640492
+      necromancer block_1: -1964907482
+      necromancer block_10: -293417697
+      necromancer block_11: 1569622565
+      necromancer block_12: 1222903073
+      necromancer block_13: 1475348880
+      necromancer block_14: -687162383
+      necromancer block_15: 349237766
+      necromancer block_16: -1577591279
+      necromancer block_17: -910638704
+      necromancer block_18: 1839103687
+      necromancer block_19: 1707130005
+      necromancer block_2: -1129383258
+      necromancer block_20: -216052912
+      necromancer block_21: 872609903
+      necromancer block_22: -1581715781
+      necromancer block_23: -1130435761
+      necromancer block_24: 1759992264
+      necromancer block_25: 290303067
+      necromancer block_26: -658669314
+      necromancer block_27: 1599989927
+      necromancer block_28: -70200967
+      necromancer block_29: -958925623
+      necromancer block_3: -428822705
+      necromancer block_30: -1279800538
+      necromancer block_31: -2016068336
+      necromancer block_32: 1180489445
+      necromancer block_33: -531429560
+      necromancer block_34: 625166229
+      necromancer block_35: 1541856976
+      necromancer block_36: 2003961630
+      necromancer block_37: -1881635721
+      necromancer block_38: -1541381922
+      necromancer block_39: -1729435740
+      necromancer block_4: -1926212508
+      necromancer block_40: -1727250641
+      necromancer block_41: -778553540
+      necromancer block_42: -888460463
+      necromancer block_43: -1960978294
+      necromancer block_44: -775980246
+      necromancer block_45: 1245983383
+      necromancer block_46: -1375333772
+      necromancer block_47: -1277525636
+      necromancer block_48: -719335645
+      necromancer block_49: -704500150
+      necromancer block_5: 1157299232
+      necromancer block_50: 695902145
+      necromancer block_51: 1142468357
+      necromancer block_52: 224526856
+      necromancer block_53: -1472710283
+      necromancer block_54: -1418160555
+      necromancer block_55: -184433596
+      necromancer block_6: 1032888435
+      necromancer block_7: 211606182
+      necromancer block_8: -184318086
+      necromancer block_9: 2062046499
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

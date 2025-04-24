@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,7 +70,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -121,7 +121,448 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: necromancer walking_0
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 1919
+        width: 59
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4a889341f208f64a975fd7aaa64d3cf
+      internalID: -1402794054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_3
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1919
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da6a9b2d169edd5489611e59981ff334
+      internalID: 532535257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_5
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 1919
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b7918f7563a8374ea8cdc4a57ad19b2
+      internalID: -345716410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_6
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 1920
+        width: 60
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f189609ad3fce624f85834ac88739f53
+      internalID: 679107597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_7
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1919
+        width: 61
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d75e6e980d5da9b4cbf8ec65b32124f6
+      internalID: 271437326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_8
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 1920
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a957a4ec81b4f134e96eaa3990865af3
+      internalID: 1697946661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_9
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1920
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95baab8182c453d41915f13eb9c3acd2
+      internalID: 258179043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_10
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 1921
+        width: 61
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d830471390fc64440a6ce7ed945c2e1d
+      internalID: -1785066551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1665
+        width: 61
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c25739c6cc0821244b592cc0d28a2823
+      internalID: 1699255449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_13
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 1666
+        width: 61
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaee01885f1c2aa43892fd3fc7784dff
+      internalID: 1569715080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_14
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1665
+        width: 61
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 088481b783ddbd741842804f38146bba
+      internalID: 2016928006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_15
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1665
+        width: 61
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bc0264e9666c7f46ac2346fdd3a7d95
+      internalID: 568260123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_16
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1665
+        width: 61
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbcc7dd313279a240b5070f346174f18
+      internalID: 888733546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_17
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 1664
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 216e10bfcd1a5d94a9179697afaa4e28
+      internalID: 859026222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_19
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1664
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a98f9da0116695a4e92535e0790d4097
+      internalID: 1965457074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_21
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 1664
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cc1ee27e85b59e498f30a04301a9231
+      internalID: -418482111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_23
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 847331b1b15dac148b29af4e62d2cde3
+      internalID: 776521669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_24
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffd20c416758e2a4394a2cef5a487d40
+      internalID: -932021361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_26
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0322fef693b0f3a44bbe8b83b6e587ec
+      internalID: 906904934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_29
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b69674df1b48f43a502a23c28905ad
+      internalID: -218468378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necromancer walking_32
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1408
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aa09ad6bc3fc4a49b92161181bc45a2
+      internalID: 26311275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +573,42 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      necromancer walking_0: -1402794054
+      necromancer walking_1: 1963831822
+      necromancer walking_10: -1785066551
+      necromancer walking_11: -326735631
+      necromancer walking_12: 1699255449
+      necromancer walking_13: 1569715080
+      necromancer walking_14: 2016928006
+      necromancer walking_15: 568260123
+      necromancer walking_16: 888733546
+      necromancer walking_17: 859026222
+      necromancer walking_18: -247454915
+      necromancer walking_19: 1965457074
+      necromancer walking_2: 2065274879
+      necromancer walking_20: -280665474
+      necromancer walking_21: -418482111
+      necromancer walking_22: -1455153248
+      necromancer walking_23: 776521669
+      necromancer walking_24: -932021361
+      necromancer walking_25: -1234779519
+      necromancer walking_26: 906904934
+      necromancer walking_27: -441073198
+      necromancer walking_28: -2002996865
+      necromancer walking_29: -218468378
+      necromancer walking_3: 532535257
+      necromancer walking_30: 591896982
+      necromancer walking_31: -2023507690
+      necromancer walking_32: 26311275
+      necromancer walking_33: 2090851486
+      necromancer walking_34: -1704821015
+      necromancer walking_4: -2049518397
+      necromancer walking_5: -345716410
+      necromancer walking_6: 679107597
+      necromancer walking_7: 271437326
+      necromancer walking_8: 1697946661
+      necromancer walking_9: 258179043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
