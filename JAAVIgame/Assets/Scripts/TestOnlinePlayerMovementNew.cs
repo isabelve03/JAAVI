@@ -29,10 +29,11 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
     float gravityScaleAtStart;
 
     bool isAlive = true; // Starts true because the player is alive
+    bool cVert = false;
 
     // Sends input direction
     public static event Action<Vector2> OnDirectionChanged;
-    public static event Action<string> OnAttackPressed;
+    public static event Action<string> OnAttackPressed = null;
 
     // Sends attack type
 
@@ -41,8 +42,9 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
     Animator playerAnimator;
     BoxCollider2D playerFeetCollider;
 
-    // variable below for network animation
+    #region NETWORK
     private NetworkAnimate _networkAnimate;
+    #endregion NETWORK
 
     public void SetControllerID(int id)
     {
@@ -64,27 +66,58 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         _networkAnimate = GetComponent<NetworkAnimate>();
     }
 
+
+    void FixedUpdate()
+    {
+        if(hitStun > 0)
+        {
+            hitStun--;
+            if(hitStun == 0)
+            {
+                cVert = true;
+            }
+        }
+    }
+
     // Update is called once per frame
     private void Update()
     {
         if (!base.IsOwner) return;
 
-        if (!isAlive) return;
+        if (!isAlive)
+        {
+            hitStun = 0;
+            return;
+        }
 
-        Run();
-        FlipSprite();
-        Jump();
-        AirDash();
-        Block();
-        Attack1();
-        //Attack2();
-        // Attack3();
-        // Ultimate();
+        if (cVert) // janky fix for vertical and horizontal knocback to be consistent
+        {
+            playerCharacter.velocity = Vector2.zero;
+            cVert = false;
+        }
+
+        if(hitStun == 0) // only control when not in hitstun
+        {
+            Run();
+            FlipSprite();
+            Block();
+            if(!isBlocking)
+            {
+                Jump();
+                AirDash();
+                Attack1();
+                Die();
+                // Attack2();
+                // Attack3();
+                // Ultimate();
+            }
+        }
     }
 
     private void Run()
     {
-        float hMovement = 0;
+        float hMovement = 0f;
+        float maxSpeed = 10f;
         if(!isBlocking)
         {
             if (controllerID == 0) // Keyboard Controls
@@ -108,7 +141,11 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             playerCharacter.velocity = runVelocity;
 
             bool isMoving = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
-            playerAnimator.SetBool("run", isMoving);  
+            playerAnimator.SetBool("run", isMoving);
+            if (Mathf.Abs(playerCharacter.velocity.x) > maxSpeed)
+            {
+                playerCharacter.velocity = new Vector2(Mathf.Sign(playerCharacter.velocity.x) * maxSpeed, playerCharacter.velocity.y);
+            }
 
             // network animate
             _networkAnimate.Run(isMoving);
@@ -260,13 +297,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         
     }
 
-    // Sends attack1 stuff to server
-    private void OnlineAttack1()
-    {
-
-    }
-
-        private void Attack2() 
+    /*    private void Attack2() 
     {
         bool attackPressed = false;
         bool attackLetgo = false;
@@ -297,7 +328,9 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         {
             isAttacking = false;
         }
-    }
+        
+    }*/
+
 
     private void AirDash()
     {
@@ -353,6 +386,15 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
                 else if (airDashDirection == "left")
                     playerCharacter.velocity = Vector2.left * airDashSpeed2;
             }
+        }
+    }
+
+    private void Die()
+    {
+        if (playerBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazards")))
+        {
+            isAlive = false;
+            FindObjectOfType<DeathBarrier>().ProcessPlayerDeath();
         }
     }
 }
