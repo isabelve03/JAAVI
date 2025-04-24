@@ -205,7 +205,7 @@ public class Combat : MonoBehaviour
     //calls to apply knockback and damage to opponent characters
     void Attack(){
         //animator.SetTrigger("Attack_Name");
-        
+
         //will have different types of hitboxes for different attacks
         //can get cute with it if I have enough time and have sweetspot and sourspot hitboxes for different attacks
         HashSet<GameObject> alreadyDamaged = new HashSet<GameObject>();

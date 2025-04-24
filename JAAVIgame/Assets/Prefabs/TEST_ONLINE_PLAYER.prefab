@@ -222,7 +222,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &-2569270116358860591
 MonoBehaviour:
@@ -400,7 +400,6 @@ MonoBehaviour:
   opponentLayers:
     serializedVersion: 2
     m_Bits: 0
-  attackData: {fileID: 0}
 --- !u!114 &-6769122457404684776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,3 +528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e15721925eb623e43b29bd02a37478fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: -2569270116358860591}
+  _networkObjectCache: {fileID: 0}
