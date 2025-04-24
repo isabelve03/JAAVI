@@ -224,7 +224,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &3543142731290346295
 MonoBehaviour:
@@ -358,7 +358,6 @@ MonoBehaviour:
   opponentLayers:
     serializedVersion: 2
     m_Bits: 128
-  attackData: {fileID: 0}
 --- !u!114 &7189677120685588435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,7 +532,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1486276495607380688}
   _networkObjectCache: {fileID: 0}
   runSpeed: 5
-  jumpSpeed: 5
+  jumpSpeed: 8
   airJumpVal: 1
   airDashSpeed2: 15
   airDashTimer: 0

@@ -79,16 +79,17 @@ public class PlayerMovement : MonoBehaviour
         if(hitStun == 0){ //only control when character is not in hitstun
             Run();
             FlipSprite();
-            Jump();
-            AirDash();
             Block();
-            Attack1();
-            Die();
-            //Attack2();
-            // Attack3();
-            // Ultimate();            
+            if(isBlocking == false){
+                Jump();
+                AirDash();
+                Attack1();
+                Die();
+                //Attack2();
+                // Attack3();
+                // Ultimate();                     
+            }
         }
-
     }
 
     private void Run()
