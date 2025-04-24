@@ -45,6 +45,7 @@ public class OnlineGameManager : NetworkBehaviour
     [ObserversRpc]
     private void c_AddGameManager()
     {
+        Debug.Log("In add game manager");
         if (FindObjectOfType<OnlineGameManager>() != null)
             return;
 
@@ -54,6 +55,7 @@ public class OnlineGameManager : NetworkBehaviour
         else
             conn = _clientConn;
 
+        Debug.Log("Spawning Game Manager...");
         NetworkObject nob = _networkManager.GetPooledInstantiated(_lobbyManager.GetOnlineGameManager(), InstanceFinder.IsServerStarted);
         _networkManager.ServerManager.Spawn(nob, conn);
     }
