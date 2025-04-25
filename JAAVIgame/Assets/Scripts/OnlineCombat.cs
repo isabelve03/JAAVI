@@ -62,7 +62,7 @@ public class OnlineCombat : NetworkBehaviour
     [ServerRpc]
     public void s_LightAttack(NetworkConnection conn)
     {
-        Debug.Log("In light attack");
+        Debug.Log("[SERVER] In light attack");
         NetworkObject oppPlayer = null;
         NetworkObject currPlayer = null;
         NetworkConnection oppConn = null;
@@ -104,7 +104,7 @@ public class OnlineCombat : NetworkBehaviour
         Collider2D[] hitOpponnet = Physics2D.OverlapCircleAll(attackZone.transform.position, attackRange);
         foreach(Collider2D collider in hitOpponnet)
         {
-            if(collider.gameObject == oppPlayer)
+            if(collider.gameObject == oppPlayer.gameObject)
             {
                 t_Attack(oppConn, attackDamage);
                 Debug.Log($"[SERVER] Damage from this player: {attackDamage}");
