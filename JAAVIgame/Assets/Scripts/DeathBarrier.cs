@@ -54,8 +54,8 @@ public class DeathBarrier : MonoBehaviour
 
         if (aliveCount == 1)
         {
-            Debug.Log("Player " + lastStanding.controllerID + " wins!");
-            FindObjectOfType<VictoryManager>().ShowVictoryScreen("Player " + lastStanding.controllerID);
+            Debug.Log("Player " + (lastStanding.controllerID+1) + " wins!");
+            FindObjectOfType<VictoryManager>().ShowVictoryScreen("Player " + (lastStanding.controllerID+1));
         }
         else if (aliveCount == 0)
         {
