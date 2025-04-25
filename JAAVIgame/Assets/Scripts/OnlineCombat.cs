@@ -1,3 +1,4 @@
+using FishNet;
 using FishNet.Connection;
 using FishNet.Object;
 using System.Collections;
@@ -61,6 +62,7 @@ public class OnlineCombat : NetworkBehaviour
     [ServerRpc]
     public void s_LightAttack(NetworkConnection conn)
     {
+        ServerManager.Clients[0].ob
         OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
         NetworkObject oppPlayer;
         NetworkObject currPlayer;
@@ -107,6 +109,19 @@ public class OnlineCombat : NetworkBehaviour
         }
         GetComponent<Damage_Calculations>().currentHealth += dam;
         Debug.Log($"[TARGET] Hit with {dam} damage");
+    }
+
+    public void s_BlockCheck()
+    {
+        int cnt = 0;
+        foreach (var item in ServerManager.Clients)
+        {
+            cnt++;
+            foreach (var Object in item.Value.Objects)
+            {
+                Debug.Log($"[SERVER] Object {Object.name} for client # {cnt}");
+            }
+        }
     }
 
 
