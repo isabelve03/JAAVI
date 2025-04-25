@@ -113,11 +113,14 @@ public class OnlineCombat : NetworkBehaviour
     public void s_BlockCheck()
     {
         int cnt = 0;
+        Debug.Log("[SERVER] In block check");
         foreach (var item in ServerManager.Clients)
         {
+            Debug.Log("[SERVER] In clients loop");
             cnt++;
             foreach (var Object in item.Value.Objects)
             {
+                Debug.Log("[SERVER] In objects loop");
                 Debug.Log($"[SERVER] Object {Object.name} for client # {cnt}");
             }
         }
