@@ -107,9 +107,6 @@ public class OnlineCombat : NetworkBehaviour
             if(collider.gameObject == oppPlayer.gameObject)
             {
                 t_Attack(oppConn, attackDamage, oppPlayer);
-                Debug.Log($"[SERVER] Damage from this player: {attackDamage}");
-                if (oppPlayer.GetComponent<TestOnlinePlayerMovementNew>().isBlocking)
-                    Debug.Log("[SERVER] is blocking...");
                 break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
             }
         }
