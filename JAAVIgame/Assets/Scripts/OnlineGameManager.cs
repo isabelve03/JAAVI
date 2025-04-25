@@ -24,17 +24,6 @@ public class OnlineGameManager : NetworkBehaviour
         base.OnStartClient();
         ServerSpawnCharacters();
     }
-
-    [ServerRpc]
-    public void GetOpponent(NetworkConnection conn)
-    {
-        NetworkObject opp;
-        if (conn == _hostConn)
-            opp = _hostCharacter;
-        else
-            opp = _clientCharacter;
-        Debug.Log($"SERVER: The opponent is: {opp.name}");
-    }
     [ServerRpc]
     private void ServerSpawnCharacters()
     {
