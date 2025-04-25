@@ -62,6 +62,7 @@ public class OnlineCombat : NetworkBehaviour
     [ServerRpc]
     public void s_LightAttack(NetworkConnection conn)
     {
+        Debug.Log("In light attack");
         OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
         NetworkObject oppPlayer;
         NetworkObject currPlayer;
@@ -113,7 +114,6 @@ public class OnlineCombat : NetworkBehaviour
     [ServerRpc]
     public void s_BlockCheck()
     {
-        /*
         int cnt = 0;
         Debug.Log("[SERVER] In block check");
         foreach (var item in ServerManager.Clients)
@@ -125,9 +125,7 @@ public class OnlineCombat : NetworkBehaviour
                 Debug.Log("[SERVER] In objects loop");
                 Debug.Log($"[SERVER] Object {Object.name} for client # {cnt}");
             }
-        }*/
-
-        Debug.Log("check");
+        }
     }
 
 
