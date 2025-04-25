@@ -235,7 +235,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
-            FindObjectOfType<OnlineCombat>().s_BlockCheck();
+            GetComponent<OnlineCombat>().s_BlockCheck();
           
         }
         if (blockLetgo)
