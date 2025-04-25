@@ -15,10 +15,10 @@ public class OnlineGameManager : NetworkBehaviour
     private OnlinePlayerSpawner _playerSpawner;
     private LobbyManager _lobbyManager;
 
-    NetworkObject _hostCharacter;
-    NetworkObject _clientCharacter;
-    NetworkConnection _hostConn;
-    NetworkConnection _clientConn;
+    public NetworkObject _hostCharacter;
+    public NetworkObject _clientCharacter;
+    public NetworkConnection _hostConn;
+    public NetworkConnection _clientConn;
     public override void OnStartClient()
     {
         base.OnStartClient();

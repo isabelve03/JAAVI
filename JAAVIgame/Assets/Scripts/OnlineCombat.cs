@@ -69,14 +69,26 @@ public class OnlineCombat : NetworkBehaviour
     [ServerRpc]
     public void s_Attack(NetworkConnection conn)
     {
-        foreach (var item in ServerManager.Clients)
+        OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
+        NetworkObject oppPlayer;
+        NetworkConnection oppConn;
+
+        if (conn == _onlineGameManager._hostConn)
         {
-            if(conn != item.Value)
-            {
-                t_Attack(item.Value, attackDamage);
-                break;
-            }
+            oppPlayer = _onlineGameManager._clientCharacter;
+            oppConn = _onlineGameManager._clientConn;
         }
+        else
+        {
+            oppPlayer = _onlineGameManager._hostCharacter;
+            oppConn = _onlineGameManager._hostConn;
+        }
+
+        Debug.Log($"[SERVER] Damage from this player: {oppPlayer.GetComponent<AttackData>().jabDam}");
+
+        // check opp character
+        // see if hit
+        // if hit, send to player
 
     }
 
