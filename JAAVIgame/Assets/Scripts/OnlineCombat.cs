@@ -69,20 +69,15 @@ public class OnlineCombat : NetworkBehaviour
     [ServerRpc]
     public void s_Attack(NetworkConnection conn)
     {
-        NetworkConnection oppConn = conn;
-        foreach (var item in ClientManager.Clients)
+        for (int i = 0; i < ClientManager.Clients.Count; i++)
         {
-            if(conn != item.Value)
+            if (conn != ClientManager.Clients[i])
             {
-                oppConn = item.Value;
+                t_Attack(ClientManager.Clients[i], attackDamage);
                 break;
             }
         }
 
-        if (oppConn == conn)
-            Debug.Log("Equal to original conn");
-        else
-            t_Attack(oppConn, attackDamage);
     }
 
     [TargetRpc]
