@@ -62,7 +62,6 @@ public class OnlineCombat : NetworkBehaviour
     [ServerRpc]
     public void s_LightAttack(NetworkConnection conn)
     {
-        Debug.Log("[SERVER] In light attack");
         NetworkObject oppPlayer = null;
         NetworkObject currPlayer = null;
         NetworkConnection oppConn = null;
@@ -112,6 +111,19 @@ public class OnlineCombat : NetworkBehaviour
         }
     }
 
+    [ServerRpc]
+    public void s_AttackBlocked(NetworkConnection conn)
+    {
+        foreach(var item in ServerManager.Clients)
+        {
+            if(item.Value != conn)
+            {
+                t_AttackBlocked(item.Value);
+                break;
+            }
+        }
+    }
+
     [TargetRpc]
     private void t_AttackBlocked(NetworkConnection conn)
     {
@@ -124,7 +136,7 @@ public class OnlineCombat : NetworkBehaviour
         Debug.Log("[TARGET] Func with network object");
         if (player.GetComponent<TestOnlinePlayerMovementNew>().isBlocking) 
         {
-            t_AttackBlocked(attackerConn);
+            s_AttackBlocked(attackerConn);
             dam = dam / 2;
         }
         if(GetComponent<Damage_Calculations>() == null)
