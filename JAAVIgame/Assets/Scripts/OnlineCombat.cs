@@ -57,6 +57,7 @@ public class OnlineCombat : NetworkBehaviour
 
     #region RPC
 
+    // In future when more attacks, change this to just attack and pass a string to identify which get func to call
     [ServerRpc]
     public void s_LightAttack(NetworkConnection conn)
     {
@@ -77,8 +78,16 @@ public class OnlineCombat : NetworkBehaviour
             oppPlayer = _onlineGameManager._hostCharacter;
             oppConn = _onlineGameManager._hostConn;
         }
-
         GetLightAttack(currPlayer);
+        Collider2D[] hitOpponnet = Physics2D.OverlapCircleAll(attackZone.transform.position, attackRange);
+        foreach(Collider2D collider in hitOpponnet)
+        {
+            if(collider.gameObject == oppPlayer)
+            {
+                t_Attack(oppConn, attackDamage);
+            }
+        }
+
         Debug.Log($"[SERVER] Damage from this player: {attackDamage}");
 
         // check opp character
