@@ -235,7 +235,6 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
-            //GetComponent<OnlineCombat>().s_Accessed(ClientManager.Connection);
             GetComponent<OnlineCombat>().Attack();
           
         }
@@ -269,13 +268,14 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2");
             attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
             // Sends attack over to Combat script
-            GetComponent<Combat>().GetAttack("LightAttack");
+            GetComponent<OnlineCombat>().GetAttack("LightAttack");
         }
 
         if (attackPressed)
         {
             playerAnimator.SetTrigger("attack1");
             _networkAnimate.Attack1();
+            GetComponent<OnlineCombat>().Attack();
             isAttacking = true;
         }
         if (attackLetgo)

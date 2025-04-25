@@ -60,7 +60,6 @@ public class OnlineCombat : NetworkBehaviour
             attackDamage = GetComponent<AttackData>().jabDam;
             baseKnockback = GetComponent<AttackData>().jabBaseK;
             scaledKnockback = GetComponent<AttackData>().jabScaleK;
-            Attack();
         }
 
         // LOTS of other commented out code which needs to be added and networked here when implemented
@@ -95,7 +94,10 @@ public class OnlineCombat : NetworkBehaviour
     public void s_Accessed(NetworkConnection conn)
     {
         Debug.Log($"SERVER: Received network connection: {conn}");
-        Debug.Log($"SERVER: This player: {gameObject.name}");
+        foreach (var item in ClientManager.Clients)
+        {
+            Debug.Log($"[SERVER] Client #{item.Key}: connection = {item.Value}");
+        }
         c_Accessed(conn);
     }
 
