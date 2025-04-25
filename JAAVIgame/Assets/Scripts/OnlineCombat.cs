@@ -25,15 +25,6 @@ public class OnlineCombat : NetworkBehaviour
     private int attackDamage;
     private Vector2 baseKnockback;
     private float scaledKnockback;
-    // Start is called before the first frame update
-    void Start()
-    {
-        playerCharacter = GetComponent<Rigidbody2D>();
-        attackZone = new GameObject("attackZone");
-        attackZone.transform.parent = transform;
-        attackZone.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f); // sets pos relative to parent
-    }
-
     private void UpdateDirection(Vector2 dir)
     {
         movementInput = dir;
@@ -45,7 +36,8 @@ public class OnlineCombat : NetworkBehaviour
     private void GetLightAttack(NetworkObject player)
     {
         AttackData _attackData = player.GetComponent<AttackData>();
-        attackZone = player.transform.Find("attackZone").gameObject;
+        attackZone = new GameObject("attackZone");
+        attackZone.transform.parent = transform;
         attackZone.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f); // sets pos rel to parent
 
             // NOTE: there is other code commented on in normal Combat script. 
