@@ -67,11 +67,28 @@ public class OnlineCombat : NetworkBehaviour
 
     }
 
-    void Attack()
+    [ServerRpc]
+    public void Attack()
     {
+        Debug.Log($"SERVER: Attack damage: {attackDamage}");
+        ClientAttack();
+        TargetAttack(ClientManager.Connection);
         // NOTE: This is where a lot of the logic differs between this script and reg Combat
         // Only need to check against one player and the way to do this is slightly different for network (i.e. not with tags)
 
+    }
+
+    [ObserversRpc]
+    public void ClientAttack()
+    {
+        Debug.Log($"CLIENT: Attack damage: {attackDamage}");
+
+    }
+
+    [TargetRpc]
+    public void TargetAttack(NetworkConnection conn)
+    {
+        Debug.Log($"TARGET: Attack damage: {attackDamage}");
     }
 
     [ServerRpc]
