@@ -254,28 +254,21 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         bool attackLetgo = false;
 
         if (controllerID == 0) // Keyboard attack
-        {
-            if(attackPressed = Input.GetButtonDown("KeyAttack1")){
-                //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be
-                GetComponent<OnlineCombat>().GetAttack("LightAttack");
-
-            }
+            {
+            attackPressed = Input.GetButtonDown("KeyAttack1");
             attackLetgo = Input.GetButtonUp("KeyAttack1");
-            // Sends attack over to Combat script
         }
         else
         {
             attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2");
             attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
-            // Sends attack over to Combat script
-            GetComponent<OnlineCombat>().GetAttack("LightAttack");
         }
 
         if (attackPressed)
         {
             playerAnimator.SetTrigger("attack1");
             _networkAnimate.Attack1();
-            GetComponent<OnlineCombat>().s_Attack(ClientManager.Connection);
+            GetComponent<OnlineCombat>().s_LightAttack(ClientManager.Connection);
             isAttacking = true;
         }
         if (attackLetgo)
