@@ -18,4 +18,9 @@ public class ScreenManagerNavigator : MonoBehaviour
         }
     }
 
+    public void BacktoMain()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
+
 }
