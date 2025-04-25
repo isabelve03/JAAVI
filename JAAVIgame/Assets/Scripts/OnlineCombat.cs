@@ -79,10 +79,10 @@ public class OnlineCombat : NetworkBehaviour
         Debug.Log(gameObject.name);
     }
     [ServerRpc]
-    public void s_Accessed(NetworkConnection conn)
+    public void s_Accessed()
     {
-        Debug.Log($"SERVER: Received network connection: {conn}");
-        c_Accessed(conn);
+        Debug.Log($"SERVER: Received network connection: {ClientManager.Connection}");
+        c_Accessed(ClientManager.Connection);
     }
 
     [ObserversRpc]
