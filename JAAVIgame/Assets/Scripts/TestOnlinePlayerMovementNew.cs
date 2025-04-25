@@ -115,6 +115,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
     private void Run()
     {
+            GetComponent<OnlineCombat>().s_Test();
         float hMovement = 0f;
         float maxSpeed = 10f;
         if(!isBlocking)
@@ -236,7 +237,6 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             // network animate
             _networkAnimate.Block(isBlocking);
             GetComponent<OnlineCombat>().s_Accessed(ClientManager.Connection);
-            GetComponent<OnlineCombat>().s_Test();
           
         }
         if (blockLetgo)
