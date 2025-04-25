@@ -75,10 +75,10 @@ public class OnlineCombat : NetworkBehaviour
             if(conn != item.Value)
             {
                 oppConn = item.Value;
+                t_Attack(oppConn, attackDamage);
                 break;
             }
         }
-
     }
 
     [TargetRpc]
