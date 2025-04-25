@@ -78,19 +78,17 @@ public class OnlineCombat : NetworkBehaviour
             oppPlayer = _onlineGameManager._hostCharacter;
             oppConn = _onlineGameManager._hostConn;
         }
+        // NOTE: THIS IS JANK
+        // only sees if there is something in the defualt layer colliding, and then sends it if there is
+        // Only works if there are no other colliders on default layer other than the 2 players
+        // Current issue: the collider game object is the server's 'clone' while the oppPlayer is the local player for that machine and they are technically different
         GetLightAttack(currPlayer);
-        Collider2D[] hitOpponnet = Physics2D.OverlapCircleAll(attackZone.transform.position, attackRange);
-        int cnt = 0;
+        int layerMask = LayerMask.GetMask("Default");
+        Collider2D[] hitOpponnet = Physics2D.OverlapCircleAll(attackZone.transform.position, attackRange, layerMask);
         foreach(Collider2D collider in hitOpponnet)
         {
-            cnt++;
-            Debug.Log($"Name of collider {collider.gameObject.name}");
-            Debug.Log($"Name of opp {oppPlayer.name}");
-            Debug.Log($"Collider {cnt}");
-            if(collider.gameObject == oppPlayer.gameObject)
-            {
-                t_Attack(oppConn, attackDamage);
-            }
+            t_Attack(oppConn, attackDamage);
+            break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
         }
 
         Debug.Log($"[SERVER] Damage from this player: {attackDamage}");
