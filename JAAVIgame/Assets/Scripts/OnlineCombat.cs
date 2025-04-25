@@ -136,7 +136,7 @@ public class OnlineCombat : NetworkBehaviour
         Debug.Log("[TARGET] Func with network object");
         if (player.GetComponent<TestOnlinePlayerMovementNew>().isBlocking) 
         {
-            s_AttackBlocked(attackerConn);
+            GetComponent<OnlineCombat>().s_AttackBlocked(attackerConn);
             dam = dam / 2;
         }
         if(GetComponent<Damage_Calculations>() == null)
