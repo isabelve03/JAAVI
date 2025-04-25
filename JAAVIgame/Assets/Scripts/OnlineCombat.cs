@@ -110,6 +110,7 @@ public class OnlineCombat : NetworkBehaviour
         Debug.Log($"[TARGET] Hit with {dam} damage");
     }
 
+    [ServerRpc]
     public void s_BlockCheck()
     {
         int cnt = 0;
