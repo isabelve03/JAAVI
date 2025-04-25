@@ -105,7 +105,7 @@ public class OnlineCombat : NetworkBehaviour
         {
             if(collider.gameObject == oppPlayer.gameObject)
             {
-                t_Attack(oppConn, conn, attackDamage, oppPlayer);
+                t_Attack(oppConn, attackDamage, oppPlayer);
                 break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
             }
         }
@@ -127,17 +127,33 @@ public class OnlineCombat : NetworkBehaviour
     [TargetRpc]
     private void t_AttackBlocked(NetworkConnection conn)
     {
-        Debug.Log("[TARGET] Your attack was blocked");
+        NetworkObject player = null;
+        foreach (var Object in conn.Objects)
+        {
+            if(Object.GetComponent<AttackData>() != null)
+            {
+                player = Object;
+                break;
+            }
+        }
+
+        if (player.GetComponent<TestOnlinePlayerMovementNew>().isFacingRight)
+            pushBack = Vector2.left * 10.0f;
+        else
+            pushBack = Vector2.right * 10.0f;
+
+        player.GetComponent<Rigidbody2D>().AddForce(pushBack, ForceMode2D.Impulse);
+        player.GetComponent<TestOnlinePlayerMovementNew>().hitStun = 5;
+
     }
 
     [TargetRpc]
-    private void t_Attack(NetworkConnection conn, NetworkConnection attackerConn, int dam, NetworkObject player)
+    private void t_Attack(NetworkConnection conn, int dam, NetworkObject player)
     {
         Debug.Log("[TARGET] Func with network object");
         if (player.GetComponent<TestOnlinePlayerMovementNew>().isBlocking) 
         {
             player.GetComponent<OnlineCombat>().s_AttackBlocked(conn);
-            player.GetComponent<OnlineCombat>().t_AttackBlocked(attackerConn);
             dam = dam / 2;
         }
         if(GetComponent<Damage_Calculations>() == null)
