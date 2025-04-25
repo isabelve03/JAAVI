@@ -7,7 +7,7 @@ using UnityEngine;
 public class Damage_Calculations : MonoBehaviour
 {
     Rigidbody2D playerCharacter;
-    public int currentHealth;
+    [SerializeField] public int currentHealth;
     void Start()
     {
         playerCharacter = GetComponent<Rigidbody2D>();

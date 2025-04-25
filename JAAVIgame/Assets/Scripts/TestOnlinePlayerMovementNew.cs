@@ -20,7 +20,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
     [SerializeField] private int airJump;
     [SerializeField] private int airDashVal = 1;
     public int hitStun = 0;
-    private bool isBlocking = false;
+    public bool isBlocking = false;
     private bool isAttacking = false;
     //can be changed to be based on the player number (eg. player1, player2, player3) if we do not want all
     //characters to be facing right at the start of the match
@@ -29,10 +29,11 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
     float gravityScaleAtStart;
 
     bool isAlive = true; // Starts true because the player is alive
+    bool cVert = false;
 
     // Sends input direction
     public static event Action<Vector2> OnDirectionChanged;
-    public static event Action<string> OnAttackPressed;
+    public static event Action<string> OnAttackPressed = null;
 
     // Sends attack type
 
@@ -41,8 +42,9 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
     Animator playerAnimator;
     BoxCollider2D playerFeetCollider;
 
-    // variable below for network animation
+    #region NETWORK
     private NetworkAnimate _networkAnimate;
+    #endregion NETWORK
 
     public void SetControllerID(int id)
     {
@@ -64,27 +66,57 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         _networkAnimate = GetComponent<NetworkAnimate>();
     }
 
+
+    void FixedUpdate()
+    {
+        if(hitStun > 0)
+        {
+            hitStun--;
+            if(hitStun == 0)
+            {
+                cVert = true;
+            }
+        }
+    }
+
     // Update is called once per frame
     private void Update()
     {
         if (!base.IsOwner) return;
 
-        if (!isAlive) return;
+        if (!isAlive)
+        {
+            hitStun = 0;
+            return;
+        }
 
-        Run();
-        FlipSprite();
-        Jump();
-        AirDash();
-        Block();
-        Attack1();
-        //Attack2();
-        // Attack3();
-        // Ultimate();
+        if (cVert) // janky fix for vertical and horizontal knocback to be consistent
+        {
+            playerCharacter.velocity = Vector2.zero;
+            cVert = false;
+        }
+
+        if(hitStun == 0) // only control when not in hitstun
+        {
+            Run();
+            FlipSprite();
+            Block();
+            if(!isBlocking)
+            {
+                Jump();
+                AirDash();
+                Attack1();
+                // Attack2();
+                // Attack3();
+                // Ultimate();
+            }
+        }
     }
 
     private void Run()
     {
-        float hMovement = 0;
+        float hMovement = 0f;
+        float maxSpeed = 10f;
         if(!isBlocking)
         {
             if (controllerID == 0) // Keyboard Controls
@@ -108,7 +140,11 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             playerCharacter.velocity = runVelocity;
 
             bool isMoving = Mathf.Abs(playerCharacter.velocity.x) > Mathf.Epsilon;
-            playerAnimator.SetBool("run", isMoving);  
+            playerAnimator.SetBool("run", isMoving);
+            if (Mathf.Abs(playerCharacter.velocity.x) > maxSpeed)
+            {
+                playerCharacter.velocity = new Vector2(Mathf.Sign(playerCharacter.velocity.x) * maxSpeed, playerCharacter.velocity.y);
+            }
 
             // network animate
             _networkAnimate.Run(isMoving);
@@ -199,18 +235,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
-            #region RPCTest
-            int x;
-                if (InstanceFinder.IsServerStarted)
-                {
-                    x = 0;
-                }
-                else
-                {
-                    x = 1;
-                }
-                GetComponent<PlayerAttackLogicNetwork>().ServerBlock(x);
-            #endregion RPCTest
+          
         }
         if (blockLetgo)
         {
@@ -219,7 +244,6 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
-           
         }
     }
 
@@ -229,28 +253,21 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         bool attackLetgo = false;
 
         if (controllerID == 0) // Keyboard attack
-        {
-            if(attackPressed = Input.GetButtonDown("KeyAttack1")){
-                //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be
-                GetComponent<Combat>().GetAttack("LightAttack");
-
-            }
+            {
+            attackPressed = Input.GetButtonDown("KeyAttack1");
             attackLetgo = Input.GetButtonUp("KeyAttack1");
-            // Sends attack over to Combat script
         }
         else
         {
             attackPressed = Input.GetKeyDown("joystick " + controllerID + " button 2");
             attackLetgo = Input.GetKeyUp("joystick " + controllerID + " button 2");
-            // Sends attack over to Combat script
-            GetComponent<Combat>().GetAttack("LightAttack");
-            OnlineAttack1();
         }
 
         if (attackPressed)
         {
             playerAnimator.SetTrigger("attack1");
             _networkAnimate.Attack1();
+            GetComponent<OnlineCombat>().s_LightAttack(ClientManager.Connection);
             isAttacking = true;
         }
         if (attackLetgo)
@@ -260,20 +277,14 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         
     }
 
-    // Sends attack1 stuff to server
-    private void OnlineAttack1()
-    {
-
-    }
-
-        private void Attack2() 
+    /*    private void Attack2() 
     {
         bool attackPressed = false;
         bool attackLetgo = false;
 
         if (controllerID == 0) // Keyboard attack
         {
-            attackPressed = Input.GetButtonDown("KeyAttack2"); // Will have to be added and changed in the project settings
+         publicattackPressed = Input.GetButtonDown("KeyAttack2"); // Will have to be added and changed in the project settings
             attackLetgo = Input.GetButtonUp("KeyAttack2");
 
             // Sends attack over to Combat script
@@ -297,7 +308,9 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         {
             isAttacking = false;
         }
-    }
+        
+    }*/
+
 
     private void AirDash()
     {
@@ -355,4 +368,12 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
             }
         }
     }
+
+
+    public void Die()
+    {
+        Debug.Log($"{gameObject.name} died!");
+        isAlive = false;
+    }
+
 }

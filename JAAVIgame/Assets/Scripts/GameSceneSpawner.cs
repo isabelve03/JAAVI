@@ -18,9 +18,10 @@ public class GameSceneSpawner : MonoBehaviour
                 continue;
             }
 
-            GameObject obj = Instantiate(data.selectedCharacter, spawnPoints[i].position, Quaternion.identity);
+            GameObject player = Instantiate(data.selectedCharacter, spawnPoints[i].position, Quaternion.identity);
+            data.spawnedPlayer = player;
             Debug.Log("Spawning player " + i + " at " + spawnPoints[i].position);
-            var move = obj.GetComponent<PlayerMovement>();
+            var move = player.GetComponent<PlayerMovement>();
             if (move != null) move.SetControllerID(data.controllerID);
         }
     }
