@@ -72,13 +72,14 @@ public class OnlineCombat : NetworkBehaviour
         NetworkConnection oppConn;
         foreach (var item in ClientManager.Clients)
         {
+            Debug.Log("in");
             if(conn != item.Value)
             {
                 oppConn = item.Value;
                 Debug.Log("Found");
                 Debug.Log(oppConn);
                 Debug.Log(attackDamage);
-                t_Attack(conn, attackDamage);
+                t_Attack(oppConn, attackDamage);
                 break;
             }
         }
