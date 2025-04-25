@@ -62,7 +62,6 @@ public class OnlineCombat : NetworkBehaviour
     [ServerRpc]
     public void s_LightAttack(NetworkConnection conn)
     {
-        ServerManager.Clients[0].ob
         OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
         NetworkObject oppPlayer;
         NetworkObject currPlayer;
