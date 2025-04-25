@@ -88,10 +88,10 @@ public class OnlineCombat : NetworkBehaviour
         foreach(Collider2D collider in hitOpponnet)
         {
             t_Attack(oppConn, attackDamage);
+            Debug.Log($"[SERVER] Damage from this player: {attackDamage}");
             break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
         }
 
-        Debug.Log($"[SERVER] Damage from this player: {attackDamage}");
 
         // check opp character
         // see if hit
@@ -100,9 +100,14 @@ public class OnlineCombat : NetworkBehaviour
     }
 
     [TargetRpc]
-    private void t_Attack(NetworkConnection conn, int Damage)
+    private void t_Attack(NetworkConnection conn, int dam)
     {
-        Debug.Log($"[TARGET] Hit with {Damage} damage");
+        if(GetComponent<TestOnlinePlayerMovementNew>().isBlocking == true)
+        {
+            dam = dam / 2;
+        }
+        GetComponent<Damage_Calculations>().currentHealth += dam;
+        Debug.Log($"[TARGET] Hit with {dam} damage");
     }
 
     [ServerRpc]
