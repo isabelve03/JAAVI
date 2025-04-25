@@ -80,8 +80,11 @@ public class OnlineCombat : NetworkBehaviour
         }
         GetLightAttack(currPlayer);
         Collider2D[] hitOpponnet = Physics2D.OverlapCircleAll(attackZone.transform.position, attackRange);
+        int cnt = 0;
         foreach(Collider2D collider in hitOpponnet)
         {
+            cnt++;
+            Debug.Log($"Collider {cnt}");
             if(collider.gameObject == oppPlayer)
             {
                 t_Attack(oppConn, attackDamage);
