@@ -84,6 +84,9 @@ public class OnlineCombat : NetworkBehaviour
         foreach(Collider2D collider in hitOpponnet)
         {
             cnt++;
+            Debug.Log($"Name: {collider.gameObject.name}");
+            Debug.Log($"If equal no .gameObject: {collider.gameObject.Equals(oppPlayer)}");
+            Debug.Log($"If equal with .gameObject: {collider.gameObject.Equals(oppPlayer.gameObject)}");
             Debug.Log($"Collider {cnt}");
             if(collider.gameObject == oppPlayer.gameObject)
             {
