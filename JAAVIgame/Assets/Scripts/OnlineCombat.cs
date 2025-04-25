@@ -112,9 +112,8 @@ public class OnlineCombat : NetworkBehaviour
     }
 
     [ServerRpc]
-    public void s_AttackBlocked()
+    public void s_AttackBlocked(NetworkConnection conn)
     {
-        /*
         foreach(var item in ServerManager.Clients)
         {
             if(item.Value != conn)
@@ -123,8 +122,6 @@ public class OnlineCombat : NetworkBehaviour
                 break;
             }
         }
-        */
-        Debug.Log("In here");
     }
 
     [TargetRpc]
@@ -139,7 +136,7 @@ public class OnlineCombat : NetworkBehaviour
         Debug.Log("[TARGET] Func with network object");
         if (player.GetComponent<TestOnlinePlayerMovementNew>().isBlocking) 
         {
-            s_AttackBlocked();
+            player.GetComponent<OnlineCombat>().s_AttackBlocked(attackerConn);
             dam = dam / 2;
         }
         if(GetComponent<Damage_Calculations>() == null)
