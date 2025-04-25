@@ -235,7 +235,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
-            GetComponent<OnlineCombat>().Attack();
+            GetComponent<OnlineCombat>().s_Accessed(ClientManager.Connection);
           
         }
         if (blockLetgo)
@@ -275,7 +275,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         {
             playerAnimator.SetTrigger("attack1");
             _networkAnimate.Attack1();
-            GetComponent<OnlineCombat>().Attack();
+            GetComponent<OnlineCombat>().s_Attack(ClientManager.Connection);
             isAttacking = true;
         }
         if (attackLetgo)
