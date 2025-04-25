@@ -91,49 +91,23 @@ public class OnlineCombat : NetworkBehaviour
             Debug.Log($"[SERVER] Damage from this player: {attackDamage}");
             break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
         }
-
-
-        // check opp character
-        // see if hit
-        // if hit, send to player
-
     }
 
     [TargetRpc]
     private void t_Attack(NetworkConnection conn, int dam)
     {
-        if(GetComponent<TestOnlinePlayerMovementNew>().isBlocking == true)
+        if(GetComponent<TestOnlinePlayerMovementNew>().isBlocking)
         {
             dam = dam / 2;
+        }
+        if(GetComponent<Damage_Calculations>() == null)
+        {
+            Debug.Log("[TARGET] Could not find damage calculations...");
         }
         GetComponent<Damage_Calculations>().currentHealth += dam;
         Debug.Log($"[TARGET] Hit with {dam} damage");
     }
 
-    [ServerRpc]
-    public void s_Accessed(NetworkConnection conn)
-    {
-        Debug.Log($"SERVER: Received network connection: {conn}");
-        foreach (var item in ClientManager.Clients)
-        {
-            Debug.Log($"[SERVER] Client #{item.Key}: connection = {item.Value}");
-        }
-        c_Accessed(conn);
-    }
-
-    [ObserversRpc]
-    private void c_Accessed(NetworkConnection conn)
-    {
-        Debug.Log($"CLIENT: Received network connection: {conn}");
-        if (conn == ClientManager.Connection)
-        {
-            Debug.Log("I sent this message...");
-        }
-        if(conn != ClientManager.Connection)
-        {
-            Debug.Log($"CLIENT: I am the opponent and my player is {gameObject.name}");
-        }
-    }
 
     #endregion RPC
 }
