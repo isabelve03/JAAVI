@@ -69,11 +69,11 @@ public class OnlineCombat : NetworkBehaviour
     [ServerRpc]
     public void s_Attack(NetworkConnection conn)
     {
-        for (int i = 0; i < ClientManager.Clients.Count; i++)
+        foreach (var item in ServerManager.Clients)
         {
-            if (conn != ClientManager.Clients[i])
+            if(conn != item.Value)
             {
-                t_Attack(ClientManager.Clients[i], attackDamage);
+                t_Attack(item.Value, attackDamage);
                 break;
             }
         }
