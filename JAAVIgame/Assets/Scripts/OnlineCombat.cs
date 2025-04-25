@@ -76,6 +76,8 @@ public class OnlineCombat : NetworkBehaviour
             {
                 oppConn = item.Value;
                 Debug.Log("Found");
+                Debug.Log(oppConn);
+                Debug.Log(attackDamage);
                 t_Attack(oppConn, attackDamage);
                 break;
             }
