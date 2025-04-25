@@ -90,5 +90,9 @@ public class OnlineCombat : NetworkBehaviour
         {
             Debug.Log("I sent this message...");
         }
+        if(conn != ClientManager.Connection)
+        {
+            Debug.Log($"CLIENT: I am the opponent and my player is {gameObject.name}");
+        }
     }
 }
