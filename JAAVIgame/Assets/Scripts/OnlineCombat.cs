@@ -78,7 +78,7 @@ public class OnlineCombat : NetworkBehaviour
                 Debug.Log("Found");
                 Debug.Log(oppConn);
                 Debug.Log(attackDamage);
-                t_Attack(ClientManager.Connection, attackDamage);
+                t_Attack(conn, attackDamage);
                 break;
             }
         }
