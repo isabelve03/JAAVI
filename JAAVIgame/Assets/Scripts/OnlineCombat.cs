@@ -40,51 +40,54 @@ public class OnlineCombat : NetworkBehaviour
         isGrounded = GetComponent<BoxCollider2D>().IsTouchingLayers(LayerMask.GetMask("Ground"));
     }
 
-    public void GetAttack(string attackType)
-    {
-        attackZone.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f); // sets pos rel to parent
-        //if(attackType == "StrongAttack")
-        //{
-            //put in the attackdata or you can check if it was a strong aerial and stuff like that inside
-            //Debug.Log("Did strong attack");
-        //}
+    #region GETATTACKS
 
-        if(attackType == "LightAttack") // Only one attack for MVP
-        {
+    private void GetLightAttack(NetworkObject player)
+    {
+        AttackData _attackData = player.GetComponent<AttackData>();
+        attackZone = player.transform.Find("attackZone").gameObject;
+        attackZone.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f); // sets pos rel to parent
+
             // NOTE: there is other code commented on in normal Combat script. 
             // This is not brought over so as to not clutter this script.
             // When that is implemented add here w/ necessary network stuff
 
-            attackZone.transform.localPosition += GetComponent<AttackData>().jabHitbox;
-            attackRange = GetComponent<AttackData>().jabRange;
-            attackDamage = GetComponent<AttackData>().jabDam;
-            baseKnockback = GetComponent<AttackData>().jabBaseK;
-            scaledKnockback = GetComponent<AttackData>().jabScaleK;
-        }
+        attackZone.transform.localPosition += _attackData.jabHitbox;
+        attackRange = _attackData.jabRange;
+        attackDamage = _attackData.jabDam;
+        baseKnockback = _attackData.jabBaseK;
+        scaledKnockback = _attackData.jabScaleK;
 
         // LOTS of other commented out code which needs to be added and networked here when implemented
 
     }
+    #endregion GETATTACKS
+
+    #region RPC
 
     [ServerRpc]
     public void s_LightAttack(NetworkConnection conn)
     {
         OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
         NetworkObject oppPlayer;
+        NetworkObject currPlayer;
         NetworkConnection oppConn;
 
         if (conn == _onlineGameManager._hostConn)
         {
+            currPlayer = _onlineGameManager._hostCharacter;
             oppPlayer = _onlineGameManager._clientCharacter;
             oppConn = _onlineGameManager._clientConn;
         }
         else
         {
+            currPlayer = _onlineGameManager._clientCharacter;
             oppPlayer = _onlineGameManager._hostCharacter;
             oppConn = _onlineGameManager._hostConn;
         }
 
-        Debug.Log($"[SERVER] Damage from this player: {oppPlayer.GetComponent<AttackData>().jabDam}");
+        GetLightAttack(currPlayer);
+        Debug.Log($"[SERVER] Damage from this player: {attackDamage}");
 
         // check opp character
         // see if hit
@@ -122,4 +125,6 @@ public class OnlineCombat : NetworkBehaviour
             Debug.Log($"CLIENT: I am the opponent and my player is {gameObject.name}");
         }
     }
+
+    #endregion RPC
 }
