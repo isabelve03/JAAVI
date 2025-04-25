@@ -98,6 +98,7 @@ public class OnlineCombat : NetworkBehaviour
     {
         if(GetComponent<TestOnlinePlayerMovementNew>().isBlocking)
         {
+            Debug.Log("Blocking");
             dam = dam / 2;
         }
         if(GetComponent<Damage_Calculations>() == null)
