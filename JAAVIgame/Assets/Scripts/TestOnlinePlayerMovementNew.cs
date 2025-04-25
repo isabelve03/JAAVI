@@ -20,7 +20,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
     [SerializeField] private int airJump;
     [SerializeField] private int airDashVal = 1;
     public int hitStun = 0;
-    public bool isBlocking = false;
+    public bool isBlocking = true;
     private bool isAttacking = false;
     //can be changed to be based on the player number (eg. player1, player2, player3) if we do not want all
     //characters to be facing right at the start of the match
