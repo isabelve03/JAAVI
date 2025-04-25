@@ -106,32 +106,18 @@ public class OnlineCombat : NetworkBehaviour
         {
             if(collider.gameObject == oppPlayer.gameObject)
             {
-                t_Attack(oppConn, attackDamage);
                 t_Attack(oppConn, attackDamage, oppPlayer);
                 Debug.Log($"[SERVER] Damage from this player: {attackDamage}");
+                if (oppPlayer.GetComponent<TestOnlinePlayerMovementNew>().isBlocking)
+                    Debug.Log("[SERVER] is blocking...");
                 break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
             }
         }
 
 
+
     }
 
-    [TargetRpc]
-    private void t_Attack(NetworkConnection conn, int dam)
-    {
-        Debug.Log("[TARGET] Func without network object");
-        if(GetComponent<TestOnlinePlayerMovementNew>().isBlocking)
-        {
-            Debug.Log("Blocking");
-            dam = dam / 2;
-        }
-        if(GetComponent<Damage_Calculations>() == null)
-        {
-            Debug.Log("[TARGET] Could not find damage calculations...");
-        }
-        GetComponent<Damage_Calculations>().currentHealth += dam;
-        Debug.Log($"[TARGET] Hit with {dam} damage");
-    }
     [TargetRpc]
     private void t_Attack(NetworkConnection conn, int dam, NetworkObject player)
     {
@@ -145,7 +131,7 @@ public class OnlineCombat : NetworkBehaviour
         {
             Debug.Log("[TARGET] Could not find damage calculations...");
         }
-        GetComponent<Damage_Calculations>().currentHealth += dam;
+        player.GetComponent<Damage_Calculations>().currentHealth += dam;
         Debug.Log($"[TARGET] Hit with {dam} damage");
     }
 
