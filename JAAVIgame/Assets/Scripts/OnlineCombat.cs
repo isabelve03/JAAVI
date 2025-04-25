@@ -78,6 +78,7 @@ public class OnlineCombat : NetworkBehaviour
     public void s_Accessed(NetworkConnection conn)
     {
         Debug.Log($"SERVER: Received network connection: {conn}");
+        FindObjectOfType<OnlineGameManager>().GetOpponent(conn);
         c_Accessed(conn);
     }
 

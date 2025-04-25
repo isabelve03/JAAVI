@@ -26,6 +26,16 @@ public class OnlineGameManager : NetworkBehaviour
     }
 
     [ServerRpc]
+    public void GetOpponent(NetworkConnection conn)
+    {
+        NetworkObject opp;
+        if (conn == _hostConn)
+            opp = _hostCharacter;
+        else
+            opp = _clientCharacter;
+        Debug.Log($"SERVER: The opponent is: {opp.name}");
+    }
+    [ServerRpc]
     private void ServerSpawnCharacters()
     {
         _networkManager = FindAnyObjectByType<NetworkManager>();
