@@ -258,7 +258,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         {
             if(attackPressed = Input.GetButtonDown("KeyAttack1")){
                 //OnAttackPressed?.Invoke("LightAttack"); // Or whatever u want this to be
-                GetComponent<Combat>().GetAttack("LightAttack");
+                GetComponent<OnlineCombat>().GetAttack("LightAttack");
 
             }
             attackLetgo = Input.GetButtonUp("KeyAttack1");
