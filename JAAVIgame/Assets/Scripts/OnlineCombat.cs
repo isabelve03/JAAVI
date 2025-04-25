@@ -63,36 +63,56 @@ public class OnlineCombat : NetworkBehaviour
     public void s_LightAttack(NetworkConnection conn)
     {
         Debug.Log("In light attack");
-        OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
-        NetworkObject oppPlayer;
-        NetworkObject currPlayer;
-        NetworkConnection oppConn;
+        NetworkObject oppPlayer = null;
+        NetworkObject currPlayer = null;
+        NetworkConnection oppConn = null;
 
-        if (conn == _onlineGameManager._hostConn)
+
+        foreach (var item in ServerManager.Clients)
         {
-            currPlayer = _onlineGameManager._hostCharacter;
-            oppPlayer = _onlineGameManager._clientCharacter;
-            oppConn = _onlineGameManager._clientConn;
+            if(item.Value == conn)
+            {
+                foreach (var Object in item.Value.Objects)
+                {
+                    if(Object.GetComponent<AttackData>() != null)
+                    {
+                        currPlayer = Object;
+                    }
+                }
+            }
+            else
+            {
+                oppConn = item.Value;
+                foreach (var Object in item.Value.Objects)
+                {
+                    if(Object.GetComponent<AttackData>() != null)
+                    {
+                        oppPlayer = Object;
+                    }
+                }
+
+            }
         }
-        else
+
+        if(oppConn == null ||  oppPlayer == null || currPlayer == null)
         {
-            currPlayer = _onlineGameManager._clientCharacter;
-            oppPlayer = _onlineGameManager._hostCharacter;
-            oppConn = _onlineGameManager._hostConn;
+            Debug.Log("Could not find either the opponents player/connection, or the current player's connection");
+            return;
         }
-        // NOTE: THIS IS JANK
-        // only sees if there is something in the defualt layer colliding, and then sends it if there is
-        // Only works if there are no other colliders on default layer other than the 2 players
-        // Current issue: the collider game object is the server's 'clone' while the oppPlayer is the local player for that machine and they are technically different
+
         GetLightAttack(currPlayer);
-        int layerMask = LayerMask.GetMask("Default");
-        Collider2D[] hitOpponnet = Physics2D.OverlapCircleAll(attackZone.transform.position, attackRange, layerMask);
+        Collider2D[] hitOpponnet = Physics2D.OverlapCircleAll(attackZone.transform.position, attackRange);
         foreach(Collider2D collider in hitOpponnet)
         {
-            t_Attack(oppConn, attackDamage);
-            Debug.Log($"[SERVER] Damage from this player: {attackDamage}");
-            break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
+            if(collider.gameObject == oppPlayer)
+            {
+                t_Attack(oppConn, attackDamage);
+                Debug.Log($"[SERVER] Damage from this player: {attackDamage}");
+                break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
+            }
         }
+
+
     }
 
     [TargetRpc]
@@ -111,22 +131,6 @@ public class OnlineCombat : NetworkBehaviour
         Debug.Log($"[TARGET] Hit with {dam} damage");
     }
 
-    [ServerRpc]
-    public void s_BlockCheck()
-    {
-        int cnt = 0;
-        Debug.Log("[SERVER] In block check");
-        foreach (var item in ServerManager.Clients)
-        {
-            Debug.Log("[SERVER] In clients loop");
-            cnt++;
-            foreach (var Object in item.Value.Objects)
-            {
-                Debug.Log("[SERVER] In objects loop");
-                Debug.Log($"[SERVER] Object {Object.name} for client # {cnt}");
-            }
-        }
-    }
 
 
     #endregion RPC
