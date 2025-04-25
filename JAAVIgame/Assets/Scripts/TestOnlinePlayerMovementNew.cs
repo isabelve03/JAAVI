@@ -235,8 +235,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
             // network animate
             _networkAnimate.Block(isBlocking);
-            s_Accessed();
-            GetComponent<OnlineCombat>().s_Accessed();
+            GetComponent<OnlineCombat>().s_Accessed(_networkAnimate.ClientManager.Connection);
         }
         if (blockLetgo)
         {
@@ -383,19 +382,4 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         isAlive = false;
     }
 
-    #region RPCs
-    [ServerRpc]
-    public void s_Accessed()
-    {
-        Debug.Log("SERVER: Accessed");
-        c_Accessed();
-    }
-
-    [ObserversRpc]
-    private void c_Accessed()
-    {
-        Debug.Log("CLIENT: Accessed");
-    }
-
-    #endregion RPCs
 }

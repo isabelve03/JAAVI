@@ -1,3 +1,4 @@
+using FishNet.Connection;
 using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
@@ -74,15 +75,19 @@ public class OnlineCombat : NetworkBehaviour
     }
 
     [ServerRpc]
-    public void s_Accessed()
+    public void s_Accessed(NetworkConnection conn)
     {
-        Debug.Log("SERVER: Accessed Online Combat");
-        c_Accessed();
+        Debug.Log($"SERVER: Received network connection: {conn}");
+        c_Accessed(conn);
     }
 
     [ObserversRpc]
-    private void c_Accessed()
+    private void c_Accessed(NetworkConnection conn)
     {
-        Debug.Log("CLIENT: Accessed Online Combat");
+        Debug.Log($"CLIENT: Received network connection: {conn}");
+        if (conn == ClientManager.Connection)
+        {
+            Debug.Log("I sent this message...");
+        }
     }
 }
