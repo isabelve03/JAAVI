@@ -74,6 +74,10 @@ public class OnlineCombat : NetworkBehaviour
 
     }
 
+    public void s_Test()
+    {
+        Debug.Log(gameObject.name);
+    }
     [ServerRpc]
     public void s_Accessed(NetworkConnection conn)
     {
