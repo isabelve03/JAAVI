@@ -85,7 +85,7 @@ public class OnlineCombat : NetworkBehaviour
         {
             cnt++;
             Debug.Log($"Collider {cnt}");
-            if(collider.gameObject == oppPlayer)
+            if(collider.gameObject == oppPlayer.gameObject)
             {
                 t_Attack(oppConn, attackDamage);
             }
