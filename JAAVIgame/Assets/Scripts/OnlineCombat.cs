@@ -75,6 +75,7 @@ public class OnlineCombat : NetworkBehaviour
                 {
                     if(Object.GetComponent<AttackData>() != null)
                     {
+                        Debug.Log("[SERVER] in here");
                         currPlayer = Object;
                     }
                 }
