@@ -106,6 +106,7 @@ public class OnlineCombat : NetworkBehaviour
             if(collider.gameObject == oppPlayer.gameObject)
             {
                 bool isFacingRight = currPlayer.GetComponent<TestOnlinePlayerMovementNew>().isFacingRight;
+                Debug.Log($"[SERVER] Attacker is facing right? {isFacingRight}");
                 t_ApplyDamage(oppConn, attackDamage, oppPlayer, isFacingRight, baseKnockback, scaledKnockback);
                 break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
             }
