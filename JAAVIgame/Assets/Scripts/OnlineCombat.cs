@@ -65,12 +65,13 @@ public class OnlineCombat : NetworkBehaviour
         NetworkObject oppPlayer = null;
         NetworkObject currPlayer = null;
         NetworkConnection oppConn = null;
-
+        NetworkConnection currConn = null; 
 
         foreach (var item in ServerManager.Clients)
         {
             if(item.Value == conn)
             {
+                currConn = item.Value;
                 foreach (var Object in item.Value.Objects)
                 {
                     if(Object.GetComponent<AttackData>() != null)
@@ -109,12 +110,13 @@ public class OnlineCombat : NetworkBehaviour
                 {
                     // blocking
                     t_ApplyDamage(oppConn, attackDamage/2, oppPlayer);
-                    bool isFacingRight = currPlayer.GetComponent<TestOnlinePlayerMovementNew>().isFacingRight;
-                    t_ApplyKnockback(oppConn, oppPlayer, isFacingRight, baseKnockback, scaledKnockback);
+                    t_AttackBlocked(currConn);
                 }
                 else
                 {
                     t_ApplyDamage(oppConn, attackDamage, oppPlayer);
+                    bool isFacingRight = currPlayer.GetComponent<TestOnlinePlayerMovementNew>().isFacingRight;
+                    t_ApplyKnockback(oppConn, oppPlayer, isFacingRight, baseKnockback, scaledKnockback);
                 }
                 break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
             }
