@@ -36,6 +36,8 @@ public class OnlineGameManager : NetworkBehaviour
         _hostConn = _lobbyManager._hostConnection;
         _clientConn = _lobbyManager._clientConnection;
 
+        _hostCharacter = _networkManager.GetPooledInstantiated(_hostCharacter, true);
+        _clientCharacter = _networkManager.GetPooledInstantiated(_clientCharacter, true);
         _playerSpawner.Spawn(_hostCharacter, _hostConn);
         _playerSpawner.Spawn(_clientCharacter, _clientConn);
     }
