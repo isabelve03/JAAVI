@@ -111,9 +111,11 @@ public class OnlineCombat : NetworkBehaviour
                     // blocking
                     t_ApplyDamage(oppConn, attackDamage/2, oppPlayer);
                     t_AttackBlocked(currConn);
+                    Debug.Log("[SERVER] Attacked player was blocking");
                 }
                 else
                 {
+                    Debug.Log("[SERVER] Attacked player was not blocking");
                     t_ApplyDamage(oppConn, attackDamage, oppPlayer);
                     bool isFacingRight = currPlayer.GetComponent<TestOnlinePlayerMovementNew>().isFacingRight;
                     t_ApplyKnockback(oppConn, oppPlayer, isFacingRight, baseKnockback, scaledKnockback);
