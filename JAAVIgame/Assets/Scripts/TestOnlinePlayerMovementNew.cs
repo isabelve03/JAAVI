@@ -154,8 +154,10 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
      private void FlipSprite()
     {
+        Debug.Log("In FlipSprite");
         if (!isAttacking)
         {
+            Debug.Log("In isNotAttacking if");
         // Lets characters use back aerial attacks
         // Want to add a certain amount of frames after a jump where character can reverse direction even in the air
             if (!playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
@@ -175,10 +177,12 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
                 //we use this value to determine knockback direction
                 if (playerCharacter.velocity.x > 0)
                 {
+                    Debug.Log("In velo is positive if");
                     isFacingRight = true;
                 }
                 else if (playerCharacter.velocity.x < 0)
                 {
+                    Debug.Log("In velo is neg if");
                     isFacingRight = false;
                 }
             }
