@@ -75,7 +75,6 @@ public class OnlineCombat : NetworkBehaviour
                 {
                     if(Object.GetComponent<AttackData>() != null)
                     {
-                        Debug.Log("[SERVER] in here");
                         currPlayer = Object;
                     }
                 }
@@ -131,7 +130,6 @@ public class OnlineCombat : NetworkBehaviour
     [TargetRpc]
     private void t_ApplyDamage(NetworkConnection conn, int dam, NetworkObject player, bool isFacingRight, Vector2 attackAngle, float scaledKB)
     {
-        Debug.Log("[TARGET] Func with network object");
         if(GetComponent<Damage_Calculations>() == null)
         {
             Debug.Log("[TARGET] Could not find damage calculations...");
