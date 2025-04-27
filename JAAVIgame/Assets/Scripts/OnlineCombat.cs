@@ -105,37 +105,26 @@ public class OnlineCombat : NetworkBehaviour
         {
             if(collider.gameObject == oppPlayer.gameObject)
             {
-                t_ApplyDamage(oppConn, attackDamage, oppPlayer);
-                bool isFacingRight = currPlayer.GetComponent<TestOnlinePlayerMovementNew>().isFacingRight;
-                t_ApplyKnockback(oppConn, oppPlayer, isFacingRight, baseKnockback, scaledKnockback);
+                if (oppPlayer.GetComponent<TestOnlinePlayerMovementNew>().isBlocking)
+                {
+                    // blocking
+                    t_ApplyDamage(oppConn, attackDamage/2, oppPlayer);
+                    bool isFacingRight = currPlayer.GetComponent<TestOnlinePlayerMovementNew>().isFacingRight;
+                    t_ApplyKnockback(oppConn, oppPlayer, isFacingRight, baseKnockback, scaledKnockback);
+                }
+                else
+                {
+                    t_ApplyDamage(oppConn, attackDamage, oppPlayer);
+                }
                 break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
             }
         }
     }
 
-    [ServerRpc]
-    public void s_AttackBlocked(NetworkConnection conn)
-    {
-        foreach(var item in ServerManager.Clients)
-        {
-            if(item.Value != conn)
-            {
-                t_AttackBlocked(item.Value);
-                break;
-            }
-        }
-    }
-
-
     [TargetRpc]
     private void t_ApplyDamage(NetworkConnection conn, int dam, NetworkObject player)
     {
         Debug.Log("[TARGET] Func with network object");
-        if (player.GetComponent<TestOnlinePlayerMovementNew>().isBlocking) 
-        {
-            player.GetComponent<OnlineCombat>().s_AttackBlocked(conn);
-            dam = dam / 2;
-        }
         if(GetComponent<Damage_Calculations>() == null)
         {
             Debug.Log("[TARGET] Could not find damage calculations...");
