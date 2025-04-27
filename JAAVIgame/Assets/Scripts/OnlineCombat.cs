@@ -185,6 +185,7 @@ public class OnlineCombat : NetworkBehaviour
         attackAngle.x += scaledKB;
         attackAngle.y += scaledKB;
         player.GetComponent<TestOnlinePlayerMovementNew>().hitStun = 30;
+        Debug.Log($"[LOCAL] IS the attacker facing right? {isFacingRight}");
         if (!isFacingRight)
             attackAngle.x *= -1;
         player.GetComponent<Rigidbody2D>().AddForce(attackAngle, ForceMode2D.Impulse);

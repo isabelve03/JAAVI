@@ -175,12 +175,10 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
                 //we use this value to determine knockback direction
                 if (playerCharacter.velocity.x > 0)
                 {
-                    Debug.Log("In velo is positive if");
                     isFacingRight = true;
                 }
                 else if (playerCharacter.velocity.x < 0)
                 {
-                    Debug.Log("In velo is neg if");
                     isFacingRight = false;
                 }
             }
