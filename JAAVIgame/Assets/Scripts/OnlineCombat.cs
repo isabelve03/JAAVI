@@ -65,13 +65,12 @@ public class OnlineCombat : NetworkBehaviour
         NetworkObject oppPlayer = null;
         NetworkObject currPlayer = null;
         NetworkConnection oppConn = null;
-        NetworkConnection currConn = null; 
+
 
         foreach (var item in ServerManager.Clients)
         {
             if(item.Value == conn)
             {
-                currConn = item.Value;
                 foreach (var Object in item.Value.Objects)
                 {
                     if(Object.GetComponent<AttackData>() != null)
@@ -106,49 +105,51 @@ public class OnlineCombat : NetworkBehaviour
         {
             if(collider.gameObject == oppPlayer.gameObject)
             {
-                if (oppPlayer.GetComponent<TestOnlinePlayerMovementNew>().isBlocking)
-                {
-                    // blocking
-                    t_ApplyDamage(oppConn, attackDamage/2, oppPlayer);
-                    t_AttackBlocked(currConn);
-                    Debug.Log("[SERVER] Attacked player was blocking");
-                }
-                else
-                {
-                    Debug.Log("[SERVER] Attacked player was not blocking");
-                    t_ApplyDamage(oppConn, attackDamage, oppPlayer);
-                    bool isFacingRight = currPlayer.GetComponent<TestOnlinePlayerMovementNew>().isFacingRight;
-                    t_ApplyKnockback(oppConn, oppPlayer, isFacingRight, baseKnockback, scaledKnockback);
-                }
+                t_ApplyDamage(oppConn, attackDamage, oppPlayer);
+                bool isFacingRight = currPlayer.GetComponent<TestOnlinePlayerMovementNew>().isFacingRight;
+                t_ApplyKnockback(oppConn, oppPlayer, isFacingRight, baseKnockback, scaledKnockback);
                 break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
             }
         }
     }
 
+    [ServerRpc]
+    public void s_AttackBlocked(NetworkConnection conn)
+    {
+        foreach(var item in ServerManager.Clients)
+        {
+            if(item.Value != conn)
+            {
+                t_AttackBlocked(item.Value);
+                break;
+            }
+        }
+    }
+
+
     [TargetRpc]
-    private void t_ApplyDamage(NetworkConnection conn, int dam, NetworkObject player)
+    private void t_ApplyDamage(NetworkConnection conn, int dam, NetworkObject player, bool isFacingRight, Vector2 attackAngle, float scaledKB)
     {
         Debug.Log("[TARGET] Func with network object");
         if(GetComponent<Damage_Calculations>() == null)
         {
             Debug.Log("[TARGET] Could not find damage calculations...");
         }
-        player.GetComponent<Damage_Calculations>().currentHealth += dam;
-        Debug.Log($"[TARGET] Hit with {dam} damage");
+
+        if (player.GetComponent<TestOnlinePlayerMovementNew>().isBlocking) 
+        {
+            player.GetComponent<Damage_Calculations>().currentHealth += dam/2;
+            Debug.Log($"[TARGET] Hit with {dam/2} damage");
+            player.GetComponent<OnlineCombat>().s_AttackBlocked(conn);
+        }
+        else
+        {
+            player.GetComponent<Damage_Calculations>().currentHealth += dam;
+            Debug.Log($"[TARGET] Hit with {dam} damage");
+            l_ApplyKnockback(player, isFacingRight, attackAngle, scaledKB);
+        }
     }
 
-    [TargetRpc]
-    private void t_ApplyKnockback(NetworkConnection conn, NetworkObject player, bool isFacingRight, Vector2 attackAngle, float scaledKB)
-    {
-        int currentHealth = player.GetComponent<Damage_Calculations>().currentHealth;
-        scaledKB *= currentHealth * 0.12f;
-        attackAngle.x += scaledKB;
-        attackAngle.y += scaledKB;
-        player.GetComponent<TestOnlinePlayerMovementNew>().hitStun = 30;
-        if (!isFacingRight)
-            attackAngle.x *= -1;
-        player.GetComponent<Rigidbody2D>().AddForce(attackAngle, ForceMode2D.Impulse);
-    }
 
     [TargetRpc]
     private void t_AttackBlocked(NetworkConnection conn)
@@ -176,4 +177,16 @@ public class OnlineCombat : NetworkBehaviour
 
 
     #endregion RPC
+    
+    private void l_ApplyKnockback(NetworkObject player, bool isFacingRight, Vector2 attackAngle, float scaledKB)
+    {
+        int currentHealth = player.GetComponent<Damage_Calculations>().currentHealth;
+        scaledKB *= currentHealth * 0.12f;
+        attackAngle.x += scaledKB;
+        attackAngle.y += scaledKB;
+        player.GetComponent<TestOnlinePlayerMovementNew>().hitStun = 30;
+        if (!isFacingRight)
+            attackAngle.x *= -1;
+        player.GetComponent<Rigidbody2D>().AddForce(attackAngle, ForceMode2D.Impulse);
+    }
 }
