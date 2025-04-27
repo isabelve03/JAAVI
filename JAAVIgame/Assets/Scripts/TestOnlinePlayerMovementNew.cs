@@ -176,15 +176,20 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
                 if (playerCharacter.velocity.x > 0)
                 {
                     isFacingRight = true;
-                    Debug.Log("[LOCAL] This player's direction was changed to right");
+                    Debug.Log("[LOCAL] This player's direction was changed to right", this);
                 }
                 else if (playerCharacter.velocity.x < 0)
                 {
                     isFacingRight = false;
-                    Debug.Log("[LOCAL] This player's direction was changed to left");
+                    Debug.Log("[LOCAL] This player's direction was changed to left", this);
                 }
             }
         }
+    }
+    public bool isRight()
+    {
+        Debug.Log(isFacingRight, this);
+        return isFacingRight;
     }
 
     private void Jump()
