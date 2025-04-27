@@ -176,10 +176,12 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
                 if (playerCharacter.velocity.x > 0)
                 {
                     isFacingRight = true;
+                    Debug.Log("[LOCAL] This player's direction was changed to right");
                 }
                 else if (playerCharacter.velocity.x < 0)
                 {
                     isFacingRight = false;
+                    Debug.Log("[LOCAL] This player's direction was changed to left");
                 }
             }
         }
@@ -267,7 +269,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
         {
             playerAnimator.SetTrigger("attack1");
             _networkAnimate.Attack1();
-            GetComponent<OnlineCombat>().s_LightAttack(ClientManager.Connection);
+            GetComponent<OnlineCombat>().s_LightAttack(ClientManager.Connection, isFacingRight);
             isAttacking = true;
         }
         if (attackLetgo)

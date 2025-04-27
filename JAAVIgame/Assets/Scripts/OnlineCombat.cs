@@ -60,9 +60,8 @@ public class OnlineCombat : NetworkBehaviour
 
     // In future when more attacks, change this to just attack and pass a string to identify which get func to call
     [ServerRpc]
-    public void s_LightAttack(NetworkConnection conn)
+    public void s_LightAttack(NetworkConnection conn, bool isFacingRight)
     {
-        Debug.Log("[SERVER] In light attack");
         NetworkObject oppPlayer = null;
         NetworkObject currPlayer = null;
         NetworkConnection oppConn = null;
@@ -106,36 +105,87 @@ public class OnlineCombat : NetworkBehaviour
         {
             if(collider.gameObject == oppPlayer.gameObject)
             {
-                t_Attack(oppConn, conn, attackDamage, oppPlayer);
+                Debug.Log($"[SERVER] Attacker is facing right? {isFacingRight}");
+                t_ApplyDamage(oppConn, attackDamage, oppPlayer, isFacingRight, baseKnockback, scaledKnockback);
                 break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
             }
         }
     }
 
-    [TargetRpc]
-    private void t_AttackBlocked(NetworkConnection conn)
+    [ServerRpc]
+    public void s_AttackBlocked(NetworkConnection conn)
     {
-        Debug.Log("[TARGET] Your attack was blocked");
+        foreach(var item in ServerManager.Clients)
+        {
+            if(item.Value != conn)
+            {
+                t_AttackBlocked(item.Value);
+                break;
+            }
+        }
     }
 
+
     [TargetRpc]
-    private void t_Attack(NetworkConnection conn, NetworkConnection attackerConn, int dam, NetworkObject player)
+    private void t_ApplyDamage(NetworkConnection conn, int dam, NetworkObject player, bool isFacingRight, Vector2 attackAngle, float scaledKB)
     {
-        Debug.Log("[TARGET] Func with network object");
-        if (player.GetComponent<TestOnlinePlayerMovementNew>().isBlocking) 
-        {
-            t_AttackBlocked(attackerConn);
-            dam = dam / 2;
-        }
         if(GetComponent<Damage_Calculations>() == null)
         {
             Debug.Log("[TARGET] Could not find damage calculations...");
         }
-        player.GetComponent<Damage_Calculations>().currentHealth += dam;
-        Debug.Log($"[TARGET] Hit with {dam} damage");
+
+        if (player.GetComponent<TestOnlinePlayerMovementNew>().isBlocking) 
+        {
+            player.GetComponent<Damage_Calculations>().currentHealth += dam/2;
+            Debug.Log($"[TARGET] Hit with {dam/2} damage");
+            player.GetComponent<OnlineCombat>().s_AttackBlocked(conn);
+        }
+        else
+        {
+            player.GetComponent<Damage_Calculations>().currentHealth += dam;
+            Debug.Log($"[TARGET] Hit with {dam} damage");
+            l_ApplyKnockback(player, isFacingRight, attackAngle, scaledKB);
+        }
+    }
+
+
+    [TargetRpc]
+    private void t_AttackBlocked(NetworkConnection conn)
+    {
+        NetworkObject player = null;
+        foreach (var Object in conn.Objects)
+        {
+            if(Object.GetComponent<AttackData>() != null)
+            {
+                player = Object;
+                break;
+            }
+        }
+
+        if (player.GetComponent<TestOnlinePlayerMovementNew>().isFacingRight)
+            pushBack = Vector2.left * 10.0f;
+        else
+            pushBack = Vector2.right * 10.0f;
+
+        player.GetComponent<Rigidbody2D>().AddForce(pushBack, ForceMode2D.Impulse);
+        player.GetComponent<TestOnlinePlayerMovementNew>().hitStun = 5;
+
     }
 
 
 
     #endregion RPC
+    
+    private void l_ApplyKnockback(NetworkObject player, bool isFacingRight, Vector2 attackAngle, float scaledKB)
+    {
+        int currentHealth = player.GetComponent<Damage_Calculations>().currentHealth;
+        scaledKB *= currentHealth * 0.12f;
+        attackAngle.x += scaledKB;
+        attackAngle.y += scaledKB;
+        player.GetComponent<TestOnlinePlayerMovementNew>().hitStun = 30;
+        Debug.Log($"[LOCAL] IS the attacker facing right? {isFacingRight}");
+        if (!isFacingRight)
+            attackAngle.x *= -1;
+        player.GetComponent<Rigidbody2D>().AddForce(attackAngle, ForceMode2D.Impulse);
+    }
 }
