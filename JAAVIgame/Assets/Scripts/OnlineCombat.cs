@@ -105,7 +105,9 @@ public class OnlineCombat : NetworkBehaviour
         {
             if(collider.gameObject == oppPlayer.gameObject)
             {
-                t_Attack(oppConn, attackDamage, oppPlayer);
+                t_ApplyDamage(oppConn, attackDamage, oppPlayer);
+                bool isFacingRight = currPlayer.GetComponent<TestOnlinePlayerMovementNew>().isFacingRight;
+                t_ApplyKnockback(oppConn, oppPlayer, isFacingRight, baseKnockback, scaledKnockback);
                 break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
             }
         }
@@ -122,6 +124,37 @@ public class OnlineCombat : NetworkBehaviour
                 break;
             }
         }
+    }
+
+
+    [TargetRpc]
+    private void t_ApplyDamage(NetworkConnection conn, int dam, NetworkObject player)
+    {
+        Debug.Log("[TARGET] Func with network object");
+        if (player.GetComponent<TestOnlinePlayerMovementNew>().isBlocking) 
+        {
+            player.GetComponent<OnlineCombat>().s_AttackBlocked(conn);
+            dam = dam / 2;
+        }
+        if(GetComponent<Damage_Calculations>() == null)
+        {
+            Debug.Log("[TARGET] Could not find damage calculations...");
+        }
+        player.GetComponent<Damage_Calculations>().currentHealth += dam;
+        Debug.Log($"[TARGET] Hit with {dam} damage");
+    }
+
+    [TargetRpc]
+    private void t_ApplyKnockback(NetworkConnection conn, NetworkObject player, bool isFacingRight, Vector2 attackAngle, float scaledKB)
+    {
+        int currentHealth = player.GetComponent<Damage_Calculations>().currentHealth;
+        scaledKB *= currentHealth * 0.12f;
+        attackAngle.x += scaledKB;
+        attackAngle.y += scaledKB;
+        player.GetComponent<TestOnlinePlayerMovementNew>().hitStun = 30;
+        if (!isFacingRight)
+            attackAngle.x *= -1;
+        player.GetComponent<Rigidbody2D>().AddForce(attackAngle, ForceMode2D.Impulse);
     }
 
     [TargetRpc]
@@ -145,23 +178,6 @@ public class OnlineCombat : NetworkBehaviour
         player.GetComponent<Rigidbody2D>().AddForce(pushBack, ForceMode2D.Impulse);
         player.GetComponent<TestOnlinePlayerMovementNew>().hitStun = 5;
 
-    }
-
-    [TargetRpc]
-    private void t_Attack(NetworkConnection conn, int dam, NetworkObject player)
-    {
-        Debug.Log("[TARGET] Func with network object");
-        if (player.GetComponent<TestOnlinePlayerMovementNew>().isBlocking) 
-        {
-            player.GetComponent<OnlineCombat>().s_AttackBlocked(conn);
-            dam = dam / 2;
-        }
-        if(GetComponent<Damage_Calculations>() == null)
-        {
-            Debug.Log("[TARGET] Could not find damage calculations...");
-        }
-        player.GetComponent<Damage_Calculations>().currentHealth += dam;
-        Debug.Log($"[TARGET] Hit with {dam} damage");
     }
 
 
