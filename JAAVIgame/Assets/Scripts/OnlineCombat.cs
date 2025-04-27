@@ -60,7 +60,7 @@ public class OnlineCombat : NetworkBehaviour
 
     // In future when more attacks, change this to just attack and pass a string to identify which get func to call
     [ServerRpc]
-    public void s_LightAttack(NetworkConnection conn)
+    public void s_LightAttack(NetworkConnection conn, bool isFacingRight)
     {
         NetworkObject oppPlayer = null;
         NetworkObject currPlayer = null;
@@ -105,7 +105,6 @@ public class OnlineCombat : NetworkBehaviour
         {
             if(collider.gameObject == oppPlayer.gameObject)
             {
-                bool isFacingRight = currPlayer.GetComponent<TestOnlinePlayerMovementNew>().isRight();
                 Debug.Log($"[SERVER] Attacker is facing right? {isFacingRight}");
                 t_ApplyDamage(oppConn, attackDamage, oppPlayer, isFacingRight, baseKnockback, scaledKnockback);
                 break; // should be a max of 1 colliders in hitOpponent (hopefully), but if there isn't at least they only take dam once
