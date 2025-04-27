@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +17,8 @@ public class Damage_Number : MonoBehaviour
     [SerializeField] public static Image damNum;
     [SerializeField] public static Image damNum2;
     [SerializeField] public static Image damNum3;
-    [SerializeField] public Sprite[] damageTex;
+    [SerializeField] public Sprite[] damageTex; //[0,1,2,3,4,5,6,7,8,9]
+    [SerializeField] public GameObject player;
    
     // Start is called before the first frame update
     void Start()
@@ -38,8 +40,7 @@ public class Damage_Number : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //hp = gameObject.transform.root.Find("KnightPlayer").GetComponent<Damage_Calculations>().currentHealth; //obtains current hitPoints for character
-        hp=0; //temporary
+        hp = player.GetComponent<Damage_Calculations>().currentHealth; //obtains current hitPoints for character
         if(damage != hp){ //do not want to reprint the damage counters each frame if the damage does not change
             damage = hp;
             if(damage < 10){
