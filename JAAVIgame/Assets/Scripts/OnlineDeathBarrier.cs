@@ -18,6 +18,13 @@ public class OnlineDeathBarrier : NetworkBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("[SERVER] Death Barrier collison register...");
+        ServerLog();
+    }
+
+    [ServerRpc]
+    private void ServerLog()
+    {
+        Debug.Log("[SERVER] Death Barrier Collision registered..");
     }
 
     /*
