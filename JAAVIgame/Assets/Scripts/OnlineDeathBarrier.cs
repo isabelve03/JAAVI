@@ -41,7 +41,6 @@ public class OnlineDeathBarrier : NetworkBehaviour
         s_LockPlayers();
         t_ShowWinScreen(winner);
         t_ShowWinScreen(loser); // TODO - Temp show win screen to give user an opportunity to return to home (fix with a loss screen)
-        ServerManager.StopConnection(true); // disconnect all clients
         triggered = true;
     }
 
