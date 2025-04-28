@@ -36,6 +36,9 @@ public class OnlineVictoryScreen : MonoBehaviour
             return;
         }
 
+        InstanceFinder.ClientManager.StopConnection();
+        return;
+
 
         OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
         if(_onlineGameManager == null)
