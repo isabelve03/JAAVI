@@ -1,6 +1,7 @@
+using FishNet.Object;
 using UnityEngine;
 
-public class OnlineDeathBarrier : MonoBehaviour
+public class OnlineDeathBarrier : NetworkBehaviour
 {
     private bool canKill = false;
 
