@@ -23,6 +23,11 @@ public class OnlineGameManager : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
+    }
+
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
         ServerSpawnCharacters();
         ServerSpawnDeathBarrier();
     }
