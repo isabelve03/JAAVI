@@ -86,7 +86,8 @@ public class OnlineGameManager : NetworkBehaviour
     [ServerRpc (RequireOwnership = false)]
     public void s_QuitGame()
     {
-        Debug.Log("[SERVER] Quit Game pressed");
+        // stop server and disconnect all clients
+        ServerManager.StopConnection(true);
     }
 
     [TargetRpc]
