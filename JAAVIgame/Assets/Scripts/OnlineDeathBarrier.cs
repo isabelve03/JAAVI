@@ -22,7 +22,6 @@ public class OnlineDeathBarrier : NetworkBehaviour
         if (!canKill)
             return;
 
-
         foreach (var item in ServerManager.Clients)
         {
             foreach (var Object in item.Value.Objects)
@@ -33,12 +32,10 @@ public class OnlineDeathBarrier : NetworkBehaviour
                     if(pm == null)
                         Debug.LogWarning("Could not find movement script...");
                     pm.Die();
-                }
-                else
-                {
                     t_ShowWinScreen(item.Value);
                 }
             }
+
         }
     }
 
@@ -46,6 +43,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
     [TargetRpc]
     private void t_ShowWinScreen(NetworkConnection conn)
     {
+        Debug.Log("[TARGET] Showing win screen");
         OnlineVictoryScreen ovs = FindObjectOfType<OnlineVictoryScreen>();
         if(ovs == null)
         {
