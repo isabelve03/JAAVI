@@ -377,6 +377,11 @@ public class SteamLobbyManager : MonoBehaviour
     {
         return inLobby;
     }
+
+    public void LeaveLobby()
+    {
+        currLobby.Leave();
+    }
     private void OnApplicationQuit()
     {
         Steamworks.SteamClient.Shutdown();

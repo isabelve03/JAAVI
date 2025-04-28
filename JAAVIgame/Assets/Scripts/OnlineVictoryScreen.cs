@@ -24,6 +24,7 @@ public class OnlineVictoryScreen : MonoBehaviour
 
     public void QuitGame()
     {
+        InstanceFinder.NetworkManager.GetComponent<SteamLobbyManager>().LeaveLobby();
         if (InstanceFinder.IsServerStarted)
         {
             InstanceFinder.ServerManager.StopConnection(true);
@@ -38,13 +39,5 @@ public class OnlineVictoryScreen : MonoBehaviour
 
         InstanceFinder.ClientManager.StopConnection();
         return;
-
-
-        OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
-        if(_onlineGameManager == null)
-        {
-            Debug.LogWarning("Could not get OnlineGameManager");
-        }
-        _onlineGameManager.s_QuitGame();
     }
 }
