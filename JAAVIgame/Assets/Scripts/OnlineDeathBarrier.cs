@@ -54,7 +54,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
+    //[ServerRpc]
     private void s_LockPlayers()
     {
         foreach (var Client in ServerManager.Clients)
