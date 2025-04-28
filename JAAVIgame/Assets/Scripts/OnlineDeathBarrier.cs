@@ -22,6 +22,13 @@ public class OnlineDeathBarrier : NetworkBehaviour
         if (!canKill)
             return;
 
+        /*
+        OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
+        _onlineGameManager.s_Collision(collision.gameObject);
+        return;
+        */
+
+
         NetworkConnection winner, loser;
         getConnections(out winner, out loser, collision.gameObject);
         if(winner == null || loser == null)
@@ -59,7 +66,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
     [TargetRpc]
     private void t_checkLose(NetworkConnection conn)
     {
-        Debug.Log("[TARGET] Win");
+        Debug.Log("[TARGET] Lose");
     }
 
     private void getConnections(out NetworkConnection winner, out NetworkConnection loser, GameObject collision)

@@ -48,6 +48,51 @@ public class OnlineGameManager : NetworkBehaviour
         NetworkObject db = Instantiate(_onlineDeathBarrier);
         InstanceFinder.ServerManager.Spawn(db);
     }
+
+    [ServerRpc]
+    public void s_Collision(GameObject player)
+    {
+        NetworkConnection winner = null;
+        NetworkConnection loser = null;
+        foreach (var item in ServerManager.Clients)
+        {
+            foreach (var Object in item.Value.Objects)
+            {
+                if(Object.gameObject == player)
+                {
+                    loser = item.Value;
+                }
+            }
+        }
+
+        foreach (var item in ServerManager.Clients)
+        {
+            if(item.Value != loser)
+            {
+                winner = item.Value;
+                break;
+            }
+        }
+
+        if(winner == null ||  loser == null)
+        {
+            Debug.LogWarning("Sumn null...");
+        }
+        t_Win(winner);
+        t_lose(loser);
+
+    }
+
+    [TargetRpc]
+    private void t_Win(NetworkConnection conn)
+    {
+        Debug.Log("[TARGET] Winner...");
+    }
+    [TargetRpc]
+    private void t_lose(NetworkConnection conn)
+    {
+        Debug.Log("[TARGET] Loser...");
+    }
     
 
     [ServerRpc]
