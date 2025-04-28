@@ -24,26 +24,11 @@ public class OnlineGameManager : NetworkBehaviour
     {
         base.OnStartClient();
 
+        if (!InstanceFinder.IsServerStarted)
         ServerSpawnDeathBarrier();
-        SpawnCharacter();
-        /*
         ServerSpawnCharacters();
-        */
     }
 
-    private void SpawnCharacter()
-    {
-        _networkManager = FindAnyObjectByType<NetworkManager>();
-        _playerSpawner = _networkManager.GetComponent<OnlinePlayerSpawner>();
-        _lobbyManager = _networkManager.GetComponent<LobbyManager>();
-
-        NetworkConnection currConn = ClientManager.Connection;
-
-        if (currConn == _lobbyManager._hostConnection)
-            _playerSpawner.Spawn(_lobbyManager._hostCharacter, currConn);
-        else
-            _playerSpawner.Spawn(_lobbyManager._clientCharacter, currConn);
-    }
 
     [ServerRpc]
     private void ServerSpawnCharacters()
