@@ -25,11 +25,7 @@ public class OnlineVictoryScreen : MonoBehaviour
     public void QuitGame()
     {
         InstanceFinder.NetworkManager.GetComponent<SteamLobbyManager>().LeaveLobby();
-        if (InstanceFinder.IsServerStarted)
-        {
-            InstanceFinder.ServerManager.StopConnection(true);
-            return;
-        }
+        ClientServerInit _clientServerInit = InstanceFinder.NetworkManager.GetComponent<ClientServerInit>();
 
         if (!InstanceFinder.IsClientStarted)
         {
@@ -37,7 +33,14 @@ public class OnlineVictoryScreen : MonoBehaviour
             return;
         }
 
-        InstanceFinder.ClientManager.StopConnection();
-        return;
+        _clientServerInit.ChangeClientState();
+
+        if (InstanceFinder.IsServerStarted)
+        {
+            _clientServerInit.ChangeServerState();
+            return;
+        }
+
+
     }
 }
