@@ -83,8 +83,7 @@ public class OnlineGameManager : NetworkBehaviour
 
     }
 
-    [ServerRpc]
-
+    [ServerRpc (RequireOwnership = false)]
     public void s_QuitGame()
     {
         Debug.Log("[SERVER] Quit Game pressed");
