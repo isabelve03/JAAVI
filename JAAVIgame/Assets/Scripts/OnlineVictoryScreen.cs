@@ -23,9 +23,12 @@ public class OnlineVictoryScreen : MonoBehaviour
 
     public void QuitGame()
     {
-        if(FindObjectOfType<OnlineGameManager>() == null)
+        OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
+        if(_onlineGameManager == null)
         {
             Debug.LogWarning("Could not get OnlineGameManager");
         }
+
+        _onlineGameManager.s_QuitGame();
     }
 }
