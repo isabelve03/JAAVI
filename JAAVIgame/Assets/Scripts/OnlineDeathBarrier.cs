@@ -1,3 +1,4 @@
+using FishNet.Connection;
 using FishNet.Object;
 using UnityEngine;
 
@@ -17,14 +18,33 @@ public class OnlineDeathBarrier : NetworkBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("[SERVER] Death Barrier collison register...");
+        if (!canKill)
+            return;
+
+
+        foreach (var item in ServerManager.Clients)
+        {
+            foreach (var Object in item.Value.Objects)
+            {
+                if(Object.gameObject == collision.gameObject)
+                {
+                    TargetLog(item.Value);
+                }
+            }
+        }
         ServerLog();
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void ServerLog()
     {
         Debug.Log("[SERVER] Death Barrier Collision registered..");
+    }
+
+    [TargetRpc]
+    private void TargetLog(NetworkConnection conn)
+    {
+        Debug.Log("[TARGET] This target collided with the death barrier");
     }
 
     /*
