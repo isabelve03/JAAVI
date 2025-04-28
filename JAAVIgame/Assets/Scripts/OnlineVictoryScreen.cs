@@ -24,6 +24,8 @@ public class OnlineVictoryScreen : MonoBehaviour
 
     public void QuitGame()
     {
+        InstanceFinder.ServerManager.StopConnection(true);
+        return;
         Debug.Log("In quit game on victory screenl");
         if (!InstanceFinder.IsClientStarted)
         {
@@ -37,8 +39,5 @@ public class OnlineVictoryScreen : MonoBehaviour
         {
             Debug.LogWarning("Could not get OnlineGameManager");
         }
-
-        Debug.Log("Above s_QuitGame call");
-        _onlineGameManager.QuitGame();
     }
 }
