@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6961806965404737210
+--- !u!1 &4294372812563808444
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4565461634952202218}
-  - component: {fileID: 100135996132368496}
-  - component: {fileID: 1130632282273790297}
-  - component: {fileID: 1977452285478195678}
-  - component: {fileID: 7318116344264658835}
-  - component: {fileID: 6130427398408479968}
+  - component: {fileID: 8555394971974749687}
+  - component: {fileID: -1431437116189804111}
+  - component: {fileID: 5360668978815238805}
+  - component: {fileID: -1731382994535931954}
+  - component: {fileID: 7484587561202435031}
+  - component: {fileID: 1294889099802502764}
+  - component: {fileID: 7453432159562671194}
   m_Layer: 11
   m_Name: OnlineDeathBarrier
   m_TagString: Hazards
@@ -21,28 +22,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4565461634952202218
+--- !u!4 &8555394971974749687
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6961806965404737210}
+  m_GameObject: {fileID: 4294372812563808444}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5493578, y: -1.2105113, z: -0.116434164}
+  m_LocalPosition: {x: 1.549, y: -1.211, z: -0.116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &100135996132368496
+--- !u!61 &-1431437116189804111
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6961806965404737210}
+  m_GameObject: {fileID: 4294372812563808444}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -79,15 +80,15 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 39.594116, y: 4.845458}
+  m_Size: {x: 39.594, y: 4.845}
   m_EdgeRadius: 0
---- !u!61 &1130632282273790297
+--- !u!61 &5360668978815238805
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6961806965404737210}
+  m_GameObject: {fileID: 4294372812563808444}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -124,15 +125,15 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 39.594116, y: 4.845458}
+  m_Size: {x: 39.594, y: 4.845}
   m_EdgeRadius: 0
---- !u!61 &1977452285478195678
+--- !u!61 &-1731382994535931954
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6961806965404737210}
+  m_GameObject: {fileID: 4294372812563808444}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -169,15 +170,15 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.495705, y: 28.198608}
+  m_Size: {x: 8.493, y: 28.199}
   m_EdgeRadius: 0
---- !u!61 &7318116344264658835
+--- !u!61 &7484587561202435031
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6961806965404737210}
+  m_GameObject: {fileID: 4294372812563808444}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -203,7 +204,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 18.7, y: 1.75}
+  m_Offset: {x: 18.7, y: 1.752}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -214,20 +215,71 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.495705, y: 28.198608}
+  m_Size: {x: 8.459, y: 28.187}
   m_EdgeRadius: 0
---- !u!114 &6130427398408479968
+--- !u!114 &1294889099802502764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6961806965404737210}
+  m_GameObject: {fileID: 4294372812563808444}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bd64c79e9ea4a24898bc58b251ff090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 255
-  _addedNetworkObject: {fileID: 0}
+  _addedNetworkObject: {fileID: 7453432159562671194}
   _networkObjectCache: {fileID: 0}
+--- !u!114 &7453432159562671194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294372812563808444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsNested>k__BackingField: 0
+  <ComponentIndex>k__BackingField: 0
+  <PredictedSpawn>k__BackingField: {fileID: 0}
+  <PredictedOwner>k__BackingField: {fileID: 0}
+  NetworkBehaviours: []
+  InitializedParentNetworkBehaviour: {fileID: 0}
+  InitializedNestedNetworkObjects: []
+  RuntimeParentNetworkBehaviour: {fileID: 0}
+  RuntimeChildNetworkBehaviours: []
+  _isNetworked: 1
+  _isSpawnable: 1
+  _isGlobal: 0
+  _initializeOrder: 0
+  _preventDespawnOnDisconnect: 0
+  _defaultDespawnType: 0
+  _initializedValusSet: 0
+  NetworkObserver: {fileID: 0}
+  _enablePrediction: 0
+  _predictionType: 0
+  _graphicalObject: {fileID: 0}
+  _detachGraphicalObject: 0
+  _enableStateForwarding: 1
+  _networkTransform: {fileID: 0}
+  _ownerInterpolation: 1
+  _ownerSmoothedProperties: 255
+  _adaptiveInterpolation: 3
+  _spectatorSmoothedProperties: 255
+  _spectatorInterpolation: 2
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  <PrefabId>k__BackingField: 65535
+  <SpawnableCollectionId>k__BackingField: 0
+  <AssetPathHash>k__BackingField: 13210467566880158583
+  <SceneId>k__BackingField: 0
+  SerializedTransformProperties:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 0}
+    Scale: {x: 0, y: 0, z: 0}
+    IsValid: 0
