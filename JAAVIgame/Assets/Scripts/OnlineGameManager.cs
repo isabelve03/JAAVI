@@ -20,17 +20,12 @@ public class OnlineGameManager : NetworkBehaviour
     public NetworkObject _clientCharacter;
     public NetworkConnection _hostConn;
     public NetworkConnection _clientConn;
-    public override void OnStartClient()
-    {
-        base.OnStartClient();
-        ServerSpawnCharacters();
-        ServerSpawnDeathBarrier();
-    }
 
     public override void OnStartServer()
     {
         base.OnStartServer();
-        Debug.Log("[SERVER] in on start server");
+        ServerSpawnCharacters();
+        ServerSpawnDeathBarrier();
     }
     [ServerRpc]
     private void ServerSpawnCharacters()
