@@ -372,6 +372,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
     public void GameOver()
     {
+        Debug.Log("[LOCAL] in GameOver()");
         gameOver = true;
     }
 
