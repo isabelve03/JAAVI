@@ -29,22 +29,12 @@ public class OnlineDeathBarrier : NetworkBehaviour
             Debug.LogWarning("sumn null");
             return;
         }
-        t_checkWin(winner);
+
+
+        s_LockPlayers();
         t_ShowWinScreen(winner);
-        t_checkLose(loser);
     }
 
-    [TargetRpc]
-    private void t_checkWin(NetworkConnection conn)
-    {
-        Debug.Log("[TARGET] Win");
-
-    }
-    [TargetRpc]
-    private void t_checkLose(NetworkConnection conn)
-    {
-        Debug.Log("[TARGET] Lose");
-    }
 
     private void getConnections(out NetworkConnection winner, out NetworkConnection loser, GameObject collision)
     {
@@ -60,6 +50,22 @@ public class OnlineDeathBarrier : NetworkBehaviour
                     break;
                 }
                 winner = currClient.Value;
+            }
+        }
+    }
+
+    [ServerRpc]
+    private void s_LockPlayers()
+    {
+        foreach (var Client in ServerManager.Clients)
+        {
+            foreach (var Object in Client.Value.Objects)
+            {
+                TestOnlinePlayerMovementNew pm = Object.GetComponent<TestOnlinePlayerMovementNew>();
+                if(pm != null)
+                {
+                    pm.GameOver();
+                }
             }
         }
     }

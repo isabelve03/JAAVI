@@ -44,6 +44,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
 
     #region NETWORK
     private NetworkAnimate _networkAnimate;
+    private bool gameOver = false; // used to lock movement when online game ends
     #endregion NETWORK
 
     public void SetControllerID(int id)
@@ -84,7 +85,7 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
     {
         if (!base.IsOwner) return;
 
-        if (!isAlive)
+        if (!isAlive || gameOver)
         {
             hitStun = 0;
             return;
@@ -367,6 +368,11 @@ public class TestOnlinePlayerMovementNew : NetworkBehaviour
                     playerCharacter.velocity = Vector2.left * airDashSpeed2;
             }
         }
+    }
+
+    public void GameOver()
+    {
+        gameOver = true;
     }
 
 
