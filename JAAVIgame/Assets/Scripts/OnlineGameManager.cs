@@ -83,7 +83,6 @@ public class OnlineGameManager : NetworkBehaviour
 
     }
 
-    [ServerRpc (RequireOwnership = false)]
     public void s_QuitGame()
     {
         // stop server and disconnect all clients
