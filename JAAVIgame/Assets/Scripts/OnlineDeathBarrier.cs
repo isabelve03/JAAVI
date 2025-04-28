@@ -42,7 +42,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
         loser = null;
         foreach (var currClient in ServerManager.Clients)
         {
-            t_ShowNum(currClient);
+            t_ShowNum(currClient.Value);
             foreach (var Object in currClient.Value.Objects)
             {
                 if (Object.gameObject == collision.gameObject)
