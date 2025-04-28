@@ -29,6 +29,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
             return;
         }
 
+        triggered = true;
         NetworkConnection winner, loser;
         getConnections(out winner, out loser, collision.gameObject);
         if(winner == null || loser == null)
@@ -41,7 +42,6 @@ public class OnlineDeathBarrier : NetworkBehaviour
         s_LockPlayers();
         t_ShowWinScreen(winner);
         t_ShowWinScreen(loser); // TODO - Temp show win screen to give user an opportunity to return to home (fix with a loss screen)
-        triggered = true;
     }
 
 
