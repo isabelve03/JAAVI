@@ -38,6 +38,7 @@ public class OnlineVictoryScreen : MonoBehaviour
             Debug.LogWarning("Could not get OnlineGameManager");
         }
 
+        Debug.Log("Above s_QuitGame call");
         _onlineGameManager.s_QuitGame();
     }
 }
