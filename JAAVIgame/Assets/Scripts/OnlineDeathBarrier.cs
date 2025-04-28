@@ -42,6 +42,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
         loser = null;
         foreach (var currClient in ServerManager.Clients)
         {
+            t_ShowNum(currClient);
             foreach (var Object in currClient.Value.Objects)
             {
                 if (Object.gameObject == collision.gameObject)
@@ -51,6 +52,16 @@ public class OnlineDeathBarrier : NetworkBehaviour
                 }
                 winner = currClient.Value;
             }
+        }
+    }
+    [TargetRpc]
+    private void t_ShowNum(NetworkConnection conn)
+    {
+        Debug.Log($"[TARGET] This player has {conn.Objects.Count} game objcts registered");
+        Debug.Log("They are: ");
+        foreach(var Object in conn.Objects)
+        {
+            Debug.Log(Object.name);
         }
     }
 
