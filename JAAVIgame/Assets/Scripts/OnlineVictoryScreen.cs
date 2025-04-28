@@ -25,7 +25,10 @@ public class OnlineVictoryScreen : MonoBehaviour
     public void QuitGame()
     {
         if (!InstanceFinder.IsClientStarted)
+        {
+            Debug.Log("Client is not started");
             return;
+        }
 
 
         OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
