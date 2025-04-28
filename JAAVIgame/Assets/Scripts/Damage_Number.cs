@@ -14,9 +14,9 @@ public class Damage_Number : MonoBehaviour
 
 
     // This is our HUD image UI Object
-    [SerializeField] public static Image damNum;
-    [SerializeField] public static Image damNum2;
-    [SerializeField] public static Image damNum3;
+    [SerializeField] public Image damNum;
+    [SerializeField] public Image damNum2;
+    [SerializeField] public Image damNum3;
     [SerializeField] public Sprite[] damageTex; //[0,1,2,3,4,5,6,7,8,9]
     [SerializeField] public GameObject player;
    
@@ -24,9 +24,9 @@ public class Damage_Number : MonoBehaviour
     void Start()
     {
         //accesses child elements
-        damNum = gameObject.transform.Find("Damage_Num").GetComponent<Image>();
-        damNum2 = gameObject.transform.Find("Damage_Num2").GetComponent<Image>();
-        damNum3 = gameObject.transform.Find("Damage_Num3").GetComponent<Image>();
+        damNum = transform.Find("Damage_Num").gameObject.GetComponent<Image>();
+        damNum2 = transform.Find("Damage_Num2").gameObject.GetComponent<Image>();
+        damNum3 = transform.Find("Damage_Num3").gameObject.GetComponent<Image>();
 
 
         //default health
