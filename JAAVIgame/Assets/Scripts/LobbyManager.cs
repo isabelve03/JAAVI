@@ -11,7 +11,7 @@ using UnityEngine.EventSystems;
 public class LobbyManager : MonoBehaviour
 {
     private NetworkManager _networkManager;
-    private int numReady = 0;
+    private int numReady;
     public NetworkConnection _hostConnection { get; private set; }
     public NetworkConnection _clientConnection {  get; private set; }
     public NetworkObject _hostCharacter {  get; private set; }
@@ -22,7 +22,8 @@ public class LobbyManager : MonoBehaviour
 
     private void Awake()
     {
-        _networkManager = GetComponent<NetworkManager>();
+        numReady = 0;
+        _networkManager = FindObjectOfType<NetworkManager>();
 
         // subscribe to callbacks
         _networkManager.SceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedScenes;
