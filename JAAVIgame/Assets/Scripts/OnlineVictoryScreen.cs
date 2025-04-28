@@ -39,6 +39,6 @@ public class OnlineVictoryScreen : MonoBehaviour
         }
 
         Debug.Log("Above s_QuitGame call");
-        _onlineGameManager.s_QuitGame();
+        _onlineGameManager.QuitGame();
     }
 }
