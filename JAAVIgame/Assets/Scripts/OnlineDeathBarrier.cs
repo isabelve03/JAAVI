@@ -16,20 +16,31 @@ public class OnlineDeathBarrier : NetworkBehaviour
     {
         canKill = true;
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!canKill)
             return;
 
+        NetworkConnection winner, loser;
+        getConnections(out winner, out loser, collision.gameObject);
+        if(winner == null || loser == null)
+        {
+            Debug.LogWarning("sumn nulll");
+            return;
+        }
+        t_checkWin(winner);
+        t_checkLose(loser);
+        return;
+
         foreach (var item in ServerManager.Clients)
         {
             foreach (var Object in item.Value.Objects)
             {
-                if(Object.gameObject == collision.gameObject)
+                if (Object.gameObject == collision.gameObject)
                 {
                     TestOnlinePlayerMovementNew pm = Object.gameObject.GetComponent<TestOnlinePlayerMovementNew>();
-                    if(pm == null)
+                    if (pm == null)
                         Debug.LogWarning("Could not find movement script...");
                     pm.Die();
                     t_ShowWinScreen(item.Value);
@@ -37,6 +48,35 @@ public class OnlineDeathBarrier : NetworkBehaviour
                 }
             }
 
+        }
+    }
+
+    [TargetRpc]
+    private void t_checkWin(NetworkConnection conn)
+    {
+        Debug.Log("[TARGET] Win");
+    }
+    [TargetRpc]
+    private void t_checkLose(NetworkConnection conn)
+    {
+        Debug.Log("[TARGET] Win");
+    }
+
+    private void getConnections(out NetworkConnection winner, out NetworkConnection loser, GameObject collision)
+    {
+        winner = null;
+        loser = null;
+        foreach (var currClient in ServerManager.Clients)
+        {
+            foreach (var Object in currClient.Value.Objects)
+            {
+                if (Object.gameObject == collision.gameObject)
+                {
+                    loser = currClient.Value;
+                    break;
+                }
+                winner = currClient.Value;
+            }
         }
     }
 
