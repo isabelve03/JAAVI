@@ -24,6 +24,7 @@ public class OnlineVictoryScreen : MonoBehaviour
 
     public void QuitGame()
     {
+        Debug.Log("In quit game on victory screenl");
         if (!InstanceFinder.IsClientStarted)
         {
             Debug.Log("Client is not started");
