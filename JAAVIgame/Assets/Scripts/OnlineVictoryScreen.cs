@@ -20,4 +20,12 @@ public class OnlineVictoryScreen : MonoBehaviour
         _victoryScreen.SetActive(true);
         _quitButton.gameObject.SetActive(true); 
     }
+
+    public void QuitGame()
+    {
+        if(FindObjectOfType<OnlineGameManager>() == null)
+        {
+            Debug.LogWarning("Could not get OnlineGameManager");
+        }
+    }
 }
