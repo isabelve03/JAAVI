@@ -1,3 +1,4 @@
+using FishNet;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,10 @@ public class OnlineVictoryScreen : MonoBehaviour
 
     public void QuitGame()
     {
+        if (!InstanceFinder.IsClientStarted)
+            return;
+
+
         OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
         if(_onlineGameManager == null)
         {
