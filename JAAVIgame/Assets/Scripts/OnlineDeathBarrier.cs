@@ -6,6 +6,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
 {
     private bool canKill = false;
     private GameObject _victoryScreen;
+    private bool triggered = false;
 
     private void Start()
     {
@@ -21,6 +22,10 @@ public class OnlineDeathBarrier : NetworkBehaviour
     {
         if (!canKill)
             return;
+        if (triggered)
+        {
+            return;
+        }
 
         NetworkConnection winner, loser;
         getConnections(out winner, out loser, collision.gameObject);
@@ -33,6 +38,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
 
         s_LockPlayers();
         t_ShowWinScreen(winner);
+        triggered = true;
     }
 
 
