@@ -33,6 +33,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
                         Debug.LogWarning("Could not find movement script...");
                     pm.Die();
                     t_ShowWinScreen(item.Value);
+                    break;
                 }
             }
 
