@@ -22,7 +22,7 @@ public class LobbyManager : MonoBehaviour
 
     private void Awake()
     {
-        _networkManager = GetComponent<NetworkManager>();
+        _networkManager = FindObjectOfType<NetworkManager>();
 
         // subscribe to callbacks
         _networkManager.SceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedScenes;
@@ -94,6 +94,7 @@ public class LobbyManager : MonoBehaviour
         {
             Debug.Log($"Host Character: {_hostCharacter.name}");
             Debug.Log($"Client Character: {_clientCharacter.name}");
+            numReady = 0;
             LoadBattleScene();
         }
     }

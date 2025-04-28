@@ -11,6 +11,7 @@ using UnityEngine.Timeline;
 
 public class OnlineGameManager : NetworkBehaviour
 {
+    [SerializeField] private NetworkObject _onlineDeathBarrier;
     private NetworkManager _networkManager;
     private OnlinePlayerSpawner _playerSpawner;
     private LobbyManager _lobbyManager;
@@ -23,6 +24,7 @@ public class OnlineGameManager : NetworkBehaviour
     {
         base.OnStartClient();
         ServerSpawnCharacters();
+        ServerSpawnDeathBarrier();
     }
     [ServerRpc]
     private void ServerSpawnCharacters()
@@ -39,6 +41,66 @@ public class OnlineGameManager : NetworkBehaviour
         _playerSpawner.Spawn(_hostCharacter, _hostConn);
         _playerSpawner.Spawn(_clientCharacter, _clientConn);
     }
+
+    [ServerRpc]
+    private void ServerSpawnDeathBarrier()
+    {
+        NetworkObject db = Instantiate(_onlineDeathBarrier);
+        InstanceFinder.ServerManager.Spawn(db);
+    }
+
+    [ServerRpc]
+    public void s_Collision(GameObject player)
+    {
+        NetworkConnection winner = null;
+        NetworkConnection loser = null;
+        foreach (var item in ServerManager.Clients)
+        {
+            foreach (var Object in item.Value.Objects)
+            {
+                if(Object.gameObject == player)
+                {
+                    loser = item.Value;
+                }
+            }
+        }
+
+        foreach (var item in ServerManager.Clients)
+        {
+            if(item.Value != loser)
+            {
+                winner = item.Value;
+                break;
+            }
+        }
+
+        if(winner == null ||  loser == null)
+        {
+            Debug.LogWarning("Sumn null...");
+        }
+        t_Win(winner);
+        t_lose(loser);
+
+    }
+
+    [ServerRpc]
+    public void s_QuitGame()
+    {
+        Debug.Log("[SERVER] In quit Game");
+        ServerManager.StopConnection(true);
+
+    }
+    [TargetRpc]
+    private void t_Win(NetworkConnection conn)
+    {
+        Debug.Log("[TARGET] Winner...");
+    }
+    [TargetRpc]
+    private void t_lose(NetworkConnection conn)
+    {
+        Debug.Log("[TARGET] Loser...");
+    }
+    
 
     [ServerRpc]
     public void s_Accessed()

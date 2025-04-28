@@ -178,6 +178,7 @@ public class SteamLobbyManager : MonoBehaviour
         // if user is host we need to initialize the server for them
         if (currLobby.IsOwnedBy(SteamClient.SteamId))
         {
+            Debug.Log("You own this lobby...");
             _clientServerInit.ChangeServerState();
         }
 
@@ -376,6 +377,11 @@ public class SteamLobbyManager : MonoBehaviour
     public bool GetLobbyStatus()
     {
         return inLobby;
+    }
+
+    public void LeaveLobby()
+    {
+        currLobby.Leave();
     }
     private void OnApplicationQuit()
     {
