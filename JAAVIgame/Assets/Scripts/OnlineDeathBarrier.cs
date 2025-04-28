@@ -76,15 +76,20 @@ public class OnlineDeathBarrier : NetworkBehaviour
     {
         foreach (var Client in ServerManager.Clients)
         {
-            foreach (var Object in Client.Value.Objects)
+            t_LockPlayer(Client.Value);
+        }
+    }
+
+    [TargetRpc]
+    private void t_LockPlayer(NetworkConnection conn)
+    {
+        foreach(var Object in conn.Objects)
+        {
+            TestOnlinePlayerMovementNew pm = Object.GetComponent<TestOnlinePlayerMovementNew>();
+            if(pm != null)
             {
-                Debug.Log($"[SERVER] Current Object: {Object.name}");
-                TestOnlinePlayerMovementNew pm = Object.GetComponent<TestOnlinePlayerMovementNew>();
-                if(pm != null)
-                {
-                    Debug.Log("[SERVER] Setting game over");
-                    pm.GameOver();
-                }
+                Debug.Log("[TARGET] Setting GameOver()");
+                pm.GameOver();
             }
         }
     }
