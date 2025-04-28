@@ -16,7 +16,7 @@ public class OnlineDeathBarrier : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("[LOCAL] Death Barrier collison register...");
+        Debug.Log("[SERVER] Death Barrier collison register...");
     }
 
     /*

@@ -11,6 +11,7 @@ using UnityEngine.Timeline;
 
 public class OnlineGameManager : NetworkBehaviour
 {
+    [SerializeField] private GameObject _onlineDeathBarrier;
     private NetworkManager _networkManager;
     private OnlinePlayerSpawner _playerSpawner;
     private LobbyManager _lobbyManager;
@@ -23,6 +24,7 @@ public class OnlineGameManager : NetworkBehaviour
     {
         base.OnStartClient();
         ServerSpawnCharacters();
+        ServerSpawnDeathBarrier();
     }
     [ServerRpc]
     private void ServerSpawnCharacters()
@@ -39,6 +41,14 @@ public class OnlineGameManager : NetworkBehaviour
         _playerSpawner.Spawn(_hostCharacter, _hostConn);
         _playerSpawner.Spawn(_clientCharacter, _clientConn);
     }
+
+    [ServerRpc]
+    private void ServerSpawnDeathBarrier()
+    {
+        GameObject db = Instantiate(_onlineDeathBarrier);
+        InstanceFinder.ServerManager.Spawn(db);
+    }
+    
 
     [ServerRpc]
     public void s_Accessed()

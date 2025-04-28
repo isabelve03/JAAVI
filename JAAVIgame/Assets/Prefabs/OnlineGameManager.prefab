@@ -48,6 +48,9 @@ MonoBehaviour:
   _componentIndexCache: 255
   _addedNetworkObject: {fileID: 5154607976096438256}
   _networkObjectCache: {fileID: 0}
+  _onlineDeathBarrier: {fileID: 6961806965404737210, guid: b7191bb0a2c2eb54bb9f190ed64fa11b, type: 3}
+  _hostCharacter: {fileID: 0}
+  _clientCharacter: {fileID: 0}
 --- !u!114 &5154607976096438256
 MonoBehaviour:
   m_ObjectHideFlags: 0
