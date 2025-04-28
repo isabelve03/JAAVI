@@ -26,6 +26,12 @@ public class OnlineGameManager : NetworkBehaviour
         ServerSpawnCharacters();
         ServerSpawnDeathBarrier();
     }
+
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        Debug.Log("[SERVER] in on start server");
+    }
     [ServerRpc]
     private void ServerSpawnCharacters()
     {
