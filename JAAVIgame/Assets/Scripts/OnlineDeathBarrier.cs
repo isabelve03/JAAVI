@@ -64,6 +64,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
                 TestOnlinePlayerMovementNew pm = Object.GetComponent<TestOnlinePlayerMovementNew>();
                 if(pm != null)
                 {
+                    Debug.Log("[SERVER] Setting game over");
                     pm.GameOver();
                 }
             }
