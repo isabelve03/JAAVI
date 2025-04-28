@@ -11,7 +11,7 @@ using UnityEngine.EventSystems;
 public class LobbyManager : MonoBehaviour
 {
     private NetworkManager _networkManager;
-    private int numReady;
+    private int numReady = 0;
     public NetworkConnection _hostConnection { get; private set; }
     public NetworkConnection _clientConnection {  get; private set; }
     public NetworkObject _hostCharacter {  get; private set; }
@@ -22,8 +22,7 @@ public class LobbyManager : MonoBehaviour
 
     private void Awake()
     {
-        numReady = 0;
-        _networkManager = FindObjectOfType<NetworkManager>();
+        _networkManager = GetComponent<NetworkManager>();
 
         // subscribe to callbacks
         _networkManager.SceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedScenes;
@@ -95,6 +94,7 @@ public class LobbyManager : MonoBehaviour
         {
             Debug.Log($"Host Character: {_hostCharacter.name}");
             Debug.Log($"Client Character: {_clientCharacter.name}");
+            numReady = 0;
             LoadBattleScene();
         }
     }
