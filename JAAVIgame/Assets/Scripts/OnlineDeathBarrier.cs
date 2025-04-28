@@ -78,6 +78,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
         {
             foreach (var Object in Client.Value.Objects)
             {
+                Debug.Log($"[SERVER] Current Object: {Object.name}");
                 TestOnlinePlayerMovementNew pm = Object.GetComponent<TestOnlinePlayerMovementNew>();
                 if(pm != null)
                 {
