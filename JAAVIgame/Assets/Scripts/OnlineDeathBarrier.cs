@@ -22,46 +22,23 @@ public class OnlineDeathBarrier : NetworkBehaviour
         if (!canKill)
             return;
 
-        /*
-        OnlineGameManager _onlineGameManager = FindObjectOfType<OnlineGameManager>();
-        _onlineGameManager.s_Collision(collision.gameObject);
-        return;
-        */
-
-
         NetworkConnection winner, loser;
         getConnections(out winner, out loser, collision.gameObject);
         if(winner == null || loser == null)
         {
-            Debug.LogWarning("sumn nulll");
+            Debug.LogWarning("sumn null");
             return;
         }
         t_checkWin(winner);
+        t_ShowWinScreen(winner);
         t_checkLose(loser);
-        return;
-
-        foreach (var item in ServerManager.Clients)
-        {
-            foreach (var Object in item.Value.Objects)
-            {
-                if (Object.gameObject == collision.gameObject)
-                {
-                    TestOnlinePlayerMovementNew pm = Object.gameObject.GetComponent<TestOnlinePlayerMovementNew>();
-                    if (pm == null)
-                        Debug.LogWarning("Could not find movement script...");
-                    pm.Die();
-                    t_ShowWinScreen(item.Value);
-                    break;
-                }
-            }
-
-        }
     }
 
     [TargetRpc]
     private void t_checkWin(NetworkConnection conn)
     {
         Debug.Log("[TARGET] Win");
+
     }
     [TargetRpc]
     private void t_checkLose(NetworkConnection conn)
