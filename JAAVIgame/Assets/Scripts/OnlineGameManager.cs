@@ -83,6 +83,13 @@ public class OnlineGameManager : NetworkBehaviour
 
     }
 
+    [ServerRpc]
+    public void s_QuitGame()
+    {
+        Debug.Log("[SERVER] In quit Game");
+        ServerManager.StopConnection(true);
+
+    }
     [TargetRpc]
     private void t_Win(NetworkConnection conn)
     {
