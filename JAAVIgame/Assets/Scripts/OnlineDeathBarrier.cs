@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnlineDeathBarrier : NetworkBehaviour
 {
     private bool canKill = false;
+    private GameObject _victoryScreen;
 
     private void Start()
     {
@@ -28,23 +29,31 @@ public class OnlineDeathBarrier : NetworkBehaviour
             {
                 if(Object.gameObject == collision.gameObject)
                 {
-                    TargetLog(item.Value);
+                    TestOnlinePlayerMovementNew pm = Object.gameObject.GetComponent<TestOnlinePlayerMovementNew>();
+                    if(pm == null)
+                        Debug.LogWarning("Could not find movement script...");
+                    pm.Die();
+                }
+                else
+                {
+                    t_ShowWinScreen(item.Value);
                 }
             }
         }
-        ServerLog();
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    private void ServerLog()
-    {
-        Debug.Log("[SERVER] Death Barrier Collision registered..");
-    }
 
     [TargetRpc]
-    private void TargetLog(NetworkConnection conn)
+    private void t_ShowWinScreen(NetworkConnection conn)
     {
-        Debug.Log("[TARGET] This target collided with the death barrier");
+        OnlineVictoryScreen ovs = FindObjectOfType<OnlineVictoryScreen>();
+        if(ovs == null)
+        {
+            Debug.LogWarning("Could not find OnlineVictoryScreen...");
+            return;
+        }
+
+        ovs.ShowVictoryScreen();
     }
 
     /*
