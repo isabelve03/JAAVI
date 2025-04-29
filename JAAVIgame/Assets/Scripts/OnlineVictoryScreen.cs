@@ -1,4 +1,5 @@
 using FishNet;
+using FishNet.Managing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,20 +28,14 @@ public class OnlineVictoryScreen : MonoBehaviour
         InstanceFinder.NetworkManager.GetComponent<SteamLobbyManager>().LeaveLobby();
         ClientServerInit _clientServerInit = InstanceFinder.NetworkManager.GetComponent<ClientServerInit>();
 
-        if (!InstanceFinder.IsClientStarted)
+        if (InstanceFinder.IsClientStarted)
         {
-            Debug.Log("Client is not started");
-            return;
+            _clientServerInit.ChangeClientState();
         }
-
-        _clientServerInit.ChangeClientState();
-
         if (InstanceFinder.IsServerStarted)
         {
             _clientServerInit.ChangeServerState();
-            return;
         }
-
-
+        Destroy(FindObjectOfType<NetworkManager>());
     }
 }
