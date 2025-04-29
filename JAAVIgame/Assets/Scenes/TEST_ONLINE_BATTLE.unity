@@ -1026,12 +1026,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625285007}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f3db2041a3ee7a469aff64a91a71ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
+  damNum: {fileID: 0}
+  damNum2: {fileID: 0}
+  damNum3: {fileID: 0}
   damageTex:
   - {fileID: 21300000, guid: 50e124c66887a6a4f83d083d56b823d8, type: 3}
   - {fileID: 21300000, guid: b9f1285c231ab8b44a7cf6e709683585, type: 3}
@@ -1043,6 +1046,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1db0cc126b6608348b990ccb3c9a0b5a, type: 3}
   - {fileID: 21300000, guid: 1f1c81edefcf9d247b6eeb8dede4c6bc, type: 3}
   - {fileID: 21300000, guid: 355eb9df1a66dbb45bd02e02aaa1f1ac, type: 3}
+  player: {fileID: 0}
 --- !u!114 &625285013
 MonoBehaviour:
   m_ObjectHideFlags: 0
