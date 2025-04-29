@@ -41,7 +41,7 @@ public class OnlineDeathBarrier : NetworkBehaviour
 
         s_LockPlayers();
         t_ShowWinScreen(winner);
-        t_ShowWinScreen(loser); // TODO - Temp show win screen to give user an opportunity to return to home (fix with a loss screen)
+        t_ShowLossScreen(loser); // TODO - Temp show win screen to give user an opportunity to return to home (fix with a loss screen)
         t_LeaveLobby(winner);
         t_LeaveLobby(loser);
 
@@ -105,6 +105,19 @@ public class OnlineDeathBarrier : NetworkBehaviour
         }
 
         ovs.ShowVictoryScreen();
+    }
+    [TargetRpc]
+    private void t_ShowLossScreen(NetworkConnection conn)
+    {
+        Debug.Log("[TARGET] Showing loss screen");
+        OnlineVictoryScreen ovs = FindObjectOfType<OnlineVictoryScreen>();
+        if(ovs == null)
+        {
+            Debug.LogWarning("Could not find OnlineVictoryScreen...");
+            return;
+        }
+
+        ovs.ShowLossScreen();
     }
 
     [TargetRpc]

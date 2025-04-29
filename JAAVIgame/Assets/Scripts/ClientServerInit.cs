@@ -15,8 +15,9 @@ public class ClientServerInit : MonoBehaviour
     private LocalConnectionState _clientState = LocalConnectionState.Stopped;
     private LocalConnectionState _serverState = LocalConnectionState.Stopped;
 
-    private void Start()
+    private void Awake()
     {
+        UnityEngine.Debug.Log("In start of client server init");
         _networkManager = FindObjectOfType<NetworkManager>();  
         if( _networkManager == null)
         {
@@ -38,6 +39,7 @@ public class ClientServerInit : MonoBehaviour
         // unsubscribe from these events
         _networkManager.ServerManager.OnServerConnectionState -= ServerManager_OnServerConnectionState;
         _networkManager.ClientManager.OnClientConnectionState -= ClientManager_OnClientConnectionState;
+        UnityEngine.Debug.Log("ClientServerInit destroyed");
     }
 
 
@@ -45,6 +47,7 @@ public class ClientServerInit : MonoBehaviour
     private void ClientManager_OnClientConnectionState(ClientConnectionStateArgs obj)
     {
         _clientState = obj.ConnectionState;
+        UnityEngine.Debug.Log($"New Client Connection State: {_clientState}");
     }
 
 
@@ -52,27 +55,33 @@ public class ClientServerInit : MonoBehaviour
     private void ServerManager_OnServerConnectionState(ServerConnectionStateArgs obj)
     {
         _serverState = obj.ConnectionState;
+        UnityEngine.Debug.Log($"New Server Connection State: {_serverState}");
     }
 
 
     // Switches server state from connection stopped to connection started and vice versa
     public void ChangeServerState()
     {
+        UnityEngine.Debug.Log($"Server state when entered: {_serverState}");
         if (_networkManager == null) return;
 
         if (_serverState != LocalConnectionState.Stopped)
             _networkManager.ServerManager.StopConnection(true);
         else
             _networkManager.ServerManager.StartConnection();
+        UnityEngine.Debug.Log($"New Server state: {_serverState}");
     }
 
     // Switches client state from connection stopped to connection started and vice versa
     public void ChangeClientState()
     {
+        UnityEngine.Debug.Log($"Client state when entered: {_clientState}");
         if (_networkManager == null) return;
         if (_clientState != LocalConnectionState.Stopped)
             _networkManager.ClientManager.StopConnection();
         else
             _networkManager.ClientManager.StartConnection();
+        UnityEngine.Debug.Log($"New Client state: {_clientState}");
     }
+
 }

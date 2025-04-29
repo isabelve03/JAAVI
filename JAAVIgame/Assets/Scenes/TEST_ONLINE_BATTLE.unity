@@ -1011,6 +1011,7 @@ RectTransform:
   - {fileID: 1021860896}
   - {fileID: 1544952919}
   - {fileID: 1081867048}
+  - {fileID: 1826920103}
   - {fileID: 1450021510}
   m_Father: {fileID: 1144479843}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1026,12 +1027,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625285007}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f3db2041a3ee7a469aff64a91a71ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
+  damNum: {fileID: 0}
+  damNum2: {fileID: 0}
+  damNum3: {fileID: 0}
   damageTex:
   - {fileID: 21300000, guid: 50e124c66887a6a4f83d083d56b823d8, type: 3}
   - {fileID: 21300000, guid: b9f1285c231ab8b44a7cf6e709683585, type: 3}
@@ -1043,6 +1047,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1db0cc126b6608348b990ccb3c9a0b5a, type: 3}
   - {fileID: 21300000, guid: 1f1c81edefcf9d247b6eeb8dede4c6bc, type: 3}
   - {fileID: 21300000, guid: 355eb9df1a66dbb45bd02e02aaa1f1ac, type: 3}
+  player: {fileID: 0}
 --- !u!114 &625285013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,6 +1061,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _victoryScreen: {fileID: 1544952918}
+  _victoryText: {fileID: 1081867047}
+  _lossText: {fileID: 1826920102}
   _quitButton: {fileID: 1450021512}
 --- !u!1 &900068839
 GameObject:
@@ -3187,7 +3194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1081867048
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3204,7 +3211,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: 902.75}
+  m_AnchoredPosition: {x: 0, y: 384.87}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1081867049
@@ -3240,7 +3247,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: You Got That
 --- !u!222 &1081867050
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3894,6 +3901,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544952918}
+  m_CullTransparentMesh: 1
+--- !u!1 &1826920102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1826920103}
+  - component: {fileID: 1826920105}
+  - component: {fileID: 1826920104}
+  m_Layer: 5
+  m_Name: LossText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1826920103
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826920102}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 625285011}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 384.87}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1826920104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826920102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8301887, g: 0.26237094, b: 0.2881808, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 6bc07b544cf3ae44fb8541b30d8be4cb, type: 3}
+    m_FontSize: 239
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 239
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: You Lost!
+--- !u!222 &1826920105
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826920102}
   m_CullTransparentMesh: 1
 --- !u!1 &1844571616
 GameObject:
