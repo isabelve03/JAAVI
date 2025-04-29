@@ -2,6 +2,7 @@ using FishNet;
 using FishNet.Managing;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,6 +37,7 @@ public class OnlineVictoryScreen : MonoBehaviour
             _clientServerInit.ChangeServerState();
         }
         InstanceFinder.NetworkManager.GetComponent<SteamLobbyManager>().ShutDownSteam();
-        DestroyImmediate(FindObjectOfType<NetworkManager>());
+        Destroy(FindObjectOfType<NetworkManager>());
+        Thread.Sleep(100);
     }
 }
