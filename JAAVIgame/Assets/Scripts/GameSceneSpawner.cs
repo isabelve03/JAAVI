@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class GameSceneSpawner : MonoBehaviour
 {
     public Transform[] spawnPoints;
+    [SerializeField] public GameObject UI;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class GameSceneSpawner : MonoBehaviour
             }
 
             GameObject player = Instantiate(data.selectedCharacter, spawnPoints[i].position, Quaternion.identity);
+            UI.GetComponent<DNumManager>().CreateCounter(player); //creates damage counter
             data.spawnedPlayer = player;
             Debug.Log("Spawning player " + i + " at " + spawnPoints[i].position);
             var move = player.GetComponent<PlayerMovement>();
