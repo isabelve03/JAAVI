@@ -39,6 +39,7 @@ public class ClientServerInit : MonoBehaviour
         // unsubscribe from these events
         _networkManager.ServerManager.OnServerConnectionState -= ServerManager_OnServerConnectionState;
         _networkManager.ClientManager.OnClientConnectionState -= ClientManager_OnClientConnectionState;
+        UnityEngine.Debug.Log("ClientServerInit destroyed");
     }
 
 
@@ -46,6 +47,7 @@ public class ClientServerInit : MonoBehaviour
     private void ClientManager_OnClientConnectionState(ClientConnectionStateArgs obj)
     {
         _clientState = obj.ConnectionState;
+        UnityEngine.Debug.Log($"New Client Connection State: {_clientState}");
     }
 
 
@@ -53,6 +55,7 @@ public class ClientServerInit : MonoBehaviour
     private void ServerManager_OnServerConnectionState(ServerConnectionStateArgs obj)
     {
         _serverState = obj.ConnectionState;
+        UnityEngine.Debug.Log($"New Server Connection State: {_serverState}");
     }
 
 
