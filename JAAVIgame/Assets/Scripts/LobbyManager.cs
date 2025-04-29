@@ -5,6 +5,7 @@ using FishNet.Managing.Scened;
 using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -22,7 +23,7 @@ public class LobbyManager : MonoBehaviour
 
     private void Awake()
     {
-        _networkManager = GetComponent<NetworkManager>();
+        _networkManager = FindObjectOfType<NetworkManager>();
 
         // subscribe to callbacks
         _networkManager.SceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedScenes;
@@ -30,6 +31,7 @@ public class LobbyManager : MonoBehaviour
 
     private void SceneManager_OnClientLoadedScenes(NetworkConnection conn, bool asServer)
     {
+        Debug.Log("Client has loaded into scene");
         if (!asServer)
             return;
 
@@ -94,6 +96,7 @@ public class LobbyManager : MonoBehaviour
         {
             Debug.Log($"Host Character: {_hostCharacter.name}");
             Debug.Log($"Client Character: {_clientCharacter.name}");
+            numReady = 0;
             LoadBattleScene();
         }
     }
@@ -103,6 +106,7 @@ public class LobbyManager : MonoBehaviour
         sld.ReplaceScenes = ReplaceOption.All;
         _networkManager.SceneManager.LoadGlobalScenes(sld);
 
+        Thread.Sleep(100);
         NetworkObject nob = _networkManager.GetPooledInstantiated(_OnlineGameManager, true);
         _networkManager.ServerManager.Spawn(nob, _hostConnection);
     }

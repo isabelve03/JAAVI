@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8313959185719585010}
   - component: {fileID: 3683661022637651095}
   - component: {fileID: 3543142731290346295}
-  - component: {fileID: 7189677120685588435}
   - component: {fileID: 7094378566386435505}
   - component: {fileID: 1486276495607380688}
   - component: {fileID: 6699461429893069295}
@@ -341,20 +340,6 @@ MonoBehaviour:
   dAirFrameStartup: 0
   dAirFrameDuration: 0
   dAirFrameLag: 0
---- !u!114 &7189677120685588435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6475511854894535488}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f3db2041a3ee7a469aff64a91a71ca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  damageTex: []
 --- !u!114 &7094378566386435505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +369,12 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
-  NetworkBehaviours: []
+  NetworkBehaviours:
+  - {fileID: 6699461429893069295}
+  - {fileID: -5318347087542602582}
+  - {fileID: 5721542395941807653}
+  - {fileID: -4265525825072265197}
+  - {fileID: 7366345014927410720}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -395,7 +385,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedValusSet: 0
+  _initializedValusSet: 1
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -410,15 +400,15 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 65535
+  <PrefabId>k__BackingField: 0
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 6652525424782277861
   <SceneId>k__BackingField: 0
   SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Scale: {x: 0, y: 0, z: 0}
-    IsValid: 0
+    Position: {x: -1.23, y: -0.77, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Scale: {x: 0.100944005, y: 0.100944005, z: 0.100944005}
+    IsValid: 1
 --- !u!114 &6699461429893069295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,9 +421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 1486276495607380688}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 1486276495607380688}
   _componentConfiguration: 0
   _synchronizeParent: 0
   _packing:
@@ -474,9 +464,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510868c6be423854b8c6c8243f12422b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 1486276495607380688}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 1486276495607380688}
 --- !u!114 &5721542395941807653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,9 +479,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 1486276495607380688}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 1486276495607380688}
   IgnoredParameters: []
   _animator: {fileID: 7487503310954721529}
   _synchronizeWhenDisabled: 0
@@ -511,9 +501,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab79469bf56dbc241b82fba8225c4ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 1486276495607380688}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 1486276495607380688}
   runSpeed: 5
   jumpSpeed: 5
   airJumpVal: 1
@@ -523,6 +513,8 @@ MonoBehaviour:
   airDashDirection: none
   airJump: 0
   airDashVal: 1
+  hitStun: 0
+  isBlocking: 0
   isFacingRight: 1
 --- !u!114 &7366345014927410720
 MonoBehaviour:
@@ -536,3 +528,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baecd35cdc6dd8440b8887d055460624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 4
+  _addedNetworkObject: {fileID: 1486276495607380688}
+  _networkObjectCache: {fileID: 1486276495607380688}
+  attackRange: 0.5
+  opponentLayers:
+    serializedVersion: 2
+    m_Bits: 0

@@ -1,0 +1,52 @@
+using FishNet;
+using FishNet.Managing;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class OnlineVictoryScreen : MonoBehaviour
+{
+    [SerializeField] private GameObject _victoryScreen;
+    [SerializeField] private GameObject _victoryText;
+    [SerializeField] private GameObject _lossText;
+    [SerializeField] private Button _quitButton;
+
+    private void Awake()
+    {
+        // Initially make sure the victory screen is hidden
+        _victoryScreen.SetActive(false);
+        _victoryText.SetActive(false);
+        _lossText.SetActive(false);
+        _quitButton.gameObject.SetActive(false);
+    }
+
+    public void ShowVictoryScreen()
+    {
+        _victoryScreen.SetActive(true);
+        _victoryText.SetActive(true);
+        _quitButton.gameObject.SetActive(true); 
+    }
+    public void ShowLossScreen()
+    {
+        _lossText.SetActive(true);
+        _quitButton.gameObject.SetActive(true); 
+    }
+
+    public void QuitGame()
+    {
+        ClientServerInit _clientServerInit = InstanceFinder.NetworkManager.GetComponent<ClientServerInit>();
+
+        if (InstanceFinder.IsClientStarted)
+        {
+            _clientServerInit.ChangeClientState();
+        }
+        if (InstanceFinder.IsServerStarted)
+        {
+            _clientServerInit.ChangeServerState();
+        }
+        InstanceFinder.NetworkManager.GetComponent<SteamLobbyManager>().ShutDownSteam();
+        Destroy(FindObjectOfType<NetworkManager>().gameObject);
+    }
+}

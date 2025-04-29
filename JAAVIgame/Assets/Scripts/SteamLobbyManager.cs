@@ -59,6 +59,18 @@ public class SteamLobbyManager : MonoBehaviour
         {
             Debug.Log(e);
         }
+
+        SteamMatchmaking.OnLobbyMemberLeave += SteamMatchmaking_OnLobbyMemberLeave;
+    }
+
+    private void SteamMatchmaking_OnLobbyMemberLeave(Lobby lobby, Friend friend)
+    {
+        Debug.Log($"{friend.Name} has left the lobby. {lobby.MemberCount} members left in the lobby");
+    }
+
+    private void OnDestroy()
+    {
+        SteamMatchmaking.OnLobbyMemberLeave -= SteamMatchmaking_OnLobbyMemberLeave;
     }
     private void Start()
     {
@@ -178,6 +190,7 @@ public class SteamLobbyManager : MonoBehaviour
         // if user is host we need to initialize the server for them
         if (currLobby.IsOwnedBy(SteamClient.SteamId))
         {
+            Debug.Log("You own this lobby...");
             _clientServerInit.ChangeServerState();
         }
 
@@ -377,6 +390,19 @@ public class SteamLobbyManager : MonoBehaviour
     {
         return inLobby;
     }
+
+    public void LeaveLobby()
+    {
+        Debug.Log("Leaving steam lobby");
+        currLobby.Leave();
+    }
+
+    public void ShutDownSteam()
+    {
+        Debug.Log("Steam client shutting down");
+        SteamClient.Shutdown();
+    }
+
     private void OnApplicationQuit()
     {
         Steamworks.SteamClient.Shutdown();
