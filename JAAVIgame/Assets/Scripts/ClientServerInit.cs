@@ -15,7 +15,7 @@ public class ClientServerInit : MonoBehaviour
     private LocalConnectionState _clientState = LocalConnectionState.Stopped;
     private LocalConnectionState _serverState = LocalConnectionState.Stopped;
 
-    private void Start()
+    private void Awake()
     {
         UnityEngine.Debug.Log("In start of client server init");
         _networkManager = FindObjectOfType<NetworkManager>();  
