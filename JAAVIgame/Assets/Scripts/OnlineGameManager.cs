@@ -45,7 +45,6 @@ public class OnlineGameManager : NetworkBehaviour
         _clientConn = _lobbyManager._clientConnection;
 
         _playerSpawner.Spawn(_hostCharacter, _hostConn);
-        Thread.Sleep(100);
         _playerSpawner.Spawn(_clientCharacter, _clientConn);
     }
 
