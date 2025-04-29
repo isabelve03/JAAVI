@@ -83,4 +83,5 @@ public class ClientServerInit : MonoBehaviour
             _networkManager.ClientManager.StartConnection();
         UnityEngine.Debug.Log($"New Client state: {_clientState}");
     }
+
 }

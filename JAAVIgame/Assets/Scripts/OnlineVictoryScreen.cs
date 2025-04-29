@@ -36,6 +36,6 @@ public class OnlineVictoryScreen : MonoBehaviour
             _clientServerInit.ChangeServerState();
         }
         InstanceFinder.NetworkManager.GetComponent<SteamLobbyManager>().ShutDownSteam();
-        Destroy(FindObjectOfType<NetworkManager>());
+        DestroyImmediate(FindObjectOfType<NetworkManager>());
     }
 }
