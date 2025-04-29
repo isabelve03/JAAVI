@@ -27,6 +27,8 @@ public class OnlineGameManager : NetworkBehaviour
 
         if (!InstanceFinder.IsServerStarted)
             return;
+
+        Thread.Sleep(500);
         ServerSpawnDeathBarrier();
         ServerSpawnCharacters();
     }
