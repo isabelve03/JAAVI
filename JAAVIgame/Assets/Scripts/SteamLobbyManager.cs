@@ -65,7 +65,7 @@ public class SteamLobbyManager : MonoBehaviour
 
     private void SteamMatchmaking_OnLobbyMemberLeave(Lobby lobby, Friend friend)
     {
-        lobby.Leave();
+        Debug.Log($"{friend.Name} has left the lobby. {lobby.MemberCount} members left in the lobby");
     }
 
     private void OnDestroy()
@@ -393,7 +393,12 @@ public class SteamLobbyManager : MonoBehaviour
 
     public void LeaveLobby()
     {
+        Debug.Log("Leaving steam lobby");
         currLobby.Leave();
+    }
+
+    public void ShutDownSteam()
+    {
         Debug.Log("Steam client shutting down");
         SteamClient.Shutdown();
     }
