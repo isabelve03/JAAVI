@@ -59,6 +59,18 @@ public class SteamLobbyManager : MonoBehaviour
         {
             Debug.Log(e);
         }
+
+        SteamMatchmaking.OnLobbyMemberLeave += SteamMatchmaking_OnLobbyMemberLeave;
+    }
+
+    private void SteamMatchmaking_OnLobbyMemberLeave(Lobby lobby, Friend friend)
+    {
+        lobby.Leave();
+    }
+
+    private void OnDestroy()
+    {
+        SteamMatchmaking.OnLobbyMemberLeave -= SteamMatchmaking_OnLobbyMemberLeave;
     }
     private void Start()
     {
