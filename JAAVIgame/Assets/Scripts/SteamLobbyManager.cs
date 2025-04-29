@@ -383,6 +383,12 @@ public class SteamLobbyManager : MonoBehaviour
     {
         currLobby.Leave();
     }
+
+    private void OnDestroy()
+    {
+        Debug.Log("Steam client shutting down");
+        SteamClient.Shutdown();
+    }
     private void OnApplicationQuit()
     {
         Steamworks.SteamClient.Shutdown();
