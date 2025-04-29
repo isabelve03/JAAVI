@@ -5,6 +5,7 @@ using FishNet.Managing.Scened;
 using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -104,6 +105,7 @@ public class LobbyManager : MonoBehaviour
         sld.ReplaceScenes = ReplaceOption.All;
         _networkManager.SceneManager.LoadGlobalScenes(sld);
 
+        Thread.Sleep(100);
         NetworkObject nob = _networkManager.GetPooledInstantiated(_OnlineGameManager, true);
         _networkManager.ServerManager.Spawn(nob, _hostConnection);
     }

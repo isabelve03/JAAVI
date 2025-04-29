@@ -8,6 +8,7 @@ using FishNet.Managing;
 using Steamworks.Data;
 using FishNet.Managing.Scened;
 using UnityEngine.Timeline;
+using System.Threading;
 
 public class OnlineGameManager : NetworkBehaviour
 {
@@ -23,9 +24,14 @@ public class OnlineGameManager : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-        ServerSpawnCharacters();
+
+        if (!InstanceFinder.IsServerStarted)
+            return;
         ServerSpawnDeathBarrier();
+        ServerSpawnCharacters();
     }
+
+
     [ServerRpc]
     private void ServerSpawnCharacters()
     {
