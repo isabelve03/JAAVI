@@ -9,18 +9,28 @@ using UnityEngine.UI;
 public class OnlineVictoryScreen : MonoBehaviour
 {
     [SerializeField] private GameObject _victoryScreen;
+    [SerializeField] private GameObject _victoryText;
+    [SerializeField] private GameObject _lossText;
     [SerializeField] private Button _quitButton;
 
     private void Awake()
     {
         // Initially make sure the victory screen is hidden
         _victoryScreen.SetActive(false);
+        _victoryText.SetActive(false);
+        _lossText.SetActive(false);
         _quitButton.gameObject.SetActive(false);
     }
 
     public void ShowVictoryScreen()
     {
         _victoryScreen.SetActive(true);
+        _victoryText.SetActive(true);
+        _quitButton.gameObject.SetActive(true); 
+    }
+    public void ShowLossScreen()
+    {
+        _lossText.SetActive(true);
         _quitButton.gameObject.SetActive(true); 
     }
 
