@@ -106,7 +106,7 @@ public class LobbyManager : MonoBehaviour
         sld.ReplaceScenes = ReplaceOption.All;
         _networkManager.SceneManager.LoadGlobalScenes(sld);
 
-        Thread.Sleep(5000);
+        Thread.Sleep(100);
         NetworkObject nob = _networkManager.GetPooledInstantiated(_OnlineGameManager, true);
         _networkManager.ServerManager.Spawn(nob, _hostConnection);
     }
