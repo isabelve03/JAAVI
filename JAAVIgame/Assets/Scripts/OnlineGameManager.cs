@@ -14,12 +14,16 @@ public class OnlineGameManager : NetworkBehaviour
     private NetworkManager _networkManager;
     private OnlinePlayerSpawner _playerSpawner;
     private LobbyManager _lobbyManager;
+
+    public NetworkObject _hostCharacter;
+    public NetworkObject _clientCharacter;
+    public NetworkConnection _hostConn;
+    public NetworkConnection _clientConn;
     public override void OnStartClient()
     {
         base.OnStartClient();
         ServerSpawnCharacters();
     }
-
     [ServerRpc]
     private void ServerSpawnCharacters()
     {
@@ -27,13 +31,25 @@ public class OnlineGameManager : NetworkBehaviour
         _playerSpawner = _networkManager.GetComponent<OnlinePlayerSpawner>();
         _lobbyManager = _networkManager.GetComponent<LobbyManager>();
         Debug.Log("SERVER: Spawning characters");
-        NetworkObject hostCharacter = _lobbyManager._hostCharacter;
-        NetworkObject clientCharacter = _lobbyManager._clientCharacter;
-        NetworkConnection hostConn = _lobbyManager._hostConnection;
-        NetworkConnection clientConn = _lobbyManager._clientConnection;
+        _hostCharacter = _lobbyManager._hostCharacter;
+        _clientCharacter = _lobbyManager._clientCharacter;
+        _hostConn = _lobbyManager._hostConnection;
+        _clientConn = _lobbyManager._clientConnection;
 
-        _playerSpawner.Spawn(hostCharacter, hostConn);
-        _playerSpawner.Spawn(clientCharacter, clientConn);
+        _playerSpawner.Spawn(_hostCharacter, _hostConn);
+        _playerSpawner.Spawn(_clientCharacter, _clientConn);
+    }
+
+    [ServerRpc]
+    public void s_Accessed()
+    {
+        Debug.Log("SERVER: Accessed");
+        c_Accessed();
+    }
+    [ObserversRpc]
+    public void c_Accessed()
+    {
+        Debug.Log("CLIENT: Accessed");
     }
 }
 

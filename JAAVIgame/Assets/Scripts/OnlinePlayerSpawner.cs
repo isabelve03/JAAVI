@@ -32,7 +32,7 @@ public class OnlinePlayerSpawner : MonoBehaviour
             Debug.Log("Player prefab is null");
             return;
         }
-        Debug.Log($"Prefabe: {playerPrefab.name}");
+        Debug.Log($"Prefab: {playerPrefab.name}");
         Debug.Log($"transform: {playerPrefab.transform}");
         SetSpawn(playerPrefab.transform, out position, out rotation);
 
