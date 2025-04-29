@@ -59,23 +59,23 @@ public class ClientServerInit : MonoBehaviour
     // Switches server state from connection stopped to connection started and vice versa
     public void ChangeServerState()
     {
-        UnityEngine.Debug.Log("In change client state");
         if (_networkManager == null) return;
 
         if (_serverState != LocalConnectionState.Stopped)
             _networkManager.ServerManager.StopConnection(true);
         else
             _networkManager.ServerManager.StartConnection();
+        UnityEngine.Debug.Log($"New Server state: {_serverState}");
     }
 
     // Switches client state from connection stopped to connection started and vice versa
     public void ChangeClientState()
     {
-        UnityEngine.Debug.Log("In change client state");
         if (_networkManager == null) return;
         if (_clientState != LocalConnectionState.Stopped)
             _networkManager.ClientManager.StopConnection();
         else
             _networkManager.ClientManager.StartConnection();
+        UnityEngine.Debug.Log($"New Client state: {_clientState}");
     }
 }
