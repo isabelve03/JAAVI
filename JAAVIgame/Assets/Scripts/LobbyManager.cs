@@ -31,6 +31,7 @@ public class LobbyManager : MonoBehaviour
 
     private void SceneManager_OnClientLoadedScenes(NetworkConnection conn, bool asServer)
     {
+        Debug.Log("Client has loaded into scene");
         if (!asServer)
             return;
 
