@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04c097d788e3d498ba9d70d9f411cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkCharacterPrefab: {fileID: -558396122304563032, guid: bbaa0111a87b7314ea9ccb929564a6e5, type: 3}
+  networkCharacterPrefab: {fileID: -7347514508681044589, guid: 0104eaf7e5dc97c489dd758e0fc7fa3c, type: 3}
   selectionIndicator: {fileID: 0}
 --- !u!1 &843682976
 GameObject:

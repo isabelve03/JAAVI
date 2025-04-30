@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 5721542395941807653}
   - component: {fileID: -4265525825072265197}
   - component: {fileID: 7366345014927410720}
+  - component: {fileID: 5545182613425445759}
   m_Layer: 0
   m_Name: OnlineKnightPlayer
   m_TagString: Untagged
@@ -535,3 +536,21 @@ MonoBehaviour:
   opponentLayers:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &5545182613425445759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475511854894535488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd52a1ec4d65dd7499cc065f41e9e3d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  damNum: {fileID: 0}
+  damNum2: {fileID: 0}
+  damNum3: {fileID: 0}
+  damageTex: []
+  player: {fileID: 0}
