@@ -2,8 +2,6 @@
 
 > A medieval 2D platform fighter game inspired by Super Smash Bros.
 
-![Game Banner](https://github.com/isabelve03/JAAVI/raw/main/Preview1.jpg)
-
 ## 🎮 About
 
 HollowClash is a **2D platform fighting game** developed as a senior capstone project by a team of five computer science students. Experience nostalgic platform fighter mechanics in a medieval fantasy setting with custom characters, online multiplayer capabilities, and intense combat action.
