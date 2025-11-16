@@ -1,42 +1,111 @@
+# ⚔️ HollowClash
 
-# HollowClash
+> A medieval 2D platform fighter game inspired by Super Smash Bros.
 
-### Description:
-**2D platform fighting game / Software Engineering Project** - A medieval 2D platform fighter game developed by a team of five for our senior capstone project! Nostalgic take on Super Smash Bros.
+![Game Banner](https://github.com/isabelve03/JAAVI/raw/main/Preview1.jpg)
 
-### itch.io link
-https://gamingiv.itch.io/hallowclash
+## 🎮 About
 
-### Preview
-![isabel-veliz-ss1](https://github.com/user-attachments/assets/e211d3cc-52e2-49c7-86c7-2b7d3f7a3766)
-![isabel-veliz-ss2](https://github.com/user-attachments/assets/67898b43-6efa-4d27-8df4-0f1dfa739ea2)
-![isabel-veliz-ss3](https://github.com/user-attachments/assets/52b01dc2-46d2-46b1-b8fe-61c363571d96)
+HollowClash is a **2D platform fighting game** developed as a senior capstone project by a team of five computer science students. Experience nostalgic platform fighter mechanics in a medieval fantasy setting with custom characters, online multiplayer capabilities, and intense combat action.
 
-### Note:
-This is just a prototype and will have bugs and incomplete areas. Let us know what you would like to see, what you think, and any areas of improvement. Currently, only the knight character works fully.
+### ✨ Key Features
 
-### Meet the Team:
-**Isabel Veliz** - Dictator / Main Developer/ Background Artist / Animator  
-**Avery Charles** - DJ / Sound Production / Ideation / Game Name  
-**Josiah Emerson** - GOAT / Online Matchmaking Developer / Server Host  
-**Victor Jun** - Genie / Animator / Character Select Developer / UI Design  
-**Austin Kenz** - Mascot / Core Gameplay Mechanics Developer / Mathematician
+- 🎭 **Multiple Playable Characters** - Choose from various medieval-themed fighters (Knight fully functional, more coming soon!)
+- 🌐 **Online Multiplayer** - Battle friends online with custom matchmaking system
+- 🎨 **Custom Art & Animation** - Original character designs, backgrounds, and animations
+- 🎵 **Original Soundtrack** - Immersive sound design and music
+- 🕹️ **Controller Support** - Full gamepad and keyboard controls
+- ⚡ **Fast-Paced Combat** - Attack, block, dash, and jump mechanics
 
-### Controls:
-Keyboard 
-A + D - Move Left + Right  
-Space - Jump  
-C - Block  
-J - Attack  
-E - Dash  
-Left Click - Interact
+## 🚀 Play Now
 
-### Controller 
-Left Joystick - Move Left/Right  
-A - Jump/Interact  
-B - Block  
-X - Attack  
-Right Bumper - Dash
+**[Play HollowClash on itch.io](https://gamingiv.itch.io/hallowclash)**
 
-### Matchmaking Databse Repo
-The repository for the matchmaking database and a short description can be found [here](https://github.com/Josiah-Emerson/JAAVIdb)
+## 🎥 Screenshots
+
+| Main Menu | Character Select | Gameplay |
+|-----------|------------------|----------|
+| ![Menu](https://github.com/isabelve03/JAAVI/raw/main/Preview1.jpg) | ![Select](https://github.com/isabelve03/JAAVI/raw/main/Preview2.jpg) | ![Game](https://github.com/isabelve03/JAAVI/raw/main/Preview3.jpg) |
+
+## 🎮 Controls
+
+### Keyboard
+| Action | Key |
+|--------|-----|
+| Move Left/Right | A + D |
+| Jump | Space |
+| Block | C |
+| Attack | J |
+| Dash | E |
+| Interact | Left Click |
+
+### Controller
+| Action | Button |
+|--------|--------|
+| Move | Left Joystick |
+| Jump/Interact | A |
+| Block | B |
+| Attack | X |
+| Dash | Right Bumper |
+
+## 🛠️ Technical Details
+
+### Built With
+- **Unity** - Game engine
+- **C#** - Primary programming language
+- **ShaderLab** - Custom shaders and visual effects
+- **HLSL** - Graphics programming
+- **Custom Networking** - Online matchmaking system
+
+### Architecture
+- **Game Client** - Unity-based fighting game
+- **Matchmaking Server** - Custom backend for online multiplayer ([View Repository](https://github.com/Josiah-Emerson/JAAVIdb))
+
+## 👥 Meet the Team
+
+| Name | Role |
+|------|------|
+| **Isabel Veliz** | Lead Developer / Background Artist / Animator |
+| **Avery Charles** | Sound Designer / Audio Producer / Creative Director |
+| **Josiah Emerson** | Network Engineer / Matchmaking System / Server Host |
+| **Victor Jun** | UI/UX Designer / Animator / Character Select Developer |
+| **Austin Kenz** | Gameplay Mechanics / Combat System / Mathematics |
+
+## 📝 Development Status
+
+⚠️ **Prototype Phase** - This is an early prototype with ongoing development.
+
+**Current Status:**
+- ✅ Knight character fully functional
+- 🚧 Additional characters in development
+- 🚧 Balancing and bug fixes ongoing
+- 🚧 Additional stages planned
+
+**Known Issues:**
+- Some characters are incomplete
+- Balance adjustments needed
+- Minor visual bugs
+
+We welcome feedback! Let us know what you'd like to see, your thoughts, and areas for improvement.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔗 Related Resources
+
+- [Matchmaking Database Repository](https://github.com/Josiah-Emerson/JAAVIdb)
+- [Play on itch.io](https://gamingiv.itch.io/hallowclash)
+
+## 🎓 Academic Context
+
+This project was developed as a **Software Engineering Capstone Project** to demonstrate:
+- Team collaboration and project management
+- Full-stack game development
+- Network programming and multiplayer systems
+- User interface and experience design
+- Agile development methodology
+
+---
+
+⭐ **Enjoy the game? Star this repository!**
