@@ -21,9 +21,14 @@ HollowClash is a **2D platform fighting game** developed as a senior capstone pr
 
 ## 🎥 Screenshots
 
-| Main Menu | Character Select | Gameplay |
-|-----------|------------------|----------|
-| ![Menu](https://github.com/isabelve03/JAAVI/raw/main/Preview1.jpg) | ![Select](https://github.com/isabelve03/JAAVI/raw/main/Preview2.jpg) | ![Game](https://github.com/isabelve03/JAAVI/raw/main/Preview3.jpg) |
+<div align="center">
+
+### 📸 Game Screenshots
+<img width="794" height="447" alt="image" src="https://github.com/user-attachments/assets/d5d38d77-5e10-4ab0-adf3-10aeea63e803" />
+<img width="794" height="446" alt="image" src="https://github.com/user-attachments/assets/c2f2a7a7-48a5-4965-a0f3-9e6fc7db1739" />
+<img width="794" height="412" alt="image" src="https://github.com/user-attachments/assets/2fe601f7-2821-413f-9791-a0fdb5e5031a" />
+
+
 
 ## 🎮 Controls
 
