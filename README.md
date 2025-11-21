@@ -71,7 +71,7 @@ HollowClash is a **2D platform fighting game** developed as a senior capstone pr
 | **Isabel Veliz** | Lead Developer / Background Artist / Animator |
 | **Avery Charles** | Sound Designer / Audio Producer / Creative Director |
 | **Josiah Emerson** | Network Engineer / Matchmaking System / Server Host |
-| **Victor Jun** | UI/UX Designer / Animator / Character Select Developer |
+| **Victor Jun** | UI/UX Designer / Animator / Software Developer |
 | **Austin Kenz** | Gameplay Mechanics / Combat System / Mathematics |
 
 ## 📝 Development Status
